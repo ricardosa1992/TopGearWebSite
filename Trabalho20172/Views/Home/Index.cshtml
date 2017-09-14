@@ -1,0 +1,796 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from ocean.tonytemplates.com/ttdemo/tonytemplates/24-rental-car/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Sep 2017 18:01:15 GMT -->
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" /Content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" /Content="width=device-width, initial-scale=1.0">
+    <meta name="description" /Content="">
+    <meta name="author" /Content="">
+    <title>RentalCar HTML Template</title>
+    <link rel="shortcut icon" href="fav.png" type="image/png">
+    <!-- CSS preloader -->
+    <link href="~/Content/css/loader.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/rentalcar-template.css" rel="stylesheet">
+    <!-- CSS modules -->
+    <link href="~/Content/css/flexslider.css" rel="stylesheet">
+    <link href="~/Content/css/sfmenu.css" rel="stylesheet">
+    <link href="~/Content/css/glide-slider.css" rel="stylesheet">
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet">
+    <link href="~/Content/css/select2.css" rel="stylesheet">
+    <link href="~/Content/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/css/owl.theme.css" rel="stylesheet">
+    <link href="~/fonts/flaticon-rentalcar/flaticon.css" rel="stylesheet">
+
+    <style>
+
+        .inside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 435px;
+        }
+
+        .tab-content-outer .tab-content {
+	        background: url(../images/bg-tab.png) repeat 0 0;
+	        border: none;
+	        color: #2a3045;
+        }
+        .tab-content-outer .tab-content .tab-pane {
+	        padding: 25px;
+        }
+
+
+    </style>
+
+</head>
+<body class="responsive">
+    <div class="loader">
+        <div class="inside">
+            <div class="circle-outer"></div>
+            <div class="circle-inner"></div>
+        </div>
+    </div>
+    <!-- Off Canvas Menu -->
+    <nav id="off-canvas-menu">
+        <div id="off-canvas-menu-title">MENU<span id="off-canvas-menu-close">&times;</span></div>
+        <ul class="expander-list">
+            <li>
+                <span class="name"><span class="expander">-</span> <a href="about.html">About</a></span>
+                <ul>
+                    <li><span class="name"><a href="#">Submenu#1</a></span> </li>
+                    <li><span class="name"><a href="#">Submenu#2</a></span> </li>
+                    <li><span class="name"><a href="#">Submenu#3</a></span> </li>
+                    <li><span class="name"><a href="#">Submenu#4</a></span> </li>
+                </ul>
+            </li>
+            <li><span class="name"><a href="vehicle.html" class="btn-main">Vehicle guide</a></span></li>
+            <li><span class="name"><a href="services.html" class="btn-main">Services</a></span></li>
+            <li><span class="name"><a href="prices.html" class="btn-main">Prices</a></span></li>
+            <li><span class="name"><a href="blog-posts.html" class="btn-main">Blog</a></span></li>
+            <li><span class="name"><a href="contact.html" class="btn-main">Contact</a></span></li>
+        </ul>
+    </nav>
+    <!-- //end Off Canvas Menu -->
+
+    <div id="outer">
+        <div id="outer-canvas">
+            <!-- Navbar -->
+            <header>
+
+                <!-- Back to top -->
+                <div class="back-to-top"><span class="arrow-up"><img src="~/Content/images/icon-scroll-arrow.png" alt=""></span><img src="~/Content/images/icon-scroll-mouse.png" alt=""></div>
+                <!-- //end Back to top -->
+
+                <section class="navbar">
+                    <div class="container">
+                        <div class="background">
+                            <!-- Logo -->
+                            <div class="navbar-logo pull-left"> <a href="index-2.html"><img src="~/Content/images/rentalcar/logo.png" alt="Live Radio" class="img-responsive"></a></div>
+                            <!-- //end Logo -->
+                            <div class="navbar-welcome pull-left compact-hidden hidden-xs">Default welcome msg!</div>
+                            <!-- Secondary menu -->
+                            <div class="navbar-secondary-menu pull-right hidden-xs">
+                                <div class="btn-group compact-hidden">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon flaticon-human4"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Account</a></li>
+                                        <li><a href="#">Wishlist</a></li>
+                                        <li><a href="#">Checkout</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="login.html">Log In</a></li>
+                                        <li><a href="login.html">Sign Up</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group compact-hidden">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon flaticon-earth205"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> English</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> German</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-fr">&nbsp;</span> French</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-da">&nbsp;</span> Danish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-el">&nbsp;</span> Greek</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-es">&nbsp;</span> Spanish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-it">&nbsp;</span> Italian</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-nl">&nbsp;</span> Dutch</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-pl">&nbsp;</span> Polish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-pt">&nbsp;</span> Portuguese</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-ru">&nbsp;</span> Russian</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-sv">&nbsp;</span> Swedish</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group compact-hidden">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="icon flaticon-dollars1"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">($) US Dollars</a></li>
+                                        <li><a href="#">(€) Euro</a></li>
+                                        <li><a href="#">(&pound;) British Pounds</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Secondary menu mobile -->
+                            <div class="navbar-secondary-menu pull-right compact-hidden visible-xs">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">En </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> English</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> German</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-fr">&nbsp;</span> French</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-da">&nbsp;</span> Danish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-el">&nbsp;</span> Greek</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-es">&nbsp;</span> Spanish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-it">&nbsp;</span> Italian</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-nl">&nbsp;</span> Dutch</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-pl">&nbsp;</span> Polish</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-pt">&nbsp;</span> Portuguese</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-ru">&nbsp;</span> Russian</a></li>
+                                        <li><a href="#"> <span class="icon-flag icon-flag-sv">&nbsp;</span> Swedish</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">$ </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">($) US Dollars</a></li>
+                                        <li><a href="#">(€) Euro</a></li>
+                                        <li><a href="#">(&pound;) British Pounds</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- //end Secondary menu -->
+                            <!-- Search -->
+                            <form class="navbar-search form-inline visible-lg visible-md pull-right" role="form">
+                                <div class="form-group">
+                                    <button type="submit" class="button"><span class="flaticon-search19"></span></button>
+                                    <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
+                                </div>
+                            </form>
+                            <!-- //end Search -->
+                            <!-- Main menu -->
+                            <div class="row">
+                                <dl class="navbar-main-menu hidden-xs">
+                                    <dt class="item"> <a href="index-2.html" class="btn-main"><span class="icon flaticon-house58"></span></a> </dt>
+                                    <dd></dd>
+                                    <dt class="item">
+                                        <ul class="sf-menu">
+                                            <li>
+                                                <a href="about.html">About</a>
+                                                <ul>
+                                                    <li><a href="#">Submenu # 1</a></li>
+                                                    <li><a href="#">Submenu # 2</a></li>
+                                                    <li><a href="#">Submenu # 3</a></li>
+                                                    <li><a href="#">Submenu # 4</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </dt>
+                                    <dd></dd>
+                                    <dt class="item"> <a href="vehicle.html" class="btn-main">Vehicle guide</a> </dt>
+                                    <dd></dd>
+                                    <dt class="item"> <a href="services.html" class="btn-main">Services</a> </dt>
+                                    <dd></dd>
+                                    <dt class="item"> <a href="prices.html" class="btn-main">Prices</a> </dt>
+                                    <dd></dd>
+                                    <dt class="item"> <a href="blog-posts.html" class="btn-main">Blog</a> </dt>
+                                    <dd></dd>
+                                    <dt class="item"> <a href="contact.html" class="btn-main">Contact</a> </dt>
+                                    <dd></dd>
+                                </dl>
+                            </div>
+                            <!-- //end Main menu -->
+
+                        </div>
+                    </div>
+                    <!-- Mobile menu -->
+                    <div class="container visible-xs">
+                        <div class="mobile-nav row">
+                            <div class="nav-item item-01"><a href="#" id="off-canvas-menu-toggle"><span class="icon icon-menu">&#9776;</span></a></div>
+                            <div class="nav-item item-02"></div>
+                            <div class="nav-item item-03"></div>
+                            <div class="nav-item item-04">
+                                <a href="#"><span class="icon flaticon-search19"></span></a>
+                                <div class="tab-/Content">
+                                    <!-- Search -->
+                                    <form class="navbar-search form-inline" role="form">
+                                        <div class="form-group">
+                                            <button type="submit" class="button"><span class="flaticon-search19"></span></button>
+                                            <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
+                                        </div>
+                                    </form>
+                                    <!-- //end Search -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- //end Mobile menu -->
+                    <!-- Navbar switcher -->
+                    <div class="navbar-switcher-container">
+                        <div class="navbar-switcher"> <span class="i-inactive"><img src="~/Content/images/rentalcar/icon-switcher.png" alt=""></span> <span class="i-active">&times;</span> </div>
+                    </div>
+                    <!-- //end Navbar switcher -->
+
+                </section>
+
+                <!-- Navbar height -->
+                <div class="navbar-height-inner"></div>
+                <!-- Navbar height -->
+                <!-- Navbar height -->
+                <div class="navbar-height"></div>
+                <!-- Navbar height -->
+
+            </header>
+            <!-- //end Navbar -->
+            <!-- Tabs -->
+            <div id="topTabs" class="toptabs">
+                <div class="container">
+                    <div class="inside">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Book a Car</a></li>
+                            <li><a data-toggle="tab" href="#tab-2">View / Modify / Cancel a Reservation</a></li>
+                        </ul>
+                        <div class="tab-/Content-outer">
+                            <div class="tab-/Content">
+                                <div id="tab-1" class="tab-pane fade active in">
+                                    <form action="#">
+                                        <div class="wrapper">
+                                            <div class="number-in-circle">1</div>
+                                            <div class="number-text">
+                                                <label><strong>Pick-up Location</strong> (City, State or Airport Code)</label>
+                                                <div>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <p class="help-block"><a href="#">Help me find a rental location</a></p>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                        Return car to a different location
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrapper">
+                                            <div class="number-in-circle">2</div>
+                                            <div class="number-text">
+                                                <label><strong>Pick-up Date and Time:</strong></label>
+                                                <div class="wrapper">
+                                                    <input type="text" class="form-control datetimepicker">
+                                                    <select name="select" class="custom140">
+                                                        <option>10:00</option>
+                                                        <option>12:00</option>
+                                                        <option>14:00</option>
+                                                        <option>16:00</option>
+                                                        <option>18:00</option>
+                                                        <option>20:00</option>
+                                                        <option>22:00</option>
+                                                    </select>
+                                                </div>
+                                                <label><strong>Return Date and Time:</strong></label>
+                                                <div class="wrapper">
+                                                    <input type="text" class="form-control datetimepicker">
+                                                    <select name="select" class="custom140">
+                                                        <option>10:00</option>
+                                                        <option>12:00</option>
+                                                        <option>14:00</option>
+                                                        <option>16:00</option>
+                                                        <option>18:00</option>
+                                                        <option>20:00</option>
+                                                        <option>22:00</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrapper">
+                                            <div class="number-in-circle">3</div>
+                                            <div class="number-text">
+                                                <label><strong>Hire Car Type:</strong></label>
+                                                <div>
+                                                    <select name="select" class="customFull">
+                                                        <option>Show me all</option>
+                                                        <option>Convertible Rental</option>
+                                                        <option>Luxury</option>
+                                                        <option>Passenger Van Rental</option>
+                                                        <option>Minivan</option>
+                                                        <option>Hybrid</option>
+                                                    </select>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                        Apply a discount code
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="number-text">
+                                            <input type="submit" value="Get a quote" class="btn btn-default">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="tab-2" class="tab-pane fade">
+                                    <form action="#">
+                                        <div class="wrapper">
+                                            <label><strong>Confirmation Number:*</strong></label>
+                                            <input type="text" class="form-control">
+                                            <div class="divider-xs"></div>
+                                            <label><strong>Last Name:*</strong></label>
+                                            <input type="text" class="form-control">
+                                            <div class="divider-xs"></div>
+                                            <input type="submit" value="Continue" class="btn btn-default">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- //end Tabs -->
+            <!-- Slider -->
+            <div id="slider">
+                <ul class="slider__wrapper">
+                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/1.jpg)">
+                        <div class="text-pos-1">
+                            <div class="text1">Easy & Relaxing</div>
+                            <div class="text2">family travel</div>
+                        </div>
+                    </li>
+                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/2.jpg)">
+                        <div class="text-pos-1">
+                            <div class="text2">Car Hire – </div>
+                            <div class="text1">
+                                Search, Compare <br>
+                                & Save
+                            </div>
+                            <div class="text3">
+                                Compare 10-00 cars at over 30000 locations. <br>
+                                Best price guaranteed
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/3.jpg)">
+                        <div class="text-pos-1">
+                            <div class="text1">
+                                Get specially-<br>
+                                negotiated
+                            </div>
+                            <div class="text2">car rental rates</div>
+                            <div class="text3">when you book with us today</div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#" class="scroll-down animate-move-down"> <span class="icon flaticon-down-open-big"></span> scroll to view /Content </a>
+            </div>
+
+            <!-- //end Slider -->
+            <!-- Social widgets -->
+            <section class="social-widgets hidden-xs">
+                <ul class="items">
+                    <li class="item item-01 facebook">
+                        <a href="social/facebook.html" class="tab-icon"><span class="icon icon-facebook flaticon-facebook55"></span></a>
+                        <div class="tab-/Content">
+                            <div class="title">FACEBOOK</div>
+                            <div class="loading"><img src="/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
+                        </div>
+                    </li>
+                    <li class="item item-02 twitter">
+                        <a href="social/twitter.html" class="tab-icon"><span class="icon icon-twitter flaticon-twitter20"></span></a>
+                        <div class="tab-/Content">
+                            <div class="title">TWITTER FEEDS</div>
+                            <div class="loading"><img src="/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
+                        </div>
+                    </li>
+                    <li class="item item-03 youtube">
+                        <a href="social/youtubevideo.html" class="tab-icon"><span class="icon icon-youtube flaticon-youtube18"></span></a>
+                        <div class="tab-/Content">
+                            <div class="title">Video</div>
+                            <div class="loading"><img src="/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <!-- //end Social widgets -->
+            <section class="container /Content-row">
+                <div class="banners-row">
+                    <div class="banner-box" onclick="location.href='#'">
+                        <div class="inside">
+                            <div class="icon-float-left">
+                                <div class="icon-squared"><a href="#"><span class="icon flaticon-transports1"></span></a></div>
+                            </div>
+                            <div class="text-float-right">
+                                <div class="inside">
+                                    <h3 class="upper">Booking of any class cars</h3>
+                                    <p>Variety of car classes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-box" onclick="location.href='#'">
+                        <div class="inside">
+                            <div class="icon-float-left">
+                                <div class="icon-squared"><a href="#"><span class="icon flaticon-protected9"></span></a></div>
+                            </div>
+                            <div class="text-float-right">
+                                <div class="inside">
+                                    <h3 class="upper">Secured payment guarantee</h3>
+                                    <p>Secured by SSL encryption technology</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-box" onclick="location.href='#'">
+                        <div class="inside">
+                            <div class="icon-float-left">
+                                <div class="icon-squared"><a href="#"><span class="icon flaticon-phone68"></span></a></div>
+                            </div>
+                            <div class="text-float-right">
+                                <div class="inside">
+                                    <h3 class="upper">
+                                        24/7 multi-language <br>
+                                        support
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div id="topTabsClone" class="toptabs"></div>
+            <div class="divider-sm"></div>
+            <section class="container /Content-row">
+                <h2> choose a car</h2>
+                <div id="projects-hidden" class="hide"></div>
+                <div id="projects-carousel" class="owl-carousel">
+                    <div class="item category2">
+                        <a href="#"><img src="/Content/images/rentalcar/car1.png" alt="" /> </a>
+                        <div class="price">from $135</div>
+                        <h3>FORD FIESTA 2014</h3>
+                    </div>
+                    <div class="item category5 category3">
+                        <a href="#"><img src="/Content/images/rentalcar/car2.png" alt="" /> </a>
+                        <div class="price">from $200</div>
+                        <h3>Mercedes s class</h3>
+                    </div>
+                    <div class="item category3">
+                        <a href="#"><img src="/Content/images/rentalcar/car3.png" alt="" /> </a>
+                        <div class="price">from $250</div>
+                        <h3>toyota land cruiser</h3>
+                    </div>
+                    <div class="item category4">
+                        <a href="#"><img src="/Content/images/rentalcar/car4.png" alt="" /> </a>
+                        <div class="price">from $200</div>
+                        <h3>2013 Toyota FJ Cruiser</h3>
+                    </div>
+                    <div class="item category4 category6">
+                        <a href="#"><img src="/Content/images/rentalcar/car5.png" alt="" /> </a>
+                        <div class="price">from $150</div>
+                        <h3>Ford Fiesta ST</h3>
+                    </div>
+                    <div class="item category5">
+                        <a href="#"><img src="/Content/images/rentalcar/car6.png" alt="" /> </a>
+                        <div class="price">from $210</div>
+                        <h3>mercedes sls</h3>
+                    </div>
+                    <div class="item category2 category4">
+                        <a href="#"><img src="/Content/images/rentalcar/car7.png" alt="" /> </a>
+                        <div class="price">from $160</div>
+                        <h3>hyundai elantra</h3>
+                    </div>
+                    <div class="item category2 category4">
+                        <a href="#"><img src="/Content/images/rentalcar/car8.png" alt="" /> </a>
+                        <div class="price">from $180</div>
+                        <h3>Toyota Camry</h3>
+                    </div>
+                    <div class="item category2 category6">
+                        <a href="#"><img src="/Content/images/rentalcar/car9.png" alt="" /> </a>
+                        <div class="price">from $170</div>
+                        <h3>peugeot 308</h3>
+                    </div>
+                    <div class="item category2">
+                        <a href="#"><img src="/Content/images/rentalcar/car10.png" alt="" /> </a>
+                        <div class="price">from $110</div>
+                        <h3>KIA Picanto</h3>
+                    </div>
+                    <div class="item category2">
+                        <a href="#"><img src="/Content/images/rentalcar/car11.png" alt="" /> </a>
+                        <div class="price">from $180</div>
+                        <h3>NISSAN JUKE</h3>
+                    </div>
+                    <div class="item category6">
+                        <a href="#"><img src="/Content/images/rentalcar/car12.png" alt="" /> </a>
+                        <div class="price">from $210</div>
+                        <h3>Honda City Car</h3>
+                    </div>
+                    <div class="item category1">
+                        <a href="#"><img src="/Content/images/rentalcar/car13.png" alt="" /> </a>
+                        <div class="price">from $200</div>
+                        <h3>Dodge Grand Caravan</h3>
+                    </div>
+                    <div class="item category1">
+                        <a href="#"><img src="/Content/images/rentalcar/car14.png" alt="" /> </a>
+                        <div class="price">from $210</div>
+                        <h3>Toyota Sienna</h3>
+                    </div>
+                </div>
+                <div id="project-terms"> <a id="all" class="active" href="#">All</a> <a id="category1" href="#">Vans</a> <a id="category2" href="#">Automatics</a> <a id="category3" href="#"> Dream Collection </a> <a id="category4" href="#">Family Collection </a> <a id="category5" href="#">Prestige Collection</a> <a id="category6" href="#">Green Collection</a> </div>
+            </section>
+            <!-- Blog widget -->
+            <section class="blog-widget parallax">
+                <div class="container /Content">
+                    <div class="posts flexslider">
+                        <h3>From the BLOG</h3>
+                        <ul class="slides">
+                            <li>
+                                <div class="image-cell"><a href="blog-posts.html"><img src="/Content/images/rentalcar/blog-img.jpg" class="img-responsive animate scale" alt=""></a> </div>
+                                <div class="offset-image">
+                                    <h4>Phasellus id nisi vitae odio pretium aliquam. Pellentesque</h4>
+                                    <div class="clearfix">
+                                        <div class="post-date">&nbsp;May 19, 2015 - 3:55 PM MST</div>
+                                        <a class="post-comment">5 Comments</a>
+                                    </div>
+                                    <div class="divider-md"></div>
+                                    <p>Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer semper, velit ut interdum tis odio, vel ultrices enim sem ut pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. </p>
+                                    <p>Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. Vivamus euismod nulla vel nunc.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-cell"><a href="blog-posts.html"><img src="/Content/images/rentalcar/blog-img.jpg" class="img-responsive animate scale" alt=""></a> </div>
+                                <div class="offset-image">
+                                    <h4>Phasellus id nisi vitae odio pretium aliquam. Pellentesque</h4>
+                                    <div class="clearfix">
+                                        <div class="post-date">&nbsp;May 19, 2015 - 3:55 PM MST</div>
+                                        <a class="post-comment">5 Comments</a>
+                                    </div>
+                                    <div class="divider-md"></div>
+                                    <p>Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer semper, velit ut interdum tis odio, vel ultrices enim sem ut pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. </p>
+                                    <p>Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. Vivamus euismod nulla vel nunc.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- //end Blog widget -->
+            <section class="/Content-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-4 animate fadeUp info-box">
+                            <div class="inside">
+                                <h2>Top 10 car rental cities</h2>
+                                <table class="table-condensed">
+                                    <tbody>
+                                        <tr>
+                                            <td>Miami, Florida (USA)</td>
+                                            <td class="color text-right"><strong>$10.58 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Orlando, Florida (USA)</td>
+                                            <td class="color text-right"><strong>$16.76 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Munich (Germany) </td>
+                                            <td class="color text-right"><strong>$18.56 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fort Lauderdale, Florida (USA) </td>
+                                            <td class="color text-right"><strong>$15.88 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Frankfurt (Germany) </td>
+                                            <td class="color text-right"><strong>$18.72 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phoenix, Arizona (USA)</td>
+                                            <td class="color text-right"><strong>$15.00 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Paris (France) </td>
+                                            <td class="color text-right"><strong>$22.20 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Atlanta, Georgia (USA)</td>
+                                            <td class="color text-right"><strong>$18.52 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Seattle, Washington (USA)</td>
+                                            <td class="color text-right"><strong>$25.07 daily</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Barcelona (Spain) </td>
+                                            <td class="color text-right"><strong>$10.44 daily</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="visible-xs visible-sm visible-md divider-sm"></div>
+                        <div class="col-sm-12 col-md-7 col-lg-4 animate fadeUp info-box">
+                            <div class="inside">
+                                <h2>Testimonials</h2>
+                                <div class="testimonials-carousel owl-carousel">
+                                    <div class="testimonial">
+                                        <img src="/Content/images/rentalcar/testimonial-img.jpg" alt="" />
+                                        <h6> Integer dictum est</h6>
+                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <img src="/Content/images/rentalcar/testimonial-img.jpg" alt="" />
+                                        <h6> Integer dictum est</h6>
+                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <img src="/Content/images/rentalcar/testimonial-img.jpg" alt="" />
+                                        <h6> Integer dictum est</h6>
+                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visible-xs visible-sm divider-sm"></div>
+                        <div class="col-sm-12 col-md-5 col-lg-4 animate fadeUp info-box text-center">
+                            <div class="text-center"><a href="#"><img src="/Content/images/rentalcar/banner.jpg" alt="" class="img-responsive" /></a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Category Banners -->
+            <section class="/Content-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="/Content/images/rentalcar/category-img-1.jpg" alt="" class="img-responsive" /></a></div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="/Content/images/rentalcar/category-img-2.jpg" alt="" class="img-responsive" /></a></div>
+                        <div class="visible-sm visible-xs divider-sm"></div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="/Content/images/rentalcar/category-img-3.jpg" alt="" class="img-responsive" /></a></div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="/Content/images/rentalcar/category-img-4.jpg" alt="" class="img-responsive" /></a></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Social navbar -->
+            <section class="/Content nopad-xs white-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6  col-lg-6 newsletter collapsed-block">
+                            <div class="row">
+                                <div class="col-lg-5  col-md-12 col-sm-12 ">
+                                    <h3 class="upper">Exclusive offers and deals<a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 tabBlock" id="TabBlock-1">
+                                    <p>Subscribe to our Newsletter</p>
+                                    <form class="form-inline" role="form">
+                                        <div class="form-group input-control">
+                                            <button type="submit" class="button"><span class="flaticon-envelope58"></span></button>
+                                            <input type="text" class="form-control" value="Your E-mail..." onblur="if (this.value == '') {this.value = 'Your E-mail...';}" onfocus="if(this.value == 'Your E-mail...') {this.value = '';}">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 collapsed-block">
+                            <h3>FIND US ON<a class="expander visible-xs" href="#TabBlock-2">+</a></h3>
+                            <div class="tabBlock" id="TabBlock-2">
+                                <ul class="find-us">
+                                    <li><a href="#"><span class="icon icon-facebook flaticon-facebook55"></span></a></li>
+                                    <li><a href="#"><span class="icon icon-twitter flaticon-twitter20"></span></a></li>
+                                    <li><a href="#"><span class="icon icon-linkedin flaticon-linkedin11"></span></a></li>
+                                    <li><a href="#"><span class="icon icon-youtube flaticon-youtube18"></span></a></li>
+                                    <li><a href="#"><span class="icon icon-pinterest flaticon-pinterest3"></span></a></li>
+                                    <li><a href="#"><span class="icon icon-gplus flaticon-google1"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- //end Social navbar -->
+            <!-- Footer -->
+            <footer>
+                <section class="footer-navbar">
+                    <div class="container /Content nopad-xs">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-4 hidden-xs animate fadeUp">
+                                <a href="#"><img src="/Content/images/rentalcar/logo-footer.png" alt="" class="img-responsive" /></a> <br>
+                                <div>&copy; 2015 <a href="#">RentalCars</a>. All Rights Reserved. </div>
+                            </div>
+                            <div class="col-sm-9 col-md-9 col-lg-8 collapsed-block-outer">
+                                <div class="col-sm-4 col-md-4 collapsed-block animate fadeUp">
+                                    <h4>Information<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
+                                    <div class="tabBlock" id="TabBlock-3">
+                                        <ul class="menu">
+                                            <li><a href="contact.html">Contact Us</a></li>
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="about.html">Privacy Policy</a></li>
+                                            <li><a href="about.html">Terms and Conditions</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4  collapsed-block animate fadeUp">
+                                    <h4>Company<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
+                                    <div class="tabBlock" id="TabBlock-4">
+                                        <ul class="menu">
+                                            <li>Where Rent a Car</li>
+                                            <li>Special Offers</li>
+                                            <li>View booking</li>
+                                            <li>Affiliate Program</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 collapsed-block animate fadeUp">
+                                    <h4>CUSTOM HTML BLOCK<a class="expander visible-xs" href="#TabBlock-6">+</a></h4>
+                                    <div class="tabBlock" id="TabBlock-6">
+                                        <ul class="menu">
+                                            <li><span class="icon flaticon-house58"></span> 7563 St. Vincent Place, Glasgow</li>
+                                            <li><span class="icon flaticon-telephone5"></span> 321321321, 321321321</li>
+                                            <li><span class="icon flaticon-arroba4"></span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
+                                            <li><span class="icon flaticon-skype8"></span> <a href="#">rental.test</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="footer-bottom-block container visible-xs">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-4 copyright-text"> &copy; 2015 <a href="#">RentalCars</a>. All Rights Reserved. </div>
+                    </div>
+                </section>
+            </footer>
+            <div id="outer-overlay"></div>
+            <!-- //end Footer -->
+        </div>
+    </div>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.flexslider.js"></script>
+    <script src="~/Scripts/js/jquery.parallax.js"></script>
+    <script src="~/Scripts/js/jquery.inview.js"></script>
+    <script src="~/Scripts/js/superfish.js"></script>
+    <script src="~/Scripts/js/supersubs.js"></script>
+    <script src="~/Scripts/js/jquery.glide.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.datetimepicker.js"></script>
+    <script src="~/Scripts/js/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/js/owl.carousel.js"></script>
+    <script src="~/Scripts/js/rentalcar-custom.js"></script>
+</body>
+
+<!-- Mirrored from ocean.tonytemplates.com/ttdemo/tonytemplates/24-rental-car/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Sep 2017 18:02:34 GMT -->
+</html>

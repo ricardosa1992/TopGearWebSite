@@ -1,0 +1,58 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+}
+.flaticon-add183:before { content: '\e801'; } /* '' */
+.flaticon-arroba4:before { content: '\e802'; } /* '' */
+.flaticon-arrow483:before { content: '\e803'; } /* '' */
+.flaticon-arrow487:before { content: '\e804'; } /* '' */
+.flaticon-arrowhead7:before { content: '\e805'; } /* '' */
+.flaticon-blog1:before { content: '\e806'; } /* '' */
+.flaticon-calendar146:before { content: '\e807'; } /* '' */
+.flaticon-car106:before { content: '\e808'; } /* '' */
+.flaticon-car179:before { content: '\e809'; } /* '' */
+.flaticon-car186:before { content: '\e80a'; } /* '' */
+.flaticon-car46:before { content: '\e80b'; } /* '' */
+.flaticon-car95:before { content: '\e80c'; } /* '' */
+.flaticon-conversation5:before { content: '\e80d'; } /* '' */
+.flaticon-credit98:before { content: '\e80e'; } /* '' */
+.flaticon-dollars1:before { content: '\e80f'; } /* '' */
+.flaticon-earth205:before { content: '\e810'; } /* '' */
+.flaticon-electric42:before { content: '\e811'; } /* '' */
+.flaticon-envelope58:before { content: '\e812'; } /* '' */
+.flaticon-facebook55:before { content: '\e813'; } /* '' */
+.flaticon-house58:before { content: '\e814'; } /* '' */
+.flaticon-human4:before { content: '\e815'; } /* '' */
+.flaticon-instagram12:before { content: '\e816'; } /* '' */
+.flaticon-linkedin11:before { content: '\e817'; } /* '' */
+.flaticon-lowered:before { content: '\e818'; } /* '' */
+.flaticon-navigate6:before { content: '\e819'; } /* '' */
+.flaticon-phone68:before { content: '\e81a'; } /* '' */
+.flaticon-pinterest3:before { content: '\e81b'; } /* '' */
+.flaticon-price5:before { content: '\e81c'; } /* '' */
+.flaticon-protected9:before { content: '\e81d'; } /* '' */
+.flaticon-search19:before { content: '\e81e'; } /* '' */
+.flaticon-shopping155:before { content: '\e81f'; } /* '' */
+.flaticon-skype8:before { content: '\e820'; } /* '' */
+.flaticon-smartphone55:before { content: '\e821'; } /* '' */
+.flaticon-speedometer38:before { content: '\e822'; } /* '' */
+.flaticon-telephone5:before { content: '\e823'; } /* '' */
+.flaticon-transports1:before { content: '\e824'; } /* '' */
+.flaticon-twitter1:before { content: '\e825'; } /* '' */
+.flaticon-twitter20:before { content: '\e826'; } /* '' */
+.flaticon-vehicle12:before { content: '\e827'; } /* '' */
+.flaticon-youtube18:before { content: '\e828'; } /* '' */
+.flaticon-google1:before { content: '\e829'; } /* '' */
