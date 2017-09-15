@@ -3,9 +3,11 @@ nuget:
   project_feed: true
 before_build:
 - cmd: nuget restore
-skip_commits:
-  files:
-    - '**/*.config'
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
 build:
   publish_wap: true
   publish_nuget: true
