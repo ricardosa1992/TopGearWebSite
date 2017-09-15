@@ -211,6 +211,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\AjaxLoader.html" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\glide-slider.css" />
+    <Content Include="Content\css\grabbing.html" />
+    <Content Include="Content\css\jquery.datetimepicker.css" />
+    <Content Include="Content\css\loader.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\owl.theme.css" />
+    <Content Include="Content\css\rentalcar-template.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\sfmenu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular-2.html" />
     <Content Include="fonts\glyphicons-halflings-regular-3.html" />
@@ -296,7 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\flaticon-rentalcar\" />
   </ItemGroup>
