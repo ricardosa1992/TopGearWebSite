@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using TopGear.Api.Models;
+using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
@@ -11,8 +9,10 @@ namespace Trabalho20172.Controllers
     {
         public ActionResult Index()
         {
-            var retorno = TopGear.Api.TopGearApi<Carro>.Get("carro");
-            return View();
+            LocacaoViewModel modeloDaView = new LocacaoViewModel();
+            modeloDaView.ListaDeAgencias = ListaDeAgencias();
+
+            return View(modeloDaView);
         }
 
         public ActionResult About()
@@ -28,5 +28,20 @@ namespace Trabalho20172.Controllers
 
             return View();
         }
+
+
+        public List<SelectListItem> ListaDeAgencias()
+        {
+            List<SelectListItem> listaAgencias = new List<SelectListItem>();
+            var agencias = TopGear.Api.TopGearApi<IEnumerable<Agencia>>.Get("agencia");
+
+            foreach (var item in agencias.Dados)
+            {
+                listaAgencias.Add(new SelectListItem { Text = item.Cidade, Value = item.Id.ToString() });
+            }
+
+            return listaAgencias;
+        }
+
     }
 }

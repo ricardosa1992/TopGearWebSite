@@ -1,796 +1,1306 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+@model Trabalho20172.Models.LocacaoViewModel
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from ocean.tonytemplates.com/ttdemo/tonytemplates/24-rental-car/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Sep 2017 18:01:15 GMT -->
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:28:45 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" ~/Content="IE=edge">
-    <![endif]-->
-    <meta name="viewport" /Content="width=device-width, initial-scale=1.0">
-    <meta name="description" /Content="">
-    <meta name="author" /Content="">
-    <title>RentalCar HTML Template</title>
-    <link rel="shortcut icon" href="fav.png" type="image/png">
-    <!-- CSS preloader -->
-    <link href="~/Content/css/loader.css" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car|Rental Landingpage</title>
+    <!-- Bootstrap -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="~/Content/css/rentalcar-template.css" rel="stylesheet">
-    <!-- CSS modules -->
-    <link href="~/Content/css/flexslider.css" rel="stylesheet">
-    <link href="~/Content/css/sfmenu.css" rel="stylesheet">
-    <link href="~/Content/css/glide-slider.css" rel="stylesheet">
-    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet">
-    <link href="~/Content/css/select2.css" rel="stylesheet">
-    <link href="~/Content/css/owl.carousel.css" rel="stylesheet">
-    <link href="~/Content/css/owl.theme.css" rel="stylesheet">
-    <link href="~/fonts/flaticon-rentalcar/flaticon.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/css/animate.css" rel="stylesheet">
+    <!-- Google Font Lato -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- Plugin Styles -->
+    <link href="~/Content/css/datepicker.css" rel="stylesheet">
 
-    <style>
-
-        .inside {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            width: 435px;
-        }
-
-        .tab-content-outer .tab-content {
-	        background: url(../images/bg-tab.png) repeat 0 0;
-	        border: none;
-	        color: #2a3045;
-        }
-        .tab-content-outer .tab-content .tab-pane {
-	        padding: 25px;
-        }
-
-
-    </style>
-
-</head>
-<body class="responsive">
-    <div class="loader">
-        <div class="inside">
-            <div class="circle-outer"></div>
-            <div class="circle-inner"></div>
-        </div>
-    </div>
-    <!-- Off Canvas Menu -->
-    <nav id="off-canvas-menu">
-        <div id="off-canvas-menu-title">MENU<span id="off-canvas-menu-close">&times;</span></div>
-        <ul class="expander-list">
-            <li>
-                <span class="name"><span class="expander">-</span> <a href="about.html">About</a></span>
-                <ul>
-                    <li><span class="name"><a href="#">Submenu#1</a></span> </li>
-                    <li><span class="name"><a href="#">Submenu#2</a></span> </li>
-                    <li><span class="name"><a href="#">Submenu#3</a></span> </li>
-                    <li><span class="name"><a href="#">Submenu#4</a></span> </li>
-                </ul>
-            </li>
-            <li><span class="name"><a href="vehicle.html" class="btn-main">Vehicle guide</a></span></li>
-            <li><span class="name"><a href="services.html" class="btn-main">Services</a></span></li>
-            <li><span class="name"><a href="prices.html" class="btn-main">Prices</a></span></li>
-            <li><span class="name"><a href="blog-posts.html" class="btn-main">Blog</a></span></li>
-            <li><span class="name"><a href="contact.html" class="btn-main">Contact</a></span></li>
-        </ul>
-    </nav>
-    <!-- //end Off Canvas Menu -->
-
-    <div id="outer">
-        <div id="outer-canvas">
-            <!-- Navbar -->
-            <header>
-
-                <!-- Back to top -->
-                <div class="back-to-top"><span class="arrow-up"><img src="~/Content/images/icon-scroll-arrow.png" alt=""></span><img src="~/Content/images/icon-scroll-mouse.png" alt=""></div>
-                <!-- //end Back to top -->
-
-                <section class="navbar">
-                    <div class="container">
-                        <div class="background">
-                            <!-- Logo -->
-                            <div class="navbar-logo pull-left"> <a href="index-2.html"><img src="~/Content/images/rentalcar/logo.png" alt="Live Radio" class="img-responsive"></a></div>
-                            <!-- //end Logo -->
-                            <div class="navbar-welcome pull-left compact-hidden hidden-xs">Default welcome msg!</div>
-                            <!-- Secondary menu -->
-                            <div class="navbar-secondary-menu pull-right hidden-xs">
-                                <div class="btn-group compact-hidden">
-                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon flaticon-human4"></span> </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Account</a></li>
-                                        <li><a href="#">Wishlist</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="login.html">Log In</a></li>
-                                        <li><a href="login.html">Sign Up</a></li>
-                                    </ul>
-                                </div>
-                                <div class="btn-group compact-hidden">
-                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon flaticon-earth205"></span> </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> English</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> German</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-fr">&nbsp;</span> French</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-da">&nbsp;</span> Danish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-el">&nbsp;</span> Greek</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-es">&nbsp;</span> Spanish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-it">&nbsp;</span> Italian</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-nl">&nbsp;</span> Dutch</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-pl">&nbsp;</span> Polish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-pt">&nbsp;</span> Portuguese</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-ru">&nbsp;</span> Russian</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-sv">&nbsp;</span> Swedish</a></li>
-                                    </ul>
-                                </div>
-                                <div class="btn-group compact-hidden">
-                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="icon flaticon-dollars1"></span> </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">($) US Dollars</a></li>
-                                        <li><a href="#">(€) Euro</a></li>
-                                        <li><a href="#">(&pound;) British Pounds</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Secondary menu mobile -->
-                            @*<div class="navbar-secondary-menu pull-right compact-hidden visible-xs">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">En </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> English</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> German</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-fr">&nbsp;</span> French</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-da">&nbsp;</span> Danish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-el">&nbsp;</span> Greek</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-es">&nbsp;</span> Spanish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-it">&nbsp;</span> Italian</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-nl">&nbsp;</span> Dutch</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-pl">&nbsp;</span> Polish</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-pt">&nbsp;</span> Portuguese</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-ru">&nbsp;</span> Russian</a></li>
-                                        <li><a href="#"> <span class="icon-flag icon-flag-sv">&nbsp;</span> Swedish</a></li>
-                                    </ul>
-                                </div>
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">$ </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">($) US Dollars</a></li>
-                                        <li><a href="#">(€) Euro</a></li>
-                                        <li><a href="#">(&pound;) British Pounds</a></li>
-                                    </ul>
-                                </div>
-                            </div>*@
-                            <!-- //end Secondary menu -->
-                            <!-- Search -->
-                            <form class="navbar-search form-inline visible-lg visible-md pull-right" role="form">
-                                <div class="form-group">
-                                    <button type="submit" class="button"><span class="flaticon-search19"></span></button>
-                                    <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
-                                </div>
-                            </form>
-                            <!-- //end Search -->
-                            <!-- Main menu -->
-                            <div class="row">
-                                <dl class="navbar-main-menu hidden-xs">
-                                    <dt class="item"> <a href="index-2.html" class="btn-main"><span class="icon flaticon-house58"></span></a> </dt>
-                                    <dd></dd>
-                                    <dt class="item">
-                                        <ul class="sf-menu">
-                                            <li>
-                                                <a href="about.html">About</a>
-                                                <ul>
-                                                    <li><a href="#">Submenu # 1</a></li>
-                                                    <li><a href="#">Submenu # 2</a></li>
-                                                    <li><a href="#">Submenu # 3</a></li>
-                                                    <li><a href="#">Submenu # 4</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </dt>
-                                    <dd></dd>
-                                    <dt class="item"> <a href="vehicle.html" class="btn-main">Vehicle guide</a> </dt>
-                                    <dd></dd>
-                                    <dt class="item"> <a href="services.html" class="btn-main">Services</a> </dt>
-                                    <dd></dd>
-                                    <dt class="item"> <a href="prices.html" class="btn-main">Prices</a> </dt>
-                                    <dd></dd>
-                                    <dt class="item"> <a href="blog-posts.html" class="btn-main">Blog</a> </dt>
-                                    <dd></dd>
-                                    <dt class="item"> <a href="contact.html" class="btn-main">Contact</a> </dt>
-                                    <dd></dd>
-                                </dl>
-                            </div>
-                            <!-- //end Main menu -->
-
-                        </div>
-                    </div>
-                    <!-- Mobile menu -->
-                    <div class="container visible-xs">
-                        <div class="mobile-nav row">
-                            <div class="nav-item item-01"><a href="#" id="off-canvas-menu-toggle"><span class="icon icon-menu">&#9776;</span></a></div>
-                            <div class="nav-item item-02"></div>
-                            <div class="nav-item item-03"></div>
-                            <div class="nav-item item-04">
-                                <a href="#"><span class="icon flaticon-search19"></span></a>
-                                <div class="tab-~/Content">
-                                    <!-- Search -->
-                                    <form class="navbar-search form-inline" role="form">
-                                        <div class="form-group">
-                                            <button type="submit" class="button"><span class="flaticon-search19"></span></button>
-                                            <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
-                                        </div>
-                                    </form>
-                                    <!-- //end Search -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- //end Mobile menu -->
-                    <!-- Navbar switcher -->
-                    <div class="navbar-switcher-container">
-                        <div class="navbar-switcher"> <span class="i-inactive"><img src="~/Content/images/rentalcar/icon-switcher.png" alt=""></span> <span class="i-active">&times;</span> </div>
-                    </div>
-                    <!-- //end Navbar switcher -->
-
-                </section>
-
-                <!-- Navbar height -->
-                <div class="navbar-height-inner"></div>
-                <!-- Navbar height -->
-                <!-- Navbar height -->
-                <div class="navbar-height"></div>
-                <!-- Navbar height -->
-
-            </header>
-            <!-- //end Navbar -->
-            <!-- Tabs -->
-            <div id="topTabs" class="toptabs">
-                <div class="container">
-                    <div class="inside">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">Book a Car</a></li>
-                            <li><a data-toggle="tab" href="#tab-2">View / Modify / Cancel a Reservation</a></li>
-                        </ul>
-                        <div class="tab-~/Content-outer">
-                            <div class="tab-~/Content">
-                                <div id="tab-1" class="tab-pane fade active in">
-                                    <form action="#">
-                                        <div class="wrapper">
-                                            <div class="number-in-circle">1</div>
-                                            <div class="number-text">
-                                                <label><strong>Pick-up Location</strong> (City, State or Airport Code)</label>
-                                                <div>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <p class="help-block"><a href="#">Help me find a rental location</a></p>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        Return car to a different location
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="wrapper">
-                                            <div class="number-in-circle">2</div>
-                                            <div class="number-text">
-                                                <label><strong>Pick-up Date and Time:</strong></label>
-                                                <div class="wrapper">
-                                                    <input type="text" class="form-control datetimepicker">
-                                                    <select name="select" class="custom140">
-                                                        <option>10:00</option>
-                                                        <option>12:00</option>
-                                                        <option>14:00</option>
-                                                        <option>16:00</option>
-                                                        <option>18:00</option>
-                                                        <option>20:00</option>
-                                                        <option>22:00</option>
-                                                    </select>
-                                                </div>
-                                                <label><strong>Return Date and Time:</strong></label>
-                                                <div class="wrapper">
-                                                    <input type="text" class="form-control datetimepicker">
-                                                    <select name="select" class="custom140">
-                                                        <option>10:00</option>
-                                                        <option>12:00</option>
-                                                        <option>14:00</option>
-                                                        <option>16:00</option>
-                                                        <option>18:00</option>
-                                                        <option>20:00</option>
-                                                        <option>22:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="wrapper">
-                                            <div class="number-in-circle">3</div>
-                                            <div class="number-text">
-                                                <label><strong>Hire Car Type:</strong></label>
-                                                <div>
-                                                    <select name="select" class="customFull">
-                                                        <option>Show me all</option>
-                                                        <option>Convertible Rental</option>
-                                                        <option>Luxury</option>
-                                                        <option>Passenger Van Rental</option>
-                                                        <option>Minivan</option>
-                                                        <option>Hybrid</option>
-                                                    </select>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        Apply a discount code
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="number-text">
-                                            <input type="submit" value="Get a quote" class="btn btn-default">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div id="tab-2" class="tab-pane fade">
-                                    <form action="#">
-                                        <div class="wrapper">
-                                            <label><strong>Confirmation Number:*</strong></label>
-                                            <input type="text" class="form-control">
-                                            <div class="divider-xs"></div>
-                                            <label><strong>Last Name:*</strong></label>
-                                            <input type="text" class="form-control">
-                                            <div class="divider-xs"></div>
-                                            <input type="submit" value="Continue" class="btn btn-default">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- //end Tabs -->
-            <!-- Slider -->
-            <div id="slider">
-                <ul class="slider__wrapper">
-                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/1.jpg)">
-                        <div class="text-pos-1">
-                            <div class="text1">Easy & Relaxing</div>
-                            <div class="text2">family travel</div>
-                        </div>
-                    </li>
-                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/2.jpg)">
-                        <div class="text-pos-1">
-                            <div class="text2">Car Hire – </div>
-                            <div class="text1">
-                                Search, Compare <br>
-                                & Save
-                            </div>
-                            <div class="text3">
-                                Compare 10-00 cars at over 30000 locations. <br>
-                                Best price guaranteed
-                            </div>
-                        </div>
-                    </li>
-                    <li class="slider__item" style="background-image:url(/Content/images/rentalcar/3.jpg)">
-                        <div class="text-pos-1">
-                            <div class="text1">
-                                Get specially-<br>
-                                negotiated
-                            </div>
-                            <div class="text2">car rental rates</div>
-                            <div class="text3">when you book with us today</div>
-                        </div>
-                    </li>
-                </ul>
-                <a href="#" class="scroll-down animate-move-down"> <span class="icon flaticon-down-open-big"></span> scroll to view ~/Content </a>
-            </div>
-
-            <!-- //end Slider -->
-            <!-- Social widgets -->
-            <section class="social-widgets hidden-xs">
-                <ul class="items">
-                    <li class="item item-01 facebook">
-                        <a href="social/facebook.html" class="tab-icon"><span class="icon icon-facebook flaticon-facebook55"></span></a>
-                        <div class="tab-~/Content">
-                            <div class="title">FACEBOOK</div>
-                            <div class="loading"><img src="~/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
-                        </div>
-                    </li>
-                    <li class="item item-02 twitter">
-                        <a href="social/twitter.html" class="tab-icon"><span class="icon icon-twitter flaticon-twitter20"></span></a>
-                        <div class="tab-~/Content">
-                            <div class="title">TWITTER FEEDS</div>
-                            <div class="loading"><img src="~/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
-                        </div>
-                    </li>
-                    <li class="item item-03 youtube">
-                        <a href="social/youtubevideo.html" class="tab-icon"><span class="icon icon-youtube flaticon-youtube18"></span></a>
-                        <div class="tab-~/Content">
-                            <div class="title">Video</div>
-                            <div class="loading"><img src="~/Content/images/ajax-loader.gif" alt="" class="ajaxloader"></div>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            <!-- //end Social widgets -->
-            <section class="container ~/Content-row">
-                <div class="banners-row">
-                    <div class="banner-box" onclick="location.href='#'">
-                        <div class="inside">
-                            <div class="icon-float-left">
-                                <div class="icon-squared"><a href="#"><span class="icon flaticon-transports1"></span></a></div>
-                            </div>
-                            <div class="text-float-right">
-                                <div class="inside">
-                                    <h3 class="upper">Booking of any class cars</h3>
-                                    <p>Variety of car classes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-box" onclick="location.href='#'">
-                        <div class="inside">
-                            <div class="icon-float-left">
-                                <div class="icon-squared"><a href="#"><span class="icon flaticon-protected9"></span></a></div>
-                            </div>
-                            <div class="text-float-right">
-                                <div class="inside">
-                                    <h3 class="upper">Secured payment guarantee</h3>
-                                    <p>Secured by SSL encryption technology</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-box" onclick="location.href='#'">
-                        <div class="inside">
-                            <div class="icon-float-left">
-                                <div class="icon-squared"><a href="#"><span class="icon flaticon-phone68"></span></a></div>
-                            </div>
-                            <div class="text-float-right">
-                                <div class="inside">
-                                    <h3 class="upper">
-                                        24/7 multi-language <br>
-                                        support
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div id="topTabsClone" class="toptabs"></div>
-            <div class="divider-sm"></div>
-            <section class="container ~/Content-row">
-                <h2> choose a car</h2>
-                <div id="projects-hidden" class="hide"></div>
-                <div id="projects-carousel" class="owl-carousel">
-                    <div class="item category2">
-                        <a href="#"><img src="~/Content/images/rentalcar/car1.png" alt="" /> </a>
-                        <div class="price">from $135</div>
-                        <h3>FORD FIESTA 2014</h3>
-                    </div>
-                    <div class="item category5 category3">
-                        <a href="#"><img src="~/Content/images/rentalcar/car2.png" alt="" /> </a>
-                        <div class="price">from $200</div>
-                        <h3>Mercedes s class</h3>
-                    </div>
-                    <div class="item category3">
-                        <a href="#"><img src="~/Content/images/rentalcar/car3.png" alt="" /> </a>
-                        <div class="price">from $250</div>
-                        <h3>toyota land cruiser</h3>
-                    </div>
-                    <div class="item category4">
-                        <a href="#"><img src="~/Content/images/rentalcar/car4.png" alt="" /> </a>
-                        <div class="price">from $200</div>
-                        <h3>2013 Toyota FJ Cruiser</h3>
-                    </div>
-                    <div class="item category4 category6">
-                        <a href="#"><img src="~/Content/images/rentalcar/car5.png" alt="" /> </a>
-                        <div class="price">from $150</div>
-                        <h3>Ford Fiesta ST</h3>
-                    </div>
-                    <div class="item category5">
-                        <a href="#"><img src="~/Content/images/rentalcar/car6.png" alt="" /> </a>
-                        <div class="price">from $210</div>
-                        <h3>mercedes sls</h3>
-                    </div>
-                    <div class="item category2 category4">
-                        <a href="#"><img src="~/Content/images/rentalcar/car7.png" alt="" /> </a>
-                        <div class="price">from $160</div>
-                        <h3>hyundai elantra</h3>
-                    </div>
-                    <div class="item category2 category4">
-                        <a href="#"><img src="~/Content/images/rentalcar/car8.png" alt="" /> </a>
-                        <div class="price">from $180</div>
-                        <h3>Toyota Camry</h3>
-                    </div>
-                    <div class="item category2 category6">
-                        <a href="#"><img src="~/Content/images/rentalcar/car9.png" alt="" /> </a>
-                        <div class="price">from $170</div>
-                        <h3>peugeot 308</h3>
-                    </div>
-                    <div class="item category2">
-                        <a href="#"><img src="~/Content/images/rentalcar/car10.png" alt="" /> </a>
-                        <div class="price">from $110</div>
-                        <h3>KIA Picanto</h3>
-                    </div>
-                    <div class="item category2">
-                        <a href="#"><img src="~/Content/images/rentalcar/car11.png" alt="" /> </a>
-                        <div class="price">from $180</div>
-                        <h3>NISSAN JUKE</h3>
-                    </div>
-                    <div class="item category6">
-                        <a href="#"><img src="~/Content/images/rentalcar/car12.png" alt="" /> </a>
-                        <div class="price">from $210</div>
-                        <h3>Honda City Car</h3>
-                    </div>
-                    <div class="item category1">
-                        <a href="#"><img src="~/Content/images/rentalcar/car13.png" alt="" /> </a>
-                        <div class="price">from $200</div>
-                        <h3>Dodge Grand Caravan</h3>
-                    </div>
-                    <div class="item category1">
-                        <a href="#"><img src="~/Content/images/rentalcar/car14.png" alt="" /> </a>
-                        <div class="price">from $210</div>
-                        <h3>Toyota Sienna</h3>
-                    </div>
-                </div>
-                <div id="project-terms"> <a id="all" class="active" href="#">All</a> <a id="category1" href="#">Vans</a> <a id="category2" href="#">Automatics</a> <a id="category3" href="#"> Dream Collection </a> <a id="category4" href="#">Family Collection </a> <a id="category5" href="#">Prestige Collection</a> <a id="category6" href="#">Green Collection</a> </div>
-            </section>
-            <!-- Blog widget -->
-            <section class="blog-widget parallax">
-                <div class="container ~/Content">
-                    <div class="posts flexslider">
-                        <h3>From the BLOG</h3>
-                        <ul class="slides">
-                            <li>
-                                <div class="image-cell"><a href="blog-posts.html"><img src="~/Content/images/rentalcar/blog-img.jpg" class="img-responsive animate scale" alt=""></a> </div>
-                                <div class="offset-image">
-                                    <h4>Phasellus id nisi vitae odio pretium aliquam. Pellentesque</h4>
-                                    <div class="clearfix">
-                                        <div class="post-date">&nbsp;May 19, 2015 - 3:55 PM MST</div>
-                                        <a class="post-comment">5 Comments</a>
-                                    </div>
-                                    <div class="divider-md"></div>
-                                    <p>Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer semper, velit ut interdum tis odio, vel ultrices enim sem ut pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. </p>
-                                    <p>Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. Vivamus euismod nulla vel nunc.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="image-cell"><a href="blog-posts.html"><img src="~/Content/images/rentalcar/blog-img.jpg" class="img-responsive animate scale" alt=""></a> </div>
-                                <div class="offset-image">
-                                    <h4>Phasellus id nisi vitae odio pretium aliquam. Pellentesque</h4>
-                                    <div class="clearfix">
-                                        <div class="post-date">&nbsp;May 19, 2015 - 3:55 PM MST</div>
-                                        <a class="post-comment">5 Comments</a>
-                                    </div>
-                                    <div class="divider-md"></div>
-                                    <p>Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer semper, velit ut interdum tis odio, vel ultrices enim sem ut pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. </p>
-                                    <p>Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. Vivamus euismod nulla vel nunc.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <!-- //end Blog widget -->
-            <section class="~/Content-row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-4 animate fadeUp info-box">
-                            <div class="inside">
-                                <h2>Top 10 car rental cities</h2>
-                                <table class="table-condensed">
-                                    <tbody>
-                                        <tr>
-                                            <td>Miami, Florida (USA)</td>
-                                            <td class="color text-right"><strong>$10.58 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Orlando, Florida (USA)</td>
-                                            <td class="color text-right"><strong>$16.76 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Munich (Germany) </td>
-                                            <td class="color text-right"><strong>$18.56 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fort Lauderdale, Florida (USA) </td>
-                                            <td class="color text-right"><strong>$15.88 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Frankfurt (Germany) </td>
-                                            <td class="color text-right"><strong>$18.72 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phoenix, Arizona (USA)</td>
-                                            <td class="color text-right"><strong>$15.00 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Paris (France) </td>
-                                            <td class="color text-right"><strong>$22.20 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Atlanta, Georgia (USA)</td>
-                                            <td class="color text-right"><strong>$18.52 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Seattle, Washington (USA)</td>
-                                            <td class="color text-right"><strong>$25.07 daily</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Barcelona (Spain) </td>
-                                            <td class="color text-right"><strong>$10.44 daily</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="visible-xs visible-sm visible-md divider-sm"></div>
-                        <div class="col-sm-12 col-md-7 col-lg-4 animate fadeUp info-box">
-                            <div class="inside">
-                                <h2>Testimonials</h2>
-                                <div class="testimonials-carousel owl-carousel">
-                                    <div class="testimonial">
-                                        <img src="~/Content/images/rentalcar/testimonial-img.jpg" alt="" />
-                                        <h6> Integer dictum est</h6>
-                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
-                                    </div>
-                                    <div class="testimonial">
-                                        <img src="~/Content/images/rentalcar/testimonial-img.jpg" alt="" />
-                                        <h6> Integer dictum est</h6>
-                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
-                                    </div>
-                                    <div class="testimonial">
-                                        <img src="~/Content/images/rentalcar/testimonial-img.jpg" alt="" />
-                                        <h6> Integer dictum est</h6>
-                                        <p>“Donec consequat lectus sed felis. Quisque Donec et mi eu massa ultrices scelerisque. Nullam ac nisi non eros gravida. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu dictum justo urna et mi”</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="visible-xs visible-sm divider-sm"></div>
-                        <div class="col-sm-12 col-md-5 col-lg-4 animate fadeUp info-box text-center">
-                            <div class="text-center"><a href="#"><img src="~/Content/images/rentalcar/banner.jpg" alt="" class="img-responsive" /></a></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Category Banners -->
-            <section class="~/Content-row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="~/Content/images/rentalcar/category-img-1.jpg" alt="" class="img-responsive" /></a></div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="~/Content/images/rentalcar/category-img-2.jpg" alt="" class="img-responsive" /></a></div>
-                        <div class="visible-sm visible-xs divider-sm"></div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="~/Content/images/rentalcar/category-img-3.jpg" alt="" class="img-responsive" /></a></div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 text-center"><a href="#"><img src="~/Content/images/rentalcar/category-img-4.jpg" alt="" class="img-responsive" /></a></div>
-                    </div>
-                </div>
-            </section>
-            <!-- Social navbar -->
-            <section class="~/Content nopad-xs white-row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6  col-lg-6 newsletter collapsed-block">
-                            <div class="row">
-                                <div class="col-lg-5  col-md-12 col-sm-12 ">
-                                    <h3 class="upper">Exclusive offers and deals<a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-6 tabBlock" id="TabBlock-1">
-                                    <p>Subscribe to our Newsletter</p>
-                                    <form class="form-inline" role="form">
-                                        <div class="form-group input-control">
-                                            <button type="submit" class="button"><span class="flaticon-envelope58"></span></button>
-                                            <input type="text" class="form-control" value="Your E-mail..." onblur="if (this.value == '') {this.value = 'Your E-mail...';}" onfocus="if(this.value == 'Your E-mail...') {this.value = '';}">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6 collapsed-block">
-                            <h3>FIND US ON<a class="expander visible-xs" href="#TabBlock-2">+</a></h3>
-                            <div class="tabBlock" id="TabBlock-2">
-                                <ul class="find-us">
-                                    <li><a href="#"><span class="icon icon-facebook flaticon-facebook55"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-twitter flaticon-twitter20"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin flaticon-linkedin11"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-youtube flaticon-youtube18"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-pinterest flaticon-pinterest3"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-gplus flaticon-google1"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- //end Social navbar -->
-            <!-- Footer -->
-            <footer>
-                <section class="footer-navbar">
-                    <div class="container ~/Content nopad-xs">
-                        <div class="row">
-                            <div class="col-sm-3 col-md-3 col-lg-4 hidden-xs animate fadeUp">
-                                <a href="#"><img src="~/Content/images/rentalcar/logo-footer.png" alt="" class="img-responsive" /></a> <br>
-                                <div>&copy; 2015 <a href="#">RentalCars</a>. All Rights Reserved. </div>
-                            </div>
-                            <div class="col-sm-9 col-md-9 col-lg-8 collapsed-block-outer">
-                                <div class="col-sm-4 col-md-4 collapsed-block animate fadeUp">
-                                    <h4>Information<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
-                                    <div class="tabBlock" id="TabBlock-3">
-                                        <ul class="menu">
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="about.html">Privacy Policy</a></li>
-                                            <li><a href="about.html">Terms and Conditions</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4  collapsed-block animate fadeUp">
-                                    <h4>Company<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
-                                    <div class="tabBlock" id="TabBlock-4">
-                                        <ul class="menu">
-                                            <li>Where Rent a Car</li>
-                                            <li>Special Offers</li>
-                                            <li>View booking</li>
-                                            <li>Affiliate Program</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 collapsed-block animate fadeUp">
-                                    <h4>CUSTOM HTML BLOCK<a class="expander visible-xs" href="#TabBlock-6">+</a></h4>
-                                    <div class="tabBlock" id="TabBlock-6">
-                                        <ul class="menu">
-                                            <li><span class="icon flaticon-house58"></span> 7563 St. Vincent Place, Glasgow</li>
-                                            <li><span class="icon flaticon-telephone5"></span> 321321321, 321321321</li>
-                                            <li><span class="icon flaticon-arroba4"></span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
-                                            <li><span class="icon flaticon-skype8"></span> <a href="#">rental.test</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="footer-bottom-block container visible-xs">
-                    <div class="row">
-                        <div class="col-sm-5 col-md-4 copyright-text"> &copy; 2015 <a href="#">RentalCars</a>. All Rights Reserved. </div>
-                    </div>
-                </section>
-            </footer>
-            <div id="outer-overlay"></div>
-            <!-- //end Footer -->
-        </div>
-    </div>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Main Styles -->
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+    <!-- Available main styles: styles-red.css, styles-green.css -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->
-    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/js/jquery.easing.1.3.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.~/Scripts/js/1.4.2/respond.min.js"></script>
+      <link href="css/ie8fix.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+      <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
+    <!-- Header start -->
+    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+        <div class="row container box">
+            <div class="col-md-5">
+                <!-- Logo start -->
+                <div class="brand">
+                    <h1><a class="scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a></h1>
+                </div>
+                <!-- Logo end -->
+            </div>
+            <div class="col-md-7">
+                @*<div class="pull-right">
+                    <div class="header-info pull-right">
+                        <div class="contact pull-left">CONTACT: (562) 498-4600</div>
+                    </div>
+                </div>*@
+                <div class="clearfix"></div>
+                <!-- start navigation -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a>
+                        </div>
+                        <!-- Collect the nav links, for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Nav-Links start -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="#top" class="scroll-to">Inicio</a></li>
+                                <li><a href="#vehicles" class="scroll-to">Veículos</a></li>
+                                <li><a href="#contact" class="scroll-to">Contato</a></li>
+                            </ul>
+                            <!-- Nav-Links end -->
+                        </div>
+                    </div>
+                </nav>
+                <!-- end navigation -->
+            </div>
+        </div>
+    </header>
+    <!-- Header end -->
+    <!-- Teaser start -->
+    <section id="teaser">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-xs-12 pull-right">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Wrapper for slides start -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <h1 class="title">
+                                    Luxury car from from $28 day
+                                    <span class="subtitle">Treat yourself in USA</span>
+                                </h1>
+                                <div class="car-img">
+                                    <img src="~/Content/img/car1.png" class="img-responsive" alt="car1">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <h1 class="title">
+                                    Get 15% off your rental
+                                    <span class="subtitle">Plan your trip now</span>
+                                </h1>
+                                <div class="car-img">
+                                    <img src="~/Content/img/car2.png" class="img-responsive" alt="car1">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wrapper for slides end -->
+                        <!-- Slider Controls start -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        <!-- Slider Controls end -->
+                    </div>
+                </div>
+                <div class="col-md-5 col-xs-12 pull-left">
+                    <div class="reservation-form-shadow">
+                        <form action="/Veiculo/Veiculos" method="post" name="car-select-form" id="car-select-form">
+                            <div class="alert alert-danger hidden" id="car-select-form-msg">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <strong>Note:</strong> Todos os campos são obrigatórios!
+                            </div>
+                            <!-- Pick-up location start -->
+                            <div class="location">
+                                <div class="input-group pick-up">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Retirada</span>
+                                    @Html.DropDownList("localRetirada", Model.ListaDeAgencias, new { @class = "form-control" })  
+                                    @Html.HiddenFor(m=>m.idLocalRetirada)
+                                </div>
+                                <!-- Pick-up location end -->
+                                <a class="different-drop-off" href="#">Local de entrega diferente da retirada?</a>
+                                <!-- Drop-off location start -->
+                                <div class="input-group drop-off">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Entrega</span>
+                                    @Html.DropDownList("localEntrega", Model.ListaDeAgencias, new { @class = "form-control" })
+                                        
+                                </div>
+                            </div>
+                            <!-- Drop-off location end -->
+                            <!-- Pick-up date/time start -->
+                            <div class="datetime pick-up">
+                                <div class="date pull-left">
+                                    <div class="input-group">
+                                        <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Retirar</span>
+                                        <input type="text" name="pick-up-date" id="pick-up-date" class="form-control datepicker" placeholder="mm/dd/yyyy">
+                                    </div>
+                                </div>
+                                <div class="time pull-right">
+                                    <div class="styled-select-time">
+                                        <select name="pick-up-time" id="pick-up-time">
+                                            <option value="12:00 AM">12:00 AM</option>
+                                            <option value="12:30 AM">12:30 AM</option>
+                                            <option value="01:00 AM">01:00 AM</option>
+                                            <option value="01:30 AM">01:30 AM</option>
+                                            <option value="02:00 AM">02:00 AM</option>
+                                            <option value="02:30 AM">02:30 AM</option>
+                                            <option value="03:00 AM">03:00 AM</option>
+                                            <option value="03:30 AM">03:30 AM</option>
+                                            <option value="04:00 AM">04:00 AM</option>
+                                            <option value="04:30 AM">04:30 AM</option>
+                                            <option value="05:00 AM">05:00 AM</option>
+                                            <option value="05:30 AM">05:30 AM</option>
+                                            <option value="06:00 AM">06:00 AM</option>
+                                            <option value="06:30 AM">06:30 AM</option>
+                                            <option value="07:00 AM">07:00 AM</option>
+                                            <option value="07:30 AM">07:30 AM</option>
+                                            <option value="08:00 AM">08:00 AM</option>
+                                            <option value="08:30 AM">08:30 AM</option>
+                                            <option value="09:00 AM">09:00 AM</option>
+                                            <option value="09:30 AM">09:30 AM</option>
+                                            <option value="10:00 AM">10:00 AM</option>
+                                            <option value="10:30 AM">10:30 AM</option>
+                                            <option value="11:00 AM">11:00 AM</option>
+                                            <option value="11:30 AM">11:30 AM</option>
+                                            <option value="12:00 PM">12:00 PM</option>
+                                            <option value="12:30 PM">12:30 PM</option>
+                                            <option value="01:00 PM">01:00 PM</option>
+                                            <option value="01:30 PM">01:30 PM</option>
+                                            <option value="02:00 PM">02:00 PM</option>
+                                            <option value="02:30 PM">02:30 PM</option>
+                                            <option value="03:00 PM">03:00 PM</option>
+                                            <option value="03:30 PM">03:30 PM</option>
+                                            <option value="04:00 PM">04:00 PM</option>
+                                            <option value="04:30 PM">04:30 PM</option>
+                                            <option value="05:00 PM">05:00 PM</option>
+                                            <option value="05:30 PM">05:30 PM</option>
+                                            <option value="06:00 PM">06:00 PM</option>
+                                            <option value="06:30 PM">06:30 PM</option>
+                                            <option value="07:00 PM">07:00 PM</option>
+                                            <option value="07:30 PM">07:30 PM</option>
+                                            <option value="08:00 PM">08:00 PM</option>
+                                            <option value="08:30 PM">08:30 PM</option>
+                                            <option value="09:00 PM">09:00 PM</option>
+                                            <option value="09:30 PM">09:30 PM</option>
+                                            <option value="10:00 PM">10:00 PM</option>
+                                            <option value="10:30 PM">10:30 PM</option>
+                                            <option value="11:00 PM">11:00 PM</option>
+                                            <option value="11:30 PM">11:30 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- Pick-up date/time end -->
+                            <!-- Drop-off date/time start -->
+                            <div class="datetime drop-off">
+                                <div class="date pull-left">
+                                    <div class="input-group">
+                                        <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Entregar</span>
+                                        <input type="text" name="drop-off-date" id="drop-off-date" class="form-control datepicker" placeholder="mm/dd/yyyy">
+                                    </div>
+                                </div>
+                                <div class="time pull-right">
+                                    <div class="styled-select-time">
+                                        <select name="drop-off-time" id="drop-off-time">
+                                            <option value="12:00 AM">12:00 AM</option>
+                                            <option value="12:30 AM">12:30 AM</option>
+                                            <option value="01:00 AM">01:00 AM</option>
+                                            <option value="01:30 AM">01:30 AM</option>
+                                            <option value="02:00 AM">02:00 AM</option>
+                                            <option value="02:30 AM">02:30 AM</option>
+                                            <option value="03:00 AM">03:00 AM</option>
+                                            <option value="03:30 AM">03:30 AM</option>
+                                            <option value="04:00 AM">04:00 AM</option>
+                                            <option value="04:30 AM">04:30 AM</option>
+                                            <option value="05:00 AM">05:00 AM</option>
+                                            <option value="05:30 AM">05:30 AM</option>
+                                            <option value="06:00 AM">06:00 AM</option>
+                                            <option value="06:30 AM">06:30 AM</option>
+                                            <option value="07:00 AM">07:00 AM</option>
+                                            <option value="07:30 AM">07:30 AM</option>
+                                            <option value="08:00 AM">08:00 AM</option>
+                                            <option value="08:30 AM">08:30 AM</option>
+                                            <option value="09:00 AM">09:00 AM</option>
+                                            <option value="09:30 AM">09:30 AM</option>
+                                            <option value="10:00 AM">10:00 AM</option>
+                                            <option value="10:30 AM">10:30 AM</option>
+                                            <option value="11:00 AM">11:00 AM</option>
+                                            <option value="11:30 AM">11:30 AM</option>
+                                            <option value="12:00 PM">12:00 PM</option>
+                                            <option value="12:30 PM">12:30 PM</option>
+                                            <option value="01:00 PM">01:00 PM</option>
+                                            <option value="01:30 PM">01:30 PM</option>
+                                            <option value="02:00 PM">02:00 PM</option>
+                                            <option value="02:30 PM">02:30 PM</option>
+                                            <option value="03:00 PM">03:00 PM</option>
+                                            <option value="03:30 PM">03:30 PM</option>
+                                            <option value="04:00 PM">04:00 PM</option>
+                                            <option value="04:30 PM">04:30 PM</option>
+                                            <option value="05:00 PM">05:00 PM</option>
+                                            <option value="05:30 PM">05:30 PM</option>
+                                            <option value="06:00 PM">06:00 PM</option>
+                                            <option value="06:30 PM">06:30 PM</option>
+                                            <option value="07:00 PM">07:00 PM</option>
+                                            <option value="07:30 PM">07:30 PM</option>
+                                            <option value="08:00 PM">08:00 PM</option>
+                                            <option value="08:30 PM">08:30 PM</option>
+                                            <option value="09:00 PM">09:00 PM</option>
+                                            <option value="09:30 PM">09:30 PM</option>
+                                            <option value="10:00 PM">10:00 PM</option>
+                                            <option value="10:30 PM">10:30 PM</option>
+                                            <option value="11:00 PM">11:00 PM</option>
+                                            <option value="11:30 PM">11:30 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- Drop-off date/time end -->
+                            <input type="submit" class="submit" name="submit" value="Continuar" id="checkoutModalLabel">
+                            @*<a href="@Url.Action("Veiculos", "Veiculo")" name="submit" type="submit" class="btn submit" >Continuar</a>*@
+                              
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="arrow-down"></div>
+    <!-- Teaser end -->
+    <!-- Newsletter start -->
+    <section id="newsletter" class="wow slideInLeft" data-wow-offset="300">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><div class="alert hidden" id="newsletter-form-msg"></div></div>
+                <div class="col-md-5 col-xs-12">
+                    <h2 class="title">
+                        Sign up for amazing offers
+                        <span class="subtitle">exclusive access for offers and promotions</span>
+                    </h2>
+                </div>
+                <div class="col-md-7">
+                    <div class="newsletter-form pull-left">
+                        <form action="#" method="post" name="newsletter-form" id="newsletter-form">
+                            <input type="hidden" name="action" value="send_newsletter_form" />
+                            <div class="input-group">
+                                <input type="email" name="newsletter-email" class="form-control" placeholder="Enter your Email Address">
+                                <span class="input-group-btn">
+                                    <input class="btn btn-default button" type="submit" value="send">
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="social-icons pull-right">
+                        <ul>
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter end -->
+    <!-- Vehicles start -->
+    <section id="vehicles" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title wow fadeInDown" data-wow-offset="200">Vehicle Models - <span class="subtitle">Our rental fleet at a glance</span></h2>
+            </div>
+            <!-- Vehicle nav start -->
+            <div class="col-md-3 vehicle-nav-row wow fadeInUp" data-wow-offset="100">
+                <div id="vehicle-nav-container">
+                    <ul class="vehicle-nav">
+                        <li class="active"><a href="#vehicle-1">VW Golf VII</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-2">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-3">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-4">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-5">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-6">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE 12</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry 13</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine 14</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK 15</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC 16</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                    </ul>
+                </div>
+                <div class="vehicle-nav-control">
+                    <a class="vehicle-nav-scroll" data-direction="up" href="#"><i class="fa fa-chevron-up"></i></a>
+                    <a class="vehicle-nav-scroll" data-direction="down" href="#"><i class="fa fa-chevron-down"></i></a>
+                </div>
+            </div>
+            <!-- Vehicle nav end -->
+            <!-- Vehicle 1 data start -->
+            <div class="vehicle-data" id="vehicle-1">
+                <div class="col-md-6 wow fadeIn" data-wow-offset="100">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle1.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3 wow fadeInUp" data-wow-offset="200">
+                    <div class="vehicle-price">$ 37.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 1 data end -->
+            <!-- Vehicle 2 data start -->
+            <div class="vehicle-data" id="vehicle-2">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle2.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 70.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 2 data end -->
+            <!-- Vehicle 3 data start -->
+            <div class="vehicle-data" id="vehicle-3">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle3.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 3 data end -->
+            <!-- Vehicle 4 data start -->
+            <div class="vehicle-data" id="vehicle-4">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle4.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 4 data end -->
+            <!-- Vehicle 5 data start -->
+            <div class="vehicle-data" id="vehicle-5">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle5.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 5 data end -->
+            <!-- Vehicle 6 data start -->
+            <div class="vehicle-data" id="vehicle-6">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle6.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 6 data end -->
+            <!-- Vehicle 7 data start -->
+            <div class="vehicle-data" id="vehicle-7">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle2.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 70.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 7 data end -->
+            <!-- Vehicle 8 data start -->
+            <div class="vehicle-data" id="vehicle-8">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle3.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 8 data end -->
+            <!-- Vehicle 9 data start -->
+            <div class="vehicle-data" id="vehicle-9">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle4.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 9 data end -->
+            <!-- Vehicle 10 data start -->
+            <div class="vehicle-data" id="vehicle-10">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle5.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 10 data end -->
+            <!-- Vehicle 11 data start -->
+            <div class="vehicle-data" id="vehicle-11">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle6.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 11 data end -->
+        </div>
+    </section>
+    <!-- Vehicles end -->
+    <!-- Reviews start -->
+    <section id="reviews" class="container wow fadeInUp">
+        <div class="row text-center">
+            <div class="col-md-12 stars">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star big"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                <div id="reviews-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Review item 1 start -->
+                        <div class="item active">
+                            <div class="review">
+                                It is always a positive experience when renting from your 5th street location. The staff is very professional and efficient and always smiling. And I always feel welcome and appreciated. The management is always prompt to solve any issue at any moment. Their efficiency and professionalism makes it my number one choice.
+                            </div>
+                            <div class="author">
+                                – Michael Smith, Santa Barbara CA
+                            </div>
+                        </div>
+                        <!-- Review item 1 end -->
+                        <!-- Review item 2 start -->
+                        <div class="item">
+                            <div class="review">
+                                This rental was the best rental experience ever! After completing all details on-line myself, the pick-up was super efficient, extremely friendly, and free of the usual 5 - 10 min very unpleasant drilling of why one is not signing up to all options (insurance, etc). I was handed the keys and a wide register print out that required...
+                            </div>
+                            <div class="author">
+                                – Jon Doe, Las Vegas NV
+                            </div>
+                        </div>
+                        <!-- Review item 2 end -->
+                        <!-- Review item 3 start -->
+                        <div class="item">
+                            <div class="review">
+                                This was my first time renting from car|rental. And over all it was a wonderful experience I have no complaints. The service rep help me find the best rental to suit my needs. I also love the fact that you guys provide luxury rentals at a great price. I will definitely rent with this company again.
+                            </div>
+                            <div class="author">
+                                – Michael Smith, Santa Barbara CA
+                            </div>
+                        </div>
+                        <!-- Review item 3 end -->
+                    </div>
+                    <!-- Review Nav start -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#reviews-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#reviews-carousel" data-slide-to="1"></li>
+                        <li data-target="#reviews-carousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Review Nav end -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reviews end -->
+    <!-- Information start -->
+    <section id="information" class="container">
+        <!-- Single photo start -->
+        <div class="row wow fadeInLeft" data-wow-offset="100">
+            <div class="col-md-6 col-xs-12 pull-right">
+                <img src="~/Content/img/info-img.jpg" alt="Info Img" class="img-responsive">
+            </div>
+            <div class="col-md-6 pull-left">
+                <h2 class="title">Quality Guaranteed</h2>
+                <h3 class="subtitle">Here is an example with one single photo displayed on the right.</h3>
+                <p>Here is some dummy text. <span class="my-tooltip" data-toggle="tooltip" title="" data-original-title="This is an demo tooltip!">Hover over me!</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! Saepe.</p>
+                <a href="http://themeforest.net/item/car-rental-landing-page/8245093?ref=themeinjection" class="btn">More information</a>
+                <a href="http://themeforest.net/item/car-rental-landing-page/8245093?ref=themeinjection" class="btn btn-gray">Buy this theme</a>
+            </div>
+        </div>
+        <!-- Single photo end -->
+        <!-- Video start -->
+        <div class="row wow fadeInRight" data-wow-offset="50">
+            <div class="col-md-6">
+                <div class="video">
+                    <!-- Youtube iframe start -->
+                    <iframe width="420" height="315" src="http://www.youtube.com/embed/9_5pjZlWV3A?rel=0&amp;autoplay=0" allowfullscreen></iframe>
+                    <!-- Youtube iframe end -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="title">Watch our info tour</h2>
+                <h3 class="subtitle">You can also show youtube videos in this section!</h3>
+                <p>Here is some dummy text. Lorem ipsum dolor sit amet, <span class="label label-default">This is an labeled text snippet!</span>, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <!-- Video end -->
+    </section>
+    <!-- Information end -->
+    <!-- Partners start -->
+    <section id="partners" class="wow fadeIn" data-wow-offset="50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Meet Our Partners</h2>
+                    <span class="underline">&nbsp;</span>
+                    <p>To contribute to positive change and achieve our sustainability goals, we partner with many extraordinary organizations around the world. Their expertise enables us to do far more than we could alone, and their passion and talent inspire us. It is our pleasure to introduce you to a handful of the organizations whose accomplishments and commitments are representative of all the organizations we are fortunate to call our partners.</p>
+                </div>
+                <div class="col-md-3 col-xs-6 text-center">
+                    <img src="~/Content/img/partner1.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="0.5s" data-wow-offset="200">
+                </div>
+                <div class="col-md-3 col-xs-6 text-center">
+                    <img src="~/Content/img/partner2.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1s" data-wow-offset="200">
+                </div>
+                <div class="col-md-3 col-xs-6 text-center">
+                    <img src="~/Content/img/partner3.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1.5s" data-wow-offset="200">
+                </div>
+                <div class="col-md-3 col-xs-6 text-center">
+                    <img src="~/Content/img/partner4.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="2s" data-wow-offset="200">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Partners end -->
+    <!-- Contact start -->
+    <section id="contact" class="container wow bounceInUp" data-wow-offset="50">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="col-md-4 col-xs-12 pull-right">
+                <h4 class="contact-box-title">Customer Center</h4>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img1.jpg" alt="contact-img">
+                    <div class="contact-box-name">Sarah Connor</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+                <div class="contact-box-divider">&nbsp;</div>
+                <h4 class="contact-box-title">Change or Cancel Reservation</h4>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img2.jpg" alt="contact-img">
+                    <div class="contact-box-name">Mike Smith</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img3.jpg" alt="contact-img">
+                    <div class="contact-box-name">Jane Doe</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+            </div>
+            <div class="col-md-8 col-xs-12 pull-left">
+                <p class="contact-info">
+                    You have any questions or need additional information? <br>
+                    <span class="address"><span class="highlight">Address:</span>  Car|Rental / 3861 Sepulveda Blvd. / Culver City, CA 90230</span>
+                </p>
+                <form action="#" method="post" id="contact-form" name="contact-form">
+                    <input type="hidden" name="action" value="send_contact_form" />
+                    <div class="alert hidden" id="contact-form-msg"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control first-name text-field" name="first-name" placeholder="First Name:">
+                        <input type="text" class="form-control last-name text-field" name="last-name" placeholder="Last Name:">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control telephone text-field" name="telephone" placeholder="Telephone:">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control email text-field" name="email" placeholder="Email:">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control message" name="message" placeholder="Message:"></textarea>
+                    </div>
+                    <input type="submit" class="btn submit-message" name="submit-message" value="Submit Message">
+
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Contact end -->
+
+    <a href="#" class="scrollup">ScrollUp</a>
+
+    <!-- Footer start -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-nav">
+                        <li><a class="scroll-to" href="#top">Home</a></li>
+                        <li><a class="scroll-to" href="#vehicles">Vehicle Models</a></li>
+                        <li><a class="scroll-to" href="#reviews">Reviews</a></li>
+                        <li><a class="scroll-to" href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p class="copyright">©2014 Themeinjection, All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+    <!-- Checkout Modal Start -->
+    @*<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel2" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#" method="post" id="checkout-form" name="checkout-form">
+                    <input type="hidden" name="action" value="send_inquiry_form" />
+                    <!-- Modal header start -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Complete reservation</h4>
+                    </div>
+                    <!-- Modal header end -->
+                    <!-- Modal body start -->
+                    <div class="modal-body">
+                        <!-- Checkout Info start -->
+                        <div class="checkout-info-box">
+                            <h3><i class="fa fa-info-circle"></i> Upon completing this reservation enquiry, you will receive::</h3>
+                            <p>Your rental voucher to produce on arrival at the rental desk and a toll-free customer support number.</p>
+                        </div>
+                        <!-- Checkout Info end -->
+                        <!-- Checkout Rental Info start -->
+                        <div class="checkout-vehicle-info">
+                            <div class="location-date-info">
+                                <h3>Location & Date</h3>
+                                <div class="info-box">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <h4 class="info-box-title">Pick-Up Time</h4>
+                                    <p class="info-box-description"><span id="pick-up-date-ph"></span> at <span id="pick-up-time-ph"></span></p>
+                                    <input type="hidden" name="pick-up" id="pick-up" value="">
+                                </div>
+                                <div class="info-box">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <h4 class="info-box-title">Drop-Off Time</h4>
+                                    <p class="info-box-description"><span id="drop-off-date-ph"></span> at <span id="drop-off-time-ph"></span></p>
+                                    <input type="hidden" name="drop-off" id="drop-off" value="">
+                                </div>
+                                <div class="info-box">
+                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                    <h4 class="info-box-title">Pick-Up Location</h4>
+                                    <p class="info-box-description" id="pickup-location-ph"></p>
+                                    <input type="hidden" name="pickup-location" id="pickup-location" value="">
+                                </div>
+                                <div class="info-box">
+                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                    <h4 class="info-box-title">Drop-Off Location</h4>
+                                    <p class="info-box-description" id="dropoff-location-ph"></p>
+                                    <input type="hidden" name="dropoff-location" id="dropoff-location" value="">
+                                </div>
+                            </div>
+                            <div class="vehicle-info">
+                                <h3>CAR: <span id="selected-car-ph"></span></h3> <a href="#vehicles" class="scroll-to">[ Vehicle Models ]</a>
+                                <input type="hidden" name="selected-car" id="selected-car" value="">
+                                <div class="clearfix"></div>
+                                <div class="vehicle-image">
+                                    <img class="img-responsive" id="selected-vehicle-image" src="~/Content/img/vehicle1.jpg" alt="Vehicle">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- Checkout Rental Info end -->
+                        <hr>
+                        <!-- Checkout Personal Info start -->
+                        <div class="checkout-personal-info">
+                            <div class="alert hidden" id="checkout-form-msg">
+                                test
+                            </div>
+                            <h3>PERSONAL INFORMATION</h3>
+                            <div class="form-group left">
+                                <label for="first-name">First Name:</label>
+                                <input type="text" class="form-control" name="first-name" id="first-name" placeholder="Enter your first name">
+                            </div>
+                            <div class="form-group right">
+                                <label for="last-name">Last Name:</label>
+                                <input type="text" class="form-control" name="last-name" id="last-name" placeholder="Enter your last name">
+                            </div>
+                            <div class="form-group left">
+                                <label for="phone-number">Phone Number:</label>
+                                <input type="text" class="form-control" name="phone-number" id="phone-number" placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group right age">
+                                <label for="age">Age:</label>
+                                <div class="styled-select-age">
+                                    <select name="age" id="age">
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                        <option value="32">32</option>
+                                        <option value="33">33</option>
+                                        <option value="34">34</option>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
+                                        <option value="44">44</option>
+                                        <option value="45">45</option>
+                                        <option value="46">46</option>
+                                        <option value="47">47</option>
+                                        <option value="48">48</option>
+                                        <option value="49">49</option>
+                                        <option value="50">50</option>
+                                        <option value="51">51</option>
+                                        <option value="52">52</option>
+                                        <option value="53">53</option>
+                                        <option value="54">54</option>
+                                        <option value="55">55</option>
+                                        <option value="56">56</option>
+                                        <option value="57">57</option>
+                                        <option value="58">58</option>
+                                        <option value="59">59</option>
+                                        <option value="50">50</option>
+                                        <option value="61">61</option>
+                                        <option value="62">62</option>
+                                        <option value="63">63</option>
+                                        <option value="64">64</option>
+                                        <option value="65">65</option>
+                                        <option value="66">66</option>
+                                        <option value="67">67</option>
+                                        <option value="68">68</option>
+                                        <option value="69">69</option>
+                                        <option value="70">70</option>
+                                        <option value="71">71</option>
+                                        <option value="72">72</option>
+                                        <option value="73">73</option>
+                                        <option value="74">74</option>
+                                        <option value="75">75</option>
+                                        <option value="76">76</option>
+                                        <option value="77">77</option>
+                                        <option value="78">78</option>
+                                        <option value="79">79</option>
+                                        <option value="80">80</option>
+                                        <option value="81">81</option>
+                                        <option value="82">82</option>
+                                        <option value="83">83</option>
+                                        <option value="84">84</option>
+                                        <option value="85">85</option>
+                                        <option value="86">86</option>
+                                        <option value="87">87</option>
+                                        <option value="88">88</option>
+                                        <option value="89">89</option>
+                                        <option value="90">90</option>
+                                        <option value="91">91</option>
+                                        <option value="92">92</option>
+                                        <option value="93">93</option>
+                                        <option value="94">94</option>
+                                        <option value="95">95</option>
+                                        <option value="96">96</option>
+                                        <option value="97">97</option>
+                                        <option value="98">98</option>
+                                        <option value="99">99</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group left">
+                                <label for="email-address">Email Address:</label>
+                                <input type="email" class="form-control" name="email-address" id="email-address" placeholder="Enter your email address">
+                            </div>
+                            <div class="form-group right">
+                                <label for="email-address-confirm">Confirm Email Address:</label>
+                                <input type="email" class="form-control" name="email-address-confirm" id="email-address-confirm" placeholder="Confirm your email address">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- Checkout Personal Info end -->
+                        <!-- Checkout Address Info start -->
+                        <div class="checkout-address-info">
+                            <div class="form-group address">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Street an No.">
+                            </div>
+                            <div class="form-group city">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" id="city" placeholder="Enter your City">
+                            </div>
+                            <div class="form-group zip-code">
+                                <label for="zip-code">Zip Code</label>
+                                <input type="text" class="form-control" name="zip-code" id="zip-code" placeholder="Enter your Zip Code">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- Checkout Address Info end -->
+                        <div class="newsletter">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <input id="check1" type="checkbox" name="newsletter" value="yes">
+                                    <label for="check1">Please send me latest news and updates</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal body end -->
+                    <!-- Modal footer start -->
+                    <div class="modal-footer">
+                        <span class="btn-border btn-gray">
+                            <button type="button" class="btn btn-default btn-gray" data-dismiss="modal">Cancel</button>
+                        </span>
+                        <span class="btn-border btn-yellow">
+                            <button type="submit" class="btn btn-primary btn-yellow">Reserve now</button>
+                        </span>
+                    </div>
+                    <!-- Modal footer end -->
+                </form>
+            </div>
+        </div>
+    </div>*@
+    <!-- Checkout Modal end -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/js/jquery.flexslider.js"></script>
-    <script src="~/Scripts/js/jquery.parallax.js"></script>
-    <script src="~/Scripts/js/jquery.inview.js"></script>
-    <script src="~/Scripts/js/superfish.js"></script>
-    <script src="~/Scripts/js/supersubs.js"></script>
-    <script src="~/Scripts/js/jquery.glide.js"></script>
-    <script src="~/Scripts/js/select2.min.js"></script>
-    <script src="~/Scripts/js/jquery.datetimepicker.js"></script>
-    <script src="~/Scripts/js/jquery.isotope.min.js"></script>
-    <script src="~/Scripts/js/owl.carousel.js"></script>
-    <script src="~/Scripts/js/rentalcar-custom.js"></script>
+    <script src="~/Scripts/js/jquery.autocomplete.min.js"></script>
+    <script src="~/Scripts/js/jquery.placeholder.js"></script>
+    <script src="~/Scripts/js/locations-autocomplete.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="~/Scripts/js/gmap3.min.js"></script>
+
+    <!--[if !(gte IE 8)]><!-->
+    <script src="~/Scripts/js/wow.min.js"></script>
+    <script>
+                // Initialize WOW
+                //-------------------------------------------------------------
+                new WOW({mobile: false}).init();
+    </script>
+    <!--<![endif]-->
+    <script src="~/Scripts/js/custom.js"></script>
+
 </body>
 
-<!-- Mirrored from ocean.tonytemplates.com/ttdemo/tonytemplates/24-rental-car/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Sep 2017 18:02:34 GMT -->
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
 </html>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        // Toggle Header / Nav  
+        //-------------------------------------------------------------
+
+    })
+
+    </script>
+
+}
