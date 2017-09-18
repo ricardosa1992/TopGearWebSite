@@ -327,7 +327,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regulard41d.html" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\localiza.css" />
     <Content Include="fonts\flaticon-rentalcar\flaticon.eot" />
     <Content Include="fonts\flaticon-rentalcar\flaticon.ttf" />
     <Content Include="fonts\flaticon-rentalcar\flaticon.woff" />

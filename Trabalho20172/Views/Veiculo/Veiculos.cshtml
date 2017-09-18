@@ -30,15 +30,14 @@
     <link href="~/Content/css/rental-car-css/rentalcar-template.css" rel="stylesheet">
    
     <link href="fonts/flaticon-rentalcar/flaticon.css" rel="stylesheet">
+    <link href="~/Content/css/localiza.css" rel="stylesheet" />
+    
+
 </head>
 <body class="" data-spy="scroll" data-target=".navbar" data-offset="260">
-    @*<div class="loader">
-        <div class="inside">
-            <div class="circle-outer"></div>
-            <div class="circle-inner"></div>
-        </div>
-    </div>*@
-    <!-- Header start -->
+
+
+
     <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
         <div class="row container box">
             <div class="col-md-5">
@@ -50,10 +49,10 @@
             </div>
             <div class="col-md-7">
                 @*<div class="pull-right">
-                    <div class="header-info pull-right">
-                        <div class="contact pull-left">CONTACT: (562) 498-4600</div>
-                    </div>
-                </div>*@
+                        <div class="header-info pull-right">
+                            <div class="contact pull-left">CONTACT: (562) 498-4600</div>
+                        </div>
+                    </div>*@
                 <div class="clearfix"></div>
                 <!-- start navigation -->
                 <nav class="navbar navbar-default" role="navigation">
@@ -86,8 +85,121 @@
     </header>
 
     <!-- Off Canvas Menu -->
-            
-            <!-- Header end -->
+    <!-- Header end -->
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div id="div-fixo-slip" class="col-2 pull-right" style="margin-right: 15px; top: 0px; right: 0px; margin-top: 0px;">
+
+
+                    <div class="box-detalhes-reserva">
+                        <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                            <div class="reserva-header">
+                                <a class="target" href="#" title="sua reserva">
+                                    <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
+                                </a>
+                            </div>
+                            <div class="reserva-body">
+                                <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                <a class="pull-right btn-dtl-reserva link-alterar" href="#" title="Editar">
+                                    Editar
+                                </a>
+                                <div class="content-agencias">
+                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                        AGENCIA AEROPORTO VITORIA
+                                    </p>
+                                    <div class="date text-slip-normal">
+                                        18/09/2017 às 11:00
+                                    </div>
+                                </div>
+                                <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
+                                <a class="pull-right btn-dtl-reserva link-alterar" href="#" title="Editar">
+                                    Editar
+                                </a>
+                                <div class="content-agencias">
+                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                        AGENCIA AEROPORTO VITORIA
+                                    </p>
+                                    <div class="date text-slip-normal">
+                                        21/09/2017 às 11:00
+                                    </div>
+                                </div>
+                                <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display: none;">
+                                    <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
+                                    <a class="btn-dtl-reserva pull-right" id="alterarSeuCarro" title="Editar">
+                                        Editar
+                                    </a>
+                                    <p class="text-slip-normal" id="slip-reserva-seu-carro-informacoes"></p>
+                                </div>
+                                <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display: none;">
+                                    <br>
+                                    <span class="text-slip-normal">Você comprou um</span>
+                                    <span class="text-slip-normal" id="slip-reserva-upgrade-informacoes"></span>
+                                </div>
+                                <div id="slip-reserva-sua-estimativa" style="display: block;">
+                                    <div id="slip-reserva-sua-estimativa-informacoes"></div>
+                                </div>
+                            </div>
+                            <div class="regiao-slip-reserva" id="slip-reserva-pontuacao-fidelidade" style="display: none;">
+                                <h1>
+                                    <span id="simbolo-header-pontuacao-fidelidade" style="padding-bottom: 5px;font-size: 18px;color: rgb(0, 152, 74);font-weight: 700;line-height: 26px;">
+                                    </span>Pontuação Fidelidade
+                                </h1>
+                                <br>
+                                <div style="margin-right: 9px;">
+                                    <p class="text-slip-normal" id="slip-reserva-pontuacao-fidelidade-reserva"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserva-footer" id="slip-reserva-valor" style="display: none;">
+                            <div class="slip-reserva-valor-total">
+                                <p class="titulo valor-previsto">Valor total previsto:</p>
+                                <p id="slip-reserva-valor-total-reserva" class="valor-moeda"></p>
+                                <p id="slip-reserva-valor-total-parcela" class="parcelas"></p>
+                                <div class="slip-reserva-valor-total-por-pontos" style="display: none;">
+                                    <span>ou</span>
+                                    <span id="slip-reserva-valor-total-reserva-pontos"></span>
+                                    <span>pontos</span>
+                                    <span class="soma-adicionais" style="display: none;">+</span>
+                                    <span class="soma-adicionais" id="slip-reserva-valor-total-adicionais" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserva-footer" id="slip-reserva-valor-desconto-progressivo" style="display: none;">
+                            <div class="slip-reserva-valor-total">
+                                <p class="titulo valor-previsto">Valor total previsto:</p>
+                                <div class="valor-total-desconto-progressivo">
+                                    <p class="valor-moeda sem-desconto-progressivo">De: </p>
+                                    <p id="slip-reserva-valor-total-reserva-sem-desconto-progressivo" class="valor-moeda sem-desconto-progressivo"></p>
+                                </div>
+                                <div class="valor-total-desconto-progressivo">
+                                    <p class="valor-moeda com-desconto-progressivo">Por: </p>
+                                    <p id="slip-reserva-valor-total-reserva-com-desconto-progressivo" class="valor-moeda com-desconto-progressivo"></p>
+                                </div>
+                                <p id="slip-reserva-valor-total-parcela-com-desconto-progressivo" class="parcelas"></p>
+                            </div>
+                        </div>
+
+                        <div id="mensagem-slip-desconto-progressivo" style="display: none;">
+                            <br>
+                            <div style="display:table-cell; vertical-align:top; width: 45x; height: 38px;"><i class="icon2-pagamento-na-devolucao-mensagem"></i></div>
+                            <div class="mensagem-pg" style="display:table-cell; vertical-align:middle; text-align:left">
+                                <label class="text-slip-strong"> Esse valor refere-se ao período total mencionado nessa reserva se o período de utilização for diferente, o valor final será alterado. </label>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div id="slip-reserva-mensagem-pagamento" style="display: none;">
+                        </div>
+                        <div id="slip-reserva-beneficios" style="display: none;"></div>
+                        <br>
+                        <a id="content-imprimir" class="btn-imprimir" style="display: none;" href="#" title="Imprimir cotação">
+                            <i class="icon2-imprimir-cotacao"></i>Imprimir cotação
+                        </a>
+                    </div>
+                </div>
+            </div>
+
 
             <section class="content">
                 <div class="container">
@@ -481,8 +593,9 @@
                     </div>
                 </div>
             </section>
-            
-    
+
+        </div>
+    </div>
     <footer>
         <div class="container">
             <div class="row">
@@ -499,7 +612,7 @@
             </div>
         </div>
     </footer>
-    
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

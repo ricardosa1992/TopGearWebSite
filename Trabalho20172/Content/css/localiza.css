@@ -1,0 +1,244 @@
+﻿
+/*MINHAS RESERVAS - CADASTRAR RESERVA - DETALHES DA RESERVA - BOX LATERAL*/
+
+.box-detalhes-reserva .estimativa-resumida ul, .box-detalhes-reserva .estimativa-resumida {
+	margin: 0px;
+	padding: 0px;
+}
+
+/*.box-detalhes-reserva {
+    background: url('/Style%20Library/util/img/estrutura/bg-listras-claro.jpg');
+    border-left: solid 1px #d7d7d7;
+    border-right: solid 1px #d7d7d7;
+}*/
+
+/*DETALHES DA RESERVA - BOX LATERAL - HEADER*/
+.box-detalhes-reserva .ativo .reserva-header a {
+	border-bottom: 0 none;
+	width: 289px;
+}
+
+.box-detalhes-reserva .reserva-header a {
+	display: block;
+	padding: 4px 10px 4px 20px;
+	background-color: #00984a;
+	border-bottom: solid 1px #FFF;
+}
+
+	.box-detalhes-reserva .reserva-header a:hover {
+		-webkit-box-shadow: inset 0 -10px 30px -10px rgba(0, 0, 0, 0.5);
+		box-shadow: inset 0 -10px 30px -10px rgba(0, 0, 0, 0.5);
+		text-decoration: none;
+	}
+
+.box-detalhes-reserva .reserva-header h1 {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
+	margin: 17px;
+	text-transform: uppercase;
+}
+
+.en-us .box-detalhes-reserva .reserva-header h1 {
+	font-size: 21px;
+	margin: 17px 0 0 7px;
+}
+
+.box-detalhes-reserva .reserva-header h1 span {
+	font-family: 'LocalizaDinDisplay_Bold';
+	font-size: 27px;
+	display: inline-block;
+	padding: 0px 18px 0px 0px;
+	margin-right: 18px;
+	border-right: 1px solid #002f16;
+	width: 40px;
+	line-height: 19px;
+	vertical-align: bottom;
+	vertical-align: baseline;
+}
+
+/*DETALHES DA RESERVA - BOX LATERAL - BODY*/
+
+.text-slip-normal {
+	color: #2d2d2d;
+	font-family: Calibri;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.text-slip-strong {
+	color: #2d2d2d;
+	font-family: Calibri;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 20px;
+}
+
+.border-top-slip {
+	border-top: 1px solid #DADADA;
+}
+
+.box-detalhes-reserva .reserva-body {
+	padding: 7px 0px;
+	padding-right: 23px;
+	padding-left: 23px;
+	width: 289px;
+	border: 1px solid #D7D7D7;
+	margin: 0px auto;
+	background: white;
+}
+
+	.box-detalhes-reserva .reserva-body .sub-title {
+		display: inline;
+		vertical-align: top;
+		font-family: Calibri;
+		padding: 0px;
+		width: 85px;
+		height: 16px;
+		color: #00984a;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 26px;
+	}
+
+	.box-detalhes-reserva .reserva-body .icon-rs-retirada {
+		background-position: -123px -38px;
+	}
+
+	.box-detalhes-reserva .reserva-body .icon-rs-devolucao {
+		background-position: -147px -38px;
+	}
+
+	.box-detalhes-reserva .reserva-body .btn-dtl-reserva {
+		font-family: 'OpenSans_SemiBold', sans-serif;
+		color: #00984a;
+		font-size: 10px;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.box-detalhes-reserva .reserva-body .content-agencias {
+		color: #2d2d2d;
+		font-family: Calibri;
+		font-size: 16px;
+	}
+
+	.box-detalhes-reserva .reserva-body .date {
+		margin: -5px 0px 5px;
+		font-size: 15px;
+	}
+
+	.box-detalhes-reserva .reserva-body time {
+		padding-right: 15px;
+	}
+
+	.box-detalhes-reserva .reserva-body p {
+		padding-bottom: 0px;
+		margin: 0px;
+	}
+
+/*Lista de Tarifas*/
+
+.box-detalhes-reserva .lista-tarifas li {
+	float: none;
+	font-size: 16px;
+	margin-bottom: 7px;
+}
+
+	.box-detalhes-reserva .lista-tarifas li p.strong {
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+.box-detalhes-reserva .reserva-body .box-desconto {
+	padding: 10px 0 0;
+}
+
+
+.box-detalhes-reserva seu-carro {
+	margin-top: 11px;
+}
+
+.box-detalhes-reserva.seu-carro .reserva-header {
+	background: white;
+	padding: 9px 10px 9px 35px;
+}
+
+	.box-detalhes-reserva.seu-carro .reserva-header h1 {
+		color: #FFFFFF;
+	}
+
+.box-detalhes-reserva.seu-carro .reserva-body {
+	padding: 13px 0 13px 18px;
+	border-top: 0 none;
+}
+
+/*DETALHES DA RESERVA - BOX LATERAL - FOOTER*/
+
+.box-detalhes-reserva .reserva-footer {
+	background-color: #00984a;
+	width: 289px;
+	padding: 2px 5px;
+}
+
+	.box-detalhes-reserva .reserva-footer .titulo {
+		color: #d4db26;
+		font-family: Calibri;
+		font-size: 16px;
+		font-weight: 700;
+		padding: 0px;
+		margin-bottom: 5px;
+	}
+
+	.box-detalhes-reserva .reserva-footer #slip-reserva-valor-total-reserva {
+		color: white;
+		font-family: LocalizaDinDisplay_Regular;
+		font-size: 32px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.box-detalhes-reserva .reserva-footer #slip-reserva-valor-total-parcela,
+	.box-detalhes-reserva .reserva-footer #slip-reserva-valor-total-parcela-com-desconto-progressivo {
+		color: white;
+		font-family: LocalizaDINDisplay_Regular;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 21px;
+	}
+
+	.box-detalhes-reserva .reserva-footer .total-reserva {
+		font-family: 'LocalizaDinDisplay_Bold';
+		font-size: 30px;
+		color: #FFF;
+		padding: 6px 0px 0px;
+		line-height: 27px;
+	}
+
+
+
+	.box-detalhes-reserva .reserva-footer .btn-imprimir {
+		color: #FFF;
+		text-decoration: none;
+		text-decoration: underline;
+		display: inline-block;
+		max-width: 70px;
+		margin-top: 2px;
+		font-size: 10px;
+		font-family: OpenSans_Bold;
+		max-width: 43px;
+	}
+
+.box-detalhes-reserva #content-imprimir {
+	color: #004b35;
+	font-family: Calibri;
+	vertical-align: top;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 22px;
+	text-decoration: underline;
+	margin-left: 45px;
+}
