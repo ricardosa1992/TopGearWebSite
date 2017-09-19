@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TopGear.Api.Models
 {
-    public class Request<T>
+    public class Usuario : IEntity
     {
-        public string Token { get; set; }
+        public int Id { get; set; }
 
-        public T Dados { get; set; } 
+        public string Nome { get; set; }
+        public string Token { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TopGear.Api.Models
 {
-    public class Locacao
+    public class Locacao : IEntity
     {
         public int Id { get; set; }
 
@@ -14,9 +14,9 @@ namespace TopGear.Api.Models
         public DateTime Retirada { get; set; }
         public DateTime? Entrega { get; set; }
 
-        [Required]
-        public int Id_Cliente { get; set; }
-        [Required]
-        public int Id_Carro { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual Carro Carro { get; set; }
+        public virtual Agencia Agencia_Retirada { get; set; }
+        public virtual Agencia Agencia_Entrega { get; set; }
     }
 }

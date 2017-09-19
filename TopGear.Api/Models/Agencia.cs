@@ -6,10 +6,12 @@ using System.Web;
 
 namespace TopGear.Api.Models
 {
-    public class Agencia
+    public class Agencia : IEntity
     {
         public int Id { get; set; }
 
+        [Required]
+        public string Nome { get; set; }
         [Required]
         public string Rua { get; set; }
         [Required]
@@ -20,5 +22,7 @@ namespace TopGear.Api.Models
         public string Cidade { get; set; }
         [Required]
         public string Estado { get; set; }
+
+        public virtual ICollection<Carro> Carros_Disponiveis { get; set; }
     }
 }
