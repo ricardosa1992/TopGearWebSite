@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TopGear.Api.Models
 {
@@ -16,6 +13,7 @@ namespace TopGear.Api.Models
         public string Marca { get; set; }
         [Required]
         [StringLength(7)]
+        [Index(IsUnique = true)]
         public string Placa { get; set; }
         [Required]
         public int Ano { get; set; }

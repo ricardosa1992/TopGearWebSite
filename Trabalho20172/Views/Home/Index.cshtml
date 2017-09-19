@@ -138,16 +138,15 @@
                             <div class="location">
                                 <div class="input-group pick-up">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Retirada</span>
-                                    @Html.DropDownList("localRetirada", Model.ListaDeAgencias, new { @class = "form-control" })  
-                                    @Html.HiddenFor(m=>m.idLocalRetirada)
+                                    @Html.DropDownList("listaLocalRetirada", Model.ListaDeAgencias, new { @class = "form-control" })  
                                 </div>
                                 <!-- Pick-up location end -->
                                 <a class="different-drop-off" href="#">Local de entrega diferente da retirada?</a>
                                 <!-- Drop-off location start -->
                                 <div class="input-group drop-off">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Entrega</span>
-                                    @Html.DropDownList("localEntrega", Model.ListaDeAgencias, new { @class = "form-control" })
-                                        
+                                    @Html.DropDownList("listaLocalEntrega", Model.ListaDeAgencias, new { @class = "form-control" })
+                                  
                                 </div>
                             </div>
                             <!-- Drop-off location end -->
@@ -843,122 +842,8 @@
         </div>
     </section>
     <!-- Vehicles end -->
-    <!-- Reviews start -->
-    <section id="reviews" class="container wow fadeInUp">
-        <div class="row text-center">
-            <div class="col-md-12 stars">
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star big"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-            </div>
-            <div class="col-md-10 col-md-offset-1">
-                <div id="reviews-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Review item 1 start -->
-                        <div class="item active">
-                            <div class="review">
-                                It is always a positive experience when renting from your 5th street location. The staff is very professional and efficient and always smiling. And I always feel welcome and appreciated. The management is always prompt to solve any issue at any moment. Their efficiency and professionalism makes it my number one choice.
-                            </div>
-                            <div class="author">
-                                – Michael Smith, Santa Barbara CA
-                            </div>
-                        </div>
-                        <!-- Review item 1 end -->
-                        <!-- Review item 2 start -->
-                        <div class="item">
-                            <div class="review">
-                                This rental was the best rental experience ever! After completing all details on-line myself, the pick-up was super efficient, extremely friendly, and free of the usual 5 - 10 min very unpleasant drilling of why one is not signing up to all options (insurance, etc). I was handed the keys and a wide register print out that required...
-                            </div>
-                            <div class="author">
-                                – Jon Doe, Las Vegas NV
-                            </div>
-                        </div>
-                        <!-- Review item 2 end -->
-                        <!-- Review item 3 start -->
-                        <div class="item">
-                            <div class="review">
-                                This was my first time renting from car|rental. And over all it was a wonderful experience I have no complaints. The service rep help me find the best rental to suit my needs. I also love the fact that you guys provide luxury rentals at a great price. I will definitely rent with this company again.
-                            </div>
-                            <div class="author">
-                                – Michael Smith, Santa Barbara CA
-                            </div>
-                        </div>
-                        <!-- Review item 3 end -->
-                    </div>
-                    <!-- Review Nav start -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#reviews-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#reviews-carousel" data-slide-to="1"></li>
-                        <li data-target="#reviews-carousel" data-slide-to="2"></li>
-                    </ol>
-                    <!-- Review Nav end -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Reviews end -->
-    <!-- Information start -->
-    <section id="information" class="container">
-        <!-- Single photo start -->
-        <div class="row wow fadeInLeft" data-wow-offset="100">
-            <div class="col-md-6 col-xs-12 pull-right">
-                <img src="~/Content/img/info-img.jpg" alt="Info Img" class="img-responsive">
-            </div>
-            <div class="col-md-6 pull-left">
-                <h2 class="title">Quality Guaranteed</h2>
-                <h3 class="subtitle">Here is an example with one single photo displayed on the right.</h3>
-                <p>Here is some dummy text. <span class="my-tooltip" data-toggle="tooltip" title="" data-original-title="This is an demo tooltip!">Hover over me!</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! Saepe.</p>
-                <a href="http://themeforest.net/item/car-rental-landing-page/8245093?ref=themeinjection" class="btn">More information</a>
-                <a href="http://themeforest.net/item/car-rental-landing-page/8245093?ref=themeinjection" class="btn btn-gray">Buy this theme</a>
-            </div>
-        </div>
-        <!-- Single photo end -->
-        <!-- Video start -->
-        <div class="row wow fadeInRight" data-wow-offset="50">
-            <div class="col-md-6">
-                <div class="video">
-                    <!-- Youtube iframe start -->
-                    <iframe width="420" height="315" src="http://www.youtube.com/embed/9_5pjZlWV3A?rel=0&amp;autoplay=0" allowfullscreen></iframe>
-                    <!-- Youtube iframe end -->
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h2 class="title">Watch our info tour</h2>
-                <h3 class="subtitle">You can also show youtube videos in this section!</h3>
-                <p>Here is some dummy text. Lorem ipsum dolor sit amet, <span class="label label-default">This is an labeled text snippet!</span>, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <!-- Video end -->
-    </section>
-    <!-- Information end -->
-    <!-- Partners start -->
-    <section id="partners" class="wow fadeIn" data-wow-offset="50">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>Meet Our Partners</h2>
-                    <span class="underline">&nbsp;</span>
-                    <p>To contribute to positive change and achieve our sustainability goals, we partner with many extraordinary organizations around the world. Their expertise enables us to do far more than we could alone, and their passion and talent inspire us. It is our pleasure to introduce you to a handful of the organizations whose accomplishments and commitments are representative of all the organizations we are fortunate to call our partners.</p>
-                </div>
-                <div class="col-md-3 col-xs-6 text-center">
-                    <img src="~/Content/img/partner1.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="0.5s" data-wow-offset="200">
-                </div>
-                <div class="col-md-3 col-xs-6 text-center">
-                    <img src="~/Content/img/partner2.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1s" data-wow-offset="200">
-                </div>
-                <div class="col-md-3 col-xs-6 text-center">
-                    <img src="~/Content/img/partner3.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1.5s" data-wow-offset="200">
-                </div>
-                <div class="col-md-3 col-xs-6 text-center">
-                    <img src="~/Content/img/partner4.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="2s" data-wow-offset="200">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Partners end -->
+   
+  
     <!-- Contact start -->
     <section id="contact" class="container wow bounceInUp" data-wow-offset="50">
         <div class="row">

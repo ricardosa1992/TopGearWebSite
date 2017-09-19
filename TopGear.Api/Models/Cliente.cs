@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +16,7 @@ namespace TopGear.Api.Models
         public string Endereco { get; set; }
         [Required]
         [StringLength(11)]
+        [Index(IsUnique = true)]
         public string CPF { get; set; }
         public string Cartao { get; set; }
 

@@ -376,7 +376,8 @@ $("#car-select-form").submit(function () {
 
       }
       else {
-          $("#idLocalRetirada").val($("#localRetirada").val());
+          $("#idLocalRetirada").val($("#listaLocalRetirada").val());
+          $("#idLocalEntrega").val($("#listaLocalEntrega").val());
       }
        
       
