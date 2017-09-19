@@ -17,6 +17,8 @@ namespace TopGear.Api
             BaseAddress = new Uri("https://topgearapi.azurewebsites.net/api/")
         };
 
+        private static string Token = "CorrectHorseBatteryStaple";
+
         public static Response<T> Get(string relativePath)
         {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -48,7 +50,7 @@ namespace TopGear.Api
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = client.PostAsJsonAsync(JsonConvert.SerializeObject(objeto), relativePath).Result;
+            HttpResponseMessage response = client.PostAsJsonAsync(JsonConvert.SerializeObject(MakeRequest(objeto)), relativePath).Result;
             if (response.IsSuccessStatusCode)
             {
                 return response.Content.ReadAsAsync<Response<T>>().Result;
@@ -61,7 +63,7 @@ namespace TopGear.Api
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = client.PutAsJsonAsync(JsonConvert.SerializeObject(objeto), 
+            HttpResponseMessage response = client.PutAsJsonAsync(JsonConvert.SerializeObject(MakeRequest(objeto)), 
                                                                     relativePath + "/" + id.ToString()).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -75,12 +77,24 @@ namespace TopGear.Api
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = client.DeleteAsync(relativePath + "/" + id.ToString()).Result;
+            HttpRequestMessage request = new HttpRequestMessage
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(TopGearApi<int>.MakeRequest(id)), Encoding.UTF8, "application/json"),
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri("[YOUR URL GOES HERE]")
+            };
+
+            HttpResponseMessage response = client.SendAsync(request).Result;
             if (response.IsSuccessStatusCode)
             {
                 return response.Content.ReadAsAsync<Response<T>>().Result;
             }
             else return new Response<T> { Sucesso = false };
+        }
+
+        private static Request<T> MakeRequest(T dados)
+        {
+            return new Request<T> { Dados = dados, Token = Token };
         }
     }
 }
