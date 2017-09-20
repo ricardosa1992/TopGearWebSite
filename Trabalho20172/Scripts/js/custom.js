@@ -115,6 +115,7 @@ $(".vehicle-data-select").change(function(){
 
 // Initialize Datepicker
 //-------------------------------------------------------------------------------
+$.fn.datepicker.defaults.format = "dd/mm/yyyy";
 var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -355,16 +356,15 @@ $( "#contact-form" ).submit(function() {
 // Car Select Form
 //-------------------------------------------------------------------------------
 $("#car-select-form").submit(function () {
-      var pickupLocation = $("#pick-up-location").val();
-      var dropoffLocation = $("#drop-off-location").val();
+      var pickupLocation = $("#listaLocalRetirada").val();
       var pickUpDate = $("#pick-up-date").val();
       var pickUpTime = $("#pick-up-time").val();
       var dropOffDate = $("#drop-off-date").val();
       var dropOffTime = $("#drop-off-time").val();
 
       var error = 0;
-
-      if(validateNotEmpty(pickupLocation)) { error = 1; }
+      debugger
+      if (validateNotEmpty(pickupLocation) || pickupLocation == 0) { error = 1; }
       if(validateNotEmpty(pickUpDate)) { error = 1; }
       if(validateNotEmpty(dropOffDate)) { error = 1; }
 
@@ -375,14 +375,6 @@ $("#car-select-form").submit(function () {
           return false;
 
       }
-      else {
-          $("#idLocalRetirada").val($("#listaLocalRetirada").val());
-          $("#idLocalEntrega").val($("#listaLocalEntrega").val());
-      }
-       
-      
-      
-
 
 });
 

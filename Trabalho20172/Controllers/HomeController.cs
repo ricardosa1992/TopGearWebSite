@@ -33,9 +33,10 @@ namespace Trabalho20172.Controllers
         public List<SelectListItem> ListaDeAgencias()
         {
             List<SelectListItem> listaAgencias = new List<SelectListItem>();
-            var agencias = TopGear.Api.TopGearApi<IEnumerable<Agencia>>.Get("agencia");
+            var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
 
-            foreach (var item in agencias.Dados)
+            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
+            foreach (var item in agencias)
             {
                 listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
             }

@@ -309,27 +309,27 @@
                                 </div>
                                 <div class="reserva-body">
                                     <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" title="Editar">
+                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
                                         Editar
                                     </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            AGENCIA AEROPORTO VITORIA
+                                            @Model.localRetirada.Bairro
                                         </p>
                                         <div class="date text-slip-normal">
-                                            19/09/2017 às 12:00
+                                            @Model.dataRetirada.ToString()
                                         </div>
                                     </div>
                                     <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" title="Editar">
+                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
                                         Editar
                                     </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            AGENCIA AEROPORTO VITORIA
+                                            @Model.localEntrega.Bairro
                                         </p>
                                         <div class="date text-slip-normal">
-                                            20/09/2017 às 12:00
+                                            @Model.dataEntrega.ToString()
                                         </div>
                                     </div>
                                     <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
@@ -385,6 +385,184 @@
 
              </div>
           </div>
+
+        <!--Modal de Edição do local de Retirada/Entrega-->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="reservation-form-shadow">
+                            <form action="#" method="post" name="car-select-form" id="car-select-form">
+                                <div class="alert alert-danger hidden" id="car-select-form-msg">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <strong>Note:</strong> Todos os campos são obrigatórios!
+                                </div>
+                                <!-- Pick-up location start -->
+                                <div class="location">
+                                    <div class="input-group pick-up">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Retirada</span>
+                                        @Html.DropDownList("listaLocalRetirada", Model.ListaDeAgencias, new { @class = "form-control" })
+                                    </div>
+                                    <!-- Pick-up location end -->
+                                    <a class="different-drop-off" href="#">Local de entrega diferente da retirada?</a>
+                                    <!-- Drop-off location start -->
+                                    <div class="input-group drop-off">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Entrega</span>
+                                        @Html.DropDownList("listaLocalEntrega", Model.ListaDeAgencias, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                                <!-- Drop-off location end -->
+                                <!-- Pick-up date/time start -->
+                                <div class="datetime pick-up">
+                                    <div class="date pull-left">
+                                        <div class="input-group">
+                                            <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Retirar</span>
+                                            <input type="text" name="pick-up-date" id="pick-up-date" class="form-control datepicker" placeholder="dd/mm/yyyy">
+                                        </div>
+                                    </div>
+                                    <div class="time pull-right">
+                                        <div class="styled-select-time">
+                                            <select name="pick-up-time" id="pick-up-time">
+                                                <option value="12:00 AM">12:00 AM</option>
+                                                <option value="12:30 AM">12:30 AM</option>
+                                                <option value="01:00 AM">01:00 AM</option>
+                                                <option value="01:30 AM">01:30 AM</option>
+                                                <option value="02:00 AM">02:00 AM</option>
+                                                <option value="02:30 AM">02:30 AM</option>
+                                                <option value="03:00 AM">03:00 AM</option>
+                                                <option value="03:30 AM">03:30 AM</option>
+                                                <option value="04:00 AM">04:00 AM</option>
+                                                <option value="04:30 AM">04:30 AM</option>
+                                                <option value="05:00 AM">05:00 AM</option>
+                                                <option value="05:30 AM">05:30 AM</option>
+                                                <option value="06:00 AM">06:00 AM</option>
+                                                <option value="06:30 AM">06:30 AM</option>
+                                                <option value="07:00 AM">07:00 AM</option>
+                                                <option value="07:30 AM">07:30 AM</option>
+                                                <option value="08:00 AM">08:00 AM</option>
+                                                <option value="08:30 AM">08:30 AM</option>
+                                                <option value="09:00 AM">09:00 AM</option>
+                                                <option value="09:30 AM">09:30 AM</option>
+                                                <option value="10:00 AM">10:00 AM</option>
+                                                <option value="10:30 AM">10:30 AM</option>
+                                                <option value="11:00 AM">11:00 AM</option>
+                                                <option value="11:30 AM">11:30 AM</option>
+                                                <option value="12:00 PM">12:00 PM</option>
+                                                <option value="12:30 PM">12:30 PM</option>
+                                                <option value="01:00 PM">01:00 PM</option>
+                                                <option value="01:30 PM">01:30 PM</option>
+                                                <option value="02:00 PM">02:00 PM</option>
+                                                <option value="02:30 PM">02:30 PM</option>
+                                                <option value="03:00 PM">03:00 PM</option>
+                                                <option value="03:30 PM">03:30 PM</option>
+                                                <option value="04:00 PM">04:00 PM</option>
+                                                <option value="04:30 PM">04:30 PM</option>
+                                                <option value="05:00 PM">05:00 PM</option>
+                                                <option value="05:30 PM">05:30 PM</option>
+                                                <option value="06:00 PM">06:00 PM</option>
+                                                <option value="06:30 PM">06:30 PM</option>
+                                                <option value="07:00 PM">07:00 PM</option>
+                                                <option value="07:30 PM">07:30 PM</option>
+                                                <option value="08:00 PM">08:00 PM</option>
+                                                <option value="08:30 PM">08:30 PM</option>
+                                                <option value="09:00 PM">09:00 PM</option>
+                                                <option value="09:30 PM">09:30 PM</option>
+                                                <option value="10:00 PM">10:00 PM</option>
+                                                <option value="10:30 PM">10:30 PM</option>
+                                                <option value="11:00 PM">11:00 PM</option>
+                                                <option value="11:30 PM">11:30 PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- Pick-up date/time end -->
+                                <!-- Drop-off date/time start -->
+                                <div class="datetime drop-off">
+                                    <div class="date pull-left">
+                                        <div class="input-group">
+                                            <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Entregar</span>
+                                            <input type="text" name="drop-off-date" id="drop-off-date" class="form-control datepicker" placeholder="dd/mm/yyyy">
+                                        </div>
+                                    </div>
+                                    <div class="time pull-right">
+                                        <div class="styled-select-time">
+                                            <select name="drop-off-time" id="drop-off-time">
+                                                <option value="12:00 AM">12:00 AM</option>
+                                                <option value="12:30 AM">12:30 AM</option>
+                                                <option value="01:00 AM">01:00 AM</option>
+                                                <option value="01:30 AM">01:30 AM</option>
+                                                <option value="02:00 AM">02:00 AM</option>
+                                                <option value="02:30 AM">02:30 AM</option>
+                                                <option value="03:00 AM">03:00 AM</option>
+                                                <option value="03:30 AM">03:30 AM</option>
+                                                <option value="04:00 AM">04:00 AM</option>
+                                                <option value="04:30 AM">04:30 AM</option>
+                                                <option value="05:00 AM">05:00 AM</option>
+                                                <option value="05:30 AM">05:30 AM</option>
+                                                <option value="06:00 AM">06:00 AM</option>
+                                                <option value="06:30 AM">06:30 AM</option>
+                                                <option value="07:00 AM">07:00 AM</option>
+                                                <option value="07:30 AM">07:30 AM</option>
+                                                <option value="08:00 AM">08:00 AM</option>
+                                                <option value="08:30 AM">08:30 AM</option>
+                                                <option value="09:00 AM">09:00 AM</option>
+                                                <option value="09:30 AM">09:30 AM</option>
+                                                <option value="10:00 AM">10:00 AM</option>
+                                                <option value="10:30 AM">10:30 AM</option>
+                                                <option value="11:00 AM">11:00 AM</option>
+                                                <option value="11:30 AM">11:30 AM</option>
+                                                <option value="12:00 PM">12:00 PM</option>
+                                                <option value="12:30 PM">12:30 PM</option>
+                                                <option value="01:00 PM">01:00 PM</option>
+                                                <option value="01:30 PM">01:30 PM</option>
+                                                <option value="02:00 PM">02:00 PM</option>
+                                                <option value="02:30 PM">02:30 PM</option>
+                                                <option value="03:00 PM">03:00 PM</option>
+                                                <option value="03:30 PM">03:30 PM</option>
+                                                <option value="04:00 PM">04:00 PM</option>
+                                                <option value="04:30 PM">04:30 PM</option>
+                                                <option value="05:00 PM">05:00 PM</option>
+                                                <option value="05:30 PM">05:30 PM</option>
+                                                <option value="06:00 PM">06:00 PM</option>
+                                                <option value="06:30 PM">06:30 PM</option>
+                                                <option value="07:00 PM">07:00 PM</option>
+                                                <option value="07:30 PM">07:30 PM</option>
+                                                <option value="08:00 PM">08:00 PM</option>
+                                                <option value="08:30 PM">08:30 PM</option>
+                                                <option value="09:00 PM">09:00 PM</option>
+                                                <option value="09:30 PM">09:30 PM</option>
+                                                <option value="10:00 PM">10:00 PM</option>
+                                                <option value="10:30 PM">10:30 PM</option>
+                                                <option value="11:00 PM">11:00 PM</option>
+                                                <option value="11:30 PM">11:30 PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- Drop-off date/time end -->
+                                <input type="submit" class="submit" name="submit" value="Continuar" id="checkoutModalLabel">
+                                @*<a href="@Url.Action("Veiculos", "Veiculo")" name="submit" type="submit" class="btn submit" >Continuar</a>*@
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 </section>
 
 

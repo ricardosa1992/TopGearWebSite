@@ -66,6 +66,7 @@
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TopGearApi.cs" />
+    <Compile Include="TopGearApiDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TopGear.Api.Models;
+using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
@@ -13,21 +14,47 @@ namespace Trabalho20172.Controllers
         [HttpPost]
         public ActionResult Veiculos()
         {
+
+            LocacaoViewModel viewModel = new LocacaoViewModel();
+            viewModel.ListaDeAgencias = ListaDeAgencias();
+
             //Obtendo os parâmetros selecionados para retirada/entrega
             int idLocalRetirada = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
-            var dataRetirada = Request.Form["pick-up-date"];
+            int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
             var horaRetirada = Request.Form["pick-up-time"];
-            int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
-            var dataEntrega = Request.Form["drop-off-date"];
             var horaEntrega = Request.Form["drop-off-time"];
 
+            var dataRetirada = Request.Form["pick-up-date"];
+
+            viewModel.dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
+            viewModel.dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
+
+
             //Obtendo a Agencia de retirada
-            var agenciaRetirada = TopGear.Api.TopGearApi<IEnumerable<Agencia>>.Get(idLocalRetirada,"agencia");
+            viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
 
             //Obtendo a Agencia de entrega != retirada
-            var agenciaEntrega = (idLocalRetirada != idLocalEntrega) ? TopGear.Api.TopGearApi<IEnumerable<Agencia>>.Get(idLocalEntrega, "agencia") : agenciaRetirada;
+             viewModel.localEntrega = (idLocalRetirada != idLocalEntrega && idLocalEntrega != 0) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalEntrega, "agencia") : viewModel.localRetirada;
 
-            return View();
+            //Buscar os Carros disponiveis
+            viewModel.listaCarrosDisponiveis = TopGear.Api.TopGearApiDataAccess<Carro>.Get("carro");
+
+            return View(viewModel);
         }
+
+        public List<SelectListItem> ListaDeAgencias()
+        {
+            List<SelectListItem> listaAgencias = new List<SelectListItem>();
+            var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
+
+            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
+            foreach (var item in agencias)
+            {
+                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
+            }
+
+            return listaAgencias;
+        }
+
     }
 }
