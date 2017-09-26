@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TopGear.Api.Models
@@ -18,9 +19,11 @@ namespace TopGear.Api.Models
         [Required]
         public int Ano { get; set; }
 
-        public bool EmManutencao { get; set; } = false;
+        public int AgenciaId { get; set; }
+        public int CategoriaId { get; set; }
 
         public virtual Agencia Agencia { get; set; }
         public virtual Categoria Categoria { get; set; }
+        public virtual ICollection<Item> Itens { get; }
     }
 }

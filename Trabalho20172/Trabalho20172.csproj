@@ -401,6 +401,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Veiculo\Veiculos.cshtml" />
+    <Content Include="Views\Veiculo\ListaVeiculos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

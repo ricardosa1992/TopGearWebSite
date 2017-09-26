@@ -60,6 +60,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Locacao.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Response.cs" />

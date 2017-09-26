@@ -119,7 +119,10 @@
                     </div>
                     <div class="gallery">
                       
-                        <div class="item category1 category3">
+
+                        @Html.Partial("~/Views/Veiculo/ListaVeiculos.cshtml")
+
+                        @*<div class="item category1 category3">
                             <div class="image"><img src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
                             <div class="info">
                                 <h4>mercedes sls</h4>
@@ -152,9 +155,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                        
-                        <div class="item category2 category5 category3">
+                        @*<div class="item category2 category5 category3">
                             <div class="image"><img src="~/Content/img/rental-car/rentalcar/car12.png" alt="" /></div>
                             <div class="info">
                                 <h4>Toyota Camry</h4>
@@ -290,7 +293,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                        
                        
                     </div>
@@ -631,8 +634,16 @@
     <script type="text/javascript">
 
     $(document).ready(function () {
-        // Toggle Header / Nav
-        //-------------------------------------------------------------
+      
+        $(".selecionarCarro").click(function (e) {
+            debugger;
+            var idcarro = $(this).attr("idCarro");
+            var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
+            $(".seu-carro").show();
+
+
+
+        });
 
     })
 
