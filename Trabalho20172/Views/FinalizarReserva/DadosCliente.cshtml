@@ -42,6 +42,14 @@
     <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
 
+    <style>
+        .sidenav {
+            padding-top: 0px;
+            height: 100%;
+        }
+
+    </style>
+
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
@@ -90,14 +98,62 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row content">
+            <div class="row">
               
-                <div class="col-sm-8">
-                 
+                <div class="col-md-10">
+
+                    <div class="form-group col-md-4 col-sm-6">
+                        <label for="name">Nome*	</label>
+                        @Html.TextBoxFor(m => m.nomeCliente, new { @class = "form-control" })
+                    </div>
+                    
+                    <div class="form-group col-md-2 col-sm-6">
+                        <label for="name">CPF*</label>
+                        @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-2 col-sm-6">
+                        <label for="name">Cartao*	</label>
+                        @Html.TextBoxFor(m => m.numCartao, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-2 col-sm-6">
+                        <label for="name">Telefone*</label>
+                        @Html.TextBoxFor(m => m.telefone, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-6">
+                        <label for="name">Endereço*</label>
+                        @Html.TextBoxFor(m => m.rua, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="name">Bairro*</label>
+                        @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-2 col-sm-6">
+                        <label for="name">Cidade*</label>
+                        @Html.TextBoxFor(m => m.cidade, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-1 col-sm-6">
+                        <label for="name">UF*</label>
+                        @Html.TextBoxFor(m => m.estado, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <input type="button" class="btn btn-primary" id="efetuarLocacao" value="Confirmar" />
+                    </div>
+
+                    
+
+                    
                 </div>
 
                 <!--Area da reserva-->
-                <div class="col-sm-2 sidenav">
+                <div class="col-md-2">
+                <div class="sidenav">
                     <div id="div-fixo-slip" class="col-2 pull-right" style="">
 
                         <div class="box-detalhes-reserva">
@@ -109,50 +165,48 @@
                                 </div>
                                 <div class="reserva-body">
                                     <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                        Editar
-                                    </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localRetirada.Bairro
+                                            @Model.localRetirada.Nome
+                                            @Html.HiddenFor(m => m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id })
                                         </p>
                                         <div class="date text-slip-normal">
                                             @Model.dataRetirada.ToString()
+                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
                                         </div>
                                     </div>
                                     <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                        Editar
-                                    </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localEntrega.Bairro
+                                            @Model.localEntrega.Nome
+                                            @Html.HiddenFor(m => m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
                                         </p>
                                         <div class="date text-slip-normal">
                                             @Model.dataEntrega.ToString()
+                                            @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
                                         </div>
                                     </div>
                                     <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
                                         <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
 
                                     </div>
-                                    <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
+                                    <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="">
                                         <br>
                                         @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
-                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
+                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
                                         <div class="info">
-                                            <h4 id="carroSelecionado"></h4>
+                                            <h4 id="carroSelecionado">Modelo:  @Model.carroSelecionado.Modelo</h4>
+                                            @Html.HiddenFor(m => m.idCarroSelecionadoHidden, new { Value = Model.carroSelecionado.Id })
                                         </div>
 
                                     </div>
 
-                                    <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                    <div class="reserva-footer" id="slip-reserva-valor" style="">
                                         <div class="slip-reserva-valor-total">
-                                            <h3 class="titulo valor-previsto" id="valorLocacao"></h3>
+                                            <h3 class="titulo valor-previsto" id="valorLocacao">Preço Total:  @Model.precoTotal.ToString("n2")</h3>
+                                            @Html.HiddenFor(m => m.precoTotal)
                                         </div>
                                     </div>
-
-                                    <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />
 
                                 </div>
 
@@ -166,6 +220,7 @@
                                 <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
                         </div>
                     </div>
+                </div>
                 </div>
                 <!--Fim Area reserva-->
 

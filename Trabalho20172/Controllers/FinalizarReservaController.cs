@@ -11,40 +11,25 @@ namespace Trabalho20172.Controllers
     public class FinalizarReservaController : Controller
     {
         // GET: FinalizarReserva
-        public ActionResult DadosCliente()
+        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, string precoTotal)
         {
+
+
             LocacaoViewModel viewModel = new LocacaoViewModel();
             viewModel.ListaDeAgencias = ListaDeAgencias();
 
-            //Obtendo os parâmetros selecionados para retirada/entrega
-            int idLocalRetirada = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
-            int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
-            var horaRetirada = Request.Form["pick-up-time"];
-            var horaEntrega = Request.Form["drop-off-time"];
-
-            var dataRetirada = Request.Form["pick-up-date"];
-
-            viewModel.dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
-            viewModel.dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
-
+            //Obtendo os dados do carro selecionado e do local de retirada/entrega
+           
+            viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
+            viewModel.dataEntrega = Convert.ToDateTime(dataEntrega);
+            viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
             //Obtendo a Agencia de retirada
             //viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
             viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
             viewModel.localEntrega = viewModel.localRetirada;
 
-            //Obtendo a Agencia de entrega != retirada
-            //viewModel.localEntrega = (idLocalRetirada != idLocalEntrega && idLocalEntrega != 0) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalEntrega, "agencia") : viewModel.localRetirada;
-
-            //Buscar os Carros disponiveis
-            //viewModel.listaCarrosDisponiveis = TopGear.Api.TopGearApiDataAccess<Carro>.Get("carro");
-
-            //Obtendo as categorias
-            //var cat = TopGear.Api.TopGearApiDataAccess<Carro>.Get(1,"categoria/PorId");
-            //foreach (var carro in viewModel.listaCarrosDisponiveis)
-            //{
-
-            //}
+            
 
             List<Carro> listaCarrosDisponiveis = new List<Carro>();
             Categoria cat = new Categoria { Id = 1, Preco = 100, Descricao = "Luxo", Itens = "teste" };
@@ -52,13 +37,39 @@ namespace Trabalho20172.Controllers
             listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
             listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
 
-            viewModel.listaCarrosDisponiveis = listaCarrosDisponiveis;
+            foreach (var carro in listaCarrosDisponiveis)
+            {
+                if(carro.Id == idCarroSelecionado)
+                {
+                    viewModel.carroSelecionado = carro;
+                    break;
+                }
+            }
 
 
             return View(viewModel);
 
            
         }
+
+        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string horaRetirada, string dataEntrega, string horaEntrega, double precoTotal)
+        {
+            Locacao novaLocacao = new Locacao()
+            {
+                ClienteId = idCliente,
+                CarroId = idCarro,
+                Agencia_RetiradaId = idLocalRetirada,
+                Agencia_EntregaId = idLocalEntrega,
+                Retirada = Convert.ToDateTime(dataRetirada),
+                Entrega = Convert.ToDateTime(dataEntrega),
+                Finalizada = false
+            };
+
+            var sucesso = TopGear.Api.TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            return (sucesso != null) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
+
+        }
+
 
         public List<SelectListItem> ListaDeAgencias()
         {

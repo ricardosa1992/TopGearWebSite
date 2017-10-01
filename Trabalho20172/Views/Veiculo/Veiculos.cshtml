@@ -186,10 +186,12 @@
                                     </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localRetirada.Bairro
+                                            @Model.localRetirada.Nome
+                                            @Html.HiddenFor(m=>m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id})
                                         </p>
                                         <div class="date text-slip-normal">
                                             @Model.dataRetirada.ToString()
+                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
                                         </div>
                                     </div>
                                     <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
@@ -198,10 +200,12 @@
                                     </a>
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localEntrega.Bairro
+                                            @Model.localEntrega.Nome
+                                            @Html.HiddenFor(m=>m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
                                         </p>
                                         <div class="date text-slip-normal">
                                             @Model.dataEntrega.ToString()
+                                            @Html.HiddenFor(m=>m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString()})
                                         </div>
                                     </div>
                                     <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
@@ -214,6 +218,7 @@
                                         <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
                                         <div class="info">
                                             <h4 id="carroSelecionado"></h4>
+                                            @Html.HiddenFor(m=>m.idCarroSelecionadoHidden)
                                         </div>
 
                                     </div>
@@ -221,10 +226,11 @@
                                     <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
                                         <div class="slip-reserva-valor-total">
                                             <h3 class="titulo valor-previsto" id="valorLocacao"></h3>
+                                            @Html.HiddenFor(m => m.precoTotal)
                                         </div>
                                     </div>
 
-                                    <a href="@Url.Action("DadosCliente","FinalizarReserva")"><input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar"  style="display:none" /></a>
+                                    <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar"  style="display:none" />
 
                                 </div>
                      

@@ -491,16 +491,55 @@ $(".selecionarCarro").click(function (e) {
     var idCarro = $(this).attr("idCarro");
     var modeloCarro = $(this).attr("modeloCarro");
     var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-    var preco = $(this).attr("precoCarro");
+    var preco = ($(this).attr("precoCarro")).replace(".",",");
 
     //Montando as Informações sobre o carro selecionado
+    $("#idCarroSelecionadoHidden").val(idCarro);
     $("#carroSelecionado").text("Modelo: " + modeloCarro);
     $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
     $("#valorLocacao").text("Valor Total: " + preco);
+    $("#precoTotal").val(preco);
     $("#slip-reserva-valor").show();
     $(".seu-carro").show();
     $("#confirmarLocacao").show();
 
+
+});
+
+$("#confirmarLocacao").click(function (e) {
+    debugger;
+    var idCarro = $("#idCarroSelecionadoHidden").val();
+    var idLocalRetirada = $("#idLocalRetiradaHidden").val(); 
+    var idLocalEntrega = $("#idLocalEntregaHidden").val();
+    var dataRetirada = $("#dataRetiradaHidden").val();
+    var dataEntrega = $("#dataEntregaHidden").val();
+    var precoTotal = ($("#precoTotal").val()).replace(".",",");
+    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
+    window.open(href);
+
+});
+
+$("#efetuarLocacao").click(function (e) {
+
+    $.ajax({
+        url: "/FinalizarReserva/Efetuarlocacao",
+        type: "POST",
+        dataType: 'json',
+        data: {
+            idCliente: 1,
+            idCarro: 16,//$("#idCarroSelecionadoHidden").val(),
+            idLocalRetirada: $("#idLocalRetiradaHidden").val(),
+            idLocalEntrega: $("#idLocalEntregaHidden").val(),
+            dataRetirada: $("#dataRetiradaHidden").val(),
+            horaRetirada: "00:00:00",
+            dataEntrega: $("#dataEntregaHidden").val(),
+            horaEntrega: "00:00:00",
+            precoTotal: ($("#precoTotal").val()).replace(".", ",")
+        },
+        success: function (result) {
+            $("#div1").html(result);
+        }
+    });
 
 });
 
