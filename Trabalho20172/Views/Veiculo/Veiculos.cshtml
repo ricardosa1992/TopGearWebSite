@@ -131,7 +131,7 @@
                                 <h4>mercedes sls</h4>
                                 <p>15 km/l (approximate)</p>
                                 <p><a href="#" class="read-more">Details</a></p>
-                                <input type="button" class="btn btn-primary selecionarCarro" id="carro_5" idCarro="5" modeloCarro="Mercedes" value="Selecionar" />
+                                <input type="button" class="btn btn-primary selecionarCarro" id="carro_5" idCarro="5" modeloCarro="Mercedes" precoCarro="200.00" value="Selecionar" />
 
                             </div>
                             <div class="details-box">
@@ -217,40 +217,25 @@
                                         </div>
 
                                     </div>
-                                    <div id="slip-reserva-sua-estimativa" style="display:none;">
-                                        <div id="slip-reserva-sua-estimativa-informacoes"></div>
+
+                                    <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                        <div class="slip-reserva-valor-total">
+                                            <h3 class="titulo valor-previsto" id="valorLocacao"></h3>
+                                        </div>
                                     </div>
+
+                                    <a href="@Url.Action("DadosCliente","FinalizarReserva")"><input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar"  style="display:none" /></a>
+
                                 </div>
-                                <div class="regiao-slip-reserva" id="slip-reserva-pontuacao-fidelidade" style="display:none;">
-                                    <h1>
-                                        <span id="simbolo-header-pontuacao-fidelidade" style="padding-bottom: 5px;font-size: 18px;color: rgb(0, 152, 74);font-weight: 700;line-height: 26px;">
-                                        </span>Pontuação Fidelidade
-                                    </h1>
-                                    <br>
-                                    <div style="margin-right: 9px;">
-                                        <p class="text-slip-normal" id="slip-reserva-pontuacao-fidelidade-reserva"></p>
-                                    </div>
-                                </div>
+                     
                             </div>
-                            <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                            @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
                                 <div class="slip-reserva-valor-total">
-                                    <p class="titulo valor-previsto">Valor total previsto:</p>
-                                    <p id="slip-reserva-valor-total-reserva" class="valor-moeda"></p>
-                                    <p id="slip-reserva-valor-total-parcela" class="parcelas"></p>
-                                    <div class="slip-reserva-valor-total-por-pontos" style="display:none;">
-                                        <span>ou</span>
-                                        <span id="slip-reserva-valor-total-reserva-pontos"></span>
-                                        <span>pontos</span>
-                                        <span class="soma-adicionais">+</span>
-                                        <span class="soma-adicionais" id="slip-reserva-valor-total-adicionais"></span>
-                                    </div>
+                                    <p class="titulo valor-previsto" id="valorLocacao"></p>
                                 </div>
                             </div>
-
-
-                            <a id="content-imprimir" class="btn-imprimir" style="display:none" href="#" title="Imprimir cotação">
-                                <i class="icon2-imprimir-cotacao"></i>Imprimir cotação
-                            </a>
+                            
+                            <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
                         </div>
                     </div>
                 </div>

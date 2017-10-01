@@ -491,13 +491,15 @@ $(".selecionarCarro").click(function (e) {
     var idCarro = $(this).attr("idCarro");
     var modeloCarro = $(this).attr("modeloCarro");
     var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-
+    var preco = $(this).attr("precoCarro");
 
     //Montando as Informações sobre o carro selecionado
     $("#carroSelecionado").text("Modelo: " + modeloCarro);
     $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
+    $("#valorLocacao").text("Valor Total: " + preco);
+    $("#slip-reserva-valor").show();
     $(".seu-carro").show();
-
+    $("#confirmarLocacao").show();
 
 
 });

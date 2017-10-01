@@ -1,0 +1,239 @@
+﻿
+@model Trabalho20172.Models.LocacaoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:28:45 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car|Rental Landingpage</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/css/animate.css" rel="stylesheet">
+    <!-- Google Font Lato -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- Plugin Styles -->
+    <link href="~/Content/css/datepicker.css" rel="stylesheet">
+
+    <!-- Main Styles -->
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+    <link href="~/Content/css/rental-car-css/rentalcar-template.css" rel="stylesheet">
+    <!-- Available main styles: styles-red.css, styles-green.css -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.~/Scripts/js/1.4.2/respond.min.js"></script>
+      <link href="css/ie8fix.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+      <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
+
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
+    <!-- Header start -->
+    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+        <div class="row container box">
+            <div class="col-md-5">
+                <!-- Logo start -->
+                <div class="brand">
+                    <h1><a class="scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a></h1>
+                </div>
+                <!-- Logo end -->
+            </div>
+            <div class="col-md-7">
+                <div class="clearfix"></div>
+                <!-- start navigation -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a>
+                        </div>
+                        <!-- Collect the nav links, for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Nav-Links start -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="#top" class="scroll-to">Inicio</a></li>
+                                <li><a href="#vehicles" class="scroll-to">Veículos</a></li>
+                                <li><a href="#contact" class="scroll-to">Contato</a></li>
+                            </ul>
+                            <!-- Nav-Links end -->
+                        </div>
+                    </div>
+                </nav>
+                <!-- end navigation -->
+            </div>
+        </div>
+    </header>
+    <!-- Header end -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row content">
+              
+                <div class="col-sm-8">
+                 
+                </div>
+
+                <!--Area da reserva-->
+                <div class="col-sm-2 sidenav">
+                    <div id="div-fixo-slip" class="col-2 pull-right" style="">
+
+                        <div class="box-detalhes-reserva">
+                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                <div class="reserva-header">
+                                    <a class="target" href="#" title="sua reserva">
+                                        <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
+                                    </a>
+                                </div>
+                                <div class="reserva-body">
+                                    <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                        Editar
+                                    </a>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @Model.localRetirada.Bairro
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @Model.dataRetirada.ToString()
+                                        </div>
+                                    </div>
+                                    <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
+                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                        Editar
+                                    </a>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @Model.localEntrega.Bairro
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @Model.dataEntrega.ToString()
+                                        </div>
+                                    </div>
+                                    <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
+
+                                    </div>
+                                    <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
+                                        <br>
+                                        @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
+                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
+                                        <div class="info">
+                                            <h4 id="carroSelecionado"></h4>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                        <div class="slip-reserva-valor-total">
+                                            <h3 class="titulo valor-previsto" id="valorLocacao"></h3>
+                                        </div>
+                                    </div>
+
+                                    <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />
+
+                                </div>
+
+                            </div>
+                            @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                    <div class="slip-reserva-valor-total">
+                                        <p class="titulo valor-previsto" id="valorLocacao"></p>
+                                    </div>
+                                </div>
+
+                                <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
+                        </div>
+                    </div>
+                </div>
+                <!--Fim Area reserva-->
+
+            </div>
+        </div>
+
+        
+
+    </section>
+
+
+    <a href="#" class="scrollup">ScrollUp</a>
+
+    <!-- Footer start -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-nav">
+                        <li><a class="scroll-to" href="#top">Home</a></li>
+                        <li><a class="scroll-to" href="#vehicles">Vehicle Models</a></li>
+                        <li><a class="scroll-to" href="#reviews">Reviews</a></li>
+                        <li><a class="scroll-to" href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p class="copyright">©2014 Themeinjection, All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal end -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.autocomplete.min.js"></script>
+    <script src="~/Scripts/js/jquery.placeholder.js"></script>
+    <script src="~/Scripts/js/locations-autocomplete.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="~/Scripts/js/gmap3.min.js"></script>
+
+    <!--[if !(gte IE 8)]><!-->
+    <script src="~/Scripts/js/wow.min.js"></script>
+    <script>
+                // Initialize WOW
+                //-------------------------------------------------------------
+                new WOW({mobile: false}).init();
+    </script>
+    <!--<![endif]-->
+    <script src="~/Scripts/js/custom.js"></script>
+
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.flexslider.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.parallax.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.inview.js"></script>
+    <script src="~/Scripts/js-rental-car/superfish.js"></script>
+    <script src="~/Scripts/js-rental-car/supersubs.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.glide.js"></script>
+    <script src="~/Scripts/js-rental-car/select2.min.js"></script>
+    <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
+    <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
+
+</body>
+
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
+</html>

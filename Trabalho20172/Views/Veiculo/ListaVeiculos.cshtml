@@ -8,7 +8,7 @@
         //Pegar aqui o caminho da foto
         int carIMG = 1;
         var caminhoFoto = "~/Content/img/rental-car/rentalcar/car" + carIMG + ".png";
-
+        //var preco = carro.Categoria.Preco;
 
         <div class="item @categoria">
                 <div class="image"><img id="caminhoFotoCarro_@carro.Id" src="~/Content/img/rental-car/rentalcar/car1.png" alt="" /></div>
@@ -17,7 +17,7 @@
                     <p>15 km/l (approximate)</p>
                     <p><a href="#" class="read-more">Details</a></p>
                     @*<button type="button" class="selecionarCarro btn btn-primary" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>*@
-                    <input type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" modeloCarro ="@carro.Modelo" value="Selecionar" />
+                    <input type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" modeloCarro ="@carro.Modelo" precoCarro="100.00" value="Selecionar" />
                 </div>
                 <div class="details-box">
                     <span class="box-close">&times;</span>
