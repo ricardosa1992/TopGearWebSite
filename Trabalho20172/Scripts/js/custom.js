@@ -368,13 +368,13 @@ $("#car-select-form").submit(function () {
       if(validateNotEmpty(pickUpDate)) { error = 1; }
       if(validateNotEmpty(dropOffDate)) { error = 1; }
 
-      if (error == 1)
-      {
+      //if (error == 1)
+      //{
 
-          $('#car-select-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
-          return false;
+      //    $('#car-select-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
+      //    return false;
 
-      }
+      //}
 
 });
 
@@ -484,6 +484,22 @@ $( "#checkout-form" ).submit(function() {
   });
 
 return false;
+});
+
+$(".selecionarCarro").click(function (e) {
+    debugger;
+    var idCarro = $(this).attr("idCarro");
+    var modeloCarro = $(this).attr("modeloCarro");
+    var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
+
+
+    //Montando as Informações sobre o carro selecionado
+    $("#carroSelecionado").text("Modelo: " + modeloCarro);
+    $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
+    $(".seu-carro").show();
+
+
+
 });
 
 

@@ -118,16 +118,21 @@
                         </ul>
                     </div>
                     <div class="gallery">
-                      
 
-                        @Html.Partial("~/Views/Veiculo/ListaVeiculos.cshtml")
+                        @{Html.RenderPartial("ListaVeiculos", Model);}
+                    
+                        @*@{
+                            Html.RenderPartial("ListaVeiculos");
+                        }*@
 
-                        @*<div class="item category1 category3">
-                            <div class="image"><img src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
+                       <div class="item category1 category3">
+                            <div class="iolxmage"><img id="caminhoFotoCarro_5" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
                             <div class="info">
                                 <h4>mercedes sls</h4>
                                 <p>15 km/l (approximate)</p>
                                 <p><a href="#" class="read-more">Details</a></p>
+                                <input type="button" class="btn btn-primary selecionarCarro" id="carro_5" idCarro="5" modeloCarro="Mercedes" value="Selecionar" />
+
                             </div>
                             <div class="details-box">
                                 <span class="box-close">&times;</span>
@@ -155,145 +160,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>*@
+                        </div>
                        
-                        @*<div class="item category2 category5 category3">
-                            <div class="image"><img src="~/Content/img/rental-car/rentalcar/car12.png" alt="" /></div>
-                            <div class="info">
-                                <h4>Toyota Camry</h4>
-                                <p>15 km/l (approximate)</p>
-                                <p><a href="#" class="read-more">Details</a></p>
-                            </div>
-                            <div class="details-box">
-                                <span class="box-close">&times;</span>
-                                <div class="title">Vehicle Details</div>
-                                <div class="inside">
-                                    <div class="wrapper row-top">
-                                        <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car12.png" alt="" /></div>
-                                        <div class="details-list">
-                                            <h4>Toyota Camry</h4>
-                                            5 Passengers<br>
-                                            1 Large Suitcase, 2 Small Suitcase<br>
-                                            Automatic Transmission<br>
-                                            Air Conditioning<br>
-                                            0 g/km CO2
-                                        </div>
-                                    </div>
-                                    <div class="row-bot">
-                                        <p><strong>Please Note:</strong></p>
-                                        <ul class="styled-list">
-                                            <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
-                                            <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
-                                            <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
-                                        </ul>
-                                        <a href="#" class="btn btn-default">Save for my reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="item category2">
-                            <div class="image"><img src="~/Content/img/rental-car/rentalcar/car10.png" alt="" /></div>
-                            <div class="info">
-                                <h4>KIA Picanto</h4>
-                                <p>15 km/l (approximate)</p>
-                                <p><a href="#" class="read-more">Details</a></p>
-                            </div>
-                            <div class="details-box">
-                                <span class="box-close">&times;</span>
-                                <div class="title">Vehicle Details</div>
-                                <div class="inside">
-                                    <div class="wrapper row-top">
-                                        <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car10.png" alt="" /></div>
-                                        <div class="details-list">
-                                            <h4>KIA Picanto</h4>
-                                            5 Passengers<br>
-                                            1 Large Suitcase, 2 Small Suitcase<br>
-                                            Automatic Transmission<br>
-                                            Air Conditioning<br>
-                                            0 g/km CO2
-                                        </div>
-                                    </div>
-                                    <div class="row-bot">
-                                        <p><strong>Please Note:</strong></p>
-                                        <ul class="styled-list">
-                                            <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
-                                            <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
-                                            <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
-                                        </ul>
-                                        <a href="#" class="btn btn-default">Save for my reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item category2 category3">
-                            <div class="image"><img src="~/Content/img/rental-car/rentalcar/car11.png" alt="" /></div>
-                            <div class="info">
-                                <h4>NISSAN JUKE</h4>
-                                <p>15 km/l (approximate)</p>
-                                <p><a href="#" class="read-more">Details</a></p>
-                            </div>
-                            <div class="details-box">
-                                <span class="box-close">&times;</span>
-                                <div class="title">Vehicle Details</div>
-                                <div class="inside">
-                                    <div class="wrapper row-top">
-                                        <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car11.png" alt="" /></div>
-                                        <div class="details-list">
-                                            <h4>NISSAN JUKE</h4>
-                                            5 Passengers<br>
-                                            1 Large Suitcase, 2 Small Suitcase<br>
-                                            Automatic Transmission<br>
-                                            Air Conditioning<br>
-                                            0 g/km CO2
-                                        </div>
-                                    </div>
-                                    <div class="row-bot">
-                                        <p><strong>Please Note:</strong></p>
-                                        <ul class="styled-list">
-                                            <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
-                                            <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
-                                            <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
-                                        </ul>
-                                        <a href="#" class="btn btn-default">Save for my reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item category1">
-                            <div class="image"><img src="~/Content/img/rental-car/rentalcar/car14.png" alt="" /></div>
-                            <div class="info">
-                                <h4>Toyota Sienna</h4>
-                                <p>15 km/l (approximate)</p>
-                                <p><a href="#" class="read-more">Details</a></p>
-                            </div>
-                            <div class="details-box">
-                                <span class="box-close">&times;</span>
-                                <div class="title">Vehicle Details</div>
-                                <div class="inside">
-                                    <div class="wrapper row-top">
-                                        <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car14.png" alt="" /></div>
-                                        <div class="details-list">
-                                            <h4>Toyota Sienna</h4>
-                                            5 Passengers<br>
-                                            1 Large Suitcase, 2 Small Suitcase<br>
-                                            Automatic Transmission<br>
-                                            Air Conditioning<br>
-                                            0 g/km CO2
-                                        </div>
-                                    </div>
-                                    <div class="row-bot">
-                                        <p><strong>Please Note:</strong></p>
-                                        <ul class="styled-list">
-                                            <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
-                                            <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
-                                            <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
-                                        </ul>
-                                        <a href="#" class="btn btn-default">Save for my reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                     
                        
                        
                     </div>
@@ -337,15 +206,16 @@
                                     </div>
                                     <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
                                         <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
-                                        <a class="btn-dtl-reserva pull-right" id="alterarSeuCarro" title="Editar">
-                                            Editar
-                                        </a>
-                                        <p class="text-slip-normal" id="slip-reserva-seu-carro-informacoes"></p>
+                                     
                                     </div>
                                     <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
                                         <br>
-                                        <span class="text-slip-normal">Você comprou um</span>
-                                        <span class="text-slip-normal" id="slip-reserva-upgrade-informacoes"></span>
+                                        @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
+                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
+                                        <div class="info">
+                                            <h4 id="carroSelecionado"></h4>
+                                        </div>
+
                                     </div>
                                     <div id="slip-reserva-sua-estimativa" style="display:none;">
                                         <div id="slip-reserva-sua-estimativa-informacoes"></div>
@@ -629,24 +499,3 @@
 
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
 </html>
-
-@section Scripts {
-    <script type="text/javascript">
-
-    $(document).ready(function () {
-      
-        $(".selecionarCarro").click(function (e) {
-            debugger;
-            var idcarro = $(this).attr("idCarro");
-            var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-            $(".seu-carro").show();
-
-
-
-        });
-
-    })
-
-    </script>
-
-}

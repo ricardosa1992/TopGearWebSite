@@ -31,13 +31,22 @@ namespace Trabalho20172.Controllers
 
 
             //Obtendo a Agencia de retirada
-            viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
+            //viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
+            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
+            viewModel.localEntrega = viewModel.localRetirada;
 
             //Obtendo a Agencia de entrega != retirada
-             viewModel.localEntrega = (idLocalRetirada != idLocalEntrega && idLocalEntrega != 0) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalEntrega, "agencia") : viewModel.localRetirada;
+            //viewModel.localEntrega = (idLocalRetirada != idLocalEntrega && idLocalEntrega != 0) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalEntrega, "agencia") : viewModel.localRetirada;
 
             //Buscar os Carros disponiveis
-            viewModel.listaCarrosDisponiveis = TopGear.Api.TopGearApiDataAccess<Carro>.Get("carro");
+            //viewModel.listaCarrosDisponiveis = TopGear.Api.TopGearApiDataAccess<Carro>.Get("carro");
+            List<Carro> listaCarrosDisponiveis = new List<Carro>();
+            listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic" });
+            listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
+            listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
+
+            viewModel.listaCarrosDisponiveis = listaCarrosDisponiveis;
+
 
             return View(viewModel);
         }
@@ -48,10 +57,13 @@ namespace Trabalho20172.Controllers
             var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
 
             listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-            foreach (var item in agencias)
-            {
-                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
-            }
+            listaAgencias.Add(new SelectListItem { Text = "Aeroporto", Value = "9" });
+            listaAgencias.Add(new SelectListItem { Text = "Teste", Value = "10" });
+
+            //foreach (var item in agencias)
+            //{
+            //    listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
+            //}
 
             return listaAgencias;
         }

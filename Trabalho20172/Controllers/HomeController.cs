@@ -36,10 +36,14 @@ namespace Trabalho20172.Controllers
             var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
 
             listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-            foreach (var item in agencias)
-            {
-                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
-            }
+            listaAgencias.Add(new SelectListItem { Text = "Aeroporto", Value = "9" });
+            listaAgencias.Add(new SelectListItem { Text = "Teste", Value = "10" });
+
+            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
+            //foreach (var item in agencias)
+            //{
+            //    listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
+            //}
 
             return listaAgencias;
         }

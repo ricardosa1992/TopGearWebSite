@@ -16,7 +16,8 @@
                     <h4>@carro.Modelo</h4>
                     <p>15 km/l (approximate)</p>
                     <p><a href="#" class="read-more">Details</a></p>
-                    <button type="button" class="selecionarCarro btn btn-primary" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>
+                    @*<button type="button" class="selecionarCarro btn btn-primary" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>*@
+                    <input type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" modeloCarro ="@carro.Modelo" value="Selecionar" />
                 </div>
                 <div class="details-box">
                     <span class="box-close">&times;</span>
@@ -53,7 +54,7 @@
                                 <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
                                 <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
                             </ul>
-                            <button type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>
+                            @*<button type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>*@
                         </div>
                     </div>
                 </div>
