@@ -515,7 +515,7 @@ $("#confirmarLocacao").click(function (e) {
     var dataEntrega = $("#dataEntregaHidden").val();
     var precoTotal = ($("#precoTotal").val()).replace(".",",");
     var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
-    window.open(href);
+    window.open(href,"_self");
 
 });
 
