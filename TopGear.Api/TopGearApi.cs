@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -14,10 +15,10 @@ namespace TopGear.Api
     {
         private static HttpClient client = new HttpClient
         {
-            BaseAddress = new Uri("https://topgearapi.azurewebsites.net/api/")
+            BaseAddress = new Uri(ConfigurationManager.AppSettings["baseUrl"])
         };
 
-        private static string Token = "CorrectHorseBatteryStaple";
+        private static string Token = ConfigurationManager.AppSettings["Token"];
 
         public static Response<T> Get(string relativePath)
         {
