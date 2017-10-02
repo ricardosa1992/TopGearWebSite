@@ -3,6 +3,11 @@ nuget:
   project_feed: true
 before_build:
 - cmd: nuget restore
+build_script:
+  - choco install "msbuild-sonarqube-runner" -y
+  - MSBuild.SonarQube.Runner.exe begin /k:"topgearwebsite" /o:"cayodonatti-github" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=6f1b5ea26e7735a5612f7bb051c0418e2ae9bbd8"
+  - msbuild "Trabalho20172.sln"
+  - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=6f1b5ea26e7735a5612f7bb051c0418e2ae9bbd8"
 build:
   publish_wap: true
   publish_nuget: true
@@ -11,13 +16,9 @@ build:
   verbosity: minimal
 deploy:
 - provider: Environment
-  name: WebSite
+  name: TopGearApi
   on:
       branch: master
-- provider: Environment
-  name: WebSiteDev
-  on:
-      branch: dev
 notifications:
 - provider: Slack
   incoming_webhook: https://hooks.slack.com/services/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
