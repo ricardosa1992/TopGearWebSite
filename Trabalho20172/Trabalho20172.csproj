@@ -340,7 +340,6 @@
     <Content Include="Scripts\js-rental-car\jquery.isotope.min.js" />
     <Content Include="Scripts\js-rental-car\jquery.parallax.js" />
     <Content Include="Scripts\js-rental-car\owl.carousel.js" />
-    <Content Include="Scripts\js-rental-car\rentalcar-custom.js" />
     <Content Include="Scripts\js-rental-car\select2.min.js" />
     <Content Include="Scripts\js-rental-car\superfish.js" />
     <Content Include="Scripts\js-rental-car\supersubs.js" />
