@@ -54,14 +54,28 @@ namespace Trabalho20172.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : "";
+            switch (message)
+            {
+                case ManageMessageId.ChangePasswordSuccess:
+                    ViewBag.StatusMessage = "Your password has been changed.";
+                    break;
+                case ManageMessageId.SetPasswordSuccess:
+                    ViewBag.StatusMessage = "Your password has been set.";
+                    break;
+                case ManageMessageId.SetTwoFactorSuccess:
+                    ViewBag.StatusMessage = "Your two-factor authentication provider has been set.";
+                    break;
+                case ManageMessageId.Error:
+                    ViewBag.StatusMessage = "An error has occurred.";
+                    break;
+                case ManageMessageId.AddPhoneSuccess:
+                    ViewBag.StatusMessage = "Your phone number was added.";
+                    break;
+                case ManageMessageId.RemovePhoneSuccess:
+                    ViewBag.StatusMessage = "Your phone number was removed.";
+                    break;
+
+            }
 
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
@@ -164,8 +178,6 @@ namespace Trabalho20172.Controllers
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-            // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
@@ -359,16 +371,6 @@ namespace Trabalho20172.Controllers
             if (user != null)
             {
                 return user.PasswordHash != null;
-            }
-            return false;
-        }
-
-        private bool HasPhoneNumber()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PhoneNumber != null;
             }
             return false;
         }

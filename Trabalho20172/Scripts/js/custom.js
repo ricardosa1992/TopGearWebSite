@@ -363,7 +363,7 @@ $("#car-select-form").submit(function () {
       var dropOffTime = $("#drop-off-time").val();
 
       var error = 0;
-      debugger
+
       if (validateNotEmpty(pickupLocation) || pickupLocation == 0) { error = 1; }
       if(validateNotEmpty(pickUpDate)) { error = 1; }
       if(validateNotEmpty(dropOffDate)) { error = 1; }
@@ -487,7 +487,7 @@ return false;
 });
 
 $(".selecionarCarro").click(function (e) {
-    debugger;
+    
     var idCarro = $(this).attr("idCarro");
     var modeloCarro = $(this).attr("modeloCarro");
     var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
@@ -507,7 +507,7 @@ $(".selecionarCarro").click(function (e) {
 });
 
 $("#confirmarLocacao").click(function (e) {
-    debugger;
+    
     var idCarro = $("#idCarroSelecionadoHidden").val();
     var idLocalRetirada = $("#idLocalRetiradaHidden").val(); 
     var idLocalEntrega = $("#idLocalEntregaHidden").val();

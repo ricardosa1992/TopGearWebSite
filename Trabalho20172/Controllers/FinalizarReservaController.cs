@@ -25,7 +25,6 @@ namespace Trabalho20172.Controllers
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
             //Obtendo a Agencia de retirada
-            //viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
             viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
             viewModel.localEntrega = viewModel.localRetirada;
 
@@ -77,8 +76,6 @@ namespace Trabalho20172.Controllers
             var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
 
             listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-            //listaAgencias.Add(new SelectListItem { Text = "Aeroporto", Value = "9" });
-            //listaAgencias.Add(new SelectListItem { Text = "Teste", Value = "10" });
 
             foreach (var item in agencias)
             {

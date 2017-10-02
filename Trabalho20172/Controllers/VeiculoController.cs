@@ -18,36 +18,6 @@ namespace Trabalho20172.Controllers
             LocacaoViewModel viewModel = new LocacaoViewModel();
             viewModel.ListaDeAgencias = ListaDeAgencias();
 
-            //Obtendo os parâmetros selecionados para retirada/entrega
-            int idLocalRetirada = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
-            int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
-            var horaRetirada = Request.Form["pick-up-time"];
-            var horaEntrega = Request.Form["drop-off-time"];
-
-            var dataRetirada = Request.Form["pick-up-date"];
-
-            viewModel.dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
-            viewModel.dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
-
-
-            //Obtendo a Agencia de retirada
-            //viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
-            viewModel.localEntrega = viewModel.localRetirada;
-
-            //Obtendo a Agencia de entrega != retirada
-            //viewModel.localEntrega = (idLocalRetirada != idLocalEntrega && idLocalEntrega != 0) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalEntrega, "agencia") : viewModel.localRetirada;
-
-            //Buscar os Carros disponiveis
-            //viewModel.listaCarrosDisponiveis = TopGear.Api.TopGearApiDataAccess<Carro>.Get("carro");
-
-            //Obtendo as categorias
-            //var cat = TopGear.Api.TopGearApiDataAccess<Carro>.Get(1,"categoria/PorId");
-            //foreach (var carro in viewModel.listaCarrosDisponiveis)
-            //{
-
-            //}
-
             List<Carro> listaCarrosDisponiveis = new List<Carro>();
             Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
             listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
@@ -66,8 +36,6 @@ namespace Trabalho20172.Controllers
             var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
 
             listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-            //listaAgencias.Add(new SelectListItem { Text = "Aeroporto", Value = "9" });
-            //listaAgencias.Add(new SelectListItem { Text = "Teste", Value = "10" });
 
             foreach (var item in agencias)
             {

@@ -8,7 +8,7 @@ using TopGear.Api.Models;
 
 namespace TopGear.Console
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
