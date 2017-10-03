@@ -34,7 +34,7 @@ namespace Trabalho20172.Models
 
         public double precoTotal { get; set; }
 
-        public IEnumerable<Carro> listaCarrosDisponiveis { get; set; } = new List<Carro>();
+        public List<CarroViewModel> listaCarrosDisponiveis { get; set; } = new List<CarroViewModel>();
 
         public List<SelectListItem> ListaDeAgencias { get; set; }
 

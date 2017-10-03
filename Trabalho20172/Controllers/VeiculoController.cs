@@ -8,7 +8,7 @@ using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
-    public class VeiculoController : Controller
+    public class VeiculoController : BaseController
     {
         // GET: Veiculo
         [HttpPost]
@@ -29,37 +29,38 @@ namespace Trabalho20172.Controllers
 
 
             //Obtendo a Agencia de retirada
-            //viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get(idLocalRetirada, "agencia");
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
+            viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Ifes Serra" };
             viewModel.localEntrega = viewModel.localRetirada;
            
             viewModel.ListaDeAgencias = ListaDeAgencias();
 
-            List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
-            listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
-            listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
+            //List<Carro> listaCarrosDisponiveis = new List<Carro>();
+            //Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
+            //listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
+            //listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
+            //listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
 
-            viewModel.listaCarrosDisponiveis = listaCarrosDisponiveis;
+            viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega);
 
 
             return View(viewModel);
         }
 
-        public List<SelectListItem> ListaDeAgencias()
+        public List<CarroViewModel> BuscarCarrosDisponiveis(DateTime dataRetirada, DateTime dataEntrega)
         {
-            List<SelectListItem> listaAgencias = new List<SelectListItem>();
-            var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
+            var listaCarros = TopGear.Api.TopGearApiDataAccess<IEnumerable<Carro>>.Get("carro");
+            List<CarroViewModel> listaCarrosDispopniveis = new List<CarroViewModel>();
 
-            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-
-            foreach (var item in agencias)
+            foreach (var carro in listaCarros)
             {
-                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
+                var categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carro.CategoriaId}");
+                CarroViewModel carroViewModel = new CarroViewModel { Id = carro.Id, Ano = carro.Ano, Marca = carro.Marca, Modelo = carro.Modelo, categoria = categoria };
+                listaCarrosDispopniveis.Add(carroViewModel);
             }
 
-            return listaAgencias;
+            return listaCarrosDispopniveis;
+
         }
 
     }

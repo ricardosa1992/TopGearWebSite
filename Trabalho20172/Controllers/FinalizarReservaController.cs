@@ -8,7 +8,7 @@ using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
-    public class FinalizarReservaController : Controller
+    public class FinalizarReservaController : BaseController
     {
         // GET: FinalizarReserva
         public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, string precoTotal)
@@ -66,22 +66,6 @@ namespace Trabalho20172.Controllers
             var sucesso = TopGear.Api.TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
             return (sucesso != null) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
 
-        }
-
-
-        public List<SelectListItem> ListaDeAgencias()
-        {
-            List<SelectListItem> listaAgencias = new List<SelectListItem>();
-            var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
-
-            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-
-            foreach (var item in agencias)
-            {
-                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
-            }
-
-            return listaAgencias;
         }
 
     }

@@ -22,8 +22,5 @@ namespace TopGear.Api.Models
         public int AgenciaId { get; set; }
         public int CategoriaId { get; set; }
 
-        public virtual Agencia Agencia { get; set; }
-        public virtual Categoria Categoria { get; set; }
-        public virtual ICollection<Item> Itens { get; set; }
     }
 }

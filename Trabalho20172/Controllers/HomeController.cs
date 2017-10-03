@@ -5,7 +5,7 @@ using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -27,25 +27,6 @@ namespace Trabalho20172.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-
-        public List<SelectListItem> ListaDeAgencias()
-        {
-            List<SelectListItem> listaAgencias = new List<SelectListItem>();
-            var agencias = TopGear.Api.TopGearApiDataAccess<Agencia>.Get("agencia");
-
-            listaAgencias.Add(new SelectListItem { Text = "", Value = "0" });
-            //listaAgencias.Add(new SelectListItem { Text = "Aeroporto", Value = "9" });
-            //listaAgencias.Add(new SelectListItem { Text = "Teste", Value = "10" });
-
-
-            foreach (var item in agencias)
-            {
-                listaAgencias.Add(new SelectListItem { Text = item.Bairro, Value = item.Id.ToString() });
-            }
-
-            return listaAgencias;
         }
 
     }

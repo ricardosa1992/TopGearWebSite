@@ -8,22 +8,9 @@ namespace TopGear.Api
 {
     public static class TopGearApiDataAccess<T>
     {
-        public static IEnumerable<T> Get(string relativePath)
+        public static T Get(string relativePath)
         {
-            var result = TopGearApi<IEnumerable<T>>.Get(relativePath);
-            IEnumerable<T> listaVazia = new List<T>();
-
-            if (result.Sucesso)
-            {
-                return result.Dados;
-            }
-            return listaVazia;
-
-        }
-
-        public static T Get(int id, string relativePath)
-        {
-            var result = TopGearApi<T>.Get(id, relativePath);
+            var result = TopGearApi<T>.Get(relativePath);
             if (result.Sucesso)
             {
                 return result.Dados;

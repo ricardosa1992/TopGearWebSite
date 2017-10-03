@@ -506,8 +506,11 @@ $(".selecionarCarro").click(function (e) {
 
 });
 
+//Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
 $("#confirmarLocacao").click(function (e) {
     
+    $("#login-modal").modal();
+
     var idCarro = $("#idCarroSelecionadoHidden").val();
     var idLocalRetirada = $("#idLocalRetiradaHidden").val(); 
     var idLocalEntrega = $("#idLocalEntregaHidden").val();
@@ -515,10 +518,12 @@ $("#confirmarLocacao").click(function (e) {
     var dataEntrega = $("#dataEntregaHidden").val();
     var precoTotal = ($("#precoTotal").val()).replace(".",",");
     var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
-    window.open(href,"_self");
+    //window.open(href,"_self");
 
 });
 
+
+//Chama o Método que faz a Locação
 $("#efetuarLocacao").click(function (e) {
 
     $.ajax({

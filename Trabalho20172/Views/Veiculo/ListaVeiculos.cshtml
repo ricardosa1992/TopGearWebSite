@@ -4,7 +4,7 @@
 @{
     foreach (var carro in Model.listaCarrosDisponiveis)
     {
-        var categoria = "category" + carro.CategoriaId;
+        var categoria = "category" + carro.categoria.Id;
         //Pegar aqui o caminho da foto
         int carIMG = 1;
         var caminhoFoto = "~/Content/img/rental-car/rentalcar/car" + carIMG + ".png";
@@ -17,7 +17,7 @@
                     <p>15 km/l (approximate)</p>
                     <p><a href="#" class="read-more">Details</a></p>
                     @*<button type="button" class="selecionarCarro btn btn-primary" id="carro_@carro.Id" idCarro="@carro.Id" style="float:left">Selecionar</button>*@
-                    <input type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" modeloCarro ="@carro.Modelo" precoCarro="100.00" value="Selecionar" />
+                    <input type="button" class="btn btn-primary selecionarCarro" id="carro_@carro.Id" idCarro="@carro.Id" modeloCarro ="@carro.Modelo" precoCarro="@carro.categoria.Preco" value="Selecionar" />
                 </div>
                 <div class="details-box">
                     <span class="box-close">&times;</span>
@@ -30,14 +30,14 @@
                                 <h4>@carro.Modelo</h4>
                                 
                                 @{ 
-                                    if (carro.Itens != null)
+                                    @*if (carro.Itens != null)
                                     {
                                         foreach (var item in carro.Itens)
                                         {
                                             var desc = item.Descricao;
                                             @Html.TextBox(desc)
                                         }
-                                    }
+                                    }*@
 
                                     }
                                 @*5 Passengers<br>
