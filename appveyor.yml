@@ -5,7 +5,7 @@ before_build:
 - cmd: nuget restore
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
-  - MSBuild.SonarQube.Runner.exe begin /k:"topgearwebsite" /o:"ricardosa1992-github" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=ac1546386a28dfab2048ef9ab9b10b68b09ab8ff"
+  - MSBuild.SonarQube.Runner.exe begin /k:"topgearwebsite" /o:"ricardosa1992" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=ac1546386a28dfab2048ef9ab9b10b68b09ab8ff"
   - msbuild "Trabalho20172.sln"
   - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=ac1546386a28dfab2048ef9ab9b10b68b09ab8ff"
 build:
