@@ -30,7 +30,7 @@ namespace Trabalho20172.Controllers
 
             //Obtendo a Agencia de retirada
             viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = viewModel.localRetirada;
+            viewModel.localEntrega = (idLocalRetirada != idLocalEntrega) ? TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}") : viewModel.localRetirada;
            
             viewModel.ListaDeAgencias = ListaDeAgencias();
             
