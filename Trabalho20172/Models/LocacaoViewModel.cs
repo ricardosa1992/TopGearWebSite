@@ -26,7 +26,7 @@ namespace Trabalho20172.Models
 
         public string dataEntregaHidden { get; set; }
 
-        public Carro carroSelecionado { get; set; }
+        public CarroViewModel carroSelecionado { get; set; }
 
         public int idCarroSelecionadoHidden { get; set; }
 
@@ -55,6 +55,8 @@ namespace Trabalho20172.Models
         public string cpf { get; set; }
 
         public int numCartao { get; set; }
+
+        public string senha { get; set; }
 
     }
 }

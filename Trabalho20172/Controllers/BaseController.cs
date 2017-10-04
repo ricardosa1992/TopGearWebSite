@@ -10,6 +10,15 @@ namespace Trabalho20172.Controllers
     public class BaseController : Controller
     {
 
+        public JsonResult EfetuarLogin(string login, string senha)
+        {
+            //Buscar o cliente se estiver cadastrado
+            var cliente = TopGear.Api.TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{login}");
+            return (cliente != null) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
+
+        }
+
+
         public List<SelectListItem> ListaDeAgencias()
         {
             List<SelectListItem> listaAgencias = new List<SelectListItem>();

@@ -508,17 +508,9 @@ $(".selecionarCarro").click(function (e) {
 
 //Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
 $("#confirmarLocacao").click(function (e) {
-    
-    $("#login-modal").modal();
 
-    var idCarro = $("#idCarroSelecionadoHidden").val();
-    var idLocalRetirada = $("#idLocalRetiradaHidden").val(); 
-    var idLocalEntrega = $("#idLocalEntregaHidden").val();
-    var dataRetirada = $("#dataRetiradaHidden").val();
-    var dataEntrega = $("#dataEntregaHidden").val();
-    var precoTotal = ($("#precoTotal").val()).replace(".",",");
-    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
-    //window.open(href,"_self");
+    //Verificar aqui se o cliente já está logado
+    $("#modal-login").modal();
 
 });
 
@@ -542,9 +534,46 @@ $("#efetuarLocacao").click(function (e) {
             precoTotal: ($("#precoTotal").val()).replace(".", ",")
         },
         success: function (result) {
-            $("#div1").html(result);
+            //$("#div1").html(result);
         }
     });
+
+});
+
+//Verifica se o cliente está cadastrado e faz o login
+$("#efetuarLogin").click(function (e) {
+
+    $.ajax({
+        url: "/Base/EfetuarLogin",
+        type: "POST",
+        dataType: 'json',
+        data: {
+            login: $("#cpfUser").val(),
+            senha: $("senhaUser").val()
+        },
+        success: function (result) {
+            if (result.Status == "ok") {
+                $("#modal-login").modal('toggle');
+
+                var idCarro = $("#idCarroSelecionadoHidden").val();
+                var idLocalRetirada = $("#idLocalRetiradaHidden").val();
+                var idLocalEntrega = $("#idLocalEntregaHidden").val();
+                var dataRetirada = $("#dataRetiradaHidden").val();
+                var dataEntrega = $("#dataEntregaHidden").val();
+                var precoTotal = ($("#precoTotal").val()).replace(".", ",");
+                var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
+                window.open(href,"_self");
+
+            }
+        }
+    });
+
+});
+
+//Abre o modal para cadastro do cliente
+$("#btn-cadastro").click(function (e) {
+    $("#modal-login").modal('toggle');
+    $("#modal-cadastro").modal();
 
 });
 

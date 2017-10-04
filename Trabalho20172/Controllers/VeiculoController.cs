@@ -29,8 +29,7 @@ namespace Trabalho20172.Controllers
 
 
             //Obtendo a Agencia de retirada
-            viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Ifes Serra" };
+            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
             viewModel.localEntrega = viewModel.localRetirada;
            
             viewModel.ListaDeAgencias = ListaDeAgencias();
@@ -62,6 +61,8 @@ namespace Trabalho20172.Controllers
             return listaCarrosDispopniveis;
 
         }
+
+        
 
     }
 }

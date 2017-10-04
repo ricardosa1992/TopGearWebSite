@@ -25,26 +25,23 @@ namespace Trabalho20172.Controllers
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
             //Obtendo a Agencia de retirada
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
+            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
             viewModel.localEntrega = viewModel.localRetirada;
 
-            
-
-            List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic" });
-            listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            listaCarrosDisponiveis.Add(new Carro { Id = 5, CategoriaId = 4, Modelo = "Chevete" });
-
-            foreach (var carro in listaCarrosDisponiveis)
+            //Buscando o carro selecionado
+            Carro carroSelecionado = TopGear.Api.TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
+            Categoria categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carroSelecionado.CategoriaId}");
+            viewModel.carroSelecionado = new CarroViewModel
             {
-                if(carro.Id == idCarroSelecionado)
-                {
-                    viewModel.carroSelecionado = carro;
-                    break;
-                }
-            }
-
-
+                Id = carroSelecionado.Id,
+                Marca = carroSelecionado.Marca,
+                Modelo = carroSelecionado.Modelo,
+                Ano = carroSelecionado.Ano,
+                Placa = carroSelecionado.Placa,
+                AgenciaId = carroSelecionado.AgenciaId,
+                categoria = categoria
+            };
+            
             return View(viewModel);
 
            

@@ -429,8 +429,7 @@
         <!--Fim modal de Edição do local de Retirada/Entrega-->
 
         <!--Modal de Login-->
-        <!-- Modal -->
-        <div class="modal fade" id="login-modal" role="dialog">
+        <div class="modal fade" id="modal-login" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -442,28 +441,96 @@
                     <div class="modal-body" style="padding:40px 50px;">
                         <form role="form">
                             <div class="form-group">
-                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                                <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
+                                <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF">
                             </div>
                             <div class="form-group">
-                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                                <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                                <input type="text" class="form-control" id="senhaUser" placeholder="Digite a Senha">
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" value="" checked>Remember me</label>
                             </div>
-                            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                            <button type="button" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Login</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                        <p>Not a member? <a href="#">Sign Up</a></p>
+                        <p>Not a member? <a href="#" id="btn-cadastro">Sign Up</a></p>
                         <p>Forgot <a href="#">Password?</a></p>
                     </div>
                 </div>
 
             </div>
         </div> 
+        <!--Fim modal de Login-->
+
+        <!--Modal de Cadastro-->
+        <div class="modal fade" id="modal-cadastro" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:35px 50px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
+                    </div>
+                    <div class="modal-body" style="padding:40px 50px;">
+                        <form role="form">
+                            <div class="form-group col-md-8">
+                                <label for="name">Nome	</label>
+                                @Html.TextBoxFor(m => m.nomeCliente, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
+                                @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Cartao*	</label>
+                                @Html.TextBoxFor(m => m.numCartao, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="name">Telefone*</label>
+                                @Html.TextBoxFor(m => m.telefone, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-7">
+                                <label for="name">Endereço*</label>
+                                @Html.TextBoxFor(m => m.rua, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label for="name">Bairro*</label>
+                                @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="name">Cidade*</label>
+                                @Html.TextBoxFor(m => m.cidade, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="name">UF*</label>
+                                @Html.TextBoxFor(m => m.estado, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                                @Html.TextBoxFor(m => m.senha, new { @class = "form-control" })
+                            </div>
+                        
+                            <button type="button" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Cadastrar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                     
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Fim modal de cadastro-->
 
 </section>
 
