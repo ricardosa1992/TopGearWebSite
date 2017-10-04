@@ -33,13 +33,8 @@ namespace Trabalho20172.Controllers
             viewModel.localEntrega = viewModel.localRetirada;
            
             viewModel.ListaDeAgencias = ListaDeAgencias();
-
-            //List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            //Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
-            //listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
-            //listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            //listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
-
+            
+            //Obtendo lista de carros disponíveis
             viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega);
 
 
