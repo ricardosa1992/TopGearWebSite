@@ -21,24 +21,31 @@ namespace Trabalho20172.Controllers
             int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
             var horaRetirada = Request.Form["pick-up-time"];
             var horaEntrega = Request.Form["drop-off-time"];
+            
+            DateTime dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
+            dataRetirada = DateTime.Parse(dataRetirada.ToShortDateString() + " " + horaRetirada);
+            DateTime dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
+            dataEntrega = DateTime.Parse(dataEntrega.ToShortDateString() + " " + horaEntrega);
 
-            var dataRetirada = Request.Form["pick-up-date"];
-
-            viewModel.dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
-            viewModel.dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
-
+            viewModel.dataRetirada = dataRetirada;
+            viewModel.dataEntrega = dataEntrega;
+            viewModel.horaRetirada = horaRetirada;
+            viewModel.horaEntrega = horaEntrega;
 
             //Obtendo a Agencia de retirada
             viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = viewModel.localRetirada;
-           
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+
+            //Obtendo a lista de agencias para a Edição
             viewModel.ListaDeAgencias = ListaDeAgencias();
 
-            //List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            //Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
-            //listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
-            //listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            //listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
+            //Obtendo a quantidade de Diárias
+            TimeSpan nod = (dataEntrega - dataRetirada);
+
+            if (nod.TotalDays < 1)
+                viewModel.QtdDiarias = 1;
+            else
+                viewModel.QtdDiarias = (nod.TotalHours % 24 == 0) ? (int)nod.TotalDays : ((int)nod.TotalDays) + 1;
 
             viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega);
 

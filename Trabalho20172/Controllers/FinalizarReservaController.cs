@@ -11,7 +11,7 @@ namespace Trabalho20172.Controllers
     public class FinalizarReservaController : BaseController
     {
         // GET: FinalizarReserva
-        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, string precoTotal)
+        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
         {
 
 
@@ -47,7 +47,7 @@ namespace Trabalho20172.Controllers
            
         }
 
-        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string horaRetirada, string dataEntrega, string horaEntrega, double precoTotal)
+        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, double precoTotal)
         {
             Locacao novaLocacao = new Locacao()
             {

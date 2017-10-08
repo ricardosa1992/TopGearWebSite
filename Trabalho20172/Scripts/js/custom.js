@@ -134,7 +134,7 @@ var checkin = $('#pick-up-date').datepicker({
 }).data('datepicker');
 var checkout = $('#drop-off-date').datepicker({
     onRender: function (date) {
-        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
     }
 }).on('changeDate', function (ev) {
     checkout.hide();
@@ -486,19 +486,24 @@ $( "#checkout-form" ).submit(function() {
 return false;
 });
 
+
 $(".selecionarCarro").click(function (e) {
-    
     var idCarro = $(this).attr("idCarro");
     var modeloCarro = $(this).attr("modeloCarro");
     var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-    var preco = ($(this).attr("precoCarro")).replace(".",",");
+    var precoDiaria = parseFloat(($(this).attr("precoCarro")).replace(",", "."));
+    var qtdDiarias = parseInt($("#QtdDiarias").val());
+    var precoTotal = precoDiaria * qtdDiarias;
+    precoDiaria = (precoDiaria.toString()).replace(".", ",");
+    precoTotal = (precoTotal.toString()).replace(".", ",");
 
     //Montando as Informações sobre o carro selecionado
     $("#idCarroSelecionadoHidden").val(idCarro);
-    $("#carroSelecionado").text("Modelo: " + modeloCarro);
+    $("#carroSelecionado").text(modeloCarro);
     $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
-    $("#valorLocacao").text("Valor Total: " + preco);
-    $("#precoTotal").val(preco);
+    $("#valorLocacao").text(qtdDiarias + " X " + precoDiaria + " = R$ " + precoTotal);
+    $("#precoDiaria").val(precoDiaria);
+    $("#precoTotal").val(precoTotal);
     $("#slip-reserva-valor").show();
     $(".seu-carro").show();
     $("#confirmarLocacao").show();
@@ -524,13 +529,11 @@ $("#efetuarLocacao").click(function (e) {
         dataType: 'json',
         data: {
             idCliente: 1,
-            idCarro: 16,//$("#idCarroSelecionadoHidden").val(),
+            idCarro: $("#idCarroSelecionadoHidden").val(),
             idLocalRetirada: $("#idLocalRetiradaHidden").val(),
             idLocalEntrega: $("#idLocalEntregaHidden").val(),
             dataRetirada: $("#dataRetiradaHidden").val(),
-            horaRetirada: "00:00:00",
             dataEntrega: $("#dataEntregaHidden").val(),
-            horaEntrega: "00:00:00",
             precoTotal: ($("#precoTotal").val()).replace(".", ",")
         },
         success: function (result) {
@@ -540,33 +543,66 @@ $("#efetuarLocacao").click(function (e) {
 
 });
 
+$("#cpfUser, #senhaUser").click(function (e) {
+    $(this).css({ 'border': '#cccccc solid 1px' });
+    $(this).closest('div').find('.msgErro').hide();
+
+});
+
 //Verifica se o cliente está cadastrado e faz o login
 $("#efetuarLogin").click(function (e) {
 
-    $.ajax({
-        url: "/Base/EfetuarLogin",
-        type: "POST",
-        dataType: 'json',
-        data: {
-            login: $("#cpfUser").val(),
-            senha: $("senhaUser").val()
-        },
-        success: function (result) {
-            if (result.Status == "ok") {
-                $("#modal-login").modal('toggle');
+    $("#msgErroLogin").hide();
 
-                var idCarro = $("#idCarroSelecionadoHidden").val();
-                var idLocalRetirada = $("#idLocalRetiradaHidden").val();
-                var idLocalEntrega = $("#idLocalEntregaHidden").val();
-                var dataRetirada = $("#dataRetiradaHidden").val();
-                var dataEntrega = $("#dataEntregaHidden").val();
-                var precoTotal = ($("#precoTotal").val()).replace(".", ",");
-                var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
-                window.open(href,"_self");
+    var login = $("#cpfUser").val();
+    var senha = $("#senhaUser").val();
+    var erro = 0;
 
+    if (login == "") {
+        $("#msgErroCPF").show();
+        $("#cpfUser").css({'border':'red solid 1px'})
+        erro = 1;
+    }
+    if (senha == "") {
+        $("#msgErroSenha").show();
+        $("#senhaUser").css({ 'border': 'red solid 1px' })
+        erro = 1;
+    }
+
+    if (erro == 0) {
+        
+        $.ajax({
+            url: "/Base/EfetuarLogin",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                login: $("#cpfUser").val(),
+                senha: $("#senhaUser").val()
+            },
+            success: function (result) {
+                if (result.Status == "ok") {
+                    $("#modal-login").modal('toggle');
+
+                    var idCarro = $("#idCarroSelecionadoHidden").val();
+                    var idLocalRetirada = $("#idLocalRetiradaHidden").val();
+                    var idLocalEntrega = $("#idLocalEntregaHidden").val();
+                    var dataRetirada = $("#dataRetiradaHidden").val();
+                    var dataEntrega = $("#dataEntregaHidden").val();
+                    var qtdDiarias = $("#QtdDiarias").val();
+                    var precoDiaria = $("#precoDiaria").val();
+                    var precoTotal = ($("#precoTotal").val()).replace(".", ",");
+                    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
+                    window.open(href, "_self");
+
+                }
+                else
+                {
+                    $("#msgErroLogin").show();
+
+                }
             }
-        }
-    });
+        });
+    }
 
 });
 

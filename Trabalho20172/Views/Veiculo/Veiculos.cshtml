@@ -184,6 +184,7 @@
                                     <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
                                         Editar
                                     </a>
+                                   
                                     <div class="content-agencias">
                                         <p class="text-slip-strong" style="text-transform:capitalize">
                                             @Model.localRetirada.Nome
@@ -208,16 +209,17 @@
                                             @Html.HiddenFor(m=>m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString()})
                                         </div>
                                     </div>
-                                    <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
-                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
-                                     
+                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
+                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
                                     </div>
+
                                     <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
                                         <br>
-                                        @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
+                                    
                                         <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
                                         <div class="info">
-                                            <h4 id="carroSelecionado"></h4>
+                                            <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado" ></span></h4>
                                             @Html.HiddenFor(m=>m.idCarroSelecionadoHidden)
                                         </div>
 
@@ -225,8 +227,9 @@
 
                                     <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
                                         <div class="slip-reserva-valor-total">
-                                            <h3 class="titulo valor-previsto" id="valorLocacao"></h3>
+                                            <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span  id="valorLocacao"></span></h3>
                                             @Html.HiddenFor(m => m.precoTotal)
+                                            @Html.HiddenFor(m=> m.precoDiaria)
                                         </div>
                                     </div>
 
@@ -439,19 +442,25 @@
                         <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
-                        <form role="form">
+                        <form role="form" class="form" id="form-login">
+                            <span id="msgErroLogin" class="msgErro" style="display:none"><font color="red">CPF ou Senha inválidos!</font></span>
+                            <br/>
                             <div class="form-group">
+                              
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                                <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF">
+                                @*@Html.TextBoxFor(m=>m.cpfAcesso, new { @class = "form-control" })*@
+                                <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF" >
+                                <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span> 
                             </div>
                             <div class="form-group">
                                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                                <input type="text" class="form-control" id="senhaUser" placeholder="Digite a Senha">
+                                <input type="password" class="form-control" id="senhaUser" placeholder="Digite a Senha">
+                                <span id="msgErroSenha" class="msgErro" style="display:none"><font color="red">A senha é obrigatória!</font></span> 
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" value="" checked>Remember me</label>
                             </div>
-                            <button type="button" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Login</button>
+                            <button type="button" class="btn btn-primary btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Login</button>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -590,6 +599,8 @@
     <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
     <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
     <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
+   
+   
 
 </body>
 

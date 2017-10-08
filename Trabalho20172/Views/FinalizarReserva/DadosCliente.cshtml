@@ -183,6 +183,12 @@
                                             @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
                                         </div>
                                     </div>
+
+                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
+                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
+                                    </div>
+
                                     <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
                                         <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
 
@@ -200,7 +206,7 @@
 
                                     <div class="reserva-footer" id="slip-reserva-valor" style="">
                                         <div class="slip-reserva-valor-total">
-                                            <h3 class="titulo valor-previsto" id="valorLocacao">Preço Total:  @Model.precoTotal.ToString("n2")</h3>
+                                            <h3 class="titulo valor-previsto" id="valorLocacao">Total: @Model.QtdDiarias X @Model.precoDiaria = R$ @Model.precoTotal.ToString("n2")</h3>
                                             @Html.HiddenFor(m => m.precoTotal)
                                         </div>
                                     </div>
