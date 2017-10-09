@@ -16,17 +16,18 @@ namespace Trabalho20172.Controllers
 
 
             LocacaoViewModel viewModel = new LocacaoViewModel();
-            viewModel.ListaDeAgencias = ListaDeAgencias();
-
-            //Obtendo os dados do carro selecionado e do local de retirada/entrega
            
+            //Obtendo os dados do carro selecionado e do local de retirada/entrega
             viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
             viewModel.dataEntrega = Convert.ToDateTime(dataEntrega);
+            viewModel.QtdDiarias = qtdDiarias;
+            viewModel.precoDiaria = Convert.ToDouble(precoDiaria);
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
-            //Obtendo a Agencia de retirada
+            //Obtendo a Agencia de retirada/Entrega
             viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = viewModel.localRetirada;
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+
 
             //Buscando o carro selecionado
             Carro carroSelecionado = TopGear.Api.TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
