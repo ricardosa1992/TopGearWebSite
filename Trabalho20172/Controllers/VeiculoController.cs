@@ -21,10 +21,18 @@ namespace Trabalho20172.Controllers
             int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
             var horaRetirada = Request.Form["pick-up-time"];
             var horaEntrega = Request.Form["drop-off-time"];
-            
-            DateTime dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
+
+            string dataRet = Request.Form["pick-up-date"];
+            string[] dataRetVetor = dataRet.Split('/');
+            string strDataRetirada = dataRetVetor[2] + "-" + dataRetVetor[1] + "-" + dataRetVetor[0];
+
+            string dataEnt = Request.Form["drop-off-date"];
+            string[] dataEntVetor = dataEnt.Split('/');
+            string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
+
+            DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
             dataRetirada = DateTime.Parse(dataRetirada.ToShortDateString() + " " + horaRetirada);
-            DateTime dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
+            DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
             dataEntrega = DateTime.Parse(dataEntrega.ToShortDateString() + " " + horaEntrega);
 
             viewModel.dataRetirada = dataRetirada;
