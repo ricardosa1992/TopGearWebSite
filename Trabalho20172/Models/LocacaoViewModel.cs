@@ -46,6 +46,7 @@ namespace Trabalho20172.Models
         public List<SelectListItem> ListaDeAgencias { get; set; }
 
         //Dados do Cliente
+        public int idCliente { get; set; }
 
         public string nomeCliente { get; set; }
 

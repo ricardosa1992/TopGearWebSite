@@ -568,7 +568,7 @@ $("#efetuarLocacao").click(function (e) {
         type: "POST",
         dataType: 'json',
         data: {
-            idCliente: 1,
+            idCliente: $("#idCliente").val(),
             idCarro: $("#idCarroSelecionadoHidden").val(),
             idLocalRetirada: $("#idLocalRetiradaHidden").val(),
             idLocalEntrega: $("#idLocalEntregaHidden").val(),

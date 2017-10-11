@@ -411,9 +411,8 @@
                             <span id="msgErroLogin" class="msgErro" style="display:none"><font color="red">CPF ou Senha inválidos!</font></span>
                             <br/>
                             <div class="form-group">
-                              
+                                @Html.HiddenFor(m=>m.idCliente)
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                                @*@Html.TextBoxFor(m=>m.cpfAcesso, new { @class = "form-control" })*@
                                 <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF" >
                                 <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span> 
                             </div>
