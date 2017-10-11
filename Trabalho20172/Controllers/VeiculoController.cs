@@ -22,24 +22,38 @@ namespace Trabalho20172.Controllers
             var horaRetirada = Request.Form["pick-up-time"];
             var horaEntrega = Request.Form["drop-off-time"];
 
-            var dataRetirada = Request.Form["pick-up-date"];
+            string dataRet = Request.Form["pick-up-date"];
+            string[] dataRetVetor = dataRet.Split('/');
+            string strDataRetirada = dataRetVetor[2] + "-" + dataRetVetor[1] + "-" + dataRetVetor[0];
 
-            viewModel.dataRetirada = Convert.ToDateTime(Request.Form["pick-up-date"]);
-            viewModel.dataEntrega = Convert.ToDateTime(Request.Form["drop-off-date"]);
+            string dataEnt = Request.Form["drop-off-date"];
+            string[] dataEntVetor = dataEnt.Split('/');
+            string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
+            DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
+            dataRetirada = DateTime.Parse(dataRetirada.ToShortDateString() + " " + horaRetirada);
+            DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
+            dataEntrega = DateTime.Parse(dataEntrega.ToShortDateString() + " " + horaEntrega);
+
+            viewModel.dataRetirada = dataRetirada;
+            viewModel.dataEntrega = dataEntrega;
+            viewModel.horaRetirada = horaRetirada;
+            viewModel.horaEntrega = horaEntrega;
 
             //Obtendo a Agencia de retirada
-            viewModel.localRetirada =TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Ifes Serra" };
-            viewModel.localEntrega = viewModel.localRetirada;
-           
+            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+
+            //Obtendo a lista de agencias para a Edição
             viewModel.ListaDeAgencias = ListaDeAgencias();
 
-            //List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            //Categoria cat = new Categoria  {Id = 1, Preco = 100,Descricao = "Luxo", Itens = "teste"};
-            //listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic"});
-            //listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            //listaCarrosDisponiveis.Add(new Carro { Id = 3, CategoriaId = 4, Modelo = "Chevete" });
+            //Obtendo a quantidade de Diárias
+            TimeSpan nod = (dataEntrega - dataRetirada);
+
+            if (nod.TotalDays < 1)
+                viewModel.QtdDiarias = 1;
+            else
+                viewModel.QtdDiarias = (nod.TotalHours % 24 == 0) ? (int)nod.TotalDays : ((int)nod.TotalDays) + 1;
 
             viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega);
 
@@ -62,6 +76,8 @@ namespace Trabalho20172.Controllers
             return listaCarrosDispopniveis;
 
         }
+
+        
 
     }
 }

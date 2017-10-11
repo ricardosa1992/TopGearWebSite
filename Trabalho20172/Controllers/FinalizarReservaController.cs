@@ -11,46 +11,44 @@ namespace Trabalho20172.Controllers
     public class FinalizarReservaController : BaseController
     {
         // GET: FinalizarReserva
-        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, string precoTotal)
+        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
         {
 
 
             LocacaoViewModel viewModel = new LocacaoViewModel();
-            viewModel.ListaDeAgencias = ListaDeAgencias();
-
-            //Obtendo os dados do carro selecionado e do local de retirada/entrega
            
+            //Obtendo os dados do carro selecionado e do local de retirada/entrega
             viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
             viewModel.dataEntrega = Convert.ToDateTime(dataEntrega);
+            viewModel.QtdDiarias = qtdDiarias;
+            viewModel.precoDiaria = Convert.ToDouble(precoDiaria);
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
-            //Obtendo a Agencia de retirada
-            viewModel.localRetirada = new Agencia { Id = 9, Nome = "Aeroporto" };
-            viewModel.localEntrega = viewModel.localRetirada;
+            //Obtendo a Agencia de retirada/Entrega
+            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
 
-            
 
-            List<Carro> listaCarrosDisponiveis = new List<Carro>();
-            listaCarrosDisponiveis.Add(new Carro { Id = 1, CategoriaId = 2, Modelo = "Honda Civic" });
-            listaCarrosDisponiveis.Add(new Carro { Id = 2, CategoriaId = 3, Modelo = "Fusca" });
-            listaCarrosDisponiveis.Add(new Carro { Id = 5, CategoriaId = 4, Modelo = "Chevete" });
-
-            foreach (var carro in listaCarrosDisponiveis)
+            //Buscando o carro selecionado
+            Carro carroSelecionado = TopGear.Api.TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
+            Categoria categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carroSelecionado.CategoriaId}");
+            viewModel.carroSelecionado = new CarroViewModel
             {
-                if(carro.Id == idCarroSelecionado)
-                {
-                    viewModel.carroSelecionado = carro;
-                    break;
-                }
-            }
-
-
+                Id = carroSelecionado.Id,
+                Marca = carroSelecionado.Marca,
+                Modelo = carroSelecionado.Modelo,
+                Ano = carroSelecionado.Ano,
+                Placa = carroSelecionado.Placa,
+                AgenciaId = carroSelecionado.AgenciaId,
+                categoria = categoria
+            };
+            
             return View(viewModel);
 
            
         }
 
-        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string horaRetirada, string dataEntrega, string horaEntrega, double precoTotal)
+        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, double precoTotal)
         {
             Locacao novaLocacao = new Locacao()
             {

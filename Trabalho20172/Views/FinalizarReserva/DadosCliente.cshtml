@@ -102,53 +102,20 @@
               
                 <div class="col-md-10">
 
-                    <div class="form-group col-md-4 col-sm-6">
-                        <label for="name">Nome*	</label>
-                        @Html.TextBoxFor(m => m.nomeCliente, new { @class = "form-control" })
-                    </div>
-                    
-                    <div class="form-group col-md-2 col-sm-6">
-                        <label for="name">CPF*</label>
-                        @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group col-md-2 col-sm-6">
-                        <label for="name">Cartao*	</label>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="name">Cartão </label>
                         @Html.TextBoxFor(m => m.numCartao, new { @class = "form-control" })
                     </div>
-
-                    <div class="form-group col-md-2 col-sm-6">
-                        <label for="name">Telefone*</label>
-                        @Html.TextBoxFor(m => m.telefone, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group col-md-4 col-sm-6">
-                        <label for="name">Endereço*</label>
-                        @Html.TextBoxFor(m => m.rua, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group col-md-3 col-sm-6">
-                        <label for="name">Bairro*</label>
-                        @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group col-md-2 col-sm-6">
-                        <label for="name">Cidade*</label>
-                        @Html.TextBoxFor(m => m.cidade, new { @class = "form-control" })
-                    </div>
-
+                    
                     <div class="form-group col-md-1 col-sm-6">
-                        <label for="name">UF*</label>
-                        @Html.TextBoxFor(m => m.estado, new { @class = "form-control" })
+                        <label for="name">DV</label>
+                        @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
                     </div>
 
                     <div class="col-md-12 col-sm-12">
                         <input type="button" class="btn btn-primary" id="efetuarLocacao" value="Confirmar" />
                     </div>
 
-                    
-
-                    
                 </div>
 
                 <!--Area da reserva-->
@@ -186,16 +153,18 @@
                                             @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
                                         </div>
                                     </div>
-                                    <div id="slip-reserva-seu-carro" class="box-detalhes-reserva seu-carro" style="display:none;">
-                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Seu carro</p>
 
+                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
+                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
                                     </div>
+
                                     <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="">
                                         <br>
                                         @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
                                         <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
                                         <div class="info">
-                                            <h4 id="carroSelecionado">Modelo:  @Model.carroSelecionado.Modelo</h4>
+                                            <h4 id="carroSelecionado"><font color="#00984a"> Modelo: </font>@Model.carroSelecionado.Modelo</h4>
                                             @Html.HiddenFor(m => m.idCarroSelecionadoHidden, new { Value = Model.carroSelecionado.Id })
                                         </div>
 
@@ -203,7 +172,7 @@
 
                                     <div class="reserva-footer" id="slip-reserva-valor" style="">
                                         <div class="slip-reserva-valor-total">
-                                            <h3 class="titulo valor-previsto" id="valorLocacao">Preço Total:  @Model.precoTotal.ToString("n2")</h3>
+                                            <h3 class="titulo valor-previsto" id="valorLocacao"><font color="#00984a">Total: </font>@Model.QtdDiarias X @Model.precoDiaria = R$ @Model.precoTotal.ToString("n2")</h3>
                                             @Html.HiddenFor(m => m.precoTotal)
                                         </div>
                                     </div>

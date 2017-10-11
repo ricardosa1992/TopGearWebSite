@@ -25,13 +25,53 @@ $('input, textarea').placeholder();
 
 $(document).on("scroll",function(){
   if($(document).scrollTop()>39){
-    $("header").removeClass("large").addClass("small");
+      $("header").removeClass("large").addClass("small");
+     // $("#divReserva").css({ 'top': '5%'});
   }
   else{
-    $("header").removeClass("small").addClass("large");
+      $("header").removeClass("small").addClass("large");
+     // $("#divReserva").css({ 'padding-top': '50px !important'});
   }
+
 });
 
+//floatingMenu.add('divreserva',
+//     {
+//         // Represents distance from left or right browser window  
+//         // border depending upon property used. Only one should be  
+//         // specified.  
+//         // targetLeft: 0,  
+//         targetRight: 10,
+
+//         // Represents distance from top or bottom browser window  
+//         // border depending upon property used. Only one should be  
+//         // specified.  
+//         targetTop: 10,
+//         // targetBottom: 0,  
+
+//         // Uncomment one of those if you need centering on  
+//         // X- or Y- axis.  
+//         // centerX: true,  
+//         // centerY: true,  
+
+//         // Remove this one if you don't want snap effect  
+//         snap: true
+//     });
+
+$(window).scroll(function () {
+    //var margem = 10;
+    //var posicao = $(document).scrollTop() + window.innerHeight;
+    //var footertop = $('#footer').offset().top;
+    //var meiodapagina = window.innerHeight / 2;
+    //var maximo = footertop + meiodapagina - margem;
+
+    //if (posicao < maximo) {
+    //    $('#divReserva').css('bottom', meiodapagina + 'px');
+    //} else {
+    //    $('#divReserva').css('bottom', (margem + (posicao - footertop)) + 'px');
+    //}
+
+});
 
 
 // Vehicles Tabs / Slider  
@@ -134,7 +174,7 @@ var checkin = $('#pick-up-date').datepicker({
 }).data('datepicker');
 var checkout = $('#drop-off-date').datepicker({
     onRender: function (date) {
-        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
     }
 }).on('changeDate', function (ev) {
     checkout.hide();
@@ -486,19 +526,24 @@ $( "#checkout-form" ).submit(function() {
 return false;
 });
 
+
 $(".selecionarCarro").click(function (e) {
-    
     var idCarro = $(this).attr("idCarro");
     var modeloCarro = $(this).attr("modeloCarro");
     var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-    var preco = ($(this).attr("precoCarro")).replace(".",",");
+    var precoDiaria = parseFloat(($(this).attr("precoCarro")).replace(",", "."));
+    var qtdDiarias = parseInt($("#QtdDiarias").val());
+    var precoTotal = precoDiaria * qtdDiarias;
+    precoDiaria = (precoDiaria.toString()).replace(".", ",");
+    precoTotal = (precoTotal.toString()).replace(".", ",");
 
     //Montando as Informações sobre o carro selecionado
     $("#idCarroSelecionadoHidden").val(idCarro);
-    $("#carroSelecionado").text("Modelo: " + modeloCarro);
+    $("#carroSelecionado").text(modeloCarro);
     $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
-    $("#valorLocacao").text("Valor Total: " + preco);
-    $("#precoTotal").val(preco);
+    $("#valorLocacao").text(qtdDiarias + " X " + precoDiaria + " = R$ " + precoTotal);
+    $("#precoDiaria").val(precoDiaria);
+    $("#precoTotal").val(precoTotal);
     $("#slip-reserva-valor").show();
     $(".seu-carro").show();
     $("#confirmarLocacao").show();
@@ -508,17 +553,9 @@ $(".selecionarCarro").click(function (e) {
 
 //Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
 $("#confirmarLocacao").click(function (e) {
-    
-    $("#login-modal").modal();
 
-    var idCarro = $("#idCarroSelecionadoHidden").val();
-    var idLocalRetirada = $("#idLocalRetiradaHidden").val(); 
-    var idLocalEntrega = $("#idLocalEntregaHidden").val();
-    var dataRetirada = $("#dataRetiradaHidden").val();
-    var dataEntrega = $("#dataEntregaHidden").val();
-    var precoTotal = ($("#precoTotal").val()).replace(".",",");
-    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&precoTotal=" + precoTotal;
-    //window.open(href,"_self");
+    //Verificar aqui se o cliente já está logado
+    $("#modal-login").modal();
 
 });
 
@@ -532,19 +569,87 @@ $("#efetuarLocacao").click(function (e) {
         dataType: 'json',
         data: {
             idCliente: 1,
-            idCarro: 16,//$("#idCarroSelecionadoHidden").val(),
+            idCarro: $("#idCarroSelecionadoHidden").val(),
             idLocalRetirada: $("#idLocalRetiradaHidden").val(),
             idLocalEntrega: $("#idLocalEntregaHidden").val(),
             dataRetirada: $("#dataRetiradaHidden").val(),
-            horaRetirada: "00:00:00",
             dataEntrega: $("#dataEntregaHidden").val(),
-            horaEntrega: "00:00:00",
             precoTotal: ($("#precoTotal").val()).replace(".", ",")
         },
         success: function (result) {
-            $("#div1").html(result);
+            //$("#div1").html(result);
         }
     });
+
+});
+
+$("#cpfUser, #senhaUser").click(function (e) {
+    $(this).css({ 'border': '#cccccc solid 1px' });
+    $(this).closest('div').find('.msgErro').hide();
+
+});
+
+//Verifica se o cliente está cadastrado e faz o login
+$("#efetuarLogin").click(function (e) {
+
+    $("#msgErroLogin").hide();
+
+    var login = $("#cpfUser").val();
+    var senha = $("#senhaUser").val();
+    var erro = 0;
+
+    if (login == "") {
+        $("#msgErroCPF").show();
+        $("#cpfUser").css({'border':'red solid 1px'})
+        erro = 1;
+    }
+    if (senha == "") {
+        $("#msgErroSenha").show();
+        $("#senhaUser").css({ 'border': 'red solid 1px' })
+        erro = 1;
+    }
+
+    if (erro == 0) {
+        
+        $.ajax({
+            url: "/Base/EfetuarLogin",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                login: $("#cpfUser").val(),
+                senha: $("#senhaUser").val()
+            },
+            success: function (result) {
+                if (result.Status == "ok") {
+                    $("#modal-login").modal('toggle');
+
+                    var idCarro = $("#idCarroSelecionadoHidden").val();
+                    var idLocalRetirada = $("#idLocalRetiradaHidden").val();
+                    var idLocalEntrega = $("#idLocalEntregaHidden").val();
+                    var dataRetirada = $("#dataRetiradaHidden").val();
+                    var dataEntrega = $("#dataEntregaHidden").val();
+                    var qtdDiarias = $("#QtdDiarias").val();
+                    var precoDiaria = $("#precoDiaria").val();
+                    var precoTotal = ($("#precoTotal").val()).replace(".", ",");
+                    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
+                    window.open(href, "_self");
+
+                }
+                else
+                {
+                    $("#msgErroLogin").show();
+
+                }
+            }
+        });
+    }
+
+});
+
+//Abre o modal para cadastro do cliente
+$("#btn-cadastro").click(function (e) {
+    $("#modal-login").modal('toggle');
+    $("#modal-cadastro").modal();
 
 });
 

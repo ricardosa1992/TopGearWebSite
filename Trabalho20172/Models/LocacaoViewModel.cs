@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,13 +27,19 @@ namespace Trabalho20172.Models
 
         public string dataEntregaHidden { get; set; }
 
-        public Carro carroSelecionado { get; set; }
+        public string horaRetirada { get; set; }
+
+        public string horaEntrega { get; set; }
+
+        public CarroViewModel carroSelecionado { get; set; }
 
         public int idCarroSelecionadoHidden { get; set; }
 
         public int QtdDiarias { get; set; }
 
         public double precoTotal { get; set; }
+
+        public double precoDiaria { get; set; }
 
         public List<CarroViewModel> listaCarrosDisponiveis { get; set; } = new List<CarroViewModel>();
 
@@ -54,7 +61,14 @@ namespace Trabalho20172.Models
 
         public string cpf { get; set; }
 
+        [Required(ErrorMessage = "O CPF do usuário é obrigatório", AllowEmptyStrings = false)]
+        public string cpfAcesso { get; set; }
+
         public int numCartao { get; set; }
+
+        public string senha { get; set; }
+
+        public string senhaAcesso { get; set; }
 
     }
 }
