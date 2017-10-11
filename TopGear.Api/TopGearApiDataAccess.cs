@@ -19,14 +19,14 @@ namespace TopGear.Api
 
         }
 
-        public static T Post(T objeto, string relativePath)
+        public static int Post(T objeto, string relativePath)
         {
             var result = TopGearApi<T>.Post(objeto, relativePath);
             if (result.Sucesso)
             {
                 return result.Dados;
             }
-            return default(T);
+            return 0;
 
         }
 
