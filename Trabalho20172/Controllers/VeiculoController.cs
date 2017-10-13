@@ -69,7 +69,7 @@ namespace Trabalho20172.Controllers
             foreach (var carro in listaCarros)
             {
                 var categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carro.CategoriaId}");
-                CarroViewModel carroViewModel = new CarroViewModel { Id = carro.Id, Ano = carro.Ano, Marca = carro.Marca, Modelo = carro.Modelo, categoria = categoria };
+                CarroViewModel carroViewModel = new CarroViewModel { Id = carro.Id, Ano = carro.Ano, Marca = carro.Marca, Modelo = carro.Modelo, UrlImagem = carro.UrlImagem, categoria = categoria };
                 listaCarrosDispopniveis.Add(carroViewModel);
             }
 

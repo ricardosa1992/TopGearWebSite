@@ -562,13 +562,12 @@ $("#confirmarLocacao").click(function (e) {
 
 //Chama o Método que faz a Locação
 $("#efetuarLocacao").click(function (e) {
-
+    debugger;
     $.ajax({
         url: "/FinalizarReserva/Efetuarlocacao",
         type: "POST",
         dataType: 'json',
         data: {
-            idCliente: $("#idCliente").val(),
             idCarro: $("#idCarroSelecionadoHidden").val(),
             idLocalRetirada: $("#idLocalRetiradaHidden").val(),
             idLocalEntrega: $("#idLocalEntregaHidden").val(),
@@ -577,7 +576,18 @@ $("#efetuarLocacao").click(function (e) {
             precoTotal: ($("#precoTotal").val()).replace(".", ",")
         },
         success: function (result) {
-            //$("#div1").html(result);
+            if (result.Status == "ok") {
+                swal({
+                    title: 'Locação efetuada com sucesso!',
+                    type: 'success'
+                });
+            }
+            else {
+                swal({
+                    title: "Ocorreu algum erro na gravação\n Tente novamente!",
+                    type: "error"
+                });
+            }
         }
     });
 
@@ -612,7 +622,7 @@ $("#efetuarLogin").click(function (e) {
     if (erro == 0) {
         
         $.ajax({
-            url: "/Base/EfetuarLogin",
+            url: "/Acesso/EfetuarLogin",
             type: "POST",
             dataType: 'json',
             data: {

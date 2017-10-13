@@ -7,6 +7,8 @@ namespace Trabalho20172.Controllers
 {
     public class HomeController : BaseController
     {
+     
+
         public ActionResult Index()
         {
             LocacaoViewModel modeloDaView = new LocacaoViewModel();

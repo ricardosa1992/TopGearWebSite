@@ -24,6 +24,7 @@
     <!-- Main Styles -->
     <link href="~/Content/css/styles.css" rel="stylesheet">
     <link href="~/Content/css/rental-car-css/rentalcar-template.css" rel="stylesheet">
+    <link href="~/Content/css/sweetalert.css" rel="stylesheet" />
     <!-- Available main styles: styles-red.css, styles-green.css -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -162,7 +163,7 @@
                                     <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="">
                                         <br>
                                         @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
-                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
+                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
                                         <div class="info">
                                             <h4 id="carroSelecionado"><font color="#00984a"> Modelo: </font>@Model.carroSelecionado.Modelo</h4>
                                             @Html.HiddenFor(m => m.idCarroSelecionadoHidden, new { Value = Model.carroSelecionado.Id })
@@ -256,7 +257,7 @@
     <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
     <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
     <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
-
+    <script src="~/Scripts/js/sweetalert-dev.js"></script>
 </body>
 
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
