@@ -42,6 +42,10 @@
     <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
 
+	<style>
+	
+
+	</style>
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
@@ -111,9 +115,9 @@
                     <div class="filters-by-category text-center">
                         <ul class="option-set" data-option-key="filter">
                             <li><a href="#filter" data-option-value="*" class="selected">Todos</a></li>
-                            <li><a href="#filter" data-option-value=".category1">Econômica</a></li>
-                            <li><a href="#filter" data-option-value=".category2" class="">Mediana</a></li>
-                            <li><a href="#filter" data-option-value=".category3" class="">Luxo</a></li>
+                            <li><a href="#filter" data-option-value=".category4">Luxo</a></li>
+                            <li><a href="#filter" data-option-value=".category5" class="">Esporte</a></li>
+                            <li><a href="#filter" data-option-value=".category6" class="">Popular</a></li>
                           
                         </ul>
                     </div>
@@ -125,7 +129,7 @@
                             Html.RenderPartial("ListaVeiculos");
                         }*@
 
-                       <div class="item category1 category3">
+                       @*<div class="item category1 category3">
                             <div class="iolxmage"><img id="caminhoFotoCarro_5" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
                             <div class="info">
                                 <h4>mercedes sls</h4>
@@ -160,7 +164,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                        
                      
                        
@@ -169,7 +173,7 @@
                 </div>
 
                 <!--Area da reserva-->
-                <div class="col-sm-2 sidenav">
+                <div class="col-sm-2 sidenav normal" id="divReserva">
                     <div id="div-fixo-slip" class="col-2 pull-right" style="">
 
                         <div class="box-detalhes-reserva">
@@ -297,18 +301,6 @@
                                     <div class="time pull-right">
                                         <div class="styled-select-time">
                                             <select name="pick-up-time" id="pick-up-time">
-                                                <option value="12:00 AM">12:00 AM</option>
-                                                <option value="12:30 AM">12:30 AM</option>
-                                                <option value="01:00 AM">01:00 AM</option>
-                                                <option value="01:30 AM">01:30 AM</option>
-                                                <option value="02:00 AM">02:00 AM</option>
-                                                <option value="02:30 AM">02:30 AM</option>
-                                                <option value="03:00 AM">03:00 AM</option>
-                                                <option value="03:30 AM">03:30 AM</option>
-                                                <option value="04:00 AM">04:00 AM</option>
-                                                <option value="04:30 AM">04:30 AM</option>
-                                                <option value="05:00 AM">05:00 AM</option>
-                                                <option value="05:30 AM">05:30 AM</option>
                                                 <option value="06:00 AM">06:00 AM</option>
                                                 <option value="06:30 AM">06:30 AM</option>
                                                 <option value="07:00 AM">07:00 AM</option>
@@ -334,17 +326,6 @@
                                                 <option value="05:00 PM">05:00 PM</option>
                                                 <option value="05:30 PM">05:30 PM</option>
                                                 <option value="06:00 PM">06:00 PM</option>
-                                                <option value="06:30 PM">06:30 PM</option>
-                                                <option value="07:00 PM">07:00 PM</option>
-                                                <option value="07:30 PM">07:30 PM</option>
-                                                <option value="08:00 PM">08:00 PM</option>
-                                                <option value="08:30 PM">08:30 PM</option>
-                                                <option value="09:00 PM">09:00 PM</option>
-                                                <option value="09:30 PM">09:30 PM</option>
-                                                <option value="10:00 PM">10:00 PM</option>
-                                                <option value="10:30 PM">10:30 PM</option>
-                                                <option value="11:00 PM">11:00 PM</option>
-                                                <option value="11:30 PM">11:30 PM</option>
                                             </select>
                                         </div>
                                     </div>
@@ -362,18 +343,6 @@
                                     <div class="time pull-right">
                                         <div class="styled-select-time">
                                             <select name="drop-off-time" id="drop-off-time">
-                                                <option value="12:00 AM">12:00 AM</option>
-                                                <option value="12:30 AM">12:30 AM</option>
-                                                <option value="01:00 AM">01:00 AM</option>
-                                                <option value="01:30 AM">01:30 AM</option>
-                                                <option value="02:00 AM">02:00 AM</option>
-                                                <option value="02:30 AM">02:30 AM</option>
-                                                <option value="03:00 AM">03:00 AM</option>
-                                                <option value="03:30 AM">03:30 AM</option>
-                                                <option value="04:00 AM">04:00 AM</option>
-                                                <option value="04:30 AM">04:30 AM</option>
-                                                <option value="05:00 AM">05:00 AM</option>
-                                                <option value="05:30 AM">05:30 AM</option>
                                                 <option value="06:00 AM">06:00 AM</option>
                                                 <option value="06:30 AM">06:30 AM</option>
                                                 <option value="07:00 AM">07:00 AM</option>
@@ -399,17 +368,6 @@
                                                 <option value="05:00 PM">05:00 PM</option>
                                                 <option value="05:30 PM">05:30 PM</option>
                                                 <option value="06:00 PM">06:00 PM</option>
-                                                <option value="06:30 PM">06:30 PM</option>
-                                                <option value="07:00 PM">07:00 PM</option>
-                                                <option value="07:30 PM">07:30 PM</option>
-                                                <option value="08:00 PM">08:00 PM</option>
-                                                <option value="08:30 PM">08:30 PM</option>
-                                                <option value="09:00 PM">09:00 PM</option>
-                                                <option value="09:30 PM">09:30 PM</option>
-                                                <option value="10:00 PM">10:00 PM</option>
-                                                <option value="10:30 PM">10:30 PM</option>
-                                                <option value="11:00 PM">11:00 PM</option>
-                                                <option value="11:30 PM">11:30 PM</option>
                                             </select>
                                         </div>
                                     </div>
@@ -446,9 +404,8 @@
                             <span id="msgErroLogin" class="msgErro" style="display:none"><font color="red">CPF ou Senha inválidos!</font></span>
                             <br/>
                             <div class="form-group">
-                              
+                                @Html.HiddenFor(m=>m.idCliente)
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                                @*@Html.TextBoxFor(m=>m.cpfAcesso, new { @class = "form-control" })*@
                                 <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF" >
                                 <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span> 
                             </div>
@@ -547,7 +504,7 @@
     <a href="#" class="scrollup">ScrollUp</a>
 
     <!-- Footer start -->
-    <footer>
+    <footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">

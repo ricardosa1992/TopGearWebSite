@@ -14,7 +14,7 @@ namespace Trabalho20172.Controllers
         {
             //Buscar o cliente se estiver cadastrado
             var cliente = TopGear.Api.TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{login}");
-            return (cliente != null) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
+            return (cliente != null) ? Json(new { Status = "ok", idCliente = cliente.Id }) : Json(new { Status = "Nok" });
 
         }
 

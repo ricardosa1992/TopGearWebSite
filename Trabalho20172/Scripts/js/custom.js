@@ -25,13 +25,53 @@ $('input, textarea').placeholder();
 
 $(document).on("scroll",function(){
   if($(document).scrollTop()>39){
-    $("header").removeClass("large").addClass("small");
+      $("header").removeClass("large").addClass("small");
+     // $("#divReserva").css({ 'top': '5%'});
   }
   else{
-    $("header").removeClass("small").addClass("large");
+      $("header").removeClass("small").addClass("large");
+     // $("#divReserva").css({ 'padding-top': '50px !important'});
   }
+
 });
 
+//floatingMenu.add('divreserva',
+//     {
+//         // Represents distance from left or right browser window  
+//         // border depending upon property used. Only one should be  
+//         // specified.  
+//         // targetLeft: 0,  
+//         targetRight: 10,
+
+//         // Represents distance from top or bottom browser window  
+//         // border depending upon property used. Only one should be  
+//         // specified.  
+//         targetTop: 10,
+//         // targetBottom: 0,  
+
+//         // Uncomment one of those if you need centering on  
+//         // X- or Y- axis.  
+//         // centerX: true,  
+//         // centerY: true,  
+
+//         // Remove this one if you don't want snap effect  
+//         snap: true
+//     });
+
+$(window).scroll(function () {
+    //var margem = 10;
+    //var posicao = $(document).scrollTop() + window.innerHeight;
+    //var footertop = $('#footer').offset().top;
+    //var meiodapagina = window.innerHeight / 2;
+    //var maximo = footertop + meiodapagina - margem;
+
+    //if (posicao < maximo) {
+    //    $('#divReserva').css('bottom', meiodapagina + 'px');
+    //} else {
+    //    $('#divReserva').css('bottom', (margem + (posicao - footertop)) + 'px');
+    //}
+
+});
 
 
 // Vehicles Tabs / Slider  
@@ -522,13 +562,12 @@ $("#confirmarLocacao").click(function (e) {
 
 //Chama o Método que faz a Locação
 $("#efetuarLocacao").click(function (e) {
-
+    debugger;
     $.ajax({
         url: "/FinalizarReserva/Efetuarlocacao",
         type: "POST",
         dataType: 'json',
         data: {
-            idCliente: 1,
             idCarro: $("#idCarroSelecionadoHidden").val(),
             idLocalRetirada: $("#idLocalRetiradaHidden").val(),
             idLocalEntrega: $("#idLocalEntregaHidden").val(),
@@ -537,7 +576,18 @@ $("#efetuarLocacao").click(function (e) {
             precoTotal: ($("#precoTotal").val()).replace(".", ",")
         },
         success: function (result) {
-            //$("#div1").html(result);
+            if (result.Status == "ok") {
+                swal({
+                    title: 'Locação efetuada com sucesso!',
+                    type: 'success'
+                });
+            }
+            else {
+                swal({
+                    title: "Ocorreu algum erro na gravação\n Tente novamente!",
+                    type: "error"
+                });
+            }
         }
     });
 
@@ -572,7 +622,7 @@ $("#efetuarLogin").click(function (e) {
     if (erro == 0) {
         
         $.ajax({
-            url: "/Base/EfetuarLogin",
+            url: "/Acesso/EfetuarLogin",
             type: "POST",
             dataType: 'json',
             data: {

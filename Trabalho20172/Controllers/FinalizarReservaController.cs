@@ -13,20 +13,19 @@ namespace Trabalho20172.Controllers
         // GET: FinalizarReserva
         public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
         {
-
-
             LocacaoViewModel viewModel = new LocacaoViewModel();
-            viewModel.ListaDeAgencias = ListaDeAgencias();
-
-            //Obtendo os dados do carro selecionado e do local de retirada/entrega
            
+            //Obtendo os dados do carro selecionado e do local de retirada/entrega
             viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
             viewModel.dataEntrega = Convert.ToDateTime(dataEntrega);
+            viewModel.QtdDiarias = qtdDiarias;
+            viewModel.precoDiaria = Convert.ToDouble(precoDiaria);
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
-            //Obtendo a Agencia de retirada
+            //Obtendo a Agencia de retirada/Entrega
             viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = viewModel.localRetirada;
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+
 
             //Buscando o carro selecionado
             Carro carroSelecionado = TopGear.Api.TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
@@ -39,7 +38,8 @@ namespace Trabalho20172.Controllers
                 Ano = carroSelecionado.Ano,
                 Placa = carroSelecionado.Placa,
                 AgenciaId = carroSelecionado.AgenciaId,
-                categoria = categoria
+                categoria = categoria,
+                UrlImagem = carroSelecionado.UrlImagem
             };
             
             return View(viewModel);
@@ -47,8 +47,10 @@ namespace Trabalho20172.Controllers
            
         }
 
-        public JsonResult Efetuarlocacao(int idCliente, int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, double precoTotal)
+        public JsonResult Efetuarlocacao(int idCarro, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega, double precoTotal)
         {
+
+            var idCliente = (int)Sessao.IdUsuarioLogado;
             Locacao novaLocacao = new Locacao()
             {
                 ClienteId = idCliente,
@@ -60,8 +62,8 @@ namespace Trabalho20172.Controllers
                 Finalizada = false
             };
 
-            var sucesso = TopGear.Api.TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
-            return (sucesso != null) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
+            var idNovaLocacao = TopGear.Api.TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            return (idNovaLocacao != 0) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
 
         }
 
