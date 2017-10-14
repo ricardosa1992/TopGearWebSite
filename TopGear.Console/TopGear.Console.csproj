@@ -49,9 +49,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TopGear.Api\TopGear.Api.csproj">
+    <ProjectReference Include="..\TopGear.Api\TopGearWebSite.Api.csproj">
       <Project>{40FBDECD-8571-45AE-BA8E-4E06CF7133EC}</Project>
-      <Name>TopGear.Api</Name>
+      <Name>TopGearWebSite.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

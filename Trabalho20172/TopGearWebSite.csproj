@@ -418,9 +418,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TopGear.Api\TopGear.Api.csproj">
+    <ProjectReference Include="..\TopGear.Api\TopGearWebSite.Api.csproj">
       <Project>{40fbdecd-8571-45ae-ba8e-4e06cf7133ec}</Project>
-      <Name>TopGear.Api</Name>
+      <Name>TopGearWebSite.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

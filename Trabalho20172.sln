@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trabalho20172", "Trabalho20172\Trabalho20172.csproj", "{97C93224-63E0-43EB-8039-B4C2CD96F4F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopGearWebSite", "Trabalho20172\TopGearWebSite.csproj", "{97C93224-63E0-43EB-8039-B4C2CD96F4F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopGear.Api", "TopGear.Api\TopGear.Api.csproj", "{40FBDECD-8571-45AE-BA8E-4E06CF7133EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopGearWebSite.Api", "TopGear.Api\TopGearWebSite.Api.csproj", "{40FBDECD-8571-45AE-BA8E-4E06CF7133EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopGear.Console", "TopGear.Console\TopGear.Console.csproj", "{F27CBEEE-8243-4FA2-B982-D80B9D8AB4BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteTeste", "WebSiteTeste\WebSiteTeste.csproj", "{4D44BDF2-8ABB-406A-AB20-5A14B15F23EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopGearWebSite.teste", "WebSiteTeste\TopGearWebSite.teste.csproj", "{4D44BDF2-8ABB-406A-AB20-5A14B15F23EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
