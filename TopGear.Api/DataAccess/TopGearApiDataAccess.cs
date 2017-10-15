@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TopGear.Api.DataApi;
 
-namespace TopGear.Api
+namespace TopGear.Api.DataAccess
 {
-    public static class TopGearApiDataAccess<T>
+    public class TopGearApiDataAccess<T>
     {
         public static T Get(string relativePath)
         {
@@ -48,6 +49,11 @@ namespace TopGear.Api
                 return result.Dados;
             }
             return default(T);
+        }
+
+        public static string GetToken()
+        {
+            return TopGearApi<string>.GetToken() ;
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using TopGear.Api.DataAccess;
 using TopGear.Api.Models;
 using Trabalho20172.Models;
 
@@ -24,7 +25,7 @@ namespace Trabalho20172.Controllers
             if (ModelState.IsValid)
             {
                 //Verificar aqui o login
-                Cliente cliente = TopGear.Api.TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{login}");
+                Cliente cliente = TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{login}");
 
                 if (cliente != null)
                 {

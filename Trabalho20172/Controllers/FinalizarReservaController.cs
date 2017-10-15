@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TopGear.Api.DataAccess;
 using TopGear.Api.Models;
 using Trabalho20172.Models;
 
@@ -23,13 +24,13 @@ namespace Trabalho20172.Controllers
             viewModel.precoTotal = Convert.ToDouble(precoTotal);
 
             //Obtendo a Agencia de retirada/Entrega
-            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+            viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
 
 
             //Buscando o carro selecionado
-            Carro carroSelecionado = TopGear.Api.TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
-            Categoria categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carroSelecionado.CategoriaId}");
+            Carro carroSelecionado = TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
+            Categoria categoria = TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carroSelecionado.CategoriaId}");
             viewModel.carroSelecionado = new CarroViewModel
             {
                 Id = carroSelecionado.Id,
@@ -62,7 +63,7 @@ namespace Trabalho20172.Controllers
                 Finalizada = false
             };
 
-            var idNovaLocacao = TopGear.Api.TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            var idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
             return (idNovaLocacao != 0) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
 
         }

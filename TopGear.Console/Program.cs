@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TopGear.Api;
+using TopGear.Api.DataApi;
 using TopGear.Api.Models;
 
 namespace TopGear.Console

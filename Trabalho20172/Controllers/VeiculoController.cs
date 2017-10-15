@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TopGear.Api;
+using TopGear.Api.DataAccess;
 using TopGear.Api.Models;
 using Trabalho20172.Models;
 
@@ -41,8 +43,8 @@ namespace Trabalho20172.Controllers
             viewModel.horaEntrega = horaEntrega;
 
             //Obtendo a Agencia de retirada
-            viewModel.localRetirada = TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGear.Api.TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+            viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
 
             //Obtendo a lista de agencias para a Edição
             viewModel.ListaDeAgencias = ListaDeAgencias();
@@ -55,20 +57,24 @@ namespace Trabalho20172.Controllers
             else
                 viewModel.QtdDiarias = (nod.TotalHours % 24 == 0) ? (int)nod.TotalDays : ((int)nod.TotalDays) + 1;
 
-            viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega);
+            viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega,idLocalRetirada);
 
 
             return View(viewModel);
         }
 
-        public List<CarroViewModel> BuscarCarrosDisponiveis(DateTime dataRetirada, DateTime dataEntrega)
+        public List<CarroViewModel> BuscarCarrosDisponiveis(DateTime dataRetirada, DateTime dataEntrega,int idAgencia)
         {
-            var listaCarros = TopGear.Api.TopGearApiDataAccess<IEnumerable<Carro>>.Get("carro");
+            //var listaCarros = TopGear.Api.TopGearApiDataAccess<IEnumerable<Carro>>.Get("carro");
+
+
+            var listaCarros = CarroApiDataAccess.ObterDisponiveis(dataRetirada,dataEntrega,idAgencia);
+
             List<CarroViewModel> listaCarrosDispopniveis = new List<CarroViewModel>();
 
             foreach (var carro in listaCarros)
             {
-                var categoria = TopGear.Api.TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carro.CategoriaId}");
+                var categoria = TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carro.CategoriaId}");
                 CarroViewModel carroViewModel = new CarroViewModel { Id = carro.Id, Ano = carro.Ano, Marca = carro.Marca, Modelo = carro.Modelo, UrlImagem = carro.UrlImagem, categoria = categoria };
                 listaCarrosDispopniveis.Add(carroViewModel);
             }

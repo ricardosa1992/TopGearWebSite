@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TopGear.Api.Models;
 
-namespace TopGear.Api
+namespace TopGear.Api.DataApi
 {
   
-    public static class TopGearApi<T>
+    public class TopGearApi<T>
     {
-        private static HttpClient client = new HttpClient
+        protected static HttpClient client = new HttpClient
         {
             BaseAddress = new Uri(ConfigurationManager.AppSettings["baseUrl"])
         };
@@ -101,6 +101,11 @@ namespace TopGear.Api
         private static Request<T> MakeRequest(T dados)
         {
             return new Request<T> { Dados = dados, Token = Token };
+        }
+
+        public static string GetToken()
+        {
+            return Token;
         }
     }
 
