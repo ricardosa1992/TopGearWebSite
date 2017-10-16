@@ -65,9 +65,7 @@ namespace Trabalho20172.Controllers
 
         public List<CarroViewModel> BuscarCarrosDisponiveis(DateTime dataRetirada, DateTime dataEntrega,int idAgencia)
         {
-            //var listaCarros = TopGear.Api.TopGearApiDataAccess<IEnumerable<Carro>>.Get("carro");
-
-
+          
             var listaCarros = CarroApiDataAccess.ObterDisponiveis(dataRetirada,dataEntrega,idAgencia);
 
             List<CarroViewModel> listaCarrosDispopniveis = new List<CarroViewModel>();
