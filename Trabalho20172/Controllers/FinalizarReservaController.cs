@@ -42,7 +42,12 @@ namespace Trabalho20172.Controllers
                 categoria = categoria,
                 UrlImagem = carroSelecionado.UrlImagem
             };
-            
+
+
+            //Buscar a lista de Voos Disponíveis
+            //List<Voo> listaVoos = TopGearApiDataAccess<Voo>.GetVoos();
+
+
             return View(viewModel);
 
            

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TopGear.Api.DataApi;
+using TopGear.Api.Models;
 
 namespace TopGear.Api.DataAccess
 {
@@ -53,7 +54,12 @@ namespace TopGear.Api.DataAccess
 
         public static string GetToken()
         {
-            return TopGearApi<string>.GetToken() ;
+            return TopGearApi<T>.GetToken() ;
+        }
+
+        public static List<Voo> GetVoos()
+        {
+            return TopGearApi<T>.GetVoos();
         }
 
     }

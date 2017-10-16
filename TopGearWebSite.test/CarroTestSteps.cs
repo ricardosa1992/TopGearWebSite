@@ -11,7 +11,6 @@ namespace TopGearWebSite.test
     public class CarroTestSteps
     {
         IEnumerable<Carro> listaCarros;
-        
 
         [Given(@"Eu quero buscar os carros disponiveis")]
         public void GivenEuQueroBuscarOsCarrosDisponiveis()

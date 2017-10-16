@@ -2,16 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 using TopGear.Api.Models;
 
 namespace TopGear.Api.DataApi
 {
-  
+
     public class TopGearApi<T>
     {
         protected static HttpClient client = new HttpClient
@@ -106,6 +104,26 @@ namespace TopGear.Api.DataApi
         public static string GetToken()
         {
             return Token;
+        }
+
+
+        public static List<Voo> GetVoos()
+        {
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri("http://viniciuszorzanelli.com/Source/Slim/api.php/getTodosVoos")
+            };
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync("").Result;
+            var teste = response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                return response.Content.ReadAsAsync<List<Voo>>().Result;
+            }
+            else return new List<Voo>();
         }
     }
 
