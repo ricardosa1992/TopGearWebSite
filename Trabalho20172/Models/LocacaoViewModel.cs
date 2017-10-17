@@ -62,7 +62,6 @@ namespace Trabalho20172.Models
 
         public string cpf { get; set; }
 
-        [Required(ErrorMessage = "O CPF do usuário é obrigatório", AllowEmptyStrings = false)]
         public string cpfAcesso { get; set; }
 
         public int numCartao { get; set; }
@@ -70,6 +69,9 @@ namespace Trabalho20172.Models
         public string senha { get; set; }
 
         public string senhaAcesso { get; set; }
+
+        //Lista de vôos
+        public List<Voo> listaVoos = new List<Voo>();
 
     }
 }

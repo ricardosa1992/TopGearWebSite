@@ -46,6 +46,12 @@ namespace Trabalho20172.Controllers
 
             //Buscar a lista de Voos Disponíveis
             //List<Voo> listaVoos = TopGearApiDataAccess<Voo>.GetVoos();
+            //List<Voo> listaVoos = new List<Voo>();
+            //listaVoos.Add(new Voo { aeroporto_partida = "Vitória", aeroporto_destino = "São Paulo" });
+            //listaVoos.Add(new Voo { aeroporto_partida = "Vitória", aeroporto_destino = "Rio de Janeiro" });
+            //listaVoos.Add(new Voo { aeroporto_partida = "São Paulo", aeroporto_destino = "Rio de Janeiro" });
+            //listaVoos.Add(new Voo { aeroporto_partida = "Campinas", aeroporto_destino = "Belo Horizonte" });
+            viewModel.listaVoos = TopGearApiDataAccess<Voo>.GetVoos(); 
 
 
             return View(viewModel);

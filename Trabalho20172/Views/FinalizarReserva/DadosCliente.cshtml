@@ -49,6 +49,14 @@
             height: 100%;
         }
 
+        .reserva-header {
+            height:50px
+        }
+
+        .voo-header {
+            height:20px
+        }
+
     </style>
 
 
@@ -116,6 +124,55 @@
                     <div class="col-md-12 col-sm-12">
                         <input type="button" class="btn btn-primary" id="efetuarLocacao" value="Confirmar" />
                     </div>
+
+                    @{
+                        foreach (var voo in Model.listaVoos)
+                        {
+                            <div class="box-detalhes-reserva col-md-3" style="margin-left:30px;margin-top:30px" >
+                                <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                    <div class="reserva-header voo-header">
+                                        <a class="target" href="#" title="sua reserva">
+                                            <i class="fa fa-plane" aria-hidden="true"></i> @voo.codigo
+                                           
+                                        </a>
+                                    </div>
+                                    <div class="reserva-body">
+                                        <i class="icon2-retirada"></i><p class="sub-title">Partida</p>
+                                        <div class="content-agencias">
+                                            <p class="text-slip-strong" style="text-transform:capitalize">
+                                                @voo.cidade_partida - @voo.aeroporto_partida (@voo.sigla_aeroporto_partida)
+                                            </p>
+                                            <div class="date text-slip-normal">
+                                                @voo.partida
+                                            </div>
+                                        </div>
+                                        <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
+                                        <div class="content-agencias">
+                                            <p class="text-slip-strong" style="text-transform:capitalize">
+                                              @voo.cidade_destino - @voo.aeroporto_destino (@voo.sigla_aeroporto_destino)
+                                            </p>
+                                            <div class="date text-slip-normal">
+                                                @voo.chegada
+                                            </div>
+                                        </div>
+
+                                        <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                            <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black">R$ @voo.preco.ToString("n2")</font></p>
+                                           
+                                        </div>
+                                        <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Comprar" style="" />
+
+                                    </div>
+
+                                </div>
+                             
+                            </div>
+
+                        }
+
+
+                    }
+
 
                 </div>
 
