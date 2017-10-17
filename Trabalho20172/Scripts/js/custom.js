@@ -578,7 +578,7 @@ $("#efetuarLocacao").click(function (e) {
         success: function (result) {
             if (result.Status == "ok") {
                 swal({
-                    title: 'Locação efetuada com sucesso!',
+                    title: 'Locacao efetuada com sucesso!',
                     type: 'success'
                 });
             }
