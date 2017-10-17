@@ -29,14 +29,9 @@ namespace TopGear.Console
                 }
             }
 
-            //Aqui passa o id, então retorna um carro só
-            var carro = TopGearApi<Carro>.Get(99, "carro");
+            //Teste da API de voos
 
-            if (carro.Sucesso)
-            {
-                var car2 = carro.Dados;
-                System.Console.WriteLine(car2.Modelo + " - " + car2.Marca + ": " + car2.Placa);
-            }
+            var voos = TopGearApi<List<Voo>>.GetVoos();
 
             System.Console.ReadLine();
         }

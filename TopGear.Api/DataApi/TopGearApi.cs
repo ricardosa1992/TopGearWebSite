@@ -115,13 +115,17 @@ namespace TopGear.Api.DataApi
             };
 
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
 
             HttpResponseMessage response = client.GetAsync("").Result;
             var teste = response.EnsureSuccessStatusCode();
             if (response.IsSuccessStatusCode)
             {
-                return response.Content.ReadAsAsync<List<Voo>>().Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                var voos = JsonConvert.DeserializeObject<List<Voo>>(json);
+
+                return voos;
             }
             else return new List<Voo>();
         }
