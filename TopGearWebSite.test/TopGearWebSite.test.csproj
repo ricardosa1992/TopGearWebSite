@@ -65,6 +65,12 @@
       <DependentUpon>CarroTest.feature</DependentUpon>
     </Compile>
     <Compile Include="CarroTestSteps.cs" />
+    <Compile Include="Login.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.feature</DependentUpon>
+    </Compile>
+    <Compile Include="LoginSteps.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +79,10 @@
     <None Include="CarroTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CarroTest.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Login.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Login.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

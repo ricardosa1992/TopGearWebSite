@@ -10,13 +10,14 @@ namespace TopGear.Api.DataAccess
 {
     public class CarroApiDataAccess : TopGearApiDataAccess<Carro>
     {
-        public static IEnumerable<Carro> ObterDisponiveis(DateTime dtInicial, DateTime dtFinal, int? idAgencia)
+        public static IEnumerable<Carro> ObterDisponiveis(DateTime dtInicial, DateTime dtFinal, int? idAgencia, int? idItem)
         {
             var req = new RequestCarrosDisponiveis
             {
                 Inicial = dtInicial,
                 Final = dtFinal,
                 AgenciaId = idAgencia,
+                ItemId = idItem,
                 Token = TopGearApiDataAccess<Carro>.GetToken()
             };
 

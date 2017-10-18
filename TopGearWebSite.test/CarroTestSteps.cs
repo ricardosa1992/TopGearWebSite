@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TopGear.Api.DataAccess;
+using TopGear.Api.DataApi;
 using TopGear.Api.Models;
 
 namespace TopGearWebSite.test
@@ -10,8 +11,35 @@ namespace TopGearWebSite.test
     [Binding]
     public class CarroTestSteps
     {
-        IEnumerable<Carro> listaCarros;
+        IEnumerable<Carro> listaCarrosDisponiveis;
+        IEnumerable<Carro> listaCarrosDisponiveisPorItem;
+        Response<List<Carro>> responseCarrosDisponiveis;
+        Response<List<Carro>> responseCarrosDisponiveisPorItem;
+        int idAgencia;
+        DateTime dtInicial;
+        DateTime dtFinal;
 
+
+        [Given(@"Eu quero buscar os carros por item")]
+        public void GivenEuQueroBuscarOsCarrosPorItem()
+        {
+            //ScenarioContext.Current.Pending();
+        }
+        
+        [Given(@"entrei com o id do (.*)")]
+        public void GivenEntreiComOIdDo(int p0)
+        {
+            responseCarrosDisponiveisPorItem = CarroApi.ObterDisponiveis(new RequestCarrosDisponiveis
+                        {
+                            Inicial = dtInicial,
+                            Final = dtFinal,
+                            AgenciaId = idAgencia,
+                            ItemId = p0,
+                            Token = TopGearApiDataAccess<Carro>.GetToken()
+                        });
+            listaCarrosDisponiveisPorItem = CarroApiDataAccess.ObterDisponiveis(dtInicial, dtFinal, idAgencia, p0);
+        }
+        
         [Given(@"Eu quero buscar os carros disponiveis")]
         public void GivenEuQueroBuscarOsCarrosDisponiveis()
         {
@@ -21,7 +49,20 @@ namespace TopGearWebSite.test
         [Given(@"digitei a (.*) e a '(.*)' e '(.*)'")]
         public void GivenDigiteiAEAE(int p0, string p1, string p2)
         {
-            listaCarros = CarroApiDataAccess.ObterDisponiveis(Convert.ToDateTime(p1), Convert.ToDateTime(p2), p0);
+            dtInicial = Convert.ToDateTime(p1);
+            dtFinal = Convert.ToDateTime(p2);
+            idAgencia = p0;
+
+            responseCarrosDisponiveis = CarroApi.ObterDisponiveis(new RequestCarrosDisponiveis
+            {
+                Inicial = dtInicial,
+                Final = dtFinal,
+                AgenciaId = idAgencia,
+                ItemId = null,
+                Token = TopGearApiDataAccess<Carro>.GetToken()
+            });
+
+            listaCarrosDisponiveis = CarroApiDataAccess.ObterDisponiveis(dtInicial, dtFinal, p0,null);
             //ScenarioContext.Current.Pending();
         }
 
@@ -31,10 +72,18 @@ namespace TopGearWebSite.test
             //ScenarioContext.Current.Pending();
         }
 
+        [Then(@"o resultado deve ser os carros que possuem o item")]
+        public void ThenOResultadoDeveSerOsCarrosQuePossuemOItem()
+        {
+
+            Assert.IsFalse(responseCarrosDisponiveisPorItem.Sucesso);
+            //Assert.IsNotNull(listaCarrosDisponiveisPorItem);
+        }
+
         [Then(@"o resultado deve ser os carros diponiveis")]
         public void ThenOResultadoDeveSerOsCarrosDiponiveis()
         {
-            Assert.IsNotNull(listaCarros);
+            Assert.IsNotNull(listaCarrosDisponiveis);
 
         }
     }

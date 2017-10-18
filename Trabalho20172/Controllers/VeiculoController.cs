@@ -66,7 +66,7 @@ namespace Trabalho20172.Controllers
         public List<CarroViewModel> BuscarCarrosDisponiveis(DateTime dataRetirada, DateTime dataEntrega,int idAgencia)
         {
           
-            var listaCarros = CarroApiDataAccess.ObterDisponiveis(dataRetirada,dataEntrega,idAgencia);
+            var listaCarros = CarroApiDataAccess.ObterDisponiveis(dataRetirada,dataEntrega,idAgencia,null);
 
             List<CarroViewModel> listaCarrosDispopniveis = new List<CarroViewModel>();
 
