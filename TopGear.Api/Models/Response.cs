@@ -11,5 +11,7 @@ namespace TopGear.Api.Models
         public bool Sucesso { get; set; }
 
         public T Dados { get; set; }
+
+        public string Mensagem { get; set; }
     }
 }

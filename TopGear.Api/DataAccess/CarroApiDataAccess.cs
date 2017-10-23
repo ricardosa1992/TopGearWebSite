@@ -18,7 +18,7 @@ namespace TopGear.Api.DataAccess
                 Final = dtFinal,
                 AgenciaId = idAgencia,
                 ItemId = idItem,
-                Token = TopGearApiDataAccess<Carro>.GetToken()
+                Token = GetToken()
             };
 
             var listaCarros = CarroApi.ObterDisponiveis(req);

@@ -16,8 +16,8 @@ namespace TopGearWebSite.test
         Response<List<Carro>> responseCarrosDisponiveis;
         Response<List<Carro>> responseCarrosDisponiveisPorItem;
         int idAgencia;
-        DateTime dtInicial;
-        DateTime dtFinal;
+        static DateTime dtInicial;
+        static DateTime dtFinal;
 
 
         [Given(@"Eu quero buscar os carros por item")]
@@ -76,7 +76,7 @@ namespace TopGearWebSite.test
         public void ThenOResultadoDeveSerOsCarrosQuePossuemOItem()
         {
 
-            Assert.IsFalse(responseCarrosDisponiveisPorItem.Sucesso);
+            Assert.IsTrue(responseCarrosDisponiveisPorItem.Sucesso);
             //Assert.IsNotNull(listaCarrosDisponiveisPorItem);
         }
 

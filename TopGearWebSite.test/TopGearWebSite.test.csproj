@@ -65,6 +65,12 @@
       <DependentUpon>CarroTest.feature</DependentUpon>
     </Compile>
     <Compile Include="CarroTestSteps.cs" />
+    <Compile Include="Locacao.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Locacao.feature</DependentUpon>
+    </Compile>
+    <Compile Include="LocacaoSteps.cs" />
     <Compile Include="Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +85,10 @@
     <None Include="CarroTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CarroTest.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Locacao.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Locacao.feature.cs</LastGenOutput>
     </None>
     <None Include="Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

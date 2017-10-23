@@ -56,8 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\LocacaoDataAccess.cs" />
     <Compile Include="DataApi\CarroApi.cs" />
     <Compile Include="DataAccess\CarroApiDataAccess.cs" />
+    <Compile Include="DataApi\LocacaoApi.cs" />
     <Compile Include="Models\Agencia.cs" />
     <Compile Include="Models\BaseRequest.cs" />
     <Compile Include="Models\Carro.cs" />
