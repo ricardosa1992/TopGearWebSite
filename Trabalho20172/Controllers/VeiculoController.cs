@@ -35,13 +35,15 @@ namespace Trabalho20172.Controllers
                 string[] dataRetVetor = dataRet.Split('/');
                 string strDataRetirada = dataRetVetor[2] + "-" + dataRetVetor[1] + "-" + dataRetVetor[0];
 
+
+
                 string dataEnt = dadosLocacao.dataEntregaHidden.Split(' ')[0];
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
+                DateTime dataRetirada = Convert.ToDateTime(dataRet);
                 dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada, format, provider);
-                DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
+                DateTime dataEntrega = Convert.ToDateTime(dataEnt);
                 dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega, format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
@@ -112,9 +114,9 @@ namespace Trabalho20172.Controllers
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
+                DateTime dataRetirada = Convert.ToDateTime(dataRet);
                 dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada,format,provider);
-                DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
+                DateTime dataEntrega = Convert.ToDateTime(dataEnt);
                 dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega,format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
