@@ -73,5 +73,13 @@ namespace Trabalho20172.Models
         //Lista de vôos
         public List<Voo> listaVoos = new List<Voo>();
 
+        //Lista de Itens 
+        public List<Item> listaItens = new List<Item>();
+
+        //Campos criados para implementar o filtro
+        public string Modo { get; set; }
+
+        public List<int> listIdItensChecadosFiltro = new List<int>();
+
     }
 }

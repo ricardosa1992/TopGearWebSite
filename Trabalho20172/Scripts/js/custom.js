@@ -408,13 +408,13 @@ $("#car-select-form").submit(function () {
       if(validateNotEmpty(pickUpDate)) { error = 1; }
       if(validateNotEmpty(dropOffDate)) { error = 1; }
 
-      //if (error == 1)
-      //{
+      if (error == 1)
+      {
 
-      //    $('#car-select-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
-      //    return false;
+          $('#car-select-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
+          return false;
 
-      //}
+      }
 
 });
 
@@ -538,6 +538,8 @@ $(".selecionarCarro").click(function (e) {
     precoTotal = (precoTotal.toString()).replace(".", ",");
 
     //Montando as Informações sobre o carro selecionado
+    $("#seu-carro-edicao").hide();
+
     $("#idCarroSelecionadoHidden").val(idCarro);
     $("#carroSelecionado").text(modeloCarro);
     $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
@@ -660,6 +662,12 @@ $("#efetuarLogin").click(function (e) {
 $("#btn-cadastro").click(function (e) {
     $("#modal-login").modal('toggle');
     $("#modal-cadastro").modal();
+
+});
+
+//Recarrega a página com os carros disponíveis de acordo com o filtro selecionado
+$(".filtroItens").click(function (e) {
+    $("#filtro-form").submit();
 
 });
 

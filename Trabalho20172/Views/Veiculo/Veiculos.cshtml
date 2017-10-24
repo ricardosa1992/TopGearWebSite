@@ -97,167 +97,219 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row content">
+                @using (Html.BeginForm("Veiculos", "Veiculo", FormMethod.Post, new { id = "filtro-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.HiddenFor(m => m.Modo, new { Value = Model.Modo })
+
                 <!--Filtros-->
-                <div class="col-sm-2 sidenav">
-                    <div class="base">
-                        <ul class="nav nav-list">
-                            <li class="active"><a href="#"><div class="fs1" aria-hidden="true" data-icon=""></div>Itens</a></li>
-                            <li><input type="checkbox" id="opArCondicionado" style="margin-left:5px" />&nbsp; Ar Condicionado</li>
-                            <li><input type="checkbox" id="opTetoSolar" style="margin-left:5px" />&nbsp; Teto Solar</li>
-                            <li><input type="checkbox" id="opGPS" style="margin-left:5px" />&nbsp; GPS</li>
-                            <li class="divider"></li>
-                        </ul>
+                    <div class="col-sm-2 sidenav">
+                        <div class="base">
 
-           
-                    </div>
-                </div>
-                <!--Fim Filtros-->
-                <div class="col-sm-8">
-                    <h2>Vehicle guide</h2>
-                    <div class="filters-by-category text-center">
-                        <ul class="option-set" data-option-key="filter">
-                            <li><a href="#filter" data-option-value="*" class="selected">Todos</a></li>
-                            <li><a href="#filter" data-option-value=".category4">Luxo</a></li>
-                            <li><a href="#filter" data-option-value=".category5" class="">Esporte</a></li>
-                            <li><a href="#filter" data-option-value=".category6" class="">Popular</a></li>
-                          
-                        </ul>
-                    </div>
-                    <div class="gallery">
+                            <ul class="nav nav-list">
+                                <li class="active"><a href="#"><div class="fs1" aria-hidden="true" data-icon=""></div>Itens</a></li>
+                                @{
+                                    foreach (var item in Model.listaItens)
+                                    {
+                                        if (Model.listIdItensChecadosFiltro.Contains(item.Id))
+                                        {
+                                            <li><input type="checkbox" class="filtroItens" name="chkBox_@item.Id" value="@item.Id" style="margin-left:5px" checked/>&nbsp; @item.Descricao</li>
+                                        }
+                                        else
+                                        {
+                                            <li><input type="checkbox" class="filtroItens" name="chkBox_@item.Id" value="@item.Id" style="margin-left:5px" />&nbsp; @item.Descricao</li>
+                                        }
+                                     }
 
-                        @{Html.RenderPartial("ListaVeiculos", Model);}
-                    
-                        @*@{
-                            Html.RenderPartial("ListaVeiculos");
-                        }*@
+                                    }
+                                <li class="divider"></li>
+                            </ul>
 
-                       @*<div class="item category1 category3">
-                            <div class="iolxmage"><img id="caminhoFotoCarro_5" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
-                            <div class="info">
-                                <h4>mercedes sls</h4>
-                                <p>15 km/l (approximate)</p>
-                                <p><a href="#" class="read-more">Details</a></p>
-                                <input type="button" class="btn btn-primary selecionarCarro" id="carro_5" idCarro="5" modeloCarro="Mercedes" precoCarro="200.00" value="Selecionar" />
 
-                            </div>
-                            <div class="details-box">
-                                <span class="box-close">&times;</span>
-                                <div class="title">Vehicle Details</div>
-                                <div class="inside">
-                                    <div class="wrapper row-top">
-                                        <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
-                                        <div class="details-list">
-                                            <h4>mercedes sls</h4>
-                                            5 Passengers<br>
-                                            1 Large Suitcase, 2 Small Suitcase<br>
-                                            Automatic Transmission<br>
-                                            Air Conditioning<br>
-                                            0 g/km CO2
-                                        </div>
-                                    </div>
-                                    <div class="row-bot">
-                                        <p><strong>Please Note:</strong></p>
-                                        <ul class="styled-list">
-                                            <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
-                                            <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
-                                            <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
-                                        </ul>
-                                        <a href="#" class="btn btn-default">Save for my reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
-                       
-                     
-                       
-                       
-                    </div>
-                </div>
-
-                <!--Area da reserva-->
-                <div class="col-sm-2 sidenav normal" id="divReserva">
-                    <div id="div-fixo-slip" class="col-2 pull-right" style="">
-
-                        <div class="box-detalhes-reserva">
-                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
-                                <div class="reserva-header">
-                                    <a class="target" href="#" title="sua reserva">
-                                        <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
-                                    </a>
-                                </div>
-                                <div class="reserva-body">
-                                    <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                        Editar
-                                    </a>
-                                   
-                                    <div class="content-agencias">
-                                        <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localRetirada.Nome
-                                            @Html.HiddenFor(m=>m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id})
-                                        </p>
-                                        <div class="date text-slip-normal">
-                                            @Model.dataRetirada.ToString()
-                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
-                                        </div>
-                                    </div>
-                                    <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
-                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                        Editar
-                                    </a>
-                                    <div class="content-agencias">
-                                        <p class="text-slip-strong" style="text-transform:capitalize">
-                                            @Model.localEntrega.Nome
-                                            @Html.HiddenFor(m=>m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
-                                        </p>
-                                        <div class="date text-slip-normal">
-                                            @Model.dataEntrega.ToString()
-                                            @Html.HiddenFor(m=>m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString()})
-                                        </div>
-                                    </div>
-                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
-                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
-                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
-                                    </div>
-
-                                    <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
-                                        <br>
-                                    
-                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
-                                        <div class="info">
-                                            <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado" ></span></h4>
-                                            @Html.HiddenFor(m=>m.idCarroSelecionadoHidden)
-                                        </div>
-
-                                    </div>
-
-                                    <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
-                                        <div class="slip-reserva-valor-total">
-                                            <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span  id="valorLocacao"></span></h3>
-                                            @Html.HiddenFor(m => m.precoTotal)
-                                            @Html.HiddenFor(m=> m.precoDiaria)
-                                        </div>
-                                    </div>
-
-                                    <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar"  style="display:none" />
-
-                                </div>
-                     
-                            </div>
-                            @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
-                                <div class="slip-reserva-valor-total">
-                                    <p class="titulo valor-previsto" id="valorLocacao"></p>
-                                </div>
-                            </div>
-                            
-                            <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
                         </div>
                     </div>
-                </div>
-                <!--Fim Area reserva-->
+                <!--Fim Filtros-->
+                                    <div class="col-sm-8">
+                                        <h2>Vehicle guide</h2>
+                                        <div class="filters-by-category text-center">
+                                            <ul class="option-set" data-option-key="filter">
+                                                <li><a href="#filter" data-option-value="*" class="selected">Todos</a></li>
+                                                <li><a href="#filter" data-option-value=".category4">Luxo</a></li>
+                                                <li><a href="#filter" data-option-value=".category5" class="">Esporte</a></li>
+                                                <li><a href="#filter" data-option-value=".category6" class="">Popular</a></li>
 
-             </div>
-          </div>
+                                            </ul>
+                                        </div>
+                                        <div class="gallery">
+
+                                            @{Html.RenderPartial("ListaVeiculos", Model);}
+
+                                            @*@{
+                                                    Html.RenderPartial("ListaVeiculos");
+                                                }*@
+
+                                            @*<div class="item category1 category3">
+                                                    <div class="iolxmage"><img id="caminhoFotoCarro_5" src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
+                                                    <div class="info">
+                                                        <h4>mercedes sls</h4>
+                                                        <p>15 km/l (approximate)</p>
+                                                        <p><a href="#" class="read-more">Details</a></p>
+                                                        <input type="button" class="btn btn-primary selecionarCarro" id="carro_5" idCarro="5" modeloCarro="Mercedes" precoCarro="200.00" value="Selecionar" />
+
+                                                    </div>
+                                                    <div class="details-box">
+                                                        <span class="box-close">&times;</span>
+                                                        <div class="title">Vehicle Details</div>
+                                                        <div class="inside">
+                                                            <div class="wrapper row-top">
+                                                                <div class="details-image"><img src="~/Content/img/rental-car/rentalcar/car6.png" alt="" /></div>
+                                                                <div class="details-list">
+                                                                    <h4>mercedes sls</h4>
+                                                                    5 Passengers<br>
+                                                                    1 Large Suitcase, 2 Small Suitcase<br>
+                                                                    Automatic Transmission<br>
+                                                                    Air Conditioning<br>
+                                                                    0 g/km CO2
+                                                                </div>
+                                                            </div>
+                                                            <div class="row-bot">
+                                                                <p><strong>Please Note:</strong></p>
+                                                                <ul class="styled-list">
+                                                                    <li><strong>Pre-Pay Online: </strong>Allows you to reserve your vehicle and save money by pre-paying online.</li>
+                                                                    <li><strong>Pay at location:</strong> Allows you to reserve your vehicle and pay at the counter upon collection.</li>
+                                                                    <li>The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.</li>
+                                                                </ul>
+                                                                <a href="#" class="btn btn-default">Save for my reservation</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+
+
+
+
+                                        </div>
+                                    </div>
+
+                <!--Area da reserva-->
+                                                <div class="col-sm-2 sidenav normal" id="divReserva">
+                                                    <div id="div-fixo-slip" class="col-2 pull-right" style="">
+
+                                                        <div class="box-detalhes-reserva">
+                                                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                                                <div class="reserva-header">
+                                                                    <a class="target" href="#" title="sua reserva">
+                                                                        <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="reserva-body">
+                                                                    <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                                                        Editar
+                                                                    </a>
+
+                                                                    <div class="content-agencias">
+                                                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                                                            @Model.localRetirada.Nome
+                                                                            @Html.HiddenFor(m => m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id })
+                                                                        </p>
+                                                                        <div class="date text-slip-normal">
+                                                                            @Model.dataRetirada.ToString()
+                                                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
+                                                                            @Html.HiddenFor(m => m.horaRetirada, new { Value = Model.horaRetirada })
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
+                                                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                                                        Editar
+                                                                    </a>
+                                                                    <div class="content-agencias">
+                                                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                                                            @Model.localEntrega.Nome
+                                                                            @Html.HiddenFor(m => m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
+                                                                        </p>
+                                                                        <div class="date text-slip-normal">
+                                                                            @Model.dataEntrega.ToString()
+                                                                            @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
+                                                                            @Html.HiddenFor(m => m.horaEntrega, new { Value = Model.horaEntrega })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
+                                                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
+                                                                    </div>
+
+                                                                    @{
+                                                                        if (Model.carroSelecionado == null)
+                                                                        {
+
+                                                                            <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
+                                                                                <br>
+
+                                                                                <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
+                                                                                <div class="info">
+                                                                                    <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span></h4>
+                                                                                    @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                                                                <div class="slip-reserva-valor-total">
+                                                                                    <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao"></span></h3>
+                                                                                    @Html.HiddenFor(m => m.precoTotal)
+                                                                                    @Html.HiddenFor(m => m.precoDiaria)
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="display:none" />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
+                                                                                <br>
+
+                                                                                <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
+                                                                                <div class="info">
+                                                                                    <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@Model.carroSelecionado.Modelo</h4>
+                                                                                    @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="reserva-footer" id="slip-reserva-valor" style="">
+                                                                                <div class="slip-reserva-valor-total">
+                                                                                    <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao">@Model.QtdDiarias X @Model.precoDiaria = R$ @Model.precoTotal</span></h3>
+                                                                                    @Html.HiddenFor(m => m.precoTotal)
+                                                                                    @Html.HiddenFor(m => m.precoDiaria)
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="" />
+
+                                                                        }
+                                                                    }
+
+                                                                   
+
+                                                                </div>
+
+                                                            </div>
+                                                            @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                                                    <div class="slip-reserva-valor-total">
+                                                                        <p class="titulo valor-previsto" id="valorLocacao"></p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                <!--Fim Area reserva-->
+                                                }
+            </div>
+        </div>
 
         <!--Modal de Edição do local de Retirada/Entrega-->
         <div id="myModal" class="modal fade" role="dialog">
@@ -390,7 +442,6 @@
             </div>
         </div>
         <!--Fim modal de Edição do local de Retirada/Entrega-->
-
         <!--Modal de Login-->
         <div class="modal fade" id="modal-login" role="dialog">
             <div class="modal-dialog">
@@ -404,17 +455,17 @@
                     <div class="modal-body" style="padding:40px 50px;">
                         <form role="form" class="form" id="form-login">
                             <span id="msgErroLogin" class="msgErro" style="display:none"><font color="red">CPF ou Senha inválidos!</font></span>
-                            <br/>
+                            <br />
                             <div class="form-group">
-                                @Html.HiddenFor(m=>m.idCliente)
+                                @Html.HiddenFor(m => m.idCliente)
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                                <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF" >
-                                <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span> 
+                                <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF">
+                                <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span>
                             </div>
                             <div class="form-group">
                                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
                                 <input type="password" class="form-control" id="senhaUser" placeholder="Digite a Senha">
-                                <span id="msgErroSenha" class="msgErro" style="display:none"><font color="red">A senha é obrigatória!</font></span> 
+                                <span id="msgErroSenha" class="msgErro" style="display:none"><font color="red">A senha é obrigatória!</font></span>
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" value="" checked>Remember me</label>
@@ -430,9 +481,8 @@
                 </div>
 
             </div>
-        </div> 
+        </div>
         <!--Fim modal de Login-->
-
         <!--Modal de Cadastro-->
         <div class="modal fade" id="modal-cadastro" role="dialog">
             <div class="modal-dialog">
@@ -486,13 +536,13 @@
                                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
                                 @Html.TextBoxFor(m => m.senha, new { @class = "form-control" })
                             </div>
-                        
+
                             <button type="button" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Cadastrar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-                     
+
                     </div>
                 </div>
 
@@ -500,7 +550,7 @@
         </div>
         <!--Fim modal de cadastro-->
 
-</section>
+    </section>
 
 
     <a href="#" class="scrollup">ScrollUp</a>
