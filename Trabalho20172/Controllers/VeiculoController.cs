@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,8 +19,10 @@ namespace Trabalho20172.Controllers
         public ActionResult Veiculos(LocacaoViewModel dadosLocacao)
         {
             LocacaoViewModel viewModel = new LocacaoViewModel();
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            string format = "dd/MM/yyyy HH:mm";
 
-           
+
 
             if (dadosLocacao.Modo.Equals("filtro"))
             {
@@ -37,9 +40,9 @@ namespace Trabalho20172.Controllers
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
                 DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
-                dataRetirada = DateTime.Parse(dataRetirada.ToShortDateString() + " " + horaRetirada);
+                dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada, format, provider);
                 DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
-                dataEntrega = DateTime.Parse(dataEntrega.ToShortDateString() + " " + horaEntrega);
+                dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega, format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
                 viewModel.dataEntrega = dataEntrega;
@@ -93,6 +96,7 @@ namespace Trabalho20172.Controllers
             }
             else
             {
+              
 
                 //Obtendo os parâmetros selecionados para retirada/entrega
                 int idLocalRetirada = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
@@ -109,9 +113,9 @@ namespace Trabalho20172.Controllers
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
                 DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
-                dataRetirada = DateTime.Parse(dataRetirada.ToShortDateString() + " " + horaRetirada);
+                dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada,format,provider);
                 DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
-                dataEntrega = DateTime.Parse(dataEntrega.ToShortDateString() + " " + horaEntrega);
+                dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega,format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
                 viewModel.dataEntrega = dataEntrega;
