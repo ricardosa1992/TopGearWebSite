@@ -20,7 +20,7 @@ namespace Trabalho20172.Controllers
         {
             LocacaoViewModel viewModel = new LocacaoViewModel();
             CultureInfo provider = CultureInfo.InvariantCulture;
-            string format = "dd/MM/yyyy HH:mm";
+            string format = "yyyy/MM/DD HH:mm";
 
 
 
@@ -114,9 +114,9 @@ namespace Trabalho20172.Controllers
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                DateTime dataRetirada = Convert.ToDateTime(dataRet);
+                DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
                 dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada,format,provider);
-                DateTime dataEntrega = Convert.ToDateTime(dataEnt);
+                DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
                 dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega,format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
