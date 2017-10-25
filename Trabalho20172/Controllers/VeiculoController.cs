@@ -115,7 +115,7 @@ namespace Trabalho20172.Controllers
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
                // DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
-                DateTime dataRetirada = DateTime.ParseExact(strDataRetirada + " " + horaRetirada,format,provider);
+                DateTime dataRetirada = DateTime.Parse(strDataRetirada + " " + horaRetirada);
                 //DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
                 DateTime dataEntrega = DateTime.ParseExact(strDataEntrega + " " + horaEntrega,format, provider);
 
