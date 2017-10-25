@@ -19,7 +19,7 @@ namespace Trabalho20172.Controllers
         public ActionResult Veiculos(LocacaoViewModel dadosLocacao)
         {
             LocacaoViewModel viewModel = new LocacaoViewModel();
-            CultureInfo provider = CultureInfo.InvariantCulture;
+            CultureInfo provider = null;
             string format = "yyyy-MM-dd HH:mm";
 
 
