@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TopGear.Api;
 using TopGear.Api.DataAccess;
 using TopGear.Api.Models;
 using Trabalho20172.Models;
@@ -21,9 +18,7 @@ namespace Trabalho20172.Controllers
             LocacaoViewModel viewModel = new LocacaoViewModel();
             CultureInfo provider = new CultureInfo("en-US");
             string format = "yyyy-MM-dd HH:mm";
-
-
-
+            
             if (dadosLocacao.Modo.Equals("filtro"))
             {
                 int idLocalRetirada = dadosLocacao.idLocalRetiradaHidden;
@@ -34,16 +29,12 @@ namespace Trabalho20172.Controllers
                 string dataRet = dadosLocacao.dataRetiradaHidden.Split(' ')[0];
                 string[] dataRetVetor = dataRet.Split('/');
                 string strDataRetirada = dataRetVetor[2] + "-" + dataRetVetor[1] + "-" + dataRetVetor[0];
-
-
-
+                
                 string dataEnt = dadosLocacao.dataEntregaHidden.Split(' ')[0];
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                //DateTime dataRetirada = Convert.ToDateTime(dataRet);
                 DateTime dataRetirada = DateTime.ParseExact(strDataRetirada + " " + horaRetirada,format,provider);
-                //DateTime dataEntrega = Convert.ToDateTime(dataEnt);
                 DateTime dataEntrega = DateTime.ParseExact(strDataEntrega + " " + horaEntrega,format,provider);
 
                 viewModel.dataRetirada = dataRetirada;
@@ -64,7 +55,7 @@ namespace Trabalho20172.Controllers
                         UrlImagem = carro.UrlImagem
                     };
                 }
-                List<CarroViewModel> listaCarrosFiltro = new List<CarroViewModel>();
+                List<CarroViewModel> listaCarrosFiltro;
                
                 //Obtendo a Agencia de retirada
                 viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
@@ -98,8 +89,6 @@ namespace Trabalho20172.Controllers
             }
             else
             {
-              
-
                 //Obtendo os parâmetros selecionados para retirada/entrega
                 int idLocalRetirada = Convert.ToInt32(Request.Form["listaLocalRetirada"]);
                 int idLocalEntrega = Convert.ToInt32(Request.Form["listaLocalEntrega"]);
@@ -114,9 +103,7 @@ namespace Trabalho20172.Controllers
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-               // DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
                 DateTime dataRetirada = DateTime.Parse(strDataRetirada + " " + horaRetirada);
-                //DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
                 DateTime dataEntrega = DateTime.ParseExact(strDataEntrega + " " + horaEntrega,format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
