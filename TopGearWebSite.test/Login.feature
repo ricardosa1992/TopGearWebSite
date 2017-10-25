@@ -8,5 +8,5 @@ Scenario Outline: Login do usuario
 	Then O usuario tem que existir 
 
 	Examples: 
-		      |login| senha|
-			  | 4   | 1234 |
+		      |    login          | senha|
+			  | 00000000191       | 5678 |

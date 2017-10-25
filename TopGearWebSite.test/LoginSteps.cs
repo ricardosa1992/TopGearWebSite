@@ -21,14 +21,14 @@ namespace TopGearWebSite.test
         [Given(@"Eu digitei o (.*) e (.*)")]
         public void GivenEuDigiteiOE(string p0, string p1)
         {
-            clienteLogin.Id = Convert.ToInt32(p0);
+            clienteLogin.CPF = p0;
             clienteLogin.Senha = p1;
         }
 
         [When(@"Eu submter os dados")]
         public void WhenEuSubmterOsDados()
         {
-            clienteExiste = TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{clienteLogin.Id}");
+            clienteExiste = ClienteApiDataAccess.Login(clienteLogin.CPF, clienteLogin.Senha);
         }
 
         [Then(@"O usuario tem que existir")]
