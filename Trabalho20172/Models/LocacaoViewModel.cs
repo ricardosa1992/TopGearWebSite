@@ -71,15 +71,15 @@ namespace Trabalho20172.Models
         public string senhaAcesso { get; set; }
 
         //Lista de vôos
-        public List<Voo> listaVoos = new List<Voo>();
+        public List<Voo> listaVoos { get; set; } = new List<Voo>();
 
         //Lista de Itens 
-        public List<Item> listaItens = new List<Item>();
+        public List<Item> listaItens { get; set; } = new List<Item>();
 
         //Campos criados para implementar o filtro
         public string Modo { get; set; }
 
-        public List<int> listIdItensChecadosFiltro = new List<int>();
+        public List<int> listIdItensChecadosFiltro { get; set; } = new List<int>();
 
     }
 }
