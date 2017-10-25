@@ -20,7 +20,7 @@ namespace Trabalho20172.Controllers
         {
             LocacaoViewModel viewModel = new LocacaoViewModel();
             CultureInfo provider = CultureInfo.InvariantCulture;
-            string format = "yyyy/MM/DD HH:mm";
+            string format = "yyyy-MM-dd HH:mm";
 
 
 
@@ -41,10 +41,10 @@ namespace Trabalho20172.Controllers
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                DateTime dataRetirada = Convert.ToDateTime(dataRet);
-                dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada, format, provider);
-                DateTime dataEntrega = Convert.ToDateTime(dataEnt);
-                dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega, format, provider);
+                //DateTime dataRetirada = Convert.ToDateTime(dataRet);
+                DateTime dataRetirada = DateTime.ParseExact(strDataRetirada + " " + horaRetirada,format,provider);
+                //DateTime dataEntrega = Convert.ToDateTime(dataEnt);
+                DateTime dataEntrega = DateTime.ParseExact(strDataEntrega + " " + horaEntrega,format,provider);
 
                 viewModel.dataRetirada = dataRetirada;
                 viewModel.dataEntrega = dataEntrega;
@@ -114,10 +114,10 @@ namespace Trabalho20172.Controllers
                 string[] dataEntVetor = dataEnt.Split('/');
                 string strDataEntrega = dataEntVetor[2] + "-" + dataEntVetor[1] + "-" + dataEntVetor[0];
 
-                DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
-                dataRetirada = DateTime.ParseExact(dataRetirada.ToShortDateString() + " " + horaRetirada,format,provider);
-                DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
-                dataEntrega = DateTime.ParseExact(dataEntrega.ToShortDateString() + " " + horaEntrega,format, provider);
+               // DateTime dataRetirada = Convert.ToDateTime(strDataRetirada);
+                DateTime dataRetirada = DateTime.ParseExact(strDataRetirada + " " + horaRetirada,format,provider);
+                //DateTime dataEntrega = Convert.ToDateTime(strDataEntrega);
+                DateTime dataEntrega = DateTime.ParseExact(strDataEntrega + " " + horaEntrega,format, provider);
 
                 viewModel.dataRetirada = dataRetirada;
                 viewModel.dataEntrega = dataEntrega;
