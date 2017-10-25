@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
 using TopGear.Api.DataAccess;
+using TopGear.Api.DataApi;
 using TopGear.Api.Models;
 
 namespace TopGearWebSite.test
@@ -33,6 +35,7 @@ namespace TopGearWebSite.test
             novaLocacao = new Locacao()
             {
                 CarroId = carroSelecionado.Id,
+                ClienteId = TopGearApi<List<Cliente>>.Get("cliente").Dados.First().Id,
                 Agencia_RetiradaId = carroSelecionado.AgenciaId,
                 Agencia_EntregaId = carroSelecionado.AgenciaId,
                 Retirada = dtRetirada,
@@ -51,11 +54,17 @@ namespace TopGearWebSite.test
         {
             //ScenarioContext.Current.Pending();
         }
-        
+
+        [When(@"eu submeter os dados da locacao")]
+        public void WhenEuSubmeterOsDadosDaLocacao()
+        {
+            idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+        }
+
         [When(@"eu submeter os dados")]
         public void WhenEuSubmeterOsDados()
         {
-            var idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            //idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
         }
         
         [Then(@"o resultado deve ser uma locacao salva com sucesso")]

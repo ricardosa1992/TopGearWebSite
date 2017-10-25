@@ -92,7 +92,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 5
  testRunner.And("selecionei o carro desejado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 6
- testRunner.When("eu submeter os dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("eu submeter os dados da locacao", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7
  testRunner.Then("o resultado deve ser uma locacao salva com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -104,11 +104,11 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Locacao")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "\'2017-01-01\'")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:dtInicial", "\'2017-01-01\'")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:dtFinal", "\'2017-12-30\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:dtFinal", "\'2017-10-10\'")]
         public virtual void EfetuarUmaLocacao_2017_01_01()
         {
 #line 3
-this.EfetuarUmaLocacao("\'2017-01-01\'", "\'2017-12-30\'", ((string[])(null)));
+this.EfetuarUmaLocacao("\'2017-01-01\'", "\'2017-10-10\'", ((string[])(null)));
 #line hidden
         }
         
