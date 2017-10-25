@@ -14,6 +14,7 @@ build_script:
   - MSBuild.SonarQube.Runner.exe begin /k:"websitetoken" /o:"ricardosa1992-github" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=8676d192697e9b5062a5a28d64951cfe71400a02"
   - msbuild "Trabalho20172.sln"
   - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=8676d192697e9b5062a5a28d64951cfe71400a02"
+deploy:
 - provider: Environment
   name: WebSite
   on:
