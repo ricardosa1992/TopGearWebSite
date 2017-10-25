@@ -217,7 +217,7 @@
                                                                         </p>
                                                                         <div class="date text-slip-normal">
                                                                             @Model.dataRetirada.ToString()
-                                                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
+                                                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = DateTime.ParseExact(Model.dataRetirada.ToString(), "dd/MM/yyyy", null) })
                                                                             @Html.HiddenFor(m => m.horaRetirada, new { Value = Model.horaRetirada })
                                                                         </div>
                                                                     </div>
