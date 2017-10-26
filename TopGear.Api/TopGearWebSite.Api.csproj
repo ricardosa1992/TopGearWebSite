@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\ClienteApiDataAccess.cs" />
-    <Compile Include="DataAccess\LocacaoDataAccess.cs" />
+    <Compile Include="DataAccess\LocacaoApiDataAccess.cs" />
     <Compile Include="DataApi\CarroApi.cs" />
     <Compile Include="DataAccess\CarroApiDataAccess.cs" />
     <Compile Include="DataApi\ClienteApi.cs" />

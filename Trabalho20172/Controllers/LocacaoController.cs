@@ -9,7 +9,7 @@ using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
-    public class FinalizarReservaController : BaseController
+    public class LocacaoController : BaseController
     {
         // GET: FinalizarReserva
         public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)

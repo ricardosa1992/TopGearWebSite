@@ -14,6 +14,7 @@ namespace TopGearWebSite.test
     {
         List<Carro> listaCarrosDisponiveis;
         List<Locacao> locacoesDoCliente;
+        Cliente clienteReserva;
         Locacao novaLocacao;
         Carro carroSelecionado;
         int idNovaLocacao = 0;
@@ -25,9 +26,10 @@ namespace TopGearWebSite.test
         {
             dtRetirada = Convert.ToDateTime(p0);
             dtEntrega = Convert.ToDateTime(p1);
-            listaCarrosDisponiveis = (List<Carro>)CarroApiDataAccess.ObterDisponiveis(dtRetirada, dtEntrega , null, null);
+            listaCarrosDisponiveis = (List<Carro>)CarroApiDataAccess.ObterDisponiveis(dtRetirada, dtEntrega, null, null);
+
         }
-        
+
         [Given(@"selecionei o carro desejado")]
         public void GivenSelecioneiOCarroDesejado()
         {
@@ -46,41 +48,45 @@ namespace TopGearWebSite.test
         [Given(@"Eu quero buscar as reservas de um cliente")]
         public void GivenEuQueroBuscarAsReservasDeUmCliente()
         {
-            
+            clienteReserva = new Cliente();
         }
         
-        [Given(@"digitei o (.*) do cliente")]
-        public void GivenDigiteiODoCliente(int p0)
+        [Given(@"digitei o (.*) e (.*) do cliente")]
+        public void GivenDigiteiOEDoCliente(string p0, string p1)
         {
-            //ScenarioContext.Current.Pending();
+            clienteReserva.CPF = p0;
+            clienteReserva.Senha = p1;
         }
-
+        
         [When(@"eu submeter os dados da locacao")]
         public void WhenEuSubmeterOsDadosDaLocacao()
         {
-            idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            idNovaLocacao = LocacaoApiDataAccess.Post(novaLocacao, "locacao");
+
         }
 
-        [When(@"eu submeter os dados")]
-        public void WhenEuSubmeterOsDados()
+        [When(@"eu submeter os dados do cliente")]
+        public void WhenEuSubmeterOsDadosDoCliente()
         {
-            //idNovaLocacao = TopGearApiDataAccess<Locacao>.Post(novaLocacao, "locacao");
+            clienteReserva = ClienteApiDataAccess.Login(clienteReserva.CPF, clienteReserva.Senha);
+            locacoesDoCliente = LocacaoApiDataAccess.ObterLocacoes(clienteReserva.Id);
+
         }
-        
+
         [Then(@"o resultado deve ser uma locacao salva com sucesso")]
         public void ThenOResultadoDeveSerUmaLocacaoSalvaComSucesso()
         {
             Assert.AreNotEqual(0, idNovaLocacao);
-            if(idNovaLocacao != 0)
+            if (idNovaLocacao != 0)
             {
-                TopGearApiDataAccess<Locacao>.Delete(idNovaLocacao, "locacao");
+                LocacaoApiDataAccess.Delete(idNovaLocacao, "locacao");
             }
         }
         
         [Then(@"o resultado deve ser a lista de reservas do cliente")]
         public void ThenOResultadoDeveSerAListaDeReservasDoCliente()
         {
-            //ScenarioContext.Current.Pending();
+            Assert.IsNotNull(locacoesDoCliente);
         }
     }
 }

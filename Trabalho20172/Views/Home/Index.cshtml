@@ -17,7 +17,8 @@
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <!-- Google Font Lato -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    @*<link rel="stylesheet" href="~/Content/css/font-awesome.min.css">*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
     <!-- Plugin Styles -->
     <link href="~/Content/css/datepicker.css" rel="stylesheet">
 
@@ -53,11 +54,7 @@
                 <!-- Logo end -->
             </div>
             <div class="col-md-7">
-                @*<div class="pull-right">
-                    <div class="header-info pull-right">
-                        <div class="contact pull-left">CONTACT: (562) 498-4600</div>
-                    </div>
-                </div>*@
+          
                 <div class="clearfix"></div>
                 <!-- start navigation -->
                 <nav class="navbar navbar-default" role="navigation">
@@ -79,7 +76,26 @@
                                 <li class="active"><a href="#top" class="scroll-to">Inicio</a></li>
                                 <li><a href="#vehicles" class="scroll-to">Veículos</a></li>
                                 <li><a href="#contact" class="scroll-to">Contato</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i> Reservas</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("SairSessao","Acesso")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.dropdown-user -->
+                                </li>
                             </ul>
+                   
                             <!-- Nav-Links end -->
                         </div>
                     </div>

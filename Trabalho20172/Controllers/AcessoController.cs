@@ -25,7 +25,7 @@ namespace Trabalho20172.Controllers
             if (ModelState.IsValid)
             {
                 //Verificar aqui o login
-                Cliente cliente = TopGearApiDataAccess<Cliente>.Get($"cliente/porid/{login}");
+                Cliente cliente = ClienteApiDataAccess.Login(login, senha);
 
                 if (cliente != null)
                 {
@@ -38,5 +38,12 @@ namespace Trabalho20172.Controllers
             }
             return Json(new { Status = "Nok" });
         }
+
+        public ActionResult SairSessao()
+        {
+            Sessao.IdUsuarioLogado = 0;
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

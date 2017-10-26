@@ -112,7 +112,7 @@ this.EfetuarUmaLocacao("\'2017-01-01\'", "\'2017-10-10\'", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void BuscarLocacoesDoCliente(string idCliente, string[] exampleTags)
+        public virtual void BuscarLocacoesDoCliente(string login, string senha, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar Locacoes do cliente", exampleTags);
 #line 14
@@ -120,9 +120,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.Given("Eu quero buscar as reservas de um cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
- testRunner.And(string.Format("digitei o {0} do cliente", idCliente), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("digitei o {0} e {1} do cliente", login, senha), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.When("eu submeter os dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("eu submeter os dados do cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
  testRunner.Then("o resultado deve ser a lista de reservas do cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -130,14 +130,15 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Buscar Locacoes do cliente: 5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Buscar Locacoes do cliente: 00000000191")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Locacao")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:idCliente", "5")]
-        public virtual void BuscarLocacoesDoCliente_5()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "00000000191")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:login", "00000000191")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:senha", "5678")]
+        public virtual void BuscarLocacoesDoCliente_00000000191()
         {
 #line 14
-this.BuscarLocacoesDoCliente("5", ((string[])(null)));
+this.BuscarLocacoesDoCliente("00000000191", "5678", ((string[])(null)));
 #line hidden
         }
     }

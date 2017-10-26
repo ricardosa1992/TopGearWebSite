@@ -13,10 +13,10 @@ Scenario Outline: Efetuar uma locacao
 
 Scenario Outline: Buscar Locacoes do cliente
 	Given Eu quero buscar as reservas de um cliente
-	And digitei o <idCliente> do cliente
-	When eu submeter os dados
+	And digitei o <login> e <senha> do cliente
+	When eu submeter os dados do cliente
 	Then o resultado deve ser a lista de reservas do cliente
 
 	Examples: 
-			|  idCliente    | 
-			|        5      |
+			|  login          |   senha        |
+			|  00000000191   |     5678     |

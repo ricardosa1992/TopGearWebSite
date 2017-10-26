@@ -566,7 +566,7 @@ $("#confirmarLocacao").click(function (e) {
 $("#efetuarLocacao").click(function (e) {
     debugger;
     $.ajax({
-        url: "/FinalizarReserva/Efetuarlocacao",
+        url: "/Locacao/Efetuarlocacao",
         type: "POST",
         dataType: 'json',
         data: {
@@ -643,7 +643,7 @@ $("#efetuarLogin").click(function (e) {
                     var qtdDiarias = $("#QtdDiarias").val();
                     var precoDiaria = $("#precoDiaria").val();
                     var precoTotal = ($("#precoTotal").val()).replace(".", ",");
-                    var href = "/FinalizarReserva/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
+                    var href = "/Locacao/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
                     window.open(href, "_self");
 
                 }
