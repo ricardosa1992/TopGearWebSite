@@ -71,5 +71,36 @@ namespace Trabalho20172.Controllers
 
         }
 
+        public ActionResult LocacoesCliente()
+        {
+            int idCliente = 5;//(int)Sessao.IdUsuarioLogado;
+            LocacaoClienteViewModel viewModel = new LocacaoClienteViewModel();
+            List<Locacao> locacoes = LocacaoApiDataAccess.ObterLocacoes(idCliente);
+            foreach (var loc in locacoes)
+            {
+                Carro car = TopGearApiDataAccess<Carro>.Get($"carro/porid/{loc.CarroId}");
+                Categoria cat = TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{car.CategoriaId}");
+
+                viewModel.listaLocacoes.Add(new LocacaoViewModel
+                {
+                    localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{loc.Agencia_RetiradaId}"),
+                    localEntrega = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{loc.Agencia_EntregaId}"),
+                    carroSelecionado = new CarroViewModel {
+                        Id = car.Id,
+                        Modelo = car.Modelo,
+                        Placa = car.Placa,
+                        Marca = car.Marca,
+                        UrlImagem = car.UrlImagem
+                    },
+                    precoDiaria = cat.Preco,
+                    QtdDiarias = 3,
+                    precoTotal = cat.Preco * 3
+            });
+            }
+
+            return View(viewModel);
+            
+        }
+
     }
 }

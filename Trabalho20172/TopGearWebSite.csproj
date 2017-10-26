@@ -211,6 +211,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\CarroViewModel.cs" />
+    <Compile Include="Models\LocacaoClienteViewModel.cs" />
     <Compile Include="Models\LocacaoViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Sessao.cs" />
@@ -413,6 +414,7 @@
     <Content Include="Views\Veiculo\Veiculos.cshtml" />
     <Content Include="Views\Veiculo\ListaVeiculos.cshtml" />
     <Content Include="Views\Locacao\DadosCliente.cshtml" />
+    <Content Include="Views\Locacao\LocacoesCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
