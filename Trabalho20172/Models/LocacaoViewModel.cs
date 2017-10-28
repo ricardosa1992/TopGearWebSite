@@ -41,6 +41,8 @@ namespace Trabalho20172.Models
 
         public double precoDiaria { get; set; }
 
+        public bool finalizada { get; set; }
+
         public List<CarroViewModel> listaCarrosDisponiveis { get; set; } = new List<CarroViewModel>();
 
         public List<SelectListItem> ListaDeAgencias { get; set; }

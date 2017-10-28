@@ -1,5 +1,8 @@
 ﻿
-
+@{
+    ViewBag.Title = "Teste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 @model  Trabalho20172.Models.LocacaoClienteViewModel
 
 <!DOCTYPE html>
@@ -13,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Car|Rental Landingpage</title>
     <!-- Bootstrap -->
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <!-- Google Font Lato -->
@@ -37,7 +40,7 @@
       <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
       <![endif]-->
-    <!-- Fav and touch icons -->
+    <!-- Fav and touch icons -->*@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
@@ -63,7 +66,7 @@
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
     <!-- Header start -->
-    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+    @*<header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
         <div class="row container box">
             <div class="col-md-5">
                 <!-- Logo start -->
@@ -102,7 +105,7 @@
                 <!-- end navigation -->
             </div>
         </div>
-    </header>
+    </header>*@
     <!-- Header end -->
 
     <section class="content">
@@ -111,69 +114,139 @@
 
                 <div class="col-md-10">
 
-                    @{
-                        foreach (var loc in Model.listaLocacoes)
-                        {
-                            <div class="box-detalhes-reserva col-md-3" style="margin-left:30px;margin-top:30px">
-                                <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
-                                    <div class="reserva-header voo-header">
-                                        <a class="target" href="#" title="sua reserva">
-                                            <i class="fa fa-plane" aria-hidden="true"></i>
-                                        </a>
+                    <h2>Locações</h2>
+                    <div class="filters-by-category text-center">
+                        <ul class="option-set" data-option-key="filter">
+                            <li><a href="#filter" data-option-value="*" class="selected">Todas</a></li>
+                            <li><a href="#filter" data-option-value=".category1">Aberto</a></li>
+                            <li><a href="#filter" data-option-value=".category2" class="">Finalizada</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="gallery">
+
+                        @{
+                            foreach (var loc in Model.listaLocacoes)
+                            {
+                                if (loc.finalizada == true)
+                                {
+                                    <div class="box-detalhes-reserva col-md-3 item category2" style="margin-left:30px;margin-top:30px">
+                                        <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                            <div class="reserva-header voo-header">
+                                                <a class="target" href="#" title="sua reserva">
+                                                    <i class="fa fa-plane" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <div class="reserva-body">
+                                                <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                                <div class="content-agencias">
+                                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                                        @loc.localRetirada.Nome - @loc.localRetirada.Cidade - @loc.localRetirada.Estado
+                                                    </p>
+                                                    <div class="date text-slip-normal">
+                                                        @loc.dataRetirada.ToString()
+                                                    </div>
+                                                </div>
+                                                <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
+                                                <div class="content-agencias">
+                                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                                        @loc.localEntrega.Nome - @loc.localEntrega.Cidade - @loc.localEntrega.Estado
+                                                    </p>
+                                                    <div class="date text-slip-normal">
+                                                        @loc.dataEntrega.ToString()
+                                                    </div>
+                                                </div>
+                                                <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                                    <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@loc.QtdDiarias</font></p>
+                                                </div>
+
+                                                <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
+                                                    <br>
+
+                                                    <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@loc.carroSelecionado.UrlImagem" alt="" /></div>
+                                                    <div class="info">
+                                                        <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@loc.carroSelecionado.Modelo</h4>
+
+                                                    </div>
+                                                </div>
+
+                                                <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                                    <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black"> @loc.QtdDiarias X @loc.precoDiaria = R$ @loc.precoTotal</font></p>
+                                                </div>
+                                               
+                                            </div>
+
+                                        </div>
+
                                     </div>
-                                    <div class="reserva-body">
-                                        <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
-                                        <div class="content-agencias">
-                                            <p class="text-slip-strong" style="text-transform:capitalize">
-                                                @loc.localRetirada.Nome - @loc.localRetirada.Cidade - @loc.localRetirada.Estado
-                                            </p>
-                                            <div class="date text-slip-normal">
-                                                @loc.dataRetirada.ToString()
+                                }
+                                else
+                                {
+                                    <div class="box-detalhes-reserva col-md-3 item category1" style="margin-left:30px;margin-top:30px">
+                                        <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                            <div class="reserva-header voo-header">
+                                                <a class="target" href="#" title="sua reserva">
+                                                    <i class="fa fa-plane" aria-hidden="true"></i>
+                                                </a>
                                             </div>
-                                        </div>
-                                        <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
-                                        <div class="content-agencias">
-                                            <p class="text-slip-strong" style="text-transform:capitalize">
-                                                @loc.localEntrega.Nome - @loc.localEntrega.Cidade - @loc.localEntrega.Estado
-                                            </p>
-                                            <div class="date text-slip-normal">
-                                                @loc.dataEntrega.ToString()
+                                            <div class="reserva-body">
+                                                <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                                <div class="content-agencias">
+                                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                                        @loc.localRetirada.Nome - @loc.localRetirada.Cidade - @loc.localRetirada.Estado
+                                                    </p>
+                                                    <div class="date text-slip-normal">
+                                                        @loc.dataRetirada.ToString()
+                                                    </div>
+                                                </div>
+                                                <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
+                                                <div class="content-agencias">
+                                                    <p class="text-slip-strong" style="text-transform:capitalize">
+                                                        @loc.localEntrega.Nome - @loc.localEntrega.Cidade - @loc.localEntrega.Estado
+                                                    </p>
+                                                    <div class="date text-slip-normal">
+                                                        @loc.dataEntrega.ToString()
+                                                    </div>
+                                                </div>
+                                                <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                                    <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@loc.QtdDiarias</font></p>
+                                                </div>
+
+                                                <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
+                                                    <br>
+
+                                                    <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@loc.carroSelecionado.UrlImagem" alt="" /></div>
+                                                    <div class="info">
+                                                        <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@loc.carroSelecionado.Modelo</h4>
+
+                                                    </div>
+                                                </div>
+
+                                                <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                                    <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black"> @loc.QtdDiarias X @loc.precoDiaria = R$ @loc.precoTotal</font></p>
+
+                                                </div>
+                                                <input type="button" class="btn btn-danger btn-block" id="cancelarLocacao" value="Cancelar" style="" />
+
                                             </div>
-                                        </div>
-                                        <div id="qtdDiarias" class="box-detalhes-reserva" style="">
-                                            <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@loc.QtdDiarias</font></p>
-                                        </div>
-
-                                        <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
-                                            <br>
-
-                                            <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@loc.carroSelecionado.UrlImagem" alt="" /></div>
-                                            <div class="info">
-                                                <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@loc.carroSelecionado.Modelo</h4>
-                                
-                                            </div>
-                                        </div>
-
-                                        <div id="qtdDiarias" class="box-detalhes-reserva" style="">
-                                            <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black"> @loc.QtdDiarias X @loc.precoDiaria = R$ @loc.precoTotal</font></p>
 
                                         </div>
-                                       
+
                                     </div>
-
-                                </div>
-
-                            </div>
+                                }
+                            }
 
                         }
-                        
-                    }
-
+                    </div>
 
                 </div>
 
             </div>
         </div>
+
+
+
+
 
 
 
@@ -183,7 +256,7 @@
     <a href="#" class="scrollup">ScrollUp</a>
 
     <!-- Footer start -->
-    <footer>
+    @*<footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -198,11 +271,11 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>*@
 
     <!-- Checkout Modal end -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    @*<script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/js/bootstrap.min.js"></script>
     <script src="~/Scripts/js/jquery.autocomplete.min.js"></script>
@@ -235,7 +308,7 @@
     <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
     <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
     <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
-    <script src="~/Scripts/js/sweetalert-dev.js"></script>
+    <script src="~/Scripts/js/sweetalert-dev.js"></script>*@
 </body>
 
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->

@@ -29,8 +29,9 @@ namespace Trabalho20172.Controllers
 
                 if (cliente != null)
                 {
+                    Session["idCliente"] = cliente.Id;
                     Sessao.IdUsuarioLogado = cliente.Id;
-                    return Json(new { Status = "ok"});
+                    return Json(new { Status = "ok", IdCliente = cliente.Id});
 
                 }
 
@@ -41,6 +42,7 @@ namespace Trabalho20172.Controllers
 
         public ActionResult SairSessao()
         {
+            Session["idCliente"] = "";
             Sessao.IdUsuarioLogado = 0;
             return RedirectToAction("Index", "Home");
         }

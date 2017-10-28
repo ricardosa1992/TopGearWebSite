@@ -1,0 +1,943 @@
+﻿
+@model Trabalho20172.Models.LocacaoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:28:45 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car|Rental Landingpage</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/css/animate.css" rel="stylesheet">
+    <!-- Google Font Lato -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    @*<link rel="stylesheet" href="~/Content/css/font-awesome.min.css">*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <!-- Plugin Styles -->
+    <link href="~/Content/css/datepicker.css" rel="stylesheet">
+
+    <!-- Main Styles -->
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+    <!-- Available main styles: styles-red.css, styles-green.css -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.~/Scripts/js/1.4.2/respond.min.js"></script>
+      <link href="css/ie8fix.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+      <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
+    <!-- Header start -->
+    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+        <div class="row container box">
+            <div class="col-md-5">
+                <!-- Logo start -->
+                <div class="brand">
+                    <h1><a class="scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a></h1>
+                </div>
+                <!-- Logo end -->
+            </div>
+            <div class="col-md-7">
+          
+                <div class="clearfix"></div>
+                <!-- start navigation -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand scroll-to" href="#top"><img class="img-responsive" src="~/Content/img/logo.gif" alt="Car|Rental"></a>
+                        </div>
+                        <!-- Collect the nav links, for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Nav-Links start -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="#top" class="scroll-to">Inicio</a></li>
+                                <li><a href="#vehicles" class="scroll-to">Veículos</a></li>
+                                <li><a href="#contact" class="scroll-to">Contato</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i> Reservas</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("SairSessao","Acesso")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.dropdown-user -->
+                                </li>
+                            </ul>
+                   
+                            <!-- Nav-Links end -->
+                        </div>
+                    </div>
+                </nav>
+                <!-- end navigation -->
+            </div>
+        </div>
+    </header>
+    <!-- Header end -->
+    <!-- Teaser start -->
+    <section id="teaser">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-xs-12 pull-right">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Wrapper for slides start -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <h1 class="title">
+                                    Luxury car from from $28 day
+                                    <span class="subtitle">Treat yourself in USA</span>
+                                </h1>
+                                <div class="car-img">
+                                    <img src="~/Content/img/car1.png" class="img-responsive" alt="car1">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <h1 class="title">
+                                    Get 15% off your rental
+                                    <span class="subtitle">Plan your trip now</span>
+                                </h1>
+                                <div class="car-img">
+                                    <img src="~/Content/img/car2.png" class="img-responsive" alt="car1">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wrapper for slides end -->
+                        <!-- Slider Controls start -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        <!-- Slider Controls end -->
+                    </div>
+                </div>
+                <div class="col-md-5 col-xs-12 pull-left">
+                    <div class="reservation-form-shadow">
+                        <form action="/Veiculo/Veiculos?modo=novo" method="post" name="car-select-form" id="car-select-form">
+                            <div class="alert alert-danger hidden" id="car-select-form-msg">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <strong>Note:</strong> Todos os campos são obrigatórios!
+                                <input type="hidden" id="modo" value="novo">
+                            </div>
+                            <!-- Pick-up location start -->
+                            <div class="location">
+                                <div class="input-group pick-up">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Retirada</span>
+                                    @Html.DropDownList("listaLocalRetirada", Model.ListaDeAgencias, new { @class = "form-control" })  
+                                </div>
+                                <!-- Pick-up location end -->
+                                <a class="different-drop-off" href="#">Local de entrega diferente da retirada?</a>
+                                <!-- Drop-off location start -->
+                                <div class="input-group drop-off">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> Entrega</span>
+                                    @Html.DropDownList("listaLocalEntrega", Model.ListaDeAgencias, new { @class = "form-control" })
+                                  
+                                </div>
+                            </div>
+                            <!-- Drop-off location end -->
+                            <!-- Pick-up date/time start -->
+                            <div class="datetime pick-up">
+                                <div class="date pull-left">
+                                    <div class="input-group">
+                                        <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Retirar</span>
+                                        <input type="text" name="pick-up-date" id="pick-up-date" class="form-control datepicker" placeholder="dd/mm/yyyy">
+                                    </div>
+                                </div>
+                                <div class="time pull-right">
+                                    <div class="styled-select-time">
+                                        <select name="pick-up-time" id="pick-up-time">
+                                            <option value="06:00">06:00</option>
+                                            <option value="06:30">06:30</option>
+                                            <option value="07:00">07:00</option>
+                                            <option value="07:30">07:30</option>
+                                            <option value="08:00">08:00</option>
+                                            <option value="08:30">08:30</option>
+                                            <option value="09:00">09:00</option>
+                                            <option value="09:30">09:30</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="10:30">10:30</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="11:30">11:30</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="12:30">12:30</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="13:30">13:30</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="14:30">14:30</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="15:30">15:30</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="16:30">16:30</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="17:30">17:30</option>
+                                            <option value="18:00">18:00</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- Pick-up date/time end -->
+                            <!-- Drop-off date/time start -->
+                            <div class="datetime drop-off">
+                                <div class="date pull-left">
+                                    <div class="input-group">
+                                        <span class="input-group-addon pixelfix"><span class="glyphicon glyphicon-calendar"></span> Entregar</span>
+                                        <input type="text" name="drop-off-date" id="drop-off-date" class="form-control datepicker" placeholder="dd/mm/yyyy">
+                                    </div>
+                                </div>
+                                <div class="time pull-right">
+                                    <div class="styled-select-time">
+                                        <select name="drop-off-time" id="drop-off-time">
+                                            <option value="06:00">06:00</option>
+                                            <option value="06:30">06:30</option>
+                                            <option value="07:00">07:00</option>
+                                            <option value="07:30">07:30</option>
+                                            <option value="08:00">08:00</option>
+                                            <option value="08:30">08:30</option>
+                                            <option value="09:00">09:00</option>
+                                            <option value="09:30">09:30</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="10:30">10:30</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="11:30">11:30</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="12:30">12:30</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="13:30">13:30</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="14:30">14:30</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="15:30">15:30</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="16:30">16:30</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="17:30">17:30</option>
+                                            <option value="18:00">18:00</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- Drop-off date/time end -->
+                            <input type="submit" class="submit" name="submit" value="Continuar" id="checkoutModalLabel">
+                            @*<a href="@Url.Action("Veiculos", "Veiculo")" name="submit" type="submit" class="btn submit" >Continuar</a>*@
+                              
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="arrow-down"></div>
+    <!-- Teaser end -->
+    <!-- Newsletter start -->
+    <section id="newsletter" class="wow slideInLeft" data-wow-offset="300">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><div class="alert hidden" id="newsletter-form-msg"></div></div>
+                <div class="col-md-5 col-xs-12">
+                    <h2 class="title">
+                        Sign up for amazing offers
+                        <span class="subtitle">exclusive access for offers and promotions</span>
+                    </h2>
+                </div>
+                <div class="col-md-7">
+                    <div class="newsletter-form pull-left">
+                        <form action="#" method="post" name="newsletter-form" id="newsletter-form">
+                            <input type="hidden" name="action" value="send_newsletter_form" />
+                            <div class="input-group">
+                                <input type="email" name="newsletter-email" class="form-control" placeholder="Enter your Email Address">
+                                <span class="input-group-btn">
+                                    <input class="btn btn-default button" type="submit" value="send">
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="social-icons pull-right">
+                        <ul>
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter end -->
+    <!-- Vehicles start -->
+    <section id="vehicles" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title wow fadeInDown" data-wow-offset="200">Vehicle Models - <span class="subtitle">Our rental fleet at a glance</span></h2>
+            </div>
+            <!-- Vehicle nav start -->
+            <div class="col-md-3 vehicle-nav-row wow fadeInUp" data-wow-offset="100">
+                <div id="vehicle-nav-container">
+                    <ul class="vehicle-nav">
+                        <li class="active"><a href="#vehicle-1">VW Golf VII</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-2">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-3">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-4">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-5">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-6">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE 12</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry 13</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine 14</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK 15</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC 16</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-7">Audi A1 S-LINE</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-8">Toyota Camry</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-9">BMW 320 ModernLine</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-10">Mercedes-Benz GLK</a><span class="active">&nbsp;</span></li>
+                        <li><a href="#vehicle-11">VW Passat CC</a><span class="active">&nbsp;</span></li>
+                    </ul>
+                </div>
+                <div class="vehicle-nav-control">
+                    <a class="vehicle-nav-scroll" data-direction="up" href="#"><i class="fa fa-chevron-up"></i></a>
+                    <a class="vehicle-nav-scroll" data-direction="down" href="#"><i class="fa fa-chevron-down"></i></a>
+                </div>
+            </div>
+            <!-- Vehicle nav end -->
+            <!-- Vehicle 1 data start -->
+            <div class="vehicle-data" id="vehicle-1">
+                <div class="col-md-6 wow fadeIn" data-wow-offset="100">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle1.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3 wow fadeInUp" data-wow-offset="200">
+                    <div class="vehicle-price">$ 37.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 1 data end -->
+            <!-- Vehicle 2 data start -->
+            <div class="vehicle-data" id="vehicle-2">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle2.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 70.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 2 data end -->
+            <!-- Vehicle 3 data start -->
+            <div class="vehicle-data" id="vehicle-3">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle3.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 3 data end -->
+            <!-- Vehicle 4 data start -->
+            <div class="vehicle-data" id="vehicle-4">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle4.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 4 data end -->
+            <!-- Vehicle 5 data start -->
+            <div class="vehicle-data" id="vehicle-5">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle5.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 5 data end -->
+            <!-- Vehicle 6 data start -->
+            <div class="vehicle-data" id="vehicle-6">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle6.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 6 data end -->
+            <!-- Vehicle 7 data start -->
+            <div class="vehicle-data" id="vehicle-7">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle2.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 70.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 7 data end -->
+            <!-- Vehicle 8 data start -->
+            <div class="vehicle-data" id="vehicle-8">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle3.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 8 data end -->
+            <!-- Vehicle 9 data start -->
+            <div class="vehicle-data" id="vehicle-9">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle4.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 9 data end -->
+            <!-- Vehicle 10 data start -->
+            <div class="vehicle-data" id="vehicle-10">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle5.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 10 data end -->
+            <!-- Vehicle 11 data start -->
+            <div class="vehicle-data" id="vehicle-11">
+                <div class="col-md-6" data-wow-offset="200">
+                    <div class="vehicle-img">
+                        <img class="img-responsive" src="~/Content/img/vehicle6.jpg" alt="Vehicle">
+                    </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                    <div class="vehicle-price">$ 100.40 <span class="info">rent per day</span></div>
+                    <table class="table vehicle-features">
+                        <tr>
+                            <td>Model</td>
+                            <td>Limousine</td>
+                        </tr>
+                        <tr>
+                            <td>Doors</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Seats</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Luggage</td>
+                            <td>2 Suitcases / 2 Bags</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioning</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum age</td>
+                            <td>25 years</td>
+                        </tr>
+                    </table>
+                    <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                </div>
+            </div>
+            <!-- Vehicle 11 data end -->
+        </div>
+    </section>
+    <!-- Vehicles end -->
+   
+  
+    <!-- Contact start -->
+    <section id="contact" class="container wow bounceInUp" data-wow-offset="50">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="col-md-4 col-xs-12 pull-right">
+                <h4 class="contact-box-title">Customer Center</h4>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img1.jpg" alt="contact-img">
+                    <div class="contact-box-name">Sarah Connor</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+                <div class="contact-box-divider">&nbsp;</div>
+                <h4 class="contact-box-title">Change or Cancel Reservation</h4>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img2.jpg" alt="contact-img">
+                    <div class="contact-box-name">Mike Smith</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+                <div class="contact-box">
+                    <img src="~/Content/img/contact-box-img3.jpg" alt="contact-img">
+                    <div class="contact-box-name">Jane Doe</div>
+                    <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                    <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-box-border">&nbsp;</div>
+            </div>
+            <div class="col-md-8 col-xs-12 pull-left">
+                <p class="contact-info">
+                    You have any questions or need additional information? <br>
+                    <span class="address"><span class="highlight">Address:</span>  Car|Rental / 3861 Sepulveda Blvd. / Culver City, CA 90230</span>
+                </p>
+                <form action="#" method="post" id="contact-form" name="contact-form">
+                    <input type="hidden" name="action" value="send_contact_form" />
+                    <div class="alert hidden" id="contact-form-msg"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control first-name text-field" name="first-name" placeholder="First Name:">
+                        <input type="text" class="form-control last-name text-field" name="last-name" placeholder="Last Name:">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control telephone text-field" name="telephone" placeholder="Telephone:">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control email text-field" name="email" placeholder="Email:">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control message" name="message" placeholder="Message:"></textarea>
+                    </div>
+                    <input type="submit" class="btn submit-message" name="submit-message" value="Submit Message">
+
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Contact end -->
+
+    <a href="#" class="scrollup">ScrollUp</a>
+
+    <!-- Footer start -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-nav">
+                        <li><a class="scroll-to" href="#top">Home</a></li>
+                        <li><a class="scroll-to" href="#vehicles">Vehicle Models</a></li>
+                        <li><a class="scroll-to" href="#reviews">Reviews</a></li>
+                        <li><a class="scroll-to" href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p class="copyright">©2014 Themeinjection, All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+    <!-- Checkout Modal Start -->
+   
+    <!-- Checkout Modal end -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.autocomplete.min.js"></script>
+    <script src="~/Scripts/js/jquery.placeholder.js"></script>
+    <script src="~/Scripts/js/locations-autocomplete.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="~/Scripts/js/gmap3.min.js"></script>
+
+    <!--[if !(gte IE 8)]><!-->
+    <script src="~/Scripts/js/wow.min.js"></script>
+    <script>
+                // Initialize WOW
+                //-------------------------------------------------------------
+                new WOW({mobile: false}).init();
+    </script>
+    <!--<![endif]-->
+    <script src="~/Scripts/js/custom.js"></script>
+
+</body>
+
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
+</html>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        // Toggle Header / Nav  
+        //-------------------------------------------------------------
+
+    })
+
+    </script>
+
+}

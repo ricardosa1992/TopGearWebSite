@@ -94,7 +94,9 @@ namespace Trabalho20172.Controllers
                     },
                     precoDiaria = cat.Preco,
                     QtdDiarias = 3,
-                    precoTotal = cat.Preco * 3
+                    precoTotal = cat.Preco * 3,
+                    finalizada = loc.Finalizada
+                    
             });
             }
 

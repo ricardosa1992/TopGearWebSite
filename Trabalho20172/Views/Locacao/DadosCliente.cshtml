@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    ViewBag.Title = "Teste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 @model Trabalho20172.Models.LocacaoViewModel
 
 <!DOCTYPE html>
@@ -12,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Car|Rental Landingpage</title>
     <!-- Bootstrap -->
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <!-- Google Font Lato -->
@@ -36,7 +39,8 @@
       <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
       <![endif]-->
-    <!-- Fav and touch icons -->
+    <!-- Fav and touch icons -->*@
+
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
@@ -63,7 +67,7 @@
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
     <!-- Header start -->
-    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+    @*<header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
         <div class="row container box">
             <div class="col-md-5">
                 <!-- Logo start -->
@@ -102,7 +106,7 @@
                 <!-- end navigation -->
             </div>
         </div>
-    </header>
+    </header>*@
     <!-- Header end -->
 
     <section class="content">
@@ -262,7 +266,7 @@
     <a href="#" class="scrollup">ScrollUp</a>
 
     <!-- Footer start -->
-    <footer>
+    @*<footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -277,10 +281,10 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>*@
 
     <!-- Checkout Modal end -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    @*<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/js/bootstrap.min.js"></script>
@@ -314,8 +318,25 @@
     <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
     <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
     <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
-    <script src="~/Scripts/js/sweetalert-dev.js"></script>
+    <script src="~/Scripts/js/sweetalert-dev.js"></script>*@
 </body>
 
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
 </html>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        debugger;
+        var idCliente = '@HttpContext.Current.Session["idCliente"]';
+        if (idCliente != "") {
+            debugger;
+            $("#opLogin").hide();
+            $("#opReservas").show();
+            $("#opLogout").show();
+        }
+    });
+
+    </script>
+}

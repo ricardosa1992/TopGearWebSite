@@ -17,6 +17,14 @@ namespace Trabalho20172.Controllers
             return View(modeloDaView);
         }
 
+        public ActionResult Teste()
+        {
+            LocacaoViewModel modeloDaView = new LocacaoViewModel();
+            modeloDaView.ListaDeAgencias = ListaDeAgencias();
+
+            return View(modeloDaView);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

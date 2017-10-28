@@ -310,7 +310,6 @@ $('.autocomplete-location').autocomplete({
 });
 
 
-
 // Newsletter Form
 //-------------------------------------------------------------------------------
 
@@ -527,39 +526,7 @@ return false;
 });
 
 
-$(".selecionarCarro").click(function (e) {
-    var idCarro = $(this).attr("idCarro");
-    var modeloCarro = $(this).attr("modeloCarro");
-    var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-    var precoDiaria = parseFloat(($(this).attr("precoCarro")).replace(",", "."));
-    var qtdDiarias = parseInt($("#QtdDiarias").val());
-    var precoTotal = precoDiaria * qtdDiarias;
-    precoDiaria = (precoDiaria.toString()).replace(".", ",");
-    precoTotal = (precoTotal.toString()).replace(".", ",");
 
-    //Montando as Informações sobre o carro selecionado
-    $("#seu-carro-edicao").hide();
-
-    $("#idCarroSelecionadoHidden").val(idCarro);
-    $("#carroSelecionado").text(modeloCarro);
-    $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
-    $("#valorLocacao").text(qtdDiarias + " X " + precoDiaria + " = R$ " + precoTotal);
-    $("#precoDiaria").val(precoDiaria);
-    $("#precoTotal").val(precoTotal);
-    $("#slip-reserva-valor").show();
-    $(".seu-carro").show();
-    $("#confirmarLocacao").show();
-
-
-});
-
-//Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
-$("#confirmarLocacao").click(function (e) {
-
-    //Verificar aqui se o cliente já está logado
-    $("#modal-login").modal();
-
-});
 
 
 //Chama o Método que faz a Locação
@@ -601,60 +568,23 @@ $("#cpfUser, #senhaUser").click(function (e) {
 
 });
 
-//Verifica se o cliente está cadastrado e faz o login
-$("#efetuarLogin").click(function (e) {
 
-    $("#msgErroLogin").hide();
 
-    var login = $("#cpfUser").val();
-    var senha = $("#senhaUser").val();
-    var erro = 0;
 
-    if (login == "") {
-        $("#msgErroCPF").show();
-        $("#cpfUser").css({'border':'red solid 1px'})
-        erro = 1;
-    }
-    if (senha == "") {
-        $("#msgErroSenha").show();
-        $("#senhaUser").css({ 'border': 'red solid 1px' })
-        erro = 1;
-    }
+//
+$("#opLogout").click(function (e) {
+    $.ajax({
+        type: "POST",
+        url: "/Acesso/SairSessao",
+        dataType: "json",
+        success: function (data) {
+            $("IdCliente").val("");
+            $("#opLogin").show;
+            $("#opReservas").hide();
+            $("#opLogout").hide();
+        }
+    });
 
-    if (erro == 0) {
-        
-        $.ajax({
-            url: "/Acesso/EfetuarLogin",
-            type: "POST",
-            dataType: 'json',
-            data: {
-                login: $("#cpfUser").val(),
-                senha: $("#senhaUser").val()
-            },
-            success: function (result) {
-                if (result.Status == "ok") {
-                    $("#modal-login").modal('toggle');
-
-                    var idCarro = $("#idCarroSelecionadoHidden").val();
-                    var idLocalRetirada = $("#idLocalRetiradaHidden").val();
-                    var idLocalEntrega = $("#idLocalEntregaHidden").val();
-                    var dataRetirada = $("#dataRetiradaHidden").val();
-                    var dataEntrega = $("#dataEntregaHidden").val();
-                    var qtdDiarias = $("#QtdDiarias").val();
-                    var precoDiaria = $("#precoDiaria").val();
-                    var precoTotal = ($("#precoTotal").val()).replace(".", ",");
-                    var href = "/Locacao/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
-                    window.open(href, "_self");
-
-                }
-                else
-                {
-                    $("#msgErroLogin").show();
-
-                }
-            }
-        });
-    }
 
 });
 
@@ -665,11 +595,7 @@ $("#btn-cadastro").click(function (e) {
 
 });
 
-//Recarrega a página com os carros disponíveis de acordo com o filtro selecionado
-$(".filtroItens").click(function (e) {
-    $("#filtro-form").submit();
 
-});
 
 
 

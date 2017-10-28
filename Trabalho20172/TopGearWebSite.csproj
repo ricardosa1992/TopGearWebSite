@@ -222,11 +222,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\datepicker.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\rental-car-css\AjaxLoader.html" />
-    <Content Include="Content\css\rental-car-css\bootstrap.min.css" />
     <Content Include="Content\css\rental-car-css\flexslider.css" />
     <Content Include="Content\css\rental-car-css\glide-slider.css" />
     <Content Include="Content\css\rental-car-css\grabbing.html" />
@@ -396,7 +394,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,10 +409,12 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Views\Veiculo\Veiculos.cshtml" />
+    <Content Include="Views\Veiculo\Teste2.cshtml" />
     <Content Include="Views\Veiculo\ListaVeiculos.cshtml" />
     <Content Include="Views\Locacao\DadosCliente.cshtml" />
     <Content Include="Views\Locacao\LocacoesCliente.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Veiculo\Veiculos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
