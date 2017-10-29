@@ -26,11 +26,11 @@ $('input, textarea').placeholder();
 $(document).on("scroll",function(){
   if($(document).scrollTop()>39){
       $("header").removeClass("large").addClass("small");
-     // $("#divReserva").css({ 'top': '5%'});
+      $(".nav").css({ 'display': 'none'});
   }
   else{
       $("header").removeClass("small").addClass("large");
-     // $("#divReserva").css({ 'padding-top': '50px !important'});
+      $(".nav").css({ 'display': 'block' });
   }
 
 });
