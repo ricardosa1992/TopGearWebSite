@@ -219,24 +219,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\animate.css" />
-    <Content Include="Content\datepicker.css" />
-    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\datepicker.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\rental-car-css\AjaxLoader.html" />
     <Content Include="Content\css\rental-car-css\flexslider.css" />
     <Content Include="Content\css\rental-car-css\glide-slider.css" />
     <Content Include="Content\css\rental-car-css\grabbing.html" />
-    <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\css\jquery.datetimepicker.css" />
     <Content Include="Content\css\rental-car-css\loader.css" />
     <Content Include="Content\css\rental-car-css\owl.carousel.css" />
     <Content Include="Content\css\rental-car-css\owl.theme.css" />
-    <Content Include="Content\rentalcar-template.css" />
+    <Content Include="Content\css\rentalcar-template.css" />
     <Content Include="Content\css\rental-car-css\select2.css" />
     <Content Include="Content\css\rental-car-css\sfmenu.css" />
-    <Content Include="Content\styles.css" />
-    <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\css\styles.css" />
+    <Content Include="Content\css\sweetalert.css" />
     <Content Include="Content\img\blog-author.jpg" />
     <Content Include="Content\img\blog-post-img.jpg" />
     <Content Include="Content\img\car1.png" />
