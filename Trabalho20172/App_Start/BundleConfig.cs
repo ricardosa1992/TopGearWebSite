@@ -38,8 +38,8 @@ namespace Trabalho20172
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/animate.css",
                       "~/Content/css/datepicker.css",
-                      "~/Content/css/styles.css",
-                      "~/Content/css/rentalcar-template.css"));
+                      "~/Content/css/styles.css"));
+                     // "~/Content/css/rentalcar-template.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/rental-car").
             IncludeDirectory("~/Content/css/rental-car-css/", "*.css", true));

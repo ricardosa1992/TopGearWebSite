@@ -21,6 +21,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
+    <link href="~/Content/css/rentalcar-template.css" rel="stylesheet" />
 
     <style>
         .reserva-header {
@@ -35,7 +36,7 @@
         <div class="container-fluid">
             <div class="row content">
                 @using (Html.BeginForm("Veiculos", "Veiculo", FormMethod.Post, new { id = "filtro-form" }))
-            {
+                {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
@@ -68,137 +69,129 @@
                         </div>
                     </div>
                 <!--Fim Filtros-->
-                                    <div class="col-sm-8">
-                                        <h2>Vehicle guide</h2>
-                                        <div class="filters-by-category text-center">
-                                            <ul class="option-set" data-option-key="filter">
-                                                <li><a href="#filter" data-option-value="*" class="selected">Todos</a></li>
-                                                <li><a href="#filter" data-option-value=".category4">Luxo</a></li>
-                                                <li><a href="#filter" data-option-value=".category5" class="">Esporte</a></li>
-                                                <li><a href="#filter" data-option-value=".category6" class="">Popular</a></li>
+                    <div class="col-sm-8">
+                        <h2>Vehicle guide</h2>
+                        <div class="filters-by-category text-center">
+                            <ul class="option-set" data-option-key="filter">
+                                <li><a href="#filter" data-option-value="*" class="selected">Todos</a></li>
+                                <li><a href="#filter" data-option-value=".category4">Luxo</a></li>
+                                <li><a href="#filter" data-option-value=".category5" class="">Esporte</a></li>
+                                <li><a href="#filter" data-option-value=".category6" class="">Popular</a></li>
 
-                                            </ul>
-                                        </div>
-                                        <div class="gallery">
-                                            @{Html.RenderPartial("ListaVeiculos", Model);}
-                                        </div>
-                                    </div>
+                            </ul>
+                        </div>
+                        <div class="gallery">
+                            @{Html.RenderPartial("ListaVeiculos", Model);}
+                        </div>
+                    </div>
 
                 <!--Area da reserva-->
-                                                <div class="col-sm-2 sidenav normal" id="divReserva">
-                                                    <div id="div-fixo-slip" class="col-2 pull-right" style="">
+                    <div class="col-sm-2 sidenav normal" id="divReserva">
+                        <div id="div-fixo-slip" class="col-2 pull-right" style="">
 
-                                                        <div class="box-detalhes-reserva">
-                                                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
-                                                                <div class="reserva-header">
-                                                                    <a class="target" href="#" title="sua reserva">
-                                                                        <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="reserva-body">
-                                                                    <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
-                                                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                                                        Editar
-                                                                    </a>
+                            <div class="box-detalhes-reserva">
+                                <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                    <div class="reserva-header">
+                                        <a class="target" href="#" title="sua reserva">
+                                            <i class="icon2-sua-reserva"></i><h1 style="margin-top:5%">sua reserva</h1>
+                                        </a>
+                                    </div>
+                                    <div class="reserva-body">
+                                        <i class="icon2-retirada"></i><p class="sub-title">Retirada</p>
+                                        <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                            Editar
+                                        </a>
 
-                                                                    <div class="content-agencias">
-                                                                        <p class="text-slip-strong" style="text-transform:capitalize">
-                                                                            @Model.localRetirada.Nome
-                                                                            @Html.HiddenFor(m => m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id })
-                                                                        </p>
-                                                                        <div class="date text-slip-normal">
-                                                                            @Model.dataRetirada.ToString()
-                                                                            @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
-                                                                            @Html.HiddenFor(m => m.horaRetirada, new { Value = Model.horaRetirada })
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
-                                                                    <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
-                                                                        Editar
-                                                                    </a>
-                                                                    <div class="content-agencias">
-                                                                        <p class="text-slip-strong" style="text-transform:capitalize">
-                                                                            @Model.localEntrega.Nome
-                                                                            @Html.HiddenFor(m => m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
-                                                                        </p>
-                                                                        <div class="date text-slip-normal">
-                                                                            @Model.dataEntrega.ToString()
-                                                                            @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
-                                                                            @Html.HiddenFor(m => m.horaEntrega, new { Value = Model.horaEntrega })
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
-                                                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
-                                                                        @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
-                                                                    </div>
+                                        <div class="content-agencias">
+                                            <p class="text-slip-strong" style="text-transform:capitalize">
+                                                @Model.localRetirada.Nome
+                                                @Html.HiddenFor(m => m.idLocalRetiradaHidden, new { Value = Model.localRetirada.Id })
+                                            </p>
+                                            <div class="date text-slip-normal">
+                                                @Model.dataRetirada.ToString()
+                                                @Html.HiddenFor(m => m.dataRetiradaHidden, new { Value = Model.dataRetirada.ToString() })
+                                                @Html.HiddenFor(m => m.horaRetirada, new { Value = Model.horaRetirada })
+                                            </div>
+                                        </div>
+                                        <p class="sub-title"><i class="icon2-devolucao"></i>Devolução</p>
+                                        <a class="pull-right btn-dtl-reserva link-alterar" href="#" data-toggle="modal" data-target="#myModal" title="Editar">
+                                            Editar
+                                        </a>
+                                        <div class="content-agencias">
+                                            <p class="text-slip-strong" style="text-transform:capitalize">
+                                                @Model.localEntrega.Nome
+                                                @Html.HiddenFor(m => m.idLocalEntregaHidden, new { Value = Model.localEntrega.Id })
+                                            </p>
+                                            <div class="date text-slip-normal">
+                                                @Model.dataEntrega.ToString()
+                                                @Html.HiddenFor(m => m.dataEntregaHidden, new { Value = Model.dataEntrega.ToString() })
+                                                @Html.HiddenFor(m => m.horaEntrega, new { Value = Model.horaEntrega })
+                                            </div>
+                                        </div>
+                                        <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                            <p class="sub-title"> <i class="icon2-seu-carro"></i> Diárias: <font color="black">@Model.QtdDiarias</font></p>
+                                            @Html.HiddenFor(m => m.QtdDiarias, new { Value = Model.QtdDiarias })
+                                        </div>
 
-                                                                    @{
-                                                                        if (Model.carroSelecionado == null)
-                                                                        {
+                                        @{
+                                            if (Model.carroSelecionado == null)
+                                            {
 
-                                                                            <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
-                                                                                <br>
+                                                <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="display:none;">
+                                                    <br>
 
-                                                                                <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
-                                                                                <div class="info">
-                                                                                    <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span></h4>
-                                                                                    @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
-                                                                                </div>
+                                                    <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="" alt="" /></div>
+                                                    <div class="info">
+                                                        <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span></h4>
+                                                        @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
+                                                    </div>
 
-                                                                            </div>
+                                                </div>
 
-                                                                            <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
-                                                                                <div class="slip-reserva-valor-total">
-                                                                                    <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao"></span></h3>
-                                                                                    @Html.HiddenFor(m => m.precoTotal)
-                                                                                    @Html.HiddenFor(m => m.precoDiaria)
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="display:none" />
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
-                                                                                <br>
-
-                                                                                <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
-                                                                                <div class="info">
-                                                                                    <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@Model.carroSelecionado.Modelo</h4>
-                                                                                    @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="reserva-footer" id="slip-reserva-valor" style="">
-                                                                                <div class="slip-reserva-valor-total">
-                                                                                    <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao">@Model.QtdDiarias X @Model.precoDiaria = R$ @Model.precoTotal</span></h3>
-                                                                                    @Html.HiddenFor(m => m.precoTotal)
-                                                                                    @Html.HiddenFor(m => m.precoDiaria)
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="" />
-
-                                                                        }
-                                                                    }
-
-
-
-                                                                </div>
-
-                                                            </div>
-                                                            @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
-                                                                    <div class="slip-reserva-valor-total">
-                                                                        <p class="titulo valor-previsto" id="valorLocacao"></p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
-                                                        </div>
+                                                <div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
+                                                    <div class="slip-reserva-valor-total">
+                                                        <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao"></span></h3>
+                                                        @Html.HiddenFor(m => m.precoTotal)
+                                                        @Html.HiddenFor(m => m.precoDiaria)
                                                     </div>
                                                 </div>
-                <!--Fim Area reserva-->
-                                                                        }
+
+                                                <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="display:none" />
+                                            }
+                                            else
+                                            {
+                                                <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro-edicao" style="">
+                                                    <br>
+
+                                                    <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
+                                                    <div class="info">
+                                                        <h4><font color="#00984a"> Modelo: </font><span id="carroSelecionado"></span>@Model.carroSelecionado.Modelo</h4>
+                                                        @Html.HiddenFor(m => m.idCarroSelecionadoHidden)
+                                                    </div>
+                                                </div>
+
+                                                <div class="reserva-footer" id="slip-reserva-valor" style="">
+                                                    <div class="slip-reserva-valor-total">
+                                                        <h3 class="titulo valor-previsto"><font color="#00984a">Total: </font><span id="valorLocacao">@Model.QtdDiarias X @Model.precoDiaria = R$ @Model.precoTotal</span></h3>
+                                                        @Html.HiddenFor(m => m.precoTotal)
+                                                        @Html.HiddenFor(m => m.precoDiaria)
+                                                    </div>
+                                                </div>
+
+                                                <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Continuar" style="" />
+
+                                            }
+                                        }
+
+
+
+                                    </div>
+
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                <!--Fim Area reserva-->                                                 }
             </div>
         </div>
 
@@ -389,7 +382,7 @@
                             <div class="form-group col-md-8">
                                 <label for="name">Nome	</label>
                                 @Html.TextBoxFor(m => m.nomeCliente, new { @class = "form-control" })
-                                <input type="hidden" id="IdCliente"  value="" />>
+                                <input type="hidden" id="IdCliente" value="" />>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
@@ -477,7 +470,7 @@
             $("#filtro-form").submit();
 
         });
-        
+
         $(".selecionarCarro").click(function (e) {
             var idCarro = $(this).attr("idCarro");
             var modeloCarro = $(this).attr("modeloCarro");
@@ -579,5 +572,5 @@
             window.open(href, "_self");
         }
     </script>
-    }
+}
 
