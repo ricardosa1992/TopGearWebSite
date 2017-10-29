@@ -34,7 +34,7 @@ namespace Trabalho20172
                     "~/Scripts/bootstrap.js",
                     "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/css-css").Include(
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/animate.css",
                       "~/Content/css/datepicker.css",
