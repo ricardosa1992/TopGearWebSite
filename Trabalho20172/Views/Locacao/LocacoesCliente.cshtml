@@ -292,3 +292,23 @@
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
 </html>
 
+@section Scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        debugger;
+        var idCliente = '@HttpContext.Current.Session["idCliente"]';
+        if (idCliente != "") {
+            debugger;
+            $("#opLogin").hide();
+            $("#opReservas").show();
+            $("#opLogout").show();
+        }
+    });
+
+    </script>
+}
+
+
+
+
