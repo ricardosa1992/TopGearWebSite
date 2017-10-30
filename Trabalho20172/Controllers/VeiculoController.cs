@@ -15,6 +15,7 @@ namespace Trabalho20172.Controllers
         [HttpPost]
         public ActionResult Veiculos(LocacaoViewModel dadosLocacao)
         {
+            BuscarDadosClienteLogado();
             LocacaoViewModel viewModel = new LocacaoViewModel();
             CultureInfo provider = new CultureInfo("en-US");
             string format = "yyyy-MM-dd HH:mm";

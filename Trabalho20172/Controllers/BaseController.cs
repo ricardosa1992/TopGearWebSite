@@ -11,6 +11,18 @@ namespace Trabalho20172.Controllers
     public class BaseController : Controller
     {
 
+        public Cliente BuscarDadosClienteLogado()
+        {
+            Cliente cliente = null;
+            if(Session["idCliente"] != null)
+            {
+                cliente = ClienteApiDataAccess.Get($"cliente/porid/{(int)Session["idCliente"]}");
+                ViewBag.ClienteLogado = cliente;
+            }
+
+            return cliente;
+        }
+
         public List<SelectListItem> ListaDeAgencias()
         {
             List<SelectListItem> listaAgencias = new List<SelectListItem>();

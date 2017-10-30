@@ -42,7 +42,7 @@ namespace Trabalho20172.Controllers
 
         public ActionResult SairSessao()
         {
-            Session["idCliente"] = "";
+            Session["idCliente"] = null;
             Sessao.IdUsuarioLogado = 0;
             return RedirectToAction("Index", "Home");
         }

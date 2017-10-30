@@ -84,28 +84,55 @@
                             <!-- Collect the nav links, for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <!-- Nav-Links start -->
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="active"><a href="@Url.Action("Index","Home")" class="scroll-to">Inicio</a></li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li id="opLogin" >
-                                                <a href="#"><i class="fa fa-user fa-fw"></i> Login</a>
-                                            </li>
-                                            <li id="opReservas" style="display:none" >
-                                                <a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i> Reservas</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li id="opLogout" style="display:none">
-                                                <a href="@Url.Action("SairSessao","Acesso")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.dropdown-user -->
-                                    </li>
-                                </ul>
+                                @if (Session["idCliente"] == null)
+                                {
+                                     <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a href="@Url.Action("Index", "Home")" class="scroll-to">Inicio</a></li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-user">
+                                                <li id="opLogin" >
+                                                    <a href="#"><i class="fa fa-user fa-fw"></i> Login</a>
+                                                </li>
+                                                <li id="opReservas" style="display:none" >
+                                                    <a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i> Reservas</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li id="opLogout" style="display:none">
+                                                    <a href="@Url.Action("SairSessao", "Acesso")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                                </li>
+                                            </ul>
+                                            <!-- /.dropdown-user -->
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a href="@Url.Action("Index", "Home")" class="scroll-to">Inicio</a></li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                               <i class="fa fa-user fa-fw"></i> &nbsp;@ViewBag.ClienteLogado.Nome&nbsp;<i class="fa fa-caret-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-user">
+                                                <li id="opLogin" style="display:none">
+                                                    <a href="#"><i class="fa fa-user fa-fw"></i> Login</a>
+                                                </li>
+                                                <li id="opReservas">
+                                                    <a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i> Reservas</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li id="opLogout">
+                                                    <a href="@Url.Action("SairSessao", "Acesso")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                                </li>
+                                            </ul>
+                                            <!-- /.dropdown-user -->
+                                        </li>
+                                    </ul>
 
+                                }
                                 <!-- Nav-Links end -->
                             </div>
                         </div>

@@ -205,13 +205,13 @@
 
         $(document).ready(function () {
             debugger;
-            var idCliente = '@HttpContext.Current.Session["idCliente"]';
+            @*var idCliente = '@HttpContext.Current.Session["idCliente"]';
             if(idCliente != "") {
                 debugger;
                 $("#opLogin").hide();
                 $("#opReservas").show();
                 $("#opLogout").show();
-            }
+            }*@
 
             //Abre o Modal de login
             $("#opLogin").click(function (e) {

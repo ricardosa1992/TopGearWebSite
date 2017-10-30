@@ -14,6 +14,7 @@ namespace Trabalho20172.Controllers
         // GET: FinalizarReserva
         public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
         {
+            BuscarDadosClienteLogado();
             LocacaoViewModel viewModel = new LocacaoViewModel();
            
             //Obtendo os dados do carro selecionado e do local de retirada/entrega
@@ -73,9 +74,9 @@ namespace Trabalho20172.Controllers
 
         public ActionResult LocacoesCliente()
         {
-            int idCliente = 5;//(int)Sessao.IdUsuarioLogado;
+            Cliente cliente = BuscarDadosClienteLogado();
             LocacaoClienteViewModel viewModel = new LocacaoClienteViewModel();
-            List<Locacao> locacoes = LocacaoApiDataAccess.ObterLocacoes(idCliente);
+            List<Locacao> locacoes = LocacaoApiDataAccess.ObterLocacoes(cliente.Id);
             foreach (var loc in locacoes)
             {
                 Carro car = TopGearApiDataAccess<Carro>.Get($"carro/porid/{loc.CarroId}");
