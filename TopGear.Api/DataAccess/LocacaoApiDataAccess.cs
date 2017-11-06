@@ -14,7 +14,8 @@ namespace TopGear.Api.DataAccess
         {
             var req = new Request<int>
             {
-               Dados = idCliente
+               Dados = idCliente,
+               Token = GetToken()
             };
 
             var locacoes = LocacaoApi.ObterLocacoes(req);
@@ -22,7 +23,7 @@ namespace TopGear.Api.DataAccess
             {
                 return locacoes.Dados;
             }
-            return null;
+            return new List<Locacao>();
 
         }
     }

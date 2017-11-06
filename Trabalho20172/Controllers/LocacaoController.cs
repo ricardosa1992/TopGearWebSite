@@ -84,6 +84,7 @@ namespace Trabalho20172.Controllers
 
                 viewModel.listaLocacoes.Add(new LocacaoViewModel
                 {
+                    idLocacao = loc.Id,
                     localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{loc.Agencia_RetiradaId}"),
                     localEntrega = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{loc.Agencia_EntregaId}"),
                     carroSelecionado = new CarroViewModel {

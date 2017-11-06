@@ -108,7 +108,7 @@
                             {
                                 if (loc.finalizada == true)
                                 {
-                                    <div class="box-detalhes-reserva col-md-3 item category2" style="margin-left:30px;margin-top:30px">
+                                    <div class="box-detalhes-reserva col-md-3 item category2"  style="margin-left:30px;margin-top:30px">
                                         <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
                                           
                                             <div class="reserva-body">
@@ -156,7 +156,7 @@
                                 }
                                 else
                                 {
-                                    <div class="box-detalhes-reserva col-md-3 item category1" style="margin-left:30px;margin-top:30px">
+                                    <div class="box-detalhes-reserva col-md-3 item category1" id="locacao_@loc.idLocacao" style="margin-left:30px;margin-top:30px">
                                         <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
                                            
                                             <div class="reserva-body">
@@ -196,7 +196,7 @@
                                                     <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black"> @loc.QtdDiarias X @loc.precoDiaria = R$ @loc.precoTotal</font></p>
 
                                                 </div>
-                                                <input type="button" class="btn btn-danger btn-block" id="cancelarLocacao" value="Cancelar" style="" />
+                                                <input type="button" class="btn btn-danger btn-block cancelarLocacao" value="Cancelar" style="" />
 
                                             </div>
 
@@ -242,6 +242,45 @@
             $("#opReservas").show();
             $("#opLogout").show();
         }
+
+        //cancela a reserva do Cliente
+        $(".cancelarLocacao").click(function (e) {
+            debugger;
+            swal({ title: "eita", type: "warning", allowOutsideClick: false, showCancelButton: true, },
+                function (isConfirm) {
+                    debugger
+                    if (isConfirm) {
+                        document.body.remove((".cancelarLocacao").parent(".box-detalhes-reserva"));
+                        //$.ajax({
+                        //    url: "/Acesso/EfetuarLogin",
+                        //    type: "POST",
+                        //    dataType: 'json',
+                        //    data: {
+                        //        login: $("#cpfUser").val(),
+                        //        senha: $("#senhaUser").val()
+                        //    },
+                        //    success: function (result) {
+                        //        if (result.Status == "ok") {
+                        //            $("#IdCliente").val(result.IdCliente);
+                        //            $("#modal-login").modal('toggle');
+                        //            $("#opLogin").hide();
+                        //            $("#opReservas").show();
+                        //            $("#opLogout").show();
+                        //        }
+                        //        else {
+                        //            $("#msgErroLogin").show();
+
+                        //        }
+                        //    }
+                        //});
+
+                    }
+
+                }
+                );
+        
+        });
+
     });
 
     </script>

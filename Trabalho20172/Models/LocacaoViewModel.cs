@@ -11,6 +11,8 @@ namespace Trabalho20172.Models
     public class LocacaoViewModel
     {
 
+        public int idLocacao { get; set; }
+
         public int idLocalRetiradaHidden { get; set; }
 
         public Agencia localRetirada { get; set; }

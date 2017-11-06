@@ -18,6 +18,7 @@ namespace TopGear.Api.Models
         [StringLength(11)]
         [Index(IsUnique = true)]
         public string CPF { get; set; }
+        public DateTime Nascimento { get; set; }
         public string Cartao { get; set; }
         public string Senha { get; set; }
         
