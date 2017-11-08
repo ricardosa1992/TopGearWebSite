@@ -37,5 +37,17 @@ namespace Trabalho20172.Controllers
 
             return listaAgencias;
         }
+
+        public int CalcularQuantidadeDiarias(DateTime retirada, DateTime entrega)
+        {
+            TimeSpan nod = (entrega - retirada);
+            int QtdDiarias = 0;
+            if (nod.TotalDays < 1)
+                QtdDiarias = 1;
+            else
+                QtdDiarias = (nod.TotalHours % 24 == 0) ? (int)nod.TotalDays : ((int)nod.TotalDays) + 1;
+
+            return QtdDiarias;
+        }
     }
 }

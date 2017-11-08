@@ -116,14 +116,7 @@ namespace Trabalho20172.Controllers
                 viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
                 viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
                 
-                //Obtendo a quantidade de Diárias
-                TimeSpan nod = (dataEntrega - dataRetirada);
-
-                if (nod.TotalDays < 1)
-                    viewModel.QtdDiarias = 1;
-                else
-                    viewModel.QtdDiarias = (nod.TotalHours % 24 == 0) ? (int)nod.TotalDays : ((int)nod.TotalDays) + 1;
-
+                viewModel.QtdDiarias = CalcularQuantidadeDiarias(dataRetirada, dataEntrega);
 
                 viewModel.listaCarrosDisponiveis = BuscarCarrosDisponiveis(viewModel.dataRetirada, viewModel.dataEntrega, idLocalRetirada, null);
                

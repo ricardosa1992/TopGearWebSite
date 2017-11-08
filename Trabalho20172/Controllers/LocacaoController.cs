@@ -82,6 +82,8 @@ namespace Trabalho20172.Controllers
                 Carro car = TopGearApiDataAccess<Carro>.Get($"carro/porid/{loc.CarroId}");
                 Categoria cat = TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{car.CategoriaId}");
 
+                int qtdDiarias = CalcularQuantidadeDiarias(loc.Retirada, loc.Entrega);
+
                 viewModel.listaLocacoes.Add(new LocacaoViewModel
                 {
                     idLocacao = loc.Id,
@@ -97,8 +99,8 @@ namespace Trabalho20172.Controllers
                     dataRetirada = loc.Retirada,
                     dataEntrega = loc.Entrega,
                     precoDiaria = cat.Preco,
-                    QtdDiarias = 3,
-                    precoTotal = cat.Preco * 3,
+                    QtdDiarias = qtdDiarias,
+                    precoTotal = cat.Preco * qtdDiarias,
                     finalizada = loc.Finalizada,
                     cancelada = loc.Cancelada
                     
