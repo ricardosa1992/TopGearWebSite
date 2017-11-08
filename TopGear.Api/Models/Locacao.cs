@@ -20,7 +20,8 @@ namespace TopGear.Api.Models
         public int? Agencia_RetiradaId { get; set; }
         public int? Agencia_EntregaId { get; set; }
 
-        public bool Finalizada { get; set; }
+        public bool Finalizada { get; set; } = false;
+        public bool Cancelada { get; set; } = false;
 
     }
 }

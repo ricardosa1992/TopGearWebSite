@@ -394,7 +394,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Home\Teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -409,7 +408,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Views\Veiculo\Teste2.cshtml" />
     <Content Include="Views\Veiculo\ListaVeiculos.cshtml" />
     <Content Include="Views\Locacao\DadosCliente.cshtml" />
     <Content Include="Views\Locacao\LocacoesCliente.cshtml" />

@@ -45,6 +45,8 @@ namespace Trabalho20172.Models
 
         public bool finalizada { get; set; }
 
+        public bool cancelada { get; set; }
+
         public List<CarroViewModel> listaCarrosDisponiveis { get; set; } = new List<CarroViewModel>();
 
         public List<SelectListItem> ListaDeAgencias { get; set; }

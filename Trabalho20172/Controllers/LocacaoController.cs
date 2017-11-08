@@ -94,16 +94,27 @@ namespace Trabalho20172.Controllers
                         Marca = car.Marca,
                         UrlImagem = car.UrlImagem
                     },
+                    dataRetirada = loc.Retirada,
+                    dataEntrega = loc.Entrega,
                     precoDiaria = cat.Preco,
                     QtdDiarias = 3,
                     precoTotal = cat.Preco * 3,
-                    finalizada = loc.Finalizada
+                    finalizada = loc.Finalizada,
+                    cancelada = loc.Cancelada
                     
             });
             }
 
             return View(viewModel);
             
+        }
+
+        //Cancela uma locação do cliente 
+        public ActionResult CancelarLocacao(int idLocacao)
+        {
+            bool cancelada = LocacaoApiDataAccess.CancelarLocacao(idLocacao);
+
+            return RedirectToAction("LocacoesCliente", "Locacao");
         }
 
     }

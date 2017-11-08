@@ -26,5 +26,21 @@ namespace TopGear.Api.DataAccess
             return new List<Locacao>();
 
         }
+
+        public static bool CancelarLocacao(int idLocacao)
+        {
+            var req = new Request<int>
+            {
+                Dados = idLocacao,
+                Token = GetToken()
+            };
+
+            var cancelada = LocacaoApi.CancelarLocacao(req);
+            if (cancelada.Sucesso)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
