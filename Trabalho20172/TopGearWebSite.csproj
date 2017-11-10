@@ -201,6 +201,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AcessoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CadastroAgenciasController.cs" />
+    <Compile Include="Controllers\CadastroCarroController.cs" />
     <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -413,6 +415,16 @@
     <Content Include="Views\Locacao\LocacoesCliente.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Veiculo\Veiculos.cshtml" />
+    <Content Include="Views\CadastroCarro\Create.cshtml" />
+    <Content Include="Views\CadastroCarro\Delete.cshtml" />
+    <Content Include="Views\CadastroCarro\Details.cshtml" />
+    <Content Include="Views\CadastroCarro\Edit.cshtml" />
+    <Content Include="Views\CadastroCarro\Index.cshtml" />
+    <Content Include="Views\CadastroAgencias\Create.cshtml" />
+    <Content Include="Views\CadastroAgencias\Delete.cshtml" />
+    <Content Include="Views\CadastroAgencias\Details.cshtml" />
+    <Content Include="Views\CadastroAgencias\Edit.cshtml" />
+    <Content Include="Views\CadastroAgencias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
