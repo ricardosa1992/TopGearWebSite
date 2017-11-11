@@ -1,0 +1,74 @@
+﻿@model TopGear.Api.Models.Carro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Placa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlImagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlImagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgenciaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgenciaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

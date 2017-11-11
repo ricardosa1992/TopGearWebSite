@@ -29,5 +29,9 @@ namespace Trabalho20172.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<TopGear.Api.Models.Carro> Carroes { get; set; }
+
+        public System.Data.Entity.DbSet<TopGear.Api.Models.Agencia> Agencias { get; set; }
     }
 }
