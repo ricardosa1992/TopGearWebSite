@@ -624,7 +624,7 @@ $("#form-cadastro-cliente").submit(function (e) {
                         if (result.Status == "ok") {
                             debugger
                             $("#IdCliente").val(result.IdCliente);
-                            $("#nomeCliente").text(result.Nome);
+                            $("#nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i> &nbsp;' + result.Nome + '&nbsp;<i class="fa fa-caret-down"></i>';
                             $("#opLogin").hide();
                             $("#opReservas").show();
                             $("#opLogout").show();

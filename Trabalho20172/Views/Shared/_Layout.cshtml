@@ -114,8 +114,8 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="@Url.Action("Index", "Home")" class="scroll-to">Inicio</a></li>
                                         <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                               <i class="fa fa-user fa-fw"></i><font id="nomeCliente"> &nbsp;@ViewBag.ClienteLogado.Nome.Split(' ')[0]&nbsp;</font><i class="fa fa-caret-down"></i>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="nomeClienteLogado">
+                                               <i class="fa fa-user fa-fw"></i> &nbsp;@ViewBag.ClienteLogado.Nome.Split(' ')[0]&nbsp;<i class="fa fa-caret-down"></i>
                                             </a>
                                             <ul class="dropdown-menu dropdown-user">
                                                 <li id="opLogin" style="display:none">
