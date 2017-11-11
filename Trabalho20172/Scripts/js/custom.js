@@ -596,6 +596,55 @@ $("#btn-cadastro").click(function (e) {
 });
 
 
+//Função de Cadastro
+//---------------------------------------------------------------
+$("#form-cadastro-cliente").submit(function (e) {
+    debugger;
+    var endereco = $("#rua").val() + ", " + $("#Bairro").val() + ", " + $("#cidade").val() + ", " + $("#estado").val(); 
+    $("#Endereco").val(endereco);
+
+    var url = "Base/CadastrarCliente"; // the script where you handle the form input.
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: $("#form-cadastro-cliente").serialize(), // serializes the form's elements.
+        success: function (result) {
+            if (result.Status == "ok") {
+                $("#modal-cadastro").modal('toggle');
+                $.ajax({
+                    url: "/Acesso/EfetuarLogin",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {
+                        login: $("#cpf").val().replace(".", "").replace(".", "").replace("-", ""),
+                        senha: $("#senha").val()
+                    },
+                    success: function (result) {
+                        if (result.Status == "ok") {
+                            debugger
+                            $("#IdCliente").val(result.IdCliente);
+                            $("#nomeCliente").text(result.Nome);
+                            $("#opLogin").hide();
+                            $("#opReservas").show();
+                            $("#opLogout").show();
+                        }
+                    }
+                });
+            }
+        }
+    });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+});
+//-------------------------------------------------------------
+
+
+//------------------------------------------------------------
+//Máscara dos campos
+$('.data').mask('00/00/0000');
+$('.tel').mask('(00) 0000-0000');
+$('.cartao').mask('0000-0000-0000-0000');
 
 
 
@@ -608,5 +657,41 @@ function validateNotEmpty(data){
   }else{
     return false;
   }
+}
+
+function formatar(mascara, documento) {
+    var i = documento.value.length;
+    var saida = mascara.substring(0, 1);
+    var texto = mascara.substring(i);
+    if (texto.substring(0, 1) != saida)
+    {
+        documento.value += texto.substring(0, 1);
+    }
+}
+
+function EfetuarLogin(cpf, senha) {
+    $.ajax({
+        url: "/Acesso/EfetuarLogin",
+        type: "POST",
+        dataType: 'json',
+        data: {
+            login: cpf,
+            senha: senha
+        },
+        success: function (result) {
+            if (result.Status == "ok") {
+                $("#IdCliente").val(result.IdCliente);
+                $("#nomeCliente").text(result.Nome);
+                $("#modal-login").modal('toggle');
+                $("#opLogin").hide();
+                $("#opReservas").show();
+                $("#opLogout").show();
+            }
+            else {
+                $("#msgErroLogin").show();
+
+            }
+        }
+    });
 }
 

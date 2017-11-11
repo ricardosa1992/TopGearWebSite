@@ -355,6 +355,7 @@
     <Content Include="Scripts\js\gmap3.min.js" />
     <Content Include="Scripts\js\jquery-1.11.0.min.js" />
     <Content Include="Scripts\js\jquery.autocomplete.min.js" />
+    <Content Include="Scripts\js\jquery.mask.js" />
     <Content Include="Scripts\js\jquery.placeholder.js" />
     <Content Include="Scripts\js\locations-autocomplete.js" />
     <Content Include="Scripts\js\style-switcher.html" />

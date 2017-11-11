@@ -31,7 +31,7 @@ namespace Trabalho20172.Controllers
                 {
                     Session["idCliente"] = cliente.Id;
                     Sessao.IdUsuarioLogado = cliente.Id;
-                    return Json(new { Status = "ok", IdCliente = cliente.Id});
+                    return Json(new { Status = "ok", IdCliente = cliente.Id, Nome = cliente.Nome.Split(' ')[0] });
 
                 }
 

@@ -54,7 +54,13 @@ namespace Trabalho20172.Models
         //Dados do Cliente
         public int idCliente { get; set; }
 
-        public string nomeCliente { get; set; }
+        public string Nome { get; set; }
+
+        public string Endereco { get; set; }
+
+        public string Cartao { get; set; }
+
+        public string Nascimento { get; set; }
 
         public string rua { get; set; }
 
@@ -64,13 +70,11 @@ namespace Trabalho20172.Models
 
         public string estado { get; set; }
 
-        public string telefone { get; set; }
+        public string Telefone { get; set; }
 
         public string cpf { get; set; }
 
         public string cpfAcesso { get; set; }
-
-        public int numCartao { get; set; }
 
         public string senha { get; set; }
 

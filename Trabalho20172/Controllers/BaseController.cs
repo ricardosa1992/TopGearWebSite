@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using TopGear.Api.DataAccess;
@@ -11,6 +12,17 @@ namespace Trabalho20172.Controllers
     public class BaseController : Controller
     {
 
+        public JsonResult CadastrarCliente(Cliente cliente)
+        {
+            string cpf = cliente.CPF;
+            cliente.CPF = Regex.Replace(cpf, @"\D+", String.Empty);
+            //cliente.CPF = cpf.Replace("-", string.Empty);
+
+            TopGearApiDataAccess<Cliente>.Post(cliente, "cliente");
+
+            return Json(new { Status = "ok" });
+        }
+        
         public Cliente BuscarDadosClienteLogado()
         {
             Cliente cliente = null;
