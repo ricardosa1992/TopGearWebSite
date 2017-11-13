@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 using TopGear.Api.DataAccess;
 using TopGear.Api.Models;
+using Trabalho20172.Utils;
 
 namespace Trabalho20172.Controllers
 {
     public class BaseController : Controller
     {
+
+        public void EnviarEmail()
+        {
+            string emailDest = "ricardosabaini19@gmail.com";
+            string body = "Testando o Envio de email";
+            string assunto = "Teste Envio de E-Mail";
+
+            Email.EnviarEmail(emailDest, "", body, assunto);
+        }
+
 
         public JsonResult CadastrarCliente(Cliente cliente)
         {
