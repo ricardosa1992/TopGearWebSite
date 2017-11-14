@@ -20,6 +20,17 @@ namespace Trabalho20172.Controllers
             Email.EnviarEmail(emailDest, "", body, assunto);
         }
 
+        public JsonResult ConfirmarDadosCartao(string Cartao, int DV)
+        {
+            Cliente cliente = BuscarDadosClienteLogado();
+            if(cliente.Cartao.Equals(Cartao) && DV == 123)
+            {
+                return Json(new { Status = "ok" });
+            }
+
+            return Json(new { Status = "nok" });
+        }
+
 
         public JsonResult CadastrarCliente(Cliente cliente)
         {

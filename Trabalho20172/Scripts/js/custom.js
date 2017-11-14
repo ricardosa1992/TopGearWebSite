@@ -529,38 +529,7 @@ return false;
 
 
 
-//Chama o Método que faz a Locação
-$("#efetuarLocacao").click(function (e) {
-    debugger;
-    $.ajax({
-        url: "/Locacao/Efetuarlocacao",
-        type: "POST",
-        dataType: 'json',
-        data: {
-            idCarro: $("#idCarroSelecionadoHidden").val(),
-            idLocalRetirada: $("#idLocalRetiradaHidden").val(),
-            idLocalEntrega: $("#idLocalEntregaHidden").val(),
-            dataRetirada: $("#dataRetiradaHidden").val(),
-            dataEntrega: $("#dataEntregaHidden").val(),
-            precoTotal: ($("#precoTotal").val()).replace(".", ",")
-        },
-        success: function (result) {
-            if (result.Status == "ok") {
-                swal({
-                    title: 'Locacao efetuada com sucesso!',
-                    type: 'success'
-                });
-            }
-            else {
-                swal({
-                    title: "Ocorreu algum erro na gravação\n Tente novamente!",
-                    type: "error"
-                });
-            }
-        }
-    });
 
-});
 
 $("#cpfUser, #senhaUser").click(function (e) {
     $(this).css({ 'border': '#cccccc solid 1px' });

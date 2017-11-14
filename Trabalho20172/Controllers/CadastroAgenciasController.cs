@@ -93,7 +93,7 @@ namespace Trabalho20172.Controllers
         // GET: CadastroAgencias/Delete/5
         public ActionResult Delete(int? id)
         {
-            List<int> lista = new List<int>() {7,8,9,10,11,12,13,14,15 };
+            List<int> lista = new List<int>() {1013,1014,1015,1016 };
             foreach (var item in lista)
             {
                 TopGearApiDataAccess<Cliente>.Delete(item, "cliente");

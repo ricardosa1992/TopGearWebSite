@@ -368,73 +368,118 @@
         </div>
         <!--Fim modal de Login-->
         
-        <!--Modal de Cadastro-->
-        <div class="modal fade" id="modal-cadastro" role="dialog">
+       <div class="modal fade" id="modal-cadastro" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <form role="form" method="post" id="form-cadastro-cliente" data-toggle="validator">
+                        <div class="form-group col-md-12">
+                            <label for="name">Nome	</label>
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = "required" })
+                            <input type="hidden" id="IdCliente" value="" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
+                            @Html.TextBoxFor(m => m.cpf, new { @class = "form-control", @required = "required", @name = "cpf", @maxlength = "14", @onkeypress = "formatar('###.###.###-##', this);" })
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="name">Nascimento*</label>
+                            @Html.TextBoxFor(m => m.Nascimento, new { @class = "form-control data", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="name">Telefone*</label>
+                            @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control tel", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-7">
+                            <label for="name">Cartao*	</label>
+                            @Html.TextBoxFor(m => m.Cartao, new { @class = "form-control cartao", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-7">
+                            <label for="name">Endereço*</label>
+                            @Html.HiddenFor(m => m.Endereco)
+                            @Html.TextBoxFor(m => m.rua, new { @class = "form-control", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="name">Bairro*</label>
+                            @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="name">Cidade*</label>
+                            @Html.TextBoxFor(m => m.cidade, new { @class = "form-control", @required = "required" })
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="name">UF*</label>
+                            @Html.TextBoxFor(m => m.estado, new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                            @Html.TextBoxFor(m => m.senha, new { @class = "form-control", @type = "password", @required = "required" })
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Cadastrar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <!--Fim modal de cadastro-->
+
+        <!--Modal de Confirmação dos dados de Cartão de Crédito-->
+        <div class="modal fade" id="modal-confirmacao" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header" style="padding:35px 50px;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
+                        <h4><span class="glyphicon glyphicon-lock"></span> Confirmar Pagamento</h4>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
-                        <form role="form">
-                            <div class="form-group col-md-8">
-                                <label for="name">Nome	</label>
-                                @Html.TextBoxFor(m => m.nomeCliente, new { @class = "form-control" })
-                                <input type="hidden" id="IdCliente" value="" />>
+                        <form role="form" class="form" id="form-confirmacao" data-toggle="validator">
+                            <span id="msgErroConfirmacao" class="msgErro" style="display:none"><font color="red">Dados inválidos!</font></span>
+                            <br />
+                            <div class="form-group">
+                                @Html.HiddenFor(m => m.idCliente)
+                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Cartão</label>
+                                @*@Html.TextBoxFor(m=>m.Cartao , new { @class = "form-control", @required = "required"})*@
+                                <input type="text" class="form-control" id="NumCartao" placeholder="" required>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                                @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
+                            <div class="form-group">
+                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> DV</label>
+                                <input type="text" class="form-control" id="DigitoVerificador" placeholder="" required>
+                                <span id="msgErroSenha" class="msgErro" style="display:none"><font color="red">A senha é obrigatória!</font></span>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="name">Cartao*	</label>
-                                @Html.TextBoxFor(m => m.numCartao, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="name">Telefone*</label>
-                                @Html.TextBoxFor(m => m.telefone, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group col-md-7">
-                                <label for="name">Endereço*</label>
-                                @Html.TextBoxFor(m => m.rua, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group col-md-5">
-                                <label for="name">Bairro*</label>
-                                @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="name">Cidade*</label>
-                                @Html.TextBoxFor(m => m.cidade, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group col-md-2">
-                                <label for="name">UF*</label>
-                                @Html.TextBoxFor(m => m.estado, new { @class = "form-control" })
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                                @Html.TextBoxFor(m => m.senha, new { @class = "form-control" })
-                            </div>
-
-                            <button type="button" class="btn btn-success btn-block" id="efetuarLogin"><span class="glyphicon glyphicon-off"></span> Cadastrar</button>
+                          
+                            <button type="button" class="btn btn-primary btn-block" id="btnConfirmar"><span class="glyphicon glyphicon-off"></span> Confirmar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!--Fim modal de cadastro-->
+        <!--Fim modal de Login-->
+
 
     </section>
 
@@ -464,100 +509,131 @@
                 $("#modal-login").modal();
             });
 
-        });
+              //Recarrega a página com os carros disponíveis de acordo com o filtro selecionado
+            $(".filtroItens").click(function (e) {
+                $("#filtro-form").submit();
 
-        //Recarrega a página com os carros disponíveis de acordo com o filtro selecionado
-        $(".filtroItens").click(function (e) {
-            $("#filtro-form").submit();
+            });
 
-        });
+            $(".selecionarCarro").click(function (e) {
+                var idCarro = $(this).attr("idCarro");
+                var modeloCarro = $(this).attr("modeloCarro");
+                var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
+                var precoDiaria = parseFloat(($(this).attr("precoCarro")).replace(",", "."));
+                var qtdDiarias = parseInt($("#QtdDiarias").val());
+                var precoTotal = precoDiaria * qtdDiarias;
+                precoDiaria = (precoDiaria.toString()).replace(".", ",");
+                precoTotal = (precoTotal.toString()).replace(".", ",");
 
-        $(".selecionarCarro").click(function (e) {
-            var idCarro = $(this).attr("idCarro");
-            var modeloCarro = $(this).attr("modeloCarro");
-            var caminhoFoto = $("#caminhoFotoCarro_" + idCarro).attr("src");
-            var precoDiaria = parseFloat(($(this).attr("precoCarro")).replace(",", "."));
-            var qtdDiarias = parseInt($("#QtdDiarias").val());
-            var precoTotal = precoDiaria * qtdDiarias;
-            precoDiaria = (precoDiaria.toString()).replace(".", ",");
-            precoTotal = (precoTotal.toString()).replace(".", ",");
+                //Montando as Informações sobre o carro selecionado
+                $("#seu-carro-edicao").hide();
 
-            //Montando as Informações sobre o carro selecionado
-            $("#seu-carro-edicao").hide();
-
-            $("#idCarroSelecionadoHidden").val(idCarro);
-            $("#carroSelecionado").text(modeloCarro);
-            $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
-            $("#valorLocacao").text(qtdDiarias + " X " + precoDiaria + " = R$ " + precoTotal);
-            $("#precoDiaria").val(precoDiaria);
-            $("#precoTotal").val(precoTotal);
-            $("#slip-reserva-valor").show();
-            $(".seu-carro").show();
-            $("#confirmarLocacao").show();
+                $("#idCarroSelecionadoHidden").val(idCarro);
+                $("#carroSelecionado").text(modeloCarro);
+                $("#caminhoFotoCarroSelecionado").attr("src", caminhoFoto);
+                $("#valorLocacao").text(qtdDiarias + " X " + precoDiaria + " = R$ " + precoTotal);
+                $("#precoDiaria").val(precoDiaria);
+                $("#precoTotal").val(precoTotal);
+                $("#slip-reserva-valor").show();
+                $(".seu-carro").show();
+                $("#confirmarLocacao").show();
 
 
-        });
+            });
 
-        //Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
-        $("#confirmarLocacao").click(function (e) {
-            debugger;
-            //Verificar aqui se o cliente já está logado
-            var idCliente = '@HttpContext.Current.Session["idCliente"]';
-            if (idCliente != "" || $("#IdCliente").val() != "") {
-                ChamarPaginaDeConfimacaoDaLocacao()
-            }
-            else {
-                $("#modal-login").modal();
-            }
-        });
+            //Verifica se o usuário está logado e redireciona para a tela de confirmação do pagamento
+            $("#confirmarLocacao").click(function (e) {
+                debugger;
+                //Verificar aqui se o cliente já está logado
+                var idCliente = '@HttpContext.Current.Session["idCliente"]';
+                if (idCliente != "" || $("#IdCliente").val() != "") {
+                   // ChamarPaginaDeConfimacaoDaLocacao()
+                    $("#modal-confirmacao").modal();
+                }
+                else {
+                    $("#modal-login").modal();
+                }
+            });
 
-        //Verifica se o cliente está cadastrado e faz o login
-        $("#efetuarLogin").click(function (e) {
+            //Verifica se o cliente está cadastrado e faz o login
+            $("#efetuarLogin").click(function (e) {
 
-            $("#msgErroLogin").hide();
+                $("#msgErroLogin").hide();
 
-            var login = $("#cpfUser").val();
-            var senha = $("#senhaUser").val();
-            var erro = 0;
+                var login = $("#cpfUser").val();
+                var senha = $("#senhaUser").val();
+                var erro = 0;
 
-            if (login == "") {
-                $("#msgErroCPF").show();
-                $("#cpfUser").css({ 'border': 'red solid 1px' })
-                erro = 1;
-            }
-            if (senha == "") {
-                $("#msgErroSenha").show();
-                $("#senhaUser").css({ 'border': 'red solid 1px' })
-                erro = 1;
-            }
+                if (login == "") {
+                    $("#msgErroCPF").show();
+                    $("#cpfUser").css({ 'border': 'red solid 1px' })
+                    erro = 1;
+                }
+                if (senha == "") {
+                    $("#msgErroSenha").show();
+                    $("#senhaUser").css({ 'border': 'red solid 1px' })
+                    erro = 1;
+                }
 
-            if (erro == 0) {
+                if (erro == 0) {
+
+                    $.ajax({
+                        url: "/Acesso/EfetuarLogin",
+                        type: "POST",
+                        dataType: 'json',
+                        data: {
+                            login: $("#cpfUser").val(),
+                            senha: $("#senhaUser").val()
+                        },
+                        success: function (result) {
+                            if (result.Status == "ok") {
+                                $("#IdCliente").val(result.IdCliente);
+                                $("#modal-login").modal('toggle');
+                                $("#opLogin").hide();
+                                $("#opReservas").show();
+                                $("#opLogout").show();
+                            }
+                            else {
+                                $("#msgErroLogin").show();
+
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            //Verifica os dados do cartão
+            $("#btnConfirmar").click(function (e) {
+                $("#msgErroConfirmacao").hide();
 
                 $.ajax({
-                    url: "/Acesso/EfetuarLogin",
+                    url: "/Base/ConfirmarDadosCartao",
                     type: "POST",
                     dataType: 'json',
                     data: {
-                        login: $("#cpfUser").val(),
-                        senha: $("#senhaUser").val()
+                        Cartao: $("#NumCartao").val(),
+                        DV: $("#DigitoVerificador").val()
                     },
                     success: function (result) {
                         if (result.Status == "ok") {
-                            $("#IdCliente").val(result.IdCliente);
-                            $("#modal-login").modal('toggle');
-                            $("#opLogin").hide();
-                            $("#opReservas").show();
-                            $("#opLogout").show();
+                            $("#modal-confirmacao").modal('toggle');
+                            EfetuarReserva();
+                          
                         }
                         else {
-                            $("#msgErroLogin").show();
+                            $("#msgErroConfirmacao").show();
 
                         }
                     }
                 });
-            }
+
+            });
+
 
         });
+
+
 
 
         function ChamarPaginaDeConfimacaoDaLocacao() {
@@ -571,6 +647,40 @@
             var precoTotal = ($("#precoTotal").val()).replace(".", ",");
             var href = "/Locacao/DadosCliente?idCarroSelecionado=" + idCarro + "&idLocalRetirada=" + idLocalRetirada + "&idLocalEntrega=" + idLocalEntrega + "&dataRetirada=" + dataRetirada + "&dataEntrega=" + dataEntrega + "&qtdDiarias=" + qtdDiarias + "&precoDiaria=" + precoDiaria + "&precoTotal=" + precoTotal;
             window.open(href, "_self");
+        }
+
+        function EfetuarReserva() {
+            //Chama o Método que faz a Locação
+                $.ajax({
+                    url: "/Locacao/Efetuarlocacao",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {
+                        idCarro: $("#idCarroSelecionadoHidden").val(),
+                        idLocalRetirada: $("#idLocalRetiradaHidden").val(),
+                        idLocalEntrega: $("#idLocalEntregaHidden").val(),
+                        dataRetirada: $("#dataRetiradaHidden").val(),
+                        dataEntrega: $("#dataEntregaHidden").val(),
+                        precoTotal: ($("#precoTotal").val()).replace(".", ",")
+                    },
+                    success: function (result) {
+                        if (result.Status == "ok") {
+                            swal({
+                                title: "Reserva efetuada com sucesso!",
+                                icon: "success",
+                            }).then((willDelete) => {
+                                ChamarPaginaDeConfimacaoDaLocacao();
+                            });
+                        }
+                        else {
+                            swal({
+                                title: "Ocorreu algum erro na gravação\n Tente novamente!",
+                                type: "error"
+                            });
+                        }
+                    }
+                });
+
         }
     </script>
 }
