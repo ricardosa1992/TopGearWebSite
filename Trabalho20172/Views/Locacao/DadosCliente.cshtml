@@ -42,73 +42,72 @@
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
-  
 
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-              
-                <div class="col-md-10">
-                    <ul>
-                        <li><h4>Que tal uma passagem Aérea?</h4></li>
-                        <li><a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i>Ir para Reservas</a></li>
-                    </ul>
-                  
-                 
 
-                    @{
-                        foreach (var voo in Model.listaVoos)
-                        {
-                            <div class="box-detalhes-reserva col-md-3" style="margin-left:30px;margin-top:30px" >
-                                <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
-                                    <div class="reserva-header voo-header">
-                                        <a class="target" href="#" title="sua reserva">
-                                            <i class="fa fa-plane" aria-hidden="true"></i> @voo.codigo
-                                           
-                                        </a>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <ul>
+                    <li><h4>Que tal uma passagem Aérea?</h4></li>
+                    <li><a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i>Ir para Reservas</a></li>
+                </ul>
+
+
+
+                @{
+                    foreach (var voo in Model.listaVoos)
+                    {
+                        <div class="box-detalhes-reserva col-md-3 col-sm-12" style="margin-left:30px;margin-top:30px">
+                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                <div class="reserva-header voo-header" >
+                                    <a class="target" href="#" title="sua reserva" style="margin:0px auto">
+                                        <i class="fa fa-plane" aria-hidden="true"></i> @voo.codigo
+
+                                    </a>
+                                </div>
+                                <div class="reserva-body">
+                                    <i class="icon2-retirada"></i><p class="sub-title">Partida</p>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @voo.cidade_partida - @voo.aeroporto_partida (@voo.sigla_aeroporto_partida)
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @voo.partida
+                                        </div>
                                     </div>
-                                    <div class="reserva-body">
-                                        <i class="icon2-retirada"></i><p class="sub-title">Partida</p>
-                                        <div class="content-agencias">
-                                            <p class="text-slip-strong" style="text-transform:capitalize">
-                                                @voo.cidade_partida - @voo.aeroporto_partida (@voo.sigla_aeroporto_partida)
-                                            </p>
-                                            <div class="date text-slip-normal">
-                                                @voo.partida
-                                            </div>
+                                    <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @voo.cidade_destino - @voo.aeroporto_destino (@voo.sigla_aeroporto_destino)
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @voo.chegada
                                         </div>
-                                        <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
-                                        <div class="content-agencias">
-                                            <p class="text-slip-strong" style="text-transform:capitalize">
-                                              @voo.cidade_destino - @voo.aeroporto_destino (@voo.sigla_aeroporto_destino)
-                                            </p>
-                                            <div class="date text-slip-normal">
-                                                @voo.chegada
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                        <div id="qtdDiarias" class="box-detalhes-reserva" style="">
-                                            <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black">R$ @voo.preco.ToString("n2")</font></p>
-                                           
-                                        </div>
-                                        <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Comprar" style="" />
+                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black">R$ @voo.preco.ToString("n2")</font></p>
 
                                     </div>
+                                    <input type="button" class="btn btn-primary btn-block" id="confirmarLocacao" value="Comprar" style="" />
 
                                 </div>
-                             
+
                             </div>
 
-                        }
-
+                        </div>
 
                     }
 
 
-                </div>
+                }
 
-                <!--Area da reserva-->
-                <div class="col-md-2">
+
+            </div>
+
+            <!--Area da reserva-->
+            @*<div class="col-sm-12 col-md-2">
                 <div class="sidenav">
                     <div id="div-fixo-slip" class="col-2 pull-right" style="">
 
@@ -151,7 +150,7 @@
                                     <div id="slip-reserva-upgrade" class="box-detalhes-reserva seu-carro" style="">
                                         <br>
                                         @*<span class="text-slip-normal" id="carroSelecionado"></span>*@
-                                        <div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
+                                        @*<div class=""><img style="width:250px" id="caminhoFotoCarroSelecionado" src="@Model.carroSelecionado.UrlImagem" alt="" /></div>
                                         <div class="info">
                                             <h4 id="carroSelecionado"><font color="#00984a"> Modelo: </font>@Model.carroSelecionado.Modelo</h4>
                                             @Html.HiddenFor(m => m.idCarroSelecionadoHidden, new { Value = Model.carroSelecionado.Id })
@@ -168,7 +167,7 @@
 
                                 </div>
 
-                            </div>
+                            </div>*@
                             @*<div class="reserva-footer" id="slip-reserva-valor" style="display:none;">
                                     <div class="slip-reserva-valor-total">
                                         <p class="titulo valor-previsto" id="valorLocacao"></p>
@@ -176,76 +175,19 @@
                                 </div>
 
                                 <input type="button" class="btn btn-primary" id="confirmarLocacao" value="Continuar" style="display:none" />*@
-                        </div>
+                        @*</div>
                     </div>
                 </div>
-                </div>
-                <!--Fim Area reserva-->
+            </div>*@
+            <!--Fim Area reserva-->
 
-            </div>
         </div>
+    </div>
 
-        
-
-    </section>
 
 
     <a href="#" class="scrollup">ScrollUp</a>
 
-    <!-- Footer start -->
-    @*<footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul class="footer-nav">
-                        <li><a class="scroll-to" href="#top">Home</a></li>
-                        <li><a class="scroll-to" href="#vehicles">Vehicle Models</a></li>
-                        <li><a class="scroll-to" href="#reviews">Reviews</a></li>
-                        <li><a class="scroll-to" href="#contact">Contact</a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <p class="copyright">©2014 Themeinjection, All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>*@
-
-    <!-- Checkout Modal end -->
-    @*<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/js/jquery.autocomplete.min.js"></script>
-    <script src="~/Scripts/js/jquery.placeholder.js"></script>
-    <script src="~/Scripts/js/locations-autocomplete.js"></script>
-    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="~/Scripts/js/gmap3.min.js"></script>
-
-    <!--[if !(gte IE 8)]><!-->
-    <script src="~/Scripts/js/wow.min.js"></script>
-    <script>
-                // Initialize WOW
-                //-------------------------------------------------------------
-                new WOW({mobile: false}).init();
-    </script>
-    <!--<![endif]-->
-    <script src="~/Scripts/js/custom.js"></script>
-
-    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.easing.1.3.js"></script>
-    <script src="~/Scripts/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.flexslider.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.parallax.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.inview.js"></script>
-    <script src="~/Scripts/js-rental-car/superfish.js"></script>
-    <script src="~/Scripts/js-rental-car/supersubs.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.glide.js"></script>
-    <script src="~/Scripts/js-rental-car/select2.min.js"></script>
-    <script src="~/Scripts/js-rental-car/jquery.isotope.min.js"></script>
-    <script src="~/Scripts/js-rental-car/owl.carousel.js"></script>
-    <script src="~/Scripts/js-rental-car/rentalcar-custom.js"></script>
-    <script src="~/Scripts/js/sweetalert-dev.js"></script>*@
 </body>
 
 <!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
