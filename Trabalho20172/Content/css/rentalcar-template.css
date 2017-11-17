@@ -2608,7 +2608,8 @@ body.off-canvas-menu-open.responsive #outer-overlay {
 
 @media (min-width:992px) and (max-width:1199px) {
 .gallery .item {
-	width: 307px;
+	/*width: 307px;*/
+    width: 250px !important;
 }
 }
 

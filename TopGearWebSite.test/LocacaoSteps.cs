@@ -38,8 +38,8 @@ namespace TopGearWebSite.test
             {
                 CarroId = carroSelecionado.Id,
                 ClienteId = TopGearApi<List<Cliente>>.Get("cliente").Dados.First().Id,
-                Agencia_RetiradaId = carroSelecionado.AgenciaId,
-                Agencia_EntregaId = carroSelecionado.AgenciaId,
+                Agencia_RetiradaId = TopGearApi<List<Agencia>>.Get("agencia").Dados.First().Id,
+                Agencia_EntregaId = TopGearApi<List<Agencia>>.Get("agencia").Dados.First().Id,
                 Retirada = dtRetirada,
                 Entrega = dtEntrega,
             };
