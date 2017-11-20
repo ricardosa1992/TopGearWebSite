@@ -589,6 +589,7 @@
                             if (result.Status == "ok") {
                                 $("#IdCliente").val(result.IdCliente);
                                 $("#modal-login").modal('toggle');
+                                document.getElementById("nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i>' + result.Nome + ' <i class="fa fa-caret-down"></i>';
                                 $("#opLogin").hide();
                                 $("#opReservas").show();
                                 $("#opLogout").show();

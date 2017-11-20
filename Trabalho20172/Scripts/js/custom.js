@@ -35,44 +35,6 @@ $(document).on("scroll",function(){
 
 });
 
-//floatingMenu.add('divreserva',
-//     {
-//         // Represents distance from left or right browser window  
-//         // border depending upon property used. Only one should be  
-//         // specified.  
-//         // targetLeft: 0,  
-//         targetRight: 10,
-
-//         // Represents distance from top or bottom browser window  
-//         // border depending upon property used. Only one should be  
-//         // specified.  
-//         targetTop: 10,
-//         // targetBottom: 0,  
-
-//         // Uncomment one of those if you need centering on  
-//         // X- or Y- axis.  
-//         // centerX: true,  
-//         // centerY: true,  
-
-//         // Remove this one if you don't want snap effect  
-//         snap: true
-//     });
-
-$(window).scroll(function () {
-    //var margem = 10;
-    //var posicao = $(document).scrollTop() + window.innerHeight;
-    //var footertop = $('#footer').offset().top;
-    //var meiodapagina = window.innerHeight / 2;
-    //var maximo = footertop + meiodapagina - margem;
-
-    //if (posicao < maximo) {
-    //    $('#divReserva').css('bottom', meiodapagina + 'px');
-    //} else {
-    //    $('#divReserva').css('bottom', (margem + (posicao - footertop)) + 'px');
-    //}
-
-});
-
 
 // Vehicles Tabs / Slider  
 //-------------------------------------------------------------
@@ -417,65 +379,6 @@ $("#car-select-form").submit(function () {
 
 });
 
-//$( "#car-select-form" ).submit(function() {
-
-//  var selectedCar = $("#car-select").find(":selected").text();
-//  var selectedCarVal = $("#car-select").find(":selected").val();
-//  var selectedCarImage = $("#car-select").val();
-//  var pickupLocation = $("#pick-up-location").val();
-//  var dropoffLocation = $("#drop-off-location").val();
-//  var pickUpDate = $("#pick-up-date").val();
-//  var pickUpTime = $("#pick-up-time").val();
-//  var dropOffDate = $("#drop-off-date").val();
-//  var dropOffTime = $("#drop-off-time").val();
-
-//  var error = 0;
-
-//  if(validateNotEmpty(selectedCarVal)) { error = 1; }
-//  if(validateNotEmpty(pickupLocation)) { error = 1; }
-//  if(validateNotEmpty(pickUpDate)) { error = 1; }
-//  if(validateNotEmpty(dropOffDate)) { error = 1; }
-
-//  if(0 == error)
-//  {
-
-//    $("#selected-car-ph").html(selectedCar);
-//    $("#selected-car").val(selectedCar);
-//    $("#selected-vehicle-image").attr('src', selectedCarImage);
-
-//    $("#pickup-location-ph").html(pickupLocation);
-//    $("#pickup-location").val(pickupLocation);
-    
-//    if("" == dropoffLocation)
-//    {
-//      $("#dropoff-location-ph").html(pickupLocation);
-//      $("#dropoff-location").val(pickupLocation);
-//    }
-//    else
-//    {
-//      $("#dropoff-location-ph").html(dropoffLocation);
-//      $("#dropoff-location").val(dropoffLocation);
-//    }
-    
-//    $("#pick-up-date-ph").html(pickUpDate);
-//    $("#pick-up-time-ph").html(pickUpTime);
-//    $("#pick-up").val(pickUpDate+' at '+pickUpTime);
-
-//    $("#drop-off-date-ph").html(dropOffDate);
-//    $("#drop-off-time-ph").html(dropOffTime);
-//    $("#drop-off").val(dropOffDate+' at '+dropOffTime);
-
-//    $('#checkoutModal').modal();
-//  }
-//  else
-//  {
-//    $('#car-select-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
-//  }
-
-//  return false;
-//});
-
-
 
 // Check Out Form
 //-------------------------------------------------------------------------------
@@ -524,10 +427,6 @@ $( "#checkout-form" ).submit(function() {
 
 return false;
 });
-
-
-
-
 
 
 
@@ -649,8 +548,10 @@ function EfetuarLogin(cpf, senha) {
         },
         success: function (result) {
             if (result.Status == "ok") {
+                debugger;
                 $("#IdCliente").val(result.IdCliente);
-                $("#nomeCliente").text(result.Nome);
+                //$("#nomeClienteLogado").text(result.Nome);
+                document.getElementById("nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i>' + result.Nome + ' <i class="fa fa-caret-down"></i>';
                 $("#modal-login").modal('toggle');
                 $("#opLogin").hide();
                 $("#opReservas").show();
