@@ -492,7 +492,7 @@ $("#form-cadastro-cliente").submit(function (e) {
                         if (result.Status == "ok") {
                             debugger
                             $("#IdCliente").val(result.IdCliente);
-                            $("#nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i> &nbsp;' + result.Nome + '&nbsp;<i class="fa fa-caret-down"></i>';
+                            document.getElementById("nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i>' + result.Nome + ' <i class="fa fa-caret-down"></i>';
                             $("#opLogin").hide();
                             $("#opReservas").show();
                             $("#opLogout").show();
@@ -514,6 +514,13 @@ $('.data').mask('00/00/0000');
 $('.tel').mask('(00) 0000-0000');
 $('.cartao').mask('0000-0000-0000-0000');
 
+//Evento de Submit no Formulário de Login
+$('.input').keypress(function (e) {
+    if (e.which == 13) {
+        $('#form-login').submit();
+        return false;    //<---- Add this line
+    }
+});
 
 
 // Not Empty Validator Function

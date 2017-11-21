@@ -176,12 +176,12 @@
                     <div class="form-group">
                         <input type="hidden" id="IdCliente" value="" />
                         <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
-                        <input type="text" class="form-control" id="cpfUser" placeholder="Digite o CPF">
+                        <input type="text" class="form-control input" id="cpfUser" placeholder="Digite o CPF">
                         <span id="msgErroCPF" class="msgErro" style="display:none"><font color="red">O CPF é obrigatório!</font></span>
                     </div>
                     <div class="form-group">
                         <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                        <input type="password" class="form-control" id="senhaUser" placeholder="Digite a Senha">
+                        <input type="password" class="form-control input" id="senhaUser" placeholder="Digite a Senha">
                         <span id="msgErroSenha" class="msgErro" style="display:none"><font color="red">A senha é obrigatória!</font></span>
                     </div>
                     <div class="checkbox">
@@ -218,48 +218,54 @@
                         @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = "required" } )
                         <input type="hidden" id="IdCliente" value="" />
                     </div>
+                   
+                     <div class="form-group col-md-12">
+                        <label for="name">Email	</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required" })
+                    </div>
+
                     <div class="form-group col-md-8">
-                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
+                        <label for="usrname"> CPF</label>
                         @Html.TextBoxFor(m => m.cpf, new { @class = "form-control", @required = "required", @name = "cpf",  @maxlength = "14", @onkeypress = "formatar('###.###.###-##', this);" })
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="name">Nascimento*</label>
+                        <label for="name">Nascimento</label>
                         @Html.TextBoxFor(m => m.Nascimento, new { @class = "form-control data", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-5">
-                        <label for="name">Telefone*</label>
+                        <label for="name">Telefone</label>
                         @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control tel", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-7">
-                        <label for="name">Cartao*	</label>
+                        <label for="name">Cartao	</label>
                         @Html.TextBoxFor(m => m.Cartao, new { @class = "form-control cartao", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-7">
-                        <label for="name">Endereço*</label>
+                        <label for="name">Endereço</label>
                         @Html.HiddenFor(m=>m.Endereco)
                         @Html.TextBoxFor(m => m.rua, new { @class = "form-control", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-5">
-                        <label for="name">Bairro*</label>
+                        <label for="name">Bairro</label>
                         @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="name">Cidade*</label>
+                        <label for="name">Cidade</label>
                         @Html.TextBoxFor(m => m.cidade, new { @class = "form-control", @required = "required" })
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="name">UF*</label>
+                        <label for="name">UF</label>
                         @Html.TextBoxFor(m => m.estado, new { @class = "form-control", @required = "required" })
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                        <label for="psw">Senha</label>
                         @Html.TextBoxFor(m => m.senha, new { @class = "form-control", @type = "password", @required = "required" })
                     </div>
 
@@ -282,14 +288,7 @@
 
         $(document).ready(function () {
             debugger;
-            @*var idCliente = '@HttpContext.Current.Session["idCliente"]';
-            if(idCliente != "") {
-                debugger;
-                $("#opLogin").hide();
-                $("#opReservas").show();
-                $("#opLogout").show();
-            }*@
-
+         
             //Abre o Modal de login
             $("#opLogin").click(function (e) {
                 $("#modal-login").modal();

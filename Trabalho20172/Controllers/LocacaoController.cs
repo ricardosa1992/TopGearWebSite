@@ -39,7 +39,6 @@ namespace Trabalho20172.Controllers
                 Modelo = carroSelecionado.Modelo,
                 Ano = carroSelecionado.Ano,
                 Placa = carroSelecionado.Placa,
-                AgenciaId = carroSelecionado.AgenciaId,
                 categoria = categoria,
                 UrlImagem = carroSelecionado.UrlImagem
             };
