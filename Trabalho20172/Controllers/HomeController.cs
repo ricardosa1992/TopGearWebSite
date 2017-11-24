@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using TopGear.Api.Models;
+﻿using System.Web.Mvc;
 using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
@@ -13,14 +11,6 @@ namespace Trabalho20172.Controllers
         {
             EnviarEmail();
             BuscarDadosClienteLogado();
-            LocacaoViewModel modeloDaView = new LocacaoViewModel();
-            modeloDaView.ListaDeAgencias = ListaDeAgencias();
-
-            return View(modeloDaView);
-        }
-
-        public ActionResult Teste()
-        {
             LocacaoViewModel modeloDaView = new LocacaoViewModel();
             modeloDaView.ListaDeAgencias = ListaDeAgencias();
 
