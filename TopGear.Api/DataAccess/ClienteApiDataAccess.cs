@@ -28,6 +28,30 @@ namespace TopGear.Api.DataAccess
 
         }
 
+        public static Cliente GetClientePorId(int id)
+        {
+            var result = TopGearApi<Cliente>.GetAuth(id, "cliente");
+
+            if (result.Sucesso)
+            {
+                return result.Dados;
+            }
+            return null;
+
+        }
+
+        public static List<Cliente> GetTodosClientes()
+        {
+            var result = TopGearApi<List<Cliente>>.GetAuth("cliente");
+
+            if (result.Sucesso)
+            {
+                return result.Dados;
+            }
+            return null;
+
+        }
+
 
     }
 }

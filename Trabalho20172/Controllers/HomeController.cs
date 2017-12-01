@@ -9,7 +9,6 @@ namespace Trabalho20172.Controllers
 
         public ActionResult Index()
         {
-            EnviarEmail();
             BuscarDadosClienteLogado();
             LocacaoViewModel modeloDaView = new LocacaoViewModel();
             modeloDaView.ListaDeAgencias = ListaDeAgencias();

@@ -50,7 +50,7 @@ namespace Trabalho20172.Controllers
             Cliente cliente = null;
             if(Session["idCliente"] != null)
             {
-                cliente = ClienteApiDataAccess.Get($"cliente/porid/{(int)Session["idCliente"]}");
+                cliente = ClienteApiDataAccess.GetClientePorId((int)Session["idCliente"]);
                 ViewBag.ClienteLogado = cliente;
             }
 

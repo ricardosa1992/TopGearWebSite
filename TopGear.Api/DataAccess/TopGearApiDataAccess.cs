@@ -21,6 +21,17 @@ namespace TopGear.Api.DataAccess
 
         }
 
+        public static T GetAuth(int id, string relativePath)
+        {
+            var result = TopGearApi<T>.GetAuth(id,relativePath);
+            if (result.Sucesso)
+            {
+                return result.Dados;
+            }
+            return default(T);
+
+        }
+
         public static int Post(T objeto, string relativePath)
         {
             var result = TopGearApi<T>.Post(objeto, relativePath);
