@@ -64,7 +64,7 @@ namespace Trabalho20172.Controllers
           
             foreach (var item in agencias)
             {
-                listaAgencias.Add(new SelectListItem { Text = item.Nome, Value = item.Id.ToString() });
+                listaAgencias.Add(new SelectListItem { Text = item.Nome + " - " + item.Cidade, Value = item.Id.ToString() });
             }
 
             return listaAgencias;

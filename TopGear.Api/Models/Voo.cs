@@ -8,7 +8,7 @@ namespace TopGear.Api.Models
 {
     public class Voo
     {
-        public int idVoo { get; set; } 
+        public int idVoo { get; set; }
         public string codigo { get; set; }
         public DateTime partida { get; set; }
         public DateTime chegada { get; set; }
