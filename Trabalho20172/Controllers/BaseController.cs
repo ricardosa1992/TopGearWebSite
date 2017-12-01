@@ -23,7 +23,8 @@ namespace Trabalho20172.Controllers
         public JsonResult ConfirmarDadosCartao(string Cartao, int DV)
         {
             Cliente cliente = BuscarDadosClienteLogado();
-            if(cliente.Cartao.Equals(Cartao) && DV == 123)
+            Cartao = Cartao.Replace("-", string.Empty);
+            if (cliente.Cartao.Equals(Cartao) && DV == 123)
             {
                 return Json(new { Status = "ok" });
             }
@@ -35,8 +36,9 @@ namespace Trabalho20172.Controllers
         public JsonResult CadastrarCliente(Cliente cliente)
         {
             string cpf = cliente.CPF;
+            string cartao = cliente.Cartao;
             cliente.CPF = Regex.Replace(cpf, @"\D+", String.Empty);
-            //cliente.CPF = cpf.Replace("-", string.Empty);
+            cliente.Cartao = cartao.Replace("-", string.Empty);
 
             TopGearApiDataAccess<Cliente>.Post(cliente, "cliente");
 

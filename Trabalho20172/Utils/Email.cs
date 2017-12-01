@@ -28,13 +28,11 @@ namespace Trabalho20172.Utils
                 
                 //Configurando o Servidor de Envio
                 SmtpClient smtp = new SmtpClient();
-                //smtp.Host = "127.0.0.1";
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                //smtp.UseDefaultCredentials = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("TesteEmailSox@gmail.com", "19929121");
+                //smtp.Host = "smtp.gmail.com";
+                //smtp.Port = 587;
+                //smtp.EnableSsl = true;
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = new System.Net.NetworkCredential("TesteEmailSox@gmail.com", "19929121");
                 
                 smtp.Send(mail);
 

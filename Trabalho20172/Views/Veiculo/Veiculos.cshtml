@@ -43,7 +43,7 @@
                     @Html.HiddenFor(m => m.Modo, new { Value = Model.Modo })
 
                 <!--Filtros-->
-                    <div class="col-sm-2 sidenav">
+                    <div class="col-sm-12 col-md-2 sidenav">
                         <div class="base">
 
                             <ul class="nav nav-list">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 <!--Fim Filtros-->
-                    <div class="col-sm-8">
+                    <div class="col-sm-12 col-md-8">
                         <h2>Vehicle guide</h2>
                         <div class="filters-by-category text-center">
                             <ul class="option-set" data-option-key="filter">
@@ -86,7 +86,7 @@
                     </div>
 
                 <!--Area da reserva-->
-                    <div class="col-sm-2 sidenav normal" id="divReserva">
+                    <div class="col-sm-12 col-md-2 sidenav normal" id="divReserva">
                         <div id="div-fixo-slip" class="col-2 pull-right" style="">
 
                             <div class="box-detalhes-reserva">
@@ -384,48 +384,52 @@
                             @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = "required" })
                             <input type="hidden" id="IdCliente" value="" />
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="name">Email	</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required" })
+                        </div>
                         <div class="form-group col-md-8">
-                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> CPF</label>
+                            <label for="usrname">CPF </label>
                             @Html.TextBoxFor(m => m.cpf, new { @class = "form-control", @required = "required", @name = "cpf", @maxlength = "14", @onkeypress = "formatar('###.###.###-##', this);" })
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="name">Nascimento*</label>
+                            <label for="name">Nascimento </label>
                             @Html.TextBoxFor(m => m.Nascimento, new { @class = "form-control data", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-5">
-                            <label for="name">Telefone*</label>
+                            <label for="name">Telefone </label>
                             @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control tel", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-7">
-                            <label for="name">Cartao*	</label>
+                            <label for="name">Cartao </label>
                             @Html.TextBoxFor(m => m.Cartao, new { @class = "form-control cartao", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-7">
-                            <label for="name">Endereço*</label>
+                            <label for="name">Endereço </label>
                             @Html.HiddenFor(m => m.Endereco)
                             @Html.TextBoxFor(m => m.rua, new { @class = "form-control", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-5">
-                            <label for="name">Bairro*</label>
+                            <label for="name">Bairro </label>
                             @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="name">Cidade*</label>
+                            <label for="name">Cidade </label>
                             @Html.TextBoxFor(m => m.cidade, new { @class = "form-control", @required = "required" })
                         </div>
 
                         <div class="form-group col-md-2">
-                            <label for="name">UF*</label>
+                            <label for="name">UF </label>
                             @Html.TextBoxFor(m => m.estado, new { @class = "form-control", @required = "required" })
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                            <label for="psw">Senha </label>
                             @Html.TextBoxFor(m => m.senha, new { @class = "form-control", @type = "password", @required = "required" })
                         </div>
 
@@ -460,7 +464,7 @@
                                 @Html.HiddenFor(m => m.idCliente)
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> Cartão</label>
                                 @*@Html.TextBoxFor(m=>m.Cartao , new { @class = "form-control", @required = "required"})*@
-                                <input type="text" class="form-control" id="NumCartao" placeholder="" required>
+                                <input type="text" class="form-control cartao" id="NumCartao" placeholder="" required>
                             </div>
                             <div class="form-group">
                                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> DV</label>
@@ -589,6 +593,7 @@
                             if (result.Status == "ok") {
                                 $("#IdCliente").val(result.IdCliente);
                                 $("#modal-login").modal('toggle');
+                                document.getElementById("nomeClienteLogado").innerHTML = '<i class="fa fa-user fa-fw"></i>' + result.Nome + ' <i class="fa fa-caret-down"></i>';
                                 $("#opLogin").hide();
                                 $("#opReservas").show();
                                 $("#opLogout").show();

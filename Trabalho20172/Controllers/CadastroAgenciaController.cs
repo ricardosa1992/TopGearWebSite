@@ -12,7 +12,7 @@ using Trabalho20172.Models;
 
 namespace Trabalho20172.Controllers
 {
-    public class CadastroAgenciasController : Controller
+    public class CadastroAgenciaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -93,12 +93,6 @@ namespace Trabalho20172.Controllers
         // GET: CadastroAgencias/Delete/5
         public ActionResult Delete(int? id)
         {
-            List<int> lista = new List<int>() {1013,1014,1015,1016 };
-            foreach (var item in lista)
-            {
-                TopGearApiDataAccess<Cliente>.Delete(item, "cliente");
-
-            }
 
             if (id == null)
             {

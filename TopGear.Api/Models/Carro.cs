@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace TopGear.Api.Models
 {
@@ -20,8 +21,12 @@ namespace TopGear.Api.Models
         public int Ano { get; set; }
         public string UrlImagem { get; set; }
 
-        public int AgenciaId { get; set; }
         public int CategoriaId { get; set; }
+
+        [IgnoreDataMember]
+        public virtual Categoria Categoria { get; set; }
+        [IgnoreDataMember]
+        public virtual ICollection<Item> Itens { get; set; }
 
     }
 }
