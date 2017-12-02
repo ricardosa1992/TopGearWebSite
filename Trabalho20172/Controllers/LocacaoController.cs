@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TopGear.Api.DataAccess;
 using TopGear.Api.DataApi;
@@ -37,7 +35,7 @@ namespace Trabalho20172.Controllers
            
             foreach (var voo in listaTodosVoos)
             {
-                if(voo.cidade_partida.ToLower().Equals(localEntrega.Cidade.ToLower()) && (voo.partida > dtEntrega))
+                if(voo.cidade_partida.ToLower().Equals(localEntrega.Cidade.ToLower()) && (voo.partida.Date > dtEntrega.Date))
                 {
                     viewModel.listaVoos.Add(voo);
 
