@@ -17,10 +17,33 @@ namespace Trabalho20172.Controllers
         {
             BuscarDadosClienteLogado();
             LocacaoViewModel viewModel = new LocacaoViewModel();
-            
-            //Buscando todos os Vôos
-            viewModel.listaVoos = PassagemApi.GetTodosVoos(); 
 
+           //Obtendo os dados do carro selecionado e do local de retirada / entrega
+            viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
+            DateTime dtEntrega = Convert.ToDateTime(dataEntrega);
+            viewModel.QtdDiarias = qtdDiarias;
+            viewModel.precoDiaria = Convert.ToDouble(precoDiaria);
+            viewModel.precoTotal = Convert.ToDouble(precoTotal);
+
+            //Obtendo a Agencia de retirada/Entrega
+            viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
+            //viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+            Agencia localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
+
+            //Buscando todos os Vôos
+            List<Voo> listaTodosVoos = PassagemApi.GetTodosVoos();
+
+            //Filtrando por localização e data de saída do vôo
+           
+            foreach (var voo in listaTodosVoos)
+            {
+                if(voo.cidade_partida.ToLower().Equals(localEntrega.Cidade.ToLower()) && (voo.partida > dtEntrega))
+                {
+                    viewModel.listaVoos.Add(voo);
+
+                }
+
+            }
 
             return View(viewModel);
 
@@ -94,17 +117,17 @@ namespace Trabalho20172.Controllers
             return RedirectToAction("LocacoesCliente", "Locacao");
         }
 
-        public JsonResult ComprarPassagem(int idVoo)
+        public JsonResult ComprarPassagem(int idVoo, int numAcento)
         {
             Cliente cliente = BuscarDadosClienteLogado();
 
             //PassagemApi.PostCliente(cliente.Nome, "3232", cliente.Nascimento);
             
-            int idCompra = PassagemApi.InserirCompra(cliente.Cartao, "32132132132");
+            int idCompra = PassagemApi.InserirCompra("3232", "32132132132");
             int idTicket = -1;
             if (idCompra != -1)
             {
-                idTicket = PassagemApi.InserirTicket(idCompra, idVoo, cliente.Nome, cliente.Cartao, "32132132132", cliente.Nascimento);
+                idTicket = PassagemApi.InserirTicket(idCompra, idVoo, cliente.Nome, "3232", "32132132132", cliente.Nascimento, numAcento);
             }
             return (idTicket != -1) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
 

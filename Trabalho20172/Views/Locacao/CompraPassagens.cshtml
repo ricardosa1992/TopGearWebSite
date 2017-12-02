@@ -58,7 +58,7 @@
                 @{
                     foreach (var voo in Model.listaVoos)
                     {
-                        <div class="box-detalhes-reserva col-md-4 col-sm-12 col-lg-3 col-xl-4" style="margin-top:30px;height:250px">
+                        <div class="box-detalhes-reserva col-md-4 col-sm-12 col-lg-3 col-xl-4" style="margin-top:30px;height:300px">
                             <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
                                 <div class="reserva-header voo-header" >
                                     <a class="target" href="#" title="sua reserva" style="margin:0px auto">
@@ -84,6 +84,11 @@
                                         <div class="date text-slip-normal">
                                             @voo.chegada
                                         </div>
+                                    </div>
+
+                                    <p class="sub-title"><i class="icon2-devolucao"></i>Acento</p>
+                                    <div class="content-agencias">
+                                        <input type="number" class="numAcento" min="1" step="1" value="1">
                                     </div>
 
                                     <div id="qtdDiarias" class="box-detalhes-reserva" style="">
@@ -129,22 +134,22 @@
         $(".comprarPassagem").click(function (e) {
             debugger;
             var idVoo = $(this).attr("idVoo");
+            var numAcento = $(this).parent().parent().parent().find(".numAcento").val();
 
             swal({
                 title: "Confirma a compra da passagem?",
                 icon: "warning",
                 buttons: true,
-                dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
                         url: "/Locacao/ComprarPassagem",
                         type: "POST",
                         dataType: 'json',
-                        data: { idVoo: idVoo },
+                        data: { idVoo: idVoo, numAcento: numAcento },
                         success: function (result) {
                             if (result.Status == "ok") {
-                                swal({ title: "Ocorreu algum erro!", icon: "success" });
+                                swal({ title: "Compra efetuada com sucesso!", icon: "success" });
                             }
                             else {
                                 swal({ title: "Ocorreu algum erro!", icon: "error" });

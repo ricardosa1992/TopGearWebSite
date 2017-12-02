@@ -98,11 +98,15 @@ namespace TopGear.Api.DataApi
             else return -1;
         }
 
-        public static int InserirTicket(int idCompra, int idVoo, string Nome, string Cartao, string Cpf, DateTime Nascimento)
+        public static int InserirTicket(int idCompra, int idVoo, string Nome, string Cartao, string Cpf, DateTime Nascimento, int numAcento)
         {
+
+            var dataSplit = Nascimento.ToShortDateString().Split('/');
+            var dataFormatada = dataSplit[2] + "-" + dataSplit[1] + "-" + dataSplit[0];
+
             HttpClient client = new HttpClient
             {
-                BaseAddress = new Uri(urlBase + $"inserirTicket/{idCompra}/{idVoo}/{2}/{Nome}/{Cpf}/{Nascimento.ToShortDateString()}")
+                BaseAddress = new Uri(urlBase + $"inserirTicket/{idCompra}/{idVoo}/{numAcento}/{Nome}/{Cpf}/{dataFormatada}")
             };
 
             client.DefaultRequestHeaders.Accept.Clear();
