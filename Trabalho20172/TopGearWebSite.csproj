@@ -413,7 +413,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Veiculo\ListaVeiculos.cshtml" />
-    <Content Include="Views\Locacao\DadosCliente.cshtml" />
+    <Content Include="Views\Locacao\CompraPassagens.cshtml" />
     <Content Include="Views\Locacao\LocacoesCliente.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Veiculo\Veiculos.cshtml" />

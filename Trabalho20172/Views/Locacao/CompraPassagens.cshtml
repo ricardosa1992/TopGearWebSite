@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Teste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Trabalho20172.Models.LocacaoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:28:45 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car|Rental Landingpage</title>
+  
+    <!-- Fav and touch icons -->
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
+
+    <style>
+        .sidenav {
+            padding-top: 0px;
+            height: 100%;
+        }
+
+        .reserva-header {
+            height:50px
+        }
+
+        .voo-header {
+            height:20px
+        }
+
+    </style>
+
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <ul>
+                    <li><h4>Que tal uma passagem Aérea?</h4></li>
+                    <li><a href="@Url.Action("LocacoesCliente", "Locacao")"><i class="fa fa-gear fa-fw"></i>Ir para Reservas</a></li>
+                </ul>
+
+
+
+                @{
+                    foreach (var voo in Model.listaVoos)
+                    {
+                        <div class="box-detalhes-reserva col-md-4 col-sm-12 col-lg-3 col-xl-4" style="margin-top:30px;height:250px">
+                            <div class="regiao-slip-reserva ativo" id="slip-reserva-sua-reserva">
+                                <div class="reserva-header voo-header" >
+                                    <a class="target" href="#" title="sua reserva" style="margin:0px auto">
+                                        <i class="fa fa-plane" aria-hidden="true"></i> @voo.codigo
+
+                                    </a>
+                                </div>
+                                <div class="reserva-body">
+                                    <i class="icon2-retirada"></i><p class="sub-title">Partida</p>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @voo.cidade_partida - @voo.aeroporto_partida (@voo.sigla_aeroporto_partida)
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @voo.partida
+                                        </div>
+                                    </div>
+                                    <p class="sub-title"><i class="icon2-devolucao"></i>Chegada</p>
+                                    <div class="content-agencias">
+                                        <p class="text-slip-strong" style="text-transform:capitalize">
+                                            @voo.cidade_destino - @voo.aeroporto_destino (@voo.sigla_aeroporto_destino)
+                                        </p>
+                                        <div class="date text-slip-normal">
+                                            @voo.chegada
+                                        </div>
+                                    </div>
+
+                                    <div id="qtdDiarias" class="box-detalhes-reserva" style="">
+                                        <p class="sub-title"> <i class="icon2-seu-carro"></i> Preço: <font color="black">R$ @voo.preco.ToString("n2")</font></p>
+
+                                    </div>
+                                    <input type="button" class="btn btn-primary btn-block comprarPassagem" value="Comprar" idVoo="@voo.idVoo" style="" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+
+
+                }
+
+
+            </div>
+
+         
+
+        </div>
+    </div>
+
+
+
+    <a href="#" class="scrollup">ScrollUp</a>
+
+</body>
+
+<!-- Mirrored from carrental.themeinjection.com/theme/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2017 13:29:28 GMT -->
+</html>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //cancela a reserva do Cliente
+        $(".comprarPassagem").click(function (e) {
+            debugger;
+            var idVoo = $(this).attr("idVoo");
+
+            swal({
+                title: "Confirma a compra da passagem?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Locacao/ComprarPassagem",
+                        type: "POST",
+                        dataType: 'json',
+                        data: { idVoo: idVoo },
+                        success: function (result) {
+                            if (result.Status == "ok") {
+                                swal({ title: "Ocorreu algum erro!", icon: "success" });
+                            }
+                            else {
+                                swal({ title: "Ocorreu algum erro!", icon: "error" });
+                            }
+                        }
+                    });
+                }
+            });
+
+            //document.body.remove((".cancelarLocacao").parent(".box-detalhes-reserva"));
+
+        });
+
+    });
+
+    </script>
+}

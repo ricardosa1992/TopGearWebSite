@@ -13,37 +13,10 @@ namespace Trabalho20172.Controllers
     public class LocacaoController : BaseController
     {
         // GET: FinalizarReserva
-        public ActionResult DadosCliente(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
+        public ActionResult CompraPassagens(int idCarroSelecionado, int idLocalRetirada, int idLocalEntrega, string dataRetirada, string dataEntrega,int qtdDiarias, string precoDiaria, string precoTotal)
         {
             BuscarDadosClienteLogado();
             LocacaoViewModel viewModel = new LocacaoViewModel();
-           
-            //Obtendo os dados do carro selecionado e do local de retirada/entrega
-            //viewModel.dataRetirada = Convert.ToDateTime(dataRetirada);
-            //viewModel.dataEntrega = Convert.ToDateTime(dataEntrega);
-            //viewModel.QtdDiarias = qtdDiarias;
-            //viewModel.precoDiaria = Convert.ToDouble(precoDiaria);
-            //viewModel.precoTotal = Convert.ToDouble(precoTotal);
-
-            ////Obtendo a Agencia de retirada/Entrega
-            //viewModel.localRetirada = TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalRetirada}");
-            //viewModel.localEntrega = (idLocalRetirada == idLocalEntrega || idLocalEntrega == 0) ? viewModel.localRetirada : TopGearApiDataAccess<Agencia>.Get($"agencia/porid/{idLocalEntrega}");
-
-
-            ////Buscando o carro selecionado
-            //Carro carroSelecionado = TopGearApiDataAccess<Carro>.Get($"carro/porid/{idCarroSelecionado}");
-            //Categoria categoria = TopGearApiDataAccess<Categoria>.Get($"categoria/porid/{carroSelecionado.CategoriaId}");
-            //viewModel.carroSelecionado = new CarroViewModel
-            //{
-            //    Id = carroSelecionado.Id,
-            //    Marca = carroSelecionado.Marca,
-            //    Modelo = carroSelecionado.Modelo,
-            //    Ano = carroSelecionado.Ano,
-            //    Placa = carroSelecionado.Placa,
-            //    AgenciaId = carroSelecionado.AgenciaId,
-            //    categoria = categoria,
-            //    UrlImagem = carroSelecionado.UrlImagem
-            //};
             
             //Buscando todos os Vôos
             viewModel.listaVoos = PassagemApi.GetTodosVoos(); 
@@ -119,6 +92,22 @@ namespace Trabalho20172.Controllers
             bool cancelada = LocacaoApiDataAccess.CancelarLocacao(idLocacao);
 
             return RedirectToAction("LocacoesCliente", "Locacao");
+        }
+
+        public JsonResult ComprarPassagem(int idVoo)
+        {
+            Cliente cliente = BuscarDadosClienteLogado();
+
+            //PassagemApi.PostCliente(cliente.Nome, "3232", cliente.Nascimento);
+            
+            int idCompra = PassagemApi.InserirCompra(cliente.Cartao, "32132132132");
+            int idTicket = -1;
+            if (idCompra != -1)
+            {
+                idTicket = PassagemApi.InserirTicket(idCompra, idVoo, cliente.Nome, cliente.Cartao, "32132132132", cliente.Nascimento);
+            }
+            return (idTicket != -1) ? Json(new { Status = "ok" }) : Json(new { Status = "Nok" });
+
         }
 
     }
