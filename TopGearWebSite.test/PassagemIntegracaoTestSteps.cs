@@ -47,12 +47,5 @@ namespace TopGearWebSite.test
                 Assert.IsTrue(idTicket > 0);
             }
         }
-
-        [TestMethod]
-        public void GambiarraProSonarBurro()
-        {
-            GivenEuSelecioneiUmaPassagemEDecidiComprar();
-            ThenAPassagemDeveSerCompradaCorretamente();
-        }
     }
 }
