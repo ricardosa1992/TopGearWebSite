@@ -6,7 +6,6 @@ using TopGear.Api.Models;
 
 namespace TopGearWebSite.test
 {
-    [TestClass]
     [Binding]
     public class PassagemIntegracaoTestSteps
     {
