@@ -6,6 +6,7 @@ using TopGear.Api.Models;
 
 namespace TopGearWebSite.test
 {
+    [TestClass]
     [Binding]
     public class PassagemIntegracaoTestSteps
     {
@@ -45,6 +46,13 @@ namespace TopGearWebSite.test
                 idTicket = PassagemApi.InserirTicket(idCompra, voo.idVoo, "Teste", "3232", "32132132132", new DateTime(1990, 01, 01), numAcento);
                 Assert.IsTrue(idTicket > 0);
             }
+        }
+
+        [TestMethod]
+        public void GambiarraProSonarBurro()
+        {
+            GivenEuSelecioneiUmaPassagemEDecidiComprar();
+            ThenAPassagemDeveSerCompradaCorretamente();
         }
     }
 }
