@@ -22,7 +22,6 @@
     <link rel="apple-touch-icon-precomposed" href="~/Content/img/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
     <link href="~/Content/css/rentalcar-template.css" rel="stylesheet" />
-
     <style>
         .reserva-header {
             height: 50px
@@ -515,6 +514,10 @@
 
               //Recarrega a página com os carros disponíveis de acordo com o filtro selecionado
             $(".filtroItens").click(function (e) {
+                $.blockUI({
+                    css: {
+                        border: 'none', padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px', '-moz-border-radius': '10px',opacity: .8, color: '#fff' }
+                }); 
                 $("#filtro-form").submit();
 
             });
@@ -674,6 +677,11 @@
                                 title: "Reserva efetuada com sucesso!",
                                 icon: "success",
                             }).then((willDelete) => {
+                                $.blockUI({
+                                    css: {
+                                        border: 'none', padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px', '-moz-border-radius': '10px', opacity: .8, color: '#fff'
+                                    }
+                                }); 
                                 ChamarPaginaDeConfimacaoDaLocacao();
                             });
                         }

@@ -24,7 +24,6 @@
     <link rel="shortcut icon" href="~/Content/img/ico/favicon.png">
     <link href="~/Content/css/rentalcar-template.css" rel="stylesheet" />
 
-
     <style>
         .sidenav {
             padding-top: 0px;
@@ -255,6 +254,11 @@
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
+                    $.blockUI({
+                        css: {
+                            border: 'none', padding: '15px', backgroundColor: '#000', '-webkit-border-radius': '10px', '-moz-border-radius': '10px', opacity: .8, color: '#fff'
+                        }
+                    }); 
                     var href = "/Locacao/CancelarLocacao?idLocacao=" + idLocacao;
                     window.open(href, "_self");
                 }

@@ -427,6 +427,7 @@
     <Content Include="Views\CadastroAgencia\Details.cshtml" />
     <Content Include="Views\CadastroAgencia\Edit.cshtml" />
     <Content Include="Views\CadastroAgencia\Index.cshtml" />
+    <Content Include="Scripts\js\jquery.blockUI.min.js" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
