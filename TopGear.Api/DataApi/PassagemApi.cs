@@ -25,7 +25,6 @@ namespace TopGear.Api.DataApi
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
 
             HttpResponseMessage response = client.GetAsync("").Result;
-            var teste = response.EnsureSuccessStatusCode();
             if (response.IsSuccessStatusCode)
             {
                 var json = response.Content.ReadAsStringAsync().Result;
@@ -35,45 +34,6 @@ namespace TopGear.Api.DataApi
                 return voos;
             }
             else return new List<Voo>();
-        }
-
-        public static List<Voo> GetVoos(DateTime data, string aeroporto, string cidade)
-        {
-            HttpClient client = new HttpClient
-            {
-                BaseAddress = new Uri(urlBase + $"getVoos/{data.ToString("aaaa-mm-dd")}/{aeroporto}/{cidade}")
-            };
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
-
-            HttpResponseMessage response = client.GetAsync("").Result;
-            var teste = response.EnsureSuccessStatusCode();
-            if (response.IsSuccessStatusCode)
-            {
-                var json = response.Content.ReadAsStringAsync().Result;
-
-                var voos = JsonConvert.DeserializeObject<List<Voo>>(json);
-
-                return voos;
-            }
-            else return new List<Voo>();
-        }
-
-        public static bool PostCliente(string nome, string cpf, DateTime dataNascimento)
-        {
-            HttpClient client = new HttpClient
-            {
-                BaseAddress = new Uri(urlBase + $"inserirPassageiro/{nome}/{cpf}/{dataNascimento.ToString()}")
-            };
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
-
-            HttpResponseMessage response = client.GetAsync("").Result;
-            var teste = response.EnsureSuccessStatusCode();
-
-            return response.IsSuccessStatusCode;
         }
 
         public static int InserirCompra(string Cartao, string Cpf)

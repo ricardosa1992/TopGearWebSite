@@ -77,7 +77,12 @@
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
     <Compile Include="LoginSteps.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PassagemIntegracaoTest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PassagemIntegracaoTest.feature</DependentUpon>
+    </Compile>
+    <Compile Include="PassagemIntegracaoTestSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +100,10 @@
       <LastGenOutput>Login.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="PassagemIntegracaoTest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PassagemIntegracaoTest.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TopGear.Api\TopGearWebSite.Api.csproj">

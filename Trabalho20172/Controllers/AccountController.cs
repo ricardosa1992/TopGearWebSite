@@ -25,7 +25,7 @@ namespace Trabalho20172.Controllers
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
-            SignInManager = signInManager;
+            SignInManager = signInManager; 
         }
 
         public ApplicationSignInManager SignInManager
